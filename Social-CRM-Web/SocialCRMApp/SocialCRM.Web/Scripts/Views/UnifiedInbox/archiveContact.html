@@ -1,0 +1,745 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="ArchiveContactController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-user"></i> Contact's Profile</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <!--<div style="margin-bottom:8px;"><a href="/#/UnifiedInbox"><i class="fa fa-times"></i>Go Back</a></div>-->
+                            <div class="col-sm-12 inbox_blk unread_msg">
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                        <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg">
+                                        <a href="/#/ArchiveContact"><strong>{{contactName}}</strong></a> <i class="fa fa-twitter"></i> {{contactTwitName}}<br>
+                                        {{contactMsg}}<br><br>
+                                        <i class="fa fa-map-marker"></i> {{contactCountry}} &nbsp;&nbsp;<i class="fa fa-globe"></i>{{contactURL}}
+                                    </div>
+                                    <div class="inbox_blk_cred">
+                                        Followers <a href="/#/ArchiveContact"><strong>{{totalFollower}}</strong></a> | Following <a href="/#/ArchiveContact" style="margin-right:30px;"><strong>{{totalFollowing}}</strong></a>
+                                        <a href="/#/ArchiveContact"><img src="/Content/img/user20.jpg" alt="User Image"> is following</a> <a href="/#/ArchiveContact"><img src="/Content/img/user20.jpg" alt="User Image"> is not following</a> <i class="fa fa-info-circle" title="chocOholic @ayeshashamim"></i>
+                                    </div>
+                                    <div class="inbox_blk_actions">
+                                        <!--<a href="/#/ArchiveContact" data-toggle="collapse" data-target="#usdSetting"><i class="fa fa-files-o" title="Classification"></i> </a>--> 
+                                        <a href="/#/ArchiveContact" data-toggle="modal" data-target="#newReply"><i class="fa fa-mail-reply" title="Reply"></i></a> <a href="/#/ArchiveContact" data-toggle="collapse" data-target="#msgSetting"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <div id="usdSetting" class="collapse sub_msgsett" style="display:none;">
+                                            <a href="/#/ArchiveContact">Sales Lead</a> | <a href="/#/ArchiveContact">After Sales Support</a> | <a href="/#/ArchiveContact">Compliment</a> | <a href="/#/ArchiveContact">Complaint</a> | <a href="/#/ArchiveContact">General Inquiry</a> | <a href="/#/ArchiveContact">Referral</a> | <a href="/#/ArchiveContact">Review</a>
+                                        </div>
+                                        <div id="msgSetting" class="collapse sub_msgsett">
+                                            <a href="/#/ArchiveContact">Retweet</a> | <a href="/#/ArchiveContact">Retweet with Comment</a> | <a href="/#/ArchiveContact">Like</a> | <a href="/#/ArchiveContact">Email Message</a>  | <a href="/#/ArchiveContact">Report as Spam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal for Reply-->
+                                <div id="newReply" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal for Reply content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><i class="fa fa-mail-reply"></i> PUBLIC REPLY</h4>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div style="margin-bottom:10px " id="pop_sprof">
+                                                    <table class="table table-condensed">
+
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                                    <label for="squaredSmall7"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                                    <label for="squaredSmall8"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <div style="margin-bottom:10px; margin-top:20px; "><em></em>from <strong>@Ayeshashamim7</strong> <em>to</em> <strong>@chocoholic</strong></div>
+                                                <div>
+                                                    <textarea name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:580px; margin-bottom:8px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea>
+                                                    <a href="/#/ArchiveContact"><i class="fa fa-camera"></i></a> <div style="float:right"><strong><em>127</em></strong></div>
+                                                    <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;">SEND</button></div>
+                                                </div>
+
+                                                <div style="margin-bottom:10px; margin-top:10px; "><strong>VIEWING HISTORY</strong> with <strong>@chocoholic</strong></div>
+                                                <div id="pop_vhis">
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Modal for Reply-->
+                            </div>
+                            <div class="col-sm-12 zro">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" title="History"><i class="fa fa-history"></i></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" title="Tweets"><i class="fa fa-twitter"></i></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" title="Mentions"><span class="ion ion-at"></span></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" title="Followers"><i class="fa fa-user"></i><i class="fa fa-arrow-right"></i></button>
+                                    </div>
+
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive" title="Following"><i class="fa fa-user"></i><i class="fa fa-arrow-left"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>HISTORY</strong></div>
+
+                                                <div class="col-sm-12 inbox_blk {{msg.className}}" ng-repeat="msg in inboxHistoryItemDetails">
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="inbox_blk_img_ico"><img src="/Content/images/{{msg.twtImg}}.png" alt=""></div>
+                                                            <a href="/#/ArchiveContact"><img src="/Content/img/{{msg.user}}.jpg" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="/#/ArchiveContact">{{msg.handleName}}</a>
+                                                            {{msg.userTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="/#/ArchiveContact">{{msg.replyedBy}}</a> replied to <a href="/#/ArchiveContact">{{msg.replyedTo}}</a>{{msg.twitDate}}</div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- Modal for conv history-->
+                                                <div id="viewConversation" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                        <!-- Modal for conv history-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"><i class="fa fa-comments"></i> VIEW CONVERSTAION</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div style="margin-bottom:8px;"><strong>@ayeshashamim7</strong> conversation history with <strong>@chocoholic</strong></div>
+                                                                <div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="/#/ArchiveContact"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="/#/ArchiveContact">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="/#/ArchiveContact">chocoh0llic</a> replied to <a href="/#/ArchiveContact">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div> &nbsp;</div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- Modal for conv history-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>TWEETS</strong></div>
+
+                                                <div class="col-sm-12 inbox_blk {{msg.className}}" ng-repeat="msg in tweetItemDetails">
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="inbox_blk_img_ico"><img src="/Content/images/{{msg.twtImg}}.png" alt=""></div>
+                                                            <a href="/#/ArchiveContact"><img src="/Content/img/{{msg.user}}.jpg" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="/#/ArchiveContact">{{msg.handleName}}</a>
+                                                            {{msg.userTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="/#/ArchiveContact">{{msg.replyedBy}}</a> replied to <a href="/#/ArchiveContact">{{msg.replyedTo}}</a>{{msg.twitDate}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>MENTIONS</strong></div>
+                                                <div class="col-sm-12 inbox_blk {{msg.className}}" ng-repeat="msg in mentionItemDetails">
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="inbox_blk_img_ico"><img src="/Content/images/{{msg.twtImg}}.png" alt=""></div>
+                                                            <a href="/#/ArchiveContact"><img src="/Content/img/{{msg.user}}.jpg" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="/#/ArchiveContact">{{msg.handleName}}</a>
+                                                            {{msg.userTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="/#/ArchiveContact">{{msg.replyedBy}}</a> replied to <a href="/#/ArchiveContact">{{msg.replyedTo}}</a>{{msg.twitDate}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>FOLLOWERS</strong></div>
+                                                <div class="col-sm-12 inbox_blk {{msg.className}}" ng-repeat="msg in followerItemDetails">
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="inbox_blk_img_ico"><img src="/Content/images/{{msg.twtImg}}.png" alt=""></div>
+                                                            <a href="/#/ArchiveContact"><img src="/Content/img/{{msg.user}}.jpg" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="/#/ArchiveContact">{{msg.handleName}}</a>
+                                                            {{msg.userTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="/#/ArchiveContact">{{msg.replyedBy}}</a> replied to <a href="/#/ArchiveContact">{{msg.replyedTo}}</a>{{msg.twitDate}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+
+                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>FOLLOWING</strong></div>
+                                                <div class="col-sm-12 inbox_blk {{msg.className}}" ng-repeat="msg in followingItemDetails">
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="inbox_blk_img_ico"><img src="/Content/images/{{msg.twtImg}}.png" alt=""></div>
+                                                            <a href="/#/ArchiveContact"><img src="/Content/img/{{msg.user}}.jpg" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="/#/ArchiveContact">{{msg.handleName}}</a>
+                                                            {{msg.userTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="/#/ArchiveContact">{{msg.replyedBy}}</a> replied to <a href="/#/ArchiveContact">{{msg.replyedTo}}</a>{{msg.twitDate}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th colspan="2"><strong>OWN NETWORKS</strong></th>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="2" align="center"><img src="/Content/img/fb_c.png" alt="" style="width:35px; margin-right:10px; height:35px; margin-top:10px;" title="https://www.facebook.com/byteaapple"> <img src="/Content/img/twit_c.png" alt="" style="width:35px; margin-right:10px; height:35px; margin-top:10px;" title="https://www.twitter.com/byteaapple"> <img src="/Content/img/Instagram_c.png" alt="" style="width:35px; height:35px; margin-top:10px;" title="https://www.linkedin.com/byteaapple"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="f_profile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th colspan="2"><strong>CONTACT INFORMATION</strong></th>
+                            </tr>
+                            <tr style="display:block;" id="trActualRow">
+                                <td width="91%" height="30"><span ng-model="myvar">{{ContactInformation.CompanyName}}</span></td>
+                                <td width="9%"><a href="/#/ArchiveContact"><i class="fa fa-pencil " onclick="EditCompanyName(1)"></i></a></td>
+                            </tr>
+                            <tr style="display:none;" id="trEditableRow">
+                                <td width="91%" height="30"><span><input name="" type="text" value="{{ContactInformation.CompanyName}}" ng-model="ContactInformation.CompanyName" placeholder="Designation"></span></td>
+                                <td width="9%"><a href="/#/ArchiveContact"><i class="fa fa-floppy-o " onclick="EditCompanyName(0)"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td width="91%" height="30"><span>{{ContactInformation.UserEmail}}</span></td>
+                                <td width="9%"><a href="/#/ArchiveContact"><i class="fa fa-pencil "></i></a></td>
+                            </tr>
+                            <tr>
+                                <td width="91%" height="30"><span>{{ContactInformation.UserContactNumber}}</span></td>
+                                <td width="9%"><a href="/#/ArchiveContact"><i class="fa fa-pencil "></i></a></td>
+                            </tr>
+                            <tr>
+                                <td width="91%" height="30"><span>{{ContactInformation.UserPhoneNumber}}</span></td>
+                                <td width="9%"><a href="/#/ArchiveContact"><i class="fa fa-pencil "></i></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                        <tr class="filter_header">
+                            <th colspan="2"><strong>TWITTER LISTS</strong></th>
+                        </tr>
+                        <tr ng-repeat="account in TwitterAccounts">
+                            <td height="30" colspan="2"><i class="fa fa-list-ul"></i> <strong>{{account.ListName}}</strong> {{account.Owner}}</td>
+                            <td width="18%" align="center"><a href="/#/ArchiveContact"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                        <!--<tr>
+                            <td height="30" colspan="2"><i class="fa fa-list-ul"></i> <strong>Company</strong> Ayesha Shamim</td>
+                            <td width="18%" align="center"><a href="/#/ArchiveContact"><i class="fa fa-trash"></i></a></td>
+                        </tr>-->
+                    </table>
+                    <div style="margin-right:10px;">
+                        <a href="/#/ArchiveContact" data-toggle="collapse" data-target="#addList"> <strong>+</strong>  Add To List</a>
+                        <div id="addList" class="collapse">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                                <tr ng-repeat="account in TwitterAccounts">
+                                    <td width="91%" height="30"><i class="fa fa-globe"></i> {{account.ListName}}</td>
+                                    <td width="9%">
+                                        <div class="squaredSmall" style="margin-top:0px;">
+                                            <input type="checkbox" value="None" id="squaredSmal79{{$index}}" name="check" />
+                                            <label for="squaredSmal79{{$index}}"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--<tr>
+                                    <td width="91%" height="30"><i class="fa fa-lock"></i> {{account.ListName}}</td>
+                                    <td width="9%">
+                                        <div class="squaredSmall" style="margin-top:0px;">
+                                            <input type="checkbox" value="None" id="squaredSmal80" name="check" />
+                                            <label for="squaredSmal80"></label>
+                                        </div>
+                                    </td>
+                                </tr>-->
+                            </table>
+                            <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;">+ Add</button> <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;" data-toggle="modal" data-target="#newCreateList">+ Create</button>
+                            <!-- Modal for New Create List-->
+                            <div id="newCreateList" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal for New Group content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"><i class="fa fa-list-ul"></i> CREATE A NEW LIST</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>LIST NAME *<input type="text" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="Enter List Name" aria-describedby="sizing-addon2"></div>
+                                            <div>DESCRIPTION<textarea name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea></div>
+                                            <div style="margin-top:20px">
+                                                PRIVACY<br>
+                                                <input name="" type="radio" value=""> <strong>PUBLIC</strong> - <em><strong>Everyone</strong> can see this list.</em><br>
+                                                <input name="" type="radio" value=""> <strong>PRIVATE</strong> - <em><strong>Only you</strong> can see this list.</em>
+                                            </div>
+
+                                            <div style="margin-top:10px;">
+                                                <em><strong>@Ayeshashamim's7</strong> new Twitter list will be created and <strong>@taiba_genuis</strong> will be added to it.</em>
+                                            </div>
+
+                                            <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;">+ CREATE &amp; ADD</button></div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Modal for New Create List-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                        <tr class="filter_header">
+                            <th colspan="2"><strong>COMMENTS</strong></th>
+                        </tr>
+                    </table>
+                    <div style="margin-right:10px; margin-top:10px; margin-bottom:10px;">
+                        <a href="/#/ArchiveContact" data-toggle="modal" data-target="#newCommentList"> <strong>+</strong> Add New Comment</a><br>
+                        <br>
+                        <!-- Modal for New comment List-->
+                        <div id="newCommentList" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal for New Group content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><i class="fa fa-list-ul"></i> CREATE NEW COMMENT</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-sm-12 zro">
+                                            <div class="col-sm-9">
+                                                <div>COMMENT TITLE *<input type="text" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="Enter Comment Title" aria-describedby="sizing-addon2"></div>
+                                                <div>COMMENT DESCRIPTION<textarea name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:10px " aria-describedby="sizing-addon2" placeholder="Enter Comment Description Here"> </textarea></div>
+                                            </div>
+                                            <div class="col-sm-3" style="padding-top:10px;"><strong>Note:</strong> <em>Comments will be visible to your team members.<br> This information will not be visible to the respective contact.</em></div>
+                                        </div> <div style="margin-left:15px;"><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;">+ ADD COMMENT</button></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal for New comment List-->
+                        <div ng-repeat="usercomment in Comments">
+                            <div>
+                                <a href="/#/ArchiveContact" data-toggle="collapse" data-target="#comment{{$index}}" class="note_head_yellow{{$index}}">
+                                    <i class="fa fa-quote-left"></i> {{usercomment.commentTitle}}
+                                </a>
+                            </div>
+                            <div id="comment{{$index}}" class="collapse sub_msgsettnote note_color_yellow{{$index}}">
+                                <a href="/#/ArchiveContact" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                                {{usercomment.commentText}}<br>
+                                <span>{{usercomment.commentUser}} @ {{usercomment.commentDate}}</span>
+                            </div>
+                        </div>
+                        <!--<div><a href="/#/ArchiveContact" data-toggle="collapse" data-target="#comment2" class="note_head_blue"><i class="fa fa-quote-left"></i> Sample Comment 2</a></div>
+                        <div id="comment2" class="collapse sub_msgsettnote note_color_blue">
+                            <a href="/#/ArchiveContact" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>
+                        <div><a href="/#/ArchiveContact" data-toggle="collapse" data-target="#comment3" class="note_head_green"><i class="fa fa-quote-left"></i> Sample Comment 3</a></div>
+                        <div id="comment3" class="collapse sub_msgsettnote note_color_green">
+                            <a href="/#/ArchiveContact" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>
+                        <div><a href="/#/ArchiveContact" data-toggle="collapse" data-target="#comment4" class="note_head_red"><i class="fa fa-quote-left"></i> Sample Comment 4</a></div>
+                        <div id="comment4" class="collapse sub_msgsettnote note_color_red">
+                            <a href="/#/ArchiveContact" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div><!-- ./wrapper -->
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    $(function () {
+        $('#inboxer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#tasker').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#socialer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+        $('#publi').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#disco').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#reporter').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+
+        $('#helper').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#userlists').slimscroll({
+            height: '499px',
+            disableFadeOut: true
+        });
+
+        $('#grplists').slimscroll({
+            height: '485px',
+            disableFadeOut: true
+        });
+
+
+        $('#soclists').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+        $('#soclistspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#grpspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#soclists2').slimscroll({
+            height: '168px',
+            disableFadeOut: true
+        });
+
+        $('#ulists').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#soclistspop2').slimscroll({
+            height: '280px',
+            disableFadeOut: true
+        });
+
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#f_msg').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+
+        $('#pop_vhis').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#pop_sprof').slimscroll({
+            height: '100px',
+            disableFadeOut: true
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    function EditCompanyName(val)
+    {
+        if (val == 1) {
+            $("#trActualRow").css('display', 'none');
+            $("#trEditableRow").css('display', 'block');
+        }
+        else
+        {
+            $("#trActualRow").css('display', 'block');
+            $("#trEditableRow").css('display', 'none');
+        }
+    }
+</script>

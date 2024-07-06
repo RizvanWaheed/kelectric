@@ -1,0 +1,149 @@
+﻿<style>
+    .modal-dialog {
+        width: 800px !important;
+        margin: 30px auto;
+    }
+    .truncate-item{
+        width: 230px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+</style>
+<form name="myForm">
+    <!-- Modal for retweet-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="Cancel()">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-user-circle" style="margin-right: 10px;"></i>KE CONSUMER</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+
+                <div class="col-md-12 zro_left">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="col-sm-12 zro"><i class="fa fa-bullhorn"></i> CONSUMER DETAILS</div>
+                        </div>
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <span style="color:red;margin-left: 15px;" ng-show="errorMsg.length > 0">{{errorMsg}}</span>
+                                <div class="col-md-12">
+                                    <div class="col-md-4 col-xs-12 zro_left2 " title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Name</strong><br>
+                                            <a href="{{Url}}" target="_blank">{{Name}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2 " title="" ng-if="Name != TwitHandle">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Twitter Handle</strong><br>
+                                            <span>@{{TwitHandle}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>No. Of Followers</strong><br>
+                                            <span>{{Followers}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>No. Of Following</strong><br>
+                                            <span>{{Following}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Total Tweets</strong><br>
+                                            <span>{{TotalQueries}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>IBC</strong><br>
+                                            <span class="truncate-item">{{Ibc}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Feeder</strong><br>
+                                            <span class="truncate-item">{{Feeder}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>PMT</strong><br>
+                                            <span class="truncate-item">{{PMT}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Status</strong><br>
+                                            <span class="truncate-item">{{Status}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Action</strong><br>
+                                            <a class="btn btn-primary" href="javascript:" ng-if="Status == 'Active'" ng-click="WarnBanUser(1)">Warn</a>
+                                            <a class="btn btn-primary" href="javascript:" ng-if="Status == 'Warn' && (UserObj.IsPage || UserObj.MessageType == 'TP' || UserObj.MessageType == 'TM')" ng-click="WarnBanUser(2)">Ban</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="" ng-if="Status != 'Active'">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Post Url</strong><br>
+                                            <span style="word-wrap: break-word;">{{PostUrl}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="" ng-if="Status != 'Active'">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Post Text</strong><br>
+                                            <span>{{PostText}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Mobile Number</strong><br>
+                                            <textarea rows="2" cols="25" style="resize:none;" disabled>{{MobileNum}}</textarea>
+                                            <!--<span class="truncate-item">{{MobileNum}}</span>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Account Number</strong><br>
+                                            <textarea rows="2" cols="25" style="resize:none;" disabled>{{AccNum}}</textarea>
+                                            <!--<span class="truncate-item">{{AccNum}}</span>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <strong>Address</strong><br>
+                                            <textarea rows="2" cols="25" style="resize:none;" disabled>{{Address}}</textarea>
+                                        </div>
+                                    </div>
+
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,399 @@
+﻿<style>
+    .image-upload > input
+    {
+        display: none;
+    }
+
+    .image-upload img
+    {
+        cursor: pointer;
+        margin-top:-8px;
+    }
+</style>
+<div class="modal-content" style="padding-top:0px;">
+    <div class="modal-header" style="padding:7px; padding-left:30px;">
+        <div class="fb_social_icos" ng-if="MessageType=='FP' || MessageType=='FC'"></div>
+        <div class="insta_social_icos" ng-if="MessageType=='IM' || MessageType=='IC'"></div>
+        <div class="twitter_social_icos" ng-if="MessageType=='TP' || MessageType=='STP'"></div>
+
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-mail-reply"></i> {{FormText}}</h4>
+    </div>
+    <div class="modal-body" style="padding-top:3px;">
+
+        <div id="scrollerDiv">
+
+            <!--Facebook Post Detail-->
+            <div class="col-sm-12 zro" ng-if="MessageType=='FP' || MessageType=='FC'">
+                <!--Change colour-->
+                <!--<div class="deck_item_blk_ico"><img src="Content/images/tw_ico3.png" style="z-index:1000 !important" alt=""></div>-->
+                <div class="col-sm-1 col-xs-1">
+                    <div class="inbox_blk_img" style="height: auto !important;">
+                        <a href=""><img src="{{inboxHistoryItemDetails.fbPost.AuthorProfilePic}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive" style="width:50px; height:50px;"></a>
+                    </div>
+                </div>
+                <div class="col-sm-11 text-left">
+                    <div class="column_user_name fb_txt2">
+                        <strong>{{inboxHistoryItemDetails.fbPost.AuthorName}}</strong> <Span>{{inboxHistoryItemDetails.fbPost.ConversationDate}}</Span>
+                    </div>
+                    <span class="inbox_blk_msg">
+                        <div style="cursor:pointer;">
+                            <span style="font-size:20px; line-height: 22px;" ng-bind-html="MessageItself">
+                            </span>
+                        </div>
+                    </span>
+
+                    <div class="col-sm-12 zro panel-group" style="margin-bottom:10px !important;">
+                        <div ng-if="inboxHistoryItemDetails.fbPost.Attachments.length > 0 && inboxHistoryItemDetails.fbPost.Attachments[0].Type!='share'" style="margin-top:15px;">
+                            <img ng-if="inboxHistoryItemDetails.fbPost.Attachments[0].Type == 'image'" ng-src="{{inboxHistoryItemDetails.fbPost.Attachments[0].Url}}" style="border-radius: 0px;max-width:292px;max-height:292px;" class="img-responsive img_gapper" />
+                            <iframe ng-if="inboxHistoryItemDetails.fbPost.Attachments[0].Type == 'video_share'" ng-src="{{trustSrc(inboxHistoryItemDetails.fbPost.Attachments[0].Url)}}" style="border-radius: 0px;max-width:292px;max-height:292px" allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="300" height="162"></iframe>
+                            <iframe ng-if="inboxHistoryItemDetails.fbPost.Attachments[0].Type == 'video_fb'" ng-src="{{trustSrc(inboxHistoryItemDetails.fbPost.Attachments[0].Url)}}" style="border-radius: 0px;max-width:292px;max-height:292px;" allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="300" height="162"></iframe>
+                            <a id="more-slide" ng-if="inboxHistoryItemDetails.fbPost.Attachments.length > 1" href="javascript:;" ng-click="openSlider(inboxHistoryItemDetails.fbPost.Attachments)">View more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Instagram Post Detail-->
+            <div class="col-sm-12 zro" ng-if="MessageType=='IM' || MessageType=='IC'">
+                <!--Change colour-->
+                <!--<div class="deck_item_blk_ico"><img src="Content/images/tw_ico3.png" style="z-index:1000 !important" alt=""></div>-->
+                <div class="col-sm-2 col-xs-2">
+                    <div class="inbox_blk_img" style="height: auto !important;">
+                        <a href=""><img src="{{inboxHistoryItemDetails.AuthorProfilePicture}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive" style="width:50px; height:50px;"></a>
+                    </div>
+                </div>
+                <div class="col-sm-10 text-left">
+                    <div class="column_user_name fb_txt2">
+                        <strong>{{inboxHistoryItemDetails.AuthorName}}</strong> <Span title="{{inboxHistoryItemDetails.CreatedDate}}">{{inboxHistoryItemDetails.CreatedDateForDeck}}</Span>
+                    </div>
+                    <span class="inbox_blk_msg">
+                        <div style="cursor:pointer;">
+                            <span style="font-size:20px; line-height: 22px;">
+                                {{inboxHistoryItemDetails.PostCaption}}
+                            </span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-12 zro panel-group" style="margin-bottom:10px !important;" id="{{inboxHistoryItemDetails.PostId}}-{{MessageType}}-converted_url">
+            </div>
+
+            <!--Twitter Parent Posts-->
+            <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-if="(MessageType == 'TP' || MessageType=='STP') && FormType=='Reply'" ng-repeat="msg in inboxHistoryItemDetails.ParentTweets" style="margin-bottom:5px; padding:0px; padding-bottom:5px;">
+                <div class="col-sm-1">
+                    <div class="inbox_blk_img" style="width:35px; height:35px;">
+                        <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                        <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                    </div>
+                </div><div class="col-sm-11 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg" ng-bind-html="TextToURLConvert(msg.UserTwit)">
+                    </div>
+                    <div class="inbox_blk_cred"><a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ToUser);">{{msg.ToUser}}</a> <Span title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span></div>
+                    <div ng-if="msg.Attachments.length > 0 && msg.Attachments[0].Type!='share'" style="margin-top:15px;">
+                        <img ng-if="msg.Attachments[0].Type == 'image'" ng-src="{{msg.Attachments[0].Url}}" style="border-radius: 0px;max-width:292px;max-height:292px;" class="img-responsive img_gapper" />
+                        <a id="more-slide" ng-if="msg.Attachments.length > 1" href="javascript:;" ng-click="openSlider(msg.Attachments)">View more</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Twitter Current Post-->
+            <div class="col-sm-12 zro" ng-if="MessageType == 'TP' || MessageType=='STP'">
+                <!--Change colour-->
+                <!--<div class="deck_item_blk_ico"><img src="Content/images/tw_ico3.png" style="z-index:1000 !important" alt=""></div>-->
+                <div class="col-sm-2 col-xs-2">
+                    <div class="inbox_blk_img" style="height: auto !important;">
+                        <a href=""><img src="{{inboxHistoryItemDetails.Tweet.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive" style="width:50px; height:50px;"></a>
+                    </div>
+                </div>
+                <div class="col-sm-10 text-left">
+                    <div class="column_user_name fb_txt2">
+                        <strong>{{inboxHistoryItemDetails.Tweet.ReplyedByFullName}}</strong> <Span title="{{inboxHistoryItemDetails.Tweet.ReplyedDate}}">{{inboxHistoryItemDetails.Tweet.ReplyedDateForDeck}}</Span>
+                        <br /><p class="twitter_span_txt" style="width:160px; color:#282828 !important; font-size:smaller;">@{{inboxHistoryItemDetails.Tweet.ReplyedBy}}</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 zro panel-group" style="margin-bottom:10px !important;">
+                    <span class="inbox_blk_msg">
+                        <div style="cursor:pointer;">
+                            <span style="font-size:20px; line-height: 22px;" ng-bind-html="MessageItself">
+                            </span>
+                        </div>
+                    </span>
+                    <div ng-if="inboxHistoryItemDetails.Tweet.Attachments.length > 0 && inboxHistoryItemDetails.Tweet.Attachments[0].Type!='share'" style="margin-top:15px;">
+                        <img ng-if="inboxHistoryItemDetails.Tweet.Attachments[0].Type == 'image'" ng-src="{{inboxHistoryItemDetails.Tweet.Attachments[0].Url}}" style="border-radius: 0px;max-width:292px;max-height:292px;" class="img-responsive img_gapper" />
+                        <a id="more-slide" ng-if="inboxHistoryItemDetails.Tweet.Attachments.length > 1" href="javascript:;" ng-click="openSlider(inboxHistoryItemDetails.Tweet.Attachments)">View more</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Reply Box-->
+            <div>
+                <div class="col-sm-12" style="padding:0px;">
+                    <div class="col-sm-1" style="padding:0px;">
+                        <div class="inbox_blk inbox_blk_img" style="border-color:transparent; padding-top:0px; margin-top:-2px; margin-left:8px; padding-left:5px; margin-bottom:0px !important; width:50px; height:35px;">
+                            <a href="javascript:;"><img src="{{MessagePostUserImageUrl}}" alt="User Image"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-11 text-left inbox_blk_msg_blk">
+                        <textarea maxlength="{{totalConversation}}" ng-maxlength="{{totalConversation}}" ng-show="IsEnable" ng-model="replyedMsgModel" name="" cols="" rows="1" class="form-control input_border_min input_login_h" style="margin-bottom:8px;" aria-describedby="sizing-addon2" placeholder="Type a comment..."> </textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12" ng-show="IsEnable"><strong style="float:right; font-size:9px;"><em>{{totalConversation - replyedMsgModel.length}}/{{totalConversation}}</em></strong></div>
+                <!--Settings Panel-->
+                <div class="col-sm-12 zro_left" style="margin-bottom:10px;">
+                    <div class="col-sm-12 zro_left" style="margin-bottom: 10px !important;">
+                        <!--Profiles Modal-->
+                        <button type="button" data-toggle="collapse" data-target="#selectMediaUpload" class="btn btn-xs btn-primary button_round" style="margin-top:5px;"><i class="fa fa-file-image-o"></i> Media Attachment</button>
+                        <!--<button type="button" data-toggle="collapse" data-target="#selectPostingProfile" class="btn btn-xs btn-primary button_round" style="margin-top:5px;"><i class="fa fa-user"></i> Select Profile</button>-->
+                        <!--commented on Jan 18, 2018 for Telenor-->
+
+                        <button ng-if="(MessageType=='TP' || MessageType=='STP') && FormType=='Reply'" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="AddTwitterComment(replyedMsgModel)">
+                            <span><i class="fa fa-comment"></i> Tweet</span>
+                        </button>
+                        <button ng-if="MessageType=='FP'" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="PostTweet()">
+                            <span><i class="fa fa-comment"></i> Comment</span>
+                        </button>
+                        <button ng-if="MessageType=='FC'" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="AddComment(replyedMsgModel, false)">
+                            <span><i class="fa fa-comment"></i> Comment</span>
+                        </button>
+                        <button ng-if="MessageType=='IM' || MessageType=='IC'" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="AddInstagramComment(replyedMsgModel)">
+                            <span><i class="fa fa-comment"></i> Comment</span>
+                        </button>
+                        <button ng-if="FormType=='Retweet' && isRetweeted == false" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="PostTweet()">
+                            <span><i class="fa fa-comment"></i> Retweet</span>
+                        </button>
+                        <button ng-if="FormType=='Retweet' && isRetweeted == true" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="UnRetweet()">
+                            <span><i class="fa fa-comment"></i> UnRetweet</span>
+                        </button>
+                        <button ng-if="FormType=='RetweetComment'" type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="PostTweet()">
+                            <span><i class="fa fa-comment"></i> Retweet</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="selectMediaUpload" class="collapse col-sm-12 zro_left">
+                    <h4 class="modal-title">
+                        Uploaded Media Files  (Total: {{ uploader.queue.length }})
+
+                        <a href="javascript:;" title="Attachment" class="image-upload" style="float:left;margin-top:10px;"
+                           ng-if="MessageType!='IM' && MessageType != 'IC'">
+                            <label for="file-input">
+                                <img src="../../../Content/img/paperclip_ico.png" />
+                            </label>
+                            <input id="file-input" type="file" nv-file-select="" uploader="uploader" multiple />
+                        </a>
+                    </h4>
+                    <span style="color:red" ng-show="errorMsg.length > 0">{{errorMsg}}</span>
+                    <div id="uploaded-files" slimscroll="commentsLength">
+                        <table class="table table-condensed" style="width:100%;">
+                            <thead>
+                                <tr style="max-width:420px;">
+                                    <th>Name</th>
+                                    <th ng-show="uploader.isHTML5">Size</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in uploader.queue" style="max-width:420px;">
+                                    <td style="max-width:220px;"><span style="font-weight:bold;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 220px;display: block;">{{ item.file.name }}</span></td>
+                                    <td style="max-width:100px;" ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                    <td style="max-width:100px;" nowrap>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                            <span class="glyphicon glyphicon-trash"></span> Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="selectPostingProfile" class="collapse col-md-12 zro">
+                <!--div of profiles-->
+                <div style="margin-bottom:10px " id="pop_sprof" slimscroll="slim" class="box box-default filter_box ng-scope">
+                    <table class="table table-condensed">
+                        <tr ng-repeat="profile in attachedProfiles">
+                            <td>
+                                <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                    {{profile.Name}}<br>
+                                    <p><img ng-src="{{MessageType == 'FP' && '/Content/images/fb_ico16.png' || MessageType == 'IM' && '/Content/images/insta_ico16.png' ||( MessageType=='FC'&& '/Content/images/fb_ico16.png' ||'/Content/images/t_ico16.png')}}" alt="linkedin-profile"> @{{profile.UserName}}</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="profile-{{profile.Id}}" name="check" ng-click="CheckProfile(profile.Id,profile.UserName,profile.IsPage,profile.ProfileExternalId, profile.ProfilePicURL);" ng-checked="{{profile.ischecked}}" data-toggle="collapse" data-target="#selectPostingProfile" />
+                                    <label for="profile-{{profile.Id}}"></label>
+                                    <span></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!--<div ng-show="IsEnable" style="margin-bottom:10px; margin-top:10px;" ng-if="MessageType=='FP' || MessageType=='FC'">
+            <strong>Viewing conversation</strong> with <strong>{{PostAuthor}}</strong>
+        </div>
+        <div ng-show="IsEnable" style="margin-bottom:10px; margin-top:10px;" ng-if="MessageType=='TP' || MessageType=='STP' && PostAuthor != null">
+            <strong>Viewing conversation</strong> with <strong>@{{PostAuthor}}</strong>
+        </div>-->
+            <!--Comment Area Start-->
+            <div id="pop_vhis" ng-show="MessageType == 'TP'  || MessageType=='STP' || MessageType=='FP' || MessageType=='FC'">
+                <!--id="pop_vhis" slimscroll="commentsLength"-->
+                <!--Twitter Comments-->
+                <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-if="(MessageType == 'TP' || MessageType=='STP') && FormType=='Reply'" ng-repeat="msg in inboxHistoryItemDetails.ChildTweets" style="margin-bottom:5px; padding:0px; padding-bottom:5px;">
+                    <div class="col-sm-1">
+                        <div class="inbox_blk_img" style="width:35px; height:35px;">
+                            <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                        </div>
+                    </div><div class="col-sm-11 text-left inbox_blk_msg_blk">
+                        <div class="inbox_blk_msg" ng-bind-html="TextToURLConvert(msg.UserTwit)">
+                        </div>
+                        <div class="inbox_blk_cred"><a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ToUser);">{{msg.ToUser}}</a> <Span title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span></div>
+                        <div ng-if="msg.Attachments.length > 0 && msg.Attachments[0].Type!='share'" style="margin-top:15px;">
+                            <img ng-if="msg.Attachments[0].Type == 'image'" ng-src="{{msg.Attachments[0].Url}}" style="border-radius: 0px;max-width:292px;max-height:292px;" class="img-responsive img_gapper" />
+                            <a id="more-slide" ng-if="msg.Attachments.length > 1" href="javascript:;" ng-click="openSlider(msg.Attachments)">View more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Facebook Comments-->
+                <div class="col-sm-12 inbox_blk unread_msg" ng-if="MessageType=='FP' || MessageType=='FC'" ng-repeat="comment in inboxHistoryItemDetails.fbPostComments" style="margin-bottom:5px; padding:0px; padding-bottom:5px;">
+                    <div class="col-sm-1">
+                        <div class="inbox_blk_img" style="width:35px; height:35px;">
+                            <a href="javascript:;"><img src="{{comment.AuthorProfilePic}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-11 text-left inbox_blk_msg_blk">
+                        <div class="inbox_blk_msg">
+                            <a href="javascript:;" class="col-sm-2" style="padding:0px;"><strong>{{comment.AuthorName}}</strong></a>
+                            <div class="col-sm-10" style="padding:0px;">
+                                <span id="{{comment.Id}}-text" ng-bind-html="TextToURLConvert(comment.Msg)"></span>
+                                <div class="inbox_blk_cred">
+                                    <!--Like Button
+                                    <a ng-click="LikeComment(comment.Id, '')" ng-if="comment.IsLiked == false">Like</a>
+                                    <a ng-click="UnlikeComment(comment.Id, '')" ng-if="comment.IsLiked == true">Unlike</a>&nbsp;·&nbsp;-->
+                                    <!--If Nested Comments Box didn't appear because there were no nested comments-->
+                                    <a ng-if="comment.fbCommentComments.length == 0" href="" ng-click="ShowHideReplyBox()">Reply&nbsp;&nbsp;</a>
+                                    <a id="{{comment.Id}}-edit" href="" ng-click="MakeCommentEditable(comment.Id)" ng-show="AuthorUserId == comment.AuthorId && $parent.$parent.PostEdit">Edit&nbsp;&nbsp;</a>
+                                    <a id="{{comment.Id}}-save" href="" ng-click="UpdateComment(comment.Id)" hidden>Save&nbsp;&nbsp;</a>
+                                    <a id="{{comment.Id}}-cancel" href="" ng-click="CancelUpdateComment(comment.Id)" hidden>Cancel</a>
+                                    <!--<a href="#">chocoh0llic</a> replied to <a href="#">AyeshaShamim7</a>-->
+                                    at <span title="{{comment.str_CreatedDate}}">{{comment.CreatedDateForDeck}}</span>
+                                </div>
+                                <div ng-if="comment.Attachment != null && comment.Attachment.Type!='share'" style="margin-top:15px;">
+                                    <img ng-if="comment.Attachment.Type == 'image'" ng-src="{{comment.Attachment.Url}}" style="border-radius: 0px;max-width:292px;max-height:292px;" class="img-responsive img_gapper" />
+                                    <iframe ng-if="comment.Attachment.Type == 'video_share'" ng-src="{{trustSrc(comment.Attachment.Url)}}" style="border-radius: 0px;max-width:292px;max-height:292px" allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="200" height="162"></iframe>
+                                    <iframe ng-if="comment.Attachment.Type == 'video_fb'" ng-src="{{trustSrc(comment.Attachment.Url)}}" style="border-radius: 0px;max-width:292px;max-height:292px;" allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="200" height="162"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Nested Comments Block-->
+                    <div ng-repeat="nestedComment in comment.fbCommentComments | orderBy:'-'" style="margin-bottom:2px !important; margin-right:5px;">
+                        <div class="col-sm-offset-1 col-sm-11 inbox_blk unread_msg" style="padding:0px; margin-bottom:4px !important;">
+                            <div class="col-sm-1">
+                                <div class="inbox_blk_img" style="width:35px; height:35px;">
+                                    <a href=""><img src="{{nestedComment.AuthorProfilePic}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-11 text-left inbox_blk_msg_blk">
+                                <div class="inbox_blk_msg">
+                                    <a href="" class="col-sm-2" style="padding:0px;"><strong>{{nestedComment.AuthorName}}</strong></a>
+                                    <div class="col-sm-10" style="padding:0px;">
+                                        <span id="{{nestedComment.Id}}-text" ng-bind-html="TextToURLConvert(nestedComment.Msg)"></span>
+
+                                        <div class="inbox_blk_cred">
+                                            <a id="{{nestedComment.Id}}-edit" href="" ng-click="MakeCommentEditable(nestedComment.Id)" ng-show="AuthorUserId == nestedComment.AuthorId && $parent.$parent.$parent.PostEdit">Edit&nbsp;&nbsp;</a>
+                                            <a id="{{nestedComment.Id}}-save" href="" ng-click="UpdateComment(nestedComment.Id)" hidden>Save&nbsp;&nbsp;</a>
+                                            <a id="{{nestedComment.Id}}-cancel" href="" ng-click="CancelUpdateComment(nestedComment.Id)" hidden>Cancel</a>
+                                            <!--Like Button
+                                                <a ng-click="LikeComment(comment.Id, nestedComment.Id)" ng-if="nestedComment.IsLiked == false">Like</a>
+                                                <a ng-click="UnlikeComment(comment.Id, nestedComment.Id)" ng-if="nestedComment.IsLiked == true">Unlike</a>&nbsp;·&nbsp;-->
+                                            at <span title="{{nestedComment.str_CreatedDate}}">{{nestedComment.CreatedDateForDeck}}</span>
+                                        </div>
+                                        <div ng-if="nestedComment.Attachment != null && nestedComment.Attachment.Type!='share'" style="margin-top:15px;">
+                                            <img ng-if="nestedComment.Attachment.Type == 'image'" ng-src="{{nestedComment.Attachment.Url}}" style="border-radius: 0px;max-width:292px;max-height:292px;" class="img-responsive img_gapper" />
+                                            <iframe ng-if="nestedComment.Attachment.Type == 'video_share'" ng-src="{{trustSrc(nestedComment.Attachment.Url)}}" style="border-radius: 0px;max-width:292px;max-height:292px" allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="200" height="162"></iframe>
+                                            <iframe ng-if="nestedComment.Attachment.Type == 'video_fb'" ng-src="{{trustSrc(nestedComment.Attachment.Url)}}" style="border-radius: 0px;max-width:292px;max-height:292px;" allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="200" height="162"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--New Possible reply-->
+                        <div ng-if="$last" class="col-sm-offset-1 col-sm-11 inbox_blk unread_msg" style="margin-bottom:2px !important; padding:0px;">
+                            <div class="col-sm-1">
+                                <div class="inbox_blk_img" style="width:35px; height:35px;">
+                                    <a href=""><img src="{{MessagePostUserImageUrl}}" alt="User Image"></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 text-left inbox_blk_msg_blk zro">
+                                <div class="inbox_blk_msg">
+                                    <input type="text" maxlength="{{totalConversation}}" ng-maxlength="{{totalConversation}}" ng-model="commentReply" class="form-control input_border_min input_login_h" style="margin-bottom:0px; margin-left: 12px" placeholder="Type a reply..." />
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-xs btn-primary button_round" style="margin-top:7px; float:right" ng-click="AddComment(commentReply, true, comment.Id)">
+                                    <span><i class="fa fa-reply"></i> Reply</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-show="!IsHidden && comment.fbCommentComments.length ==0">
+                        <div class="col-sm-offset-1 col-sm-11 inbox_blk unread_msg" style="margin-bottom:2px !important; padding:0px;">
+                            <div class="col-sm-1">
+                                <div class="inbox_blk_img" style="width:35px; height:35px;">
+                                    <a href=""><img src="{{MessagePostUserImageUrl}}" alt="User Image"></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 text-left inbox_blk_msg_blk zro">
+                                <div class="inbox_blk_msg">
+                                    <input type="text" maxlength="{{totalConversation}}" ng-maxlength="{{totalConversation}}" ng-model="commentReplyNew" class="form-control input_border_min input_login_h" style="margin-bottom:0px; margin-left: 12px" placeholder="Type a reply..." />
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-xs btn-primary button_round" style="margin-top:7px; float:right" ng-click="AddComment(commentReplyNew, true, comment.Id)">
+                                    <span><i class="fa fa-reply"></i> Reply</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Instagram Comments-->
+                <div class="col-sm-12 inbox_blk unread_msg" ng-if="MessageType=='IM' || MessageType=='IC'" ng-repeat="comment in inboxHistoryItemDetails.CommentsList" style="margin-bottom:0px !important; padding:0px; margin-top:4px; clear:both">
+                    <div class="col-sm-1">
+                        <div class="inbox_blk_img" style="width:35px; height:35px;">
+                            <a href="javascript:;"><img src="{{comment.FromProfilePicture}}" alt="User Image"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-11 text-left inbox_blk_msg_blk">
+                        <div class="inbox_blk_msg">
+                            <a href="javascript:;"><strong>{{comment.FromUserName}}</strong></a> {{comment.Message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div id="pop_insta" slimscroll="InstaComments" ng-show="MessageType=='IM' || MessageType=='IC'">
+
+        </div>-->
+            <!--Comment Area End-->
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        $('#scrollerDiv').slimscroll({
+            height: '540px',
+            disableFadeOut: true
+        });
+    }, 10);
+    
+</script>

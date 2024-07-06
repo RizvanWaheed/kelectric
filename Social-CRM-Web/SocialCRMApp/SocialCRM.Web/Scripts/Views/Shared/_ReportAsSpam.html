@@ -1,0 +1,37 @@
+﻿
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-bug"></i> REPORT AS SPAM</h4>
+    </div>
+    <div class="modal-body">
+        <div style="margin-bottom:10px " id="pop_sprof" slimscroll="slim">
+            <table class="table table-condensed">
+                <tr ng-repeat="profile in attachedProfiles">
+                    <td>
+                        <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                            {{profile.Name}}<br>
+                            <p><img src="/Content/images/t_ico16.png" alt="linkedin-profile"> @{{profile.UserName}}</p>
+                        </span>
+                    </td>
+                    <td align="center" valign="middle">
+                        <div class="squaredSmall" style="margin-top:13px;">
+                            <input type="checkbox" value="None" id="profile-{{profile.Id}}" name="check" ng-click="CheckProfile(profile.Id,profile.UserName);" ng-checked="{{profile.ischecked}}" />
+                            <label for="profile-{{profile.Id}}"></label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:8px;">Are you sure you want to report <a href="">{{replyedMsgModel}}</a> as a spammer?</div>
+
+
+        <div style="margin-top:20px">
+            <button type="button" class="btn btn-primary button_round  btn_height3" ng-click="TwitterReportSpam()">YES</button>
+            <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()">CANCEL</button>
+        </div>
+    </div>
+
+</div>

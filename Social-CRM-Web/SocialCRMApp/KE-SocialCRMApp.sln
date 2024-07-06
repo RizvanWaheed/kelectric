@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Entities", "CRM.Entities\CRM.Entities.csproj", "{90E69B45-F469-4C6D-8AD7-8C2188C9171B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Common", "CRM.Common\CRM.Common.csproj", "{4FD31E43-87DD-4C24-946B-3CEA3771AA4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.APIS", "CRM.APIS\CRM.APIS.csproj", "{F794D6A7-189A-4AC6-B537-C52E57886071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialCRM.Web", "SocialCRM.Web\SocialCRM.Web.csproj", "{1CCBAE7F-8D92-4590-90B6-028AB9027D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialAPIsWrapper", "SocialAPIsWrapper\SocialAPIsWrapper.csproj", "{5951EC18-D7C6-4EDB-B168-8B183929769E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90E69B45-F469-4C6D-8AD7-8C2188C9171B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E69B45-F469-4C6D-8AD7-8C2188C9171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E69B45-F469-4C6D-8AD7-8C2188C9171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E69B45-F469-4C6D-8AD7-8C2188C9171B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FD31E43-87DD-4C24-946B-3CEA3771AA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FD31E43-87DD-4C24-946B-3CEA3771AA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FD31E43-87DD-4C24-946B-3CEA3771AA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FD31E43-87DD-4C24-946B-3CEA3771AA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F794D6A7-189A-4AC6-B537-C52E57886071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F794D6A7-189A-4AC6-B537-C52E57886071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F794D6A7-189A-4AC6-B537-C52E57886071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F794D6A7-189A-4AC6-B537-C52E57886071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCBAE7F-8D92-4590-90B6-028AB9027D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCBAE7F-8D92-4590-90B6-028AB9027D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCBAE7F-8D92-4590-90B6-028AB9027D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCBAE7F-8D92-4590-90B6-028AB9027D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5951EC18-D7C6-4EDB-B168-8B183929769E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5951EC18-D7C6-4EDB-B168-8B183929769E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5951EC18-D7C6-4EDB-B168-8B183929769E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5951EC18-D7C6-4EDB-B168-8B183929769E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B57E8FC7-35BF-4D6B-B35A-5F02A6316886}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.175.5.134:9080/tfs/vw-tech-ke
+		SccProjectUniqueName0 = CRM.APIS\\CRM.APIS.csproj
+		SccProjectName0 = CRM.APIS
+		SccLocalPath0 = CRM.APIS
+		SccProjectUniqueName1 = CRM.Common\\CRM.Common.csproj
+		SccProjectName1 = CRM.Common
+		SccLocalPath1 = CRM.Common
+		SccProjectUniqueName2 = CRM.Entities\\CRM.Entities.csproj
+		SccProjectName2 = CRM.Entities
+		SccLocalPath2 = CRM.Entities
+		SccProjectUniqueName3 = SocialCRM.Web\\SocialCRM.Web.csproj
+		SccProjectName3 = SocialCRM.Web
+		SccLocalPath3 = SocialCRM.Web
+		SccProjectUniqueName4 = SocialAPIsWrapper\\SocialAPIsWrapper.csproj
+		SccProjectName4 = SocialAPIsWrapper
+		SccLocalPath4 = SocialAPIsWrapper
+		SccLocalPath5 = .
+	EndGlobalSection
+EndGlobal

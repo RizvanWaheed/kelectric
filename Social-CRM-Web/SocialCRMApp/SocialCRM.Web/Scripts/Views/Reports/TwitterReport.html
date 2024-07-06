@@ -1,0 +1,820 @@
+﻿<style>
+    .animate-show {
+        opacity: 1;
+    }
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+            transition: all linear 0.3s;
+        }
+
+        .animate-show.ng-hide {
+            opacity: 0;
+        }
+</style>
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="TwitterReportController as ctrl">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-building"></i> Twitter Report</div>
+            <a ng-click="downloadPDF()">Download PDF</a>
+        </div>
+        <!-- header ends here -->
+
+        <div class="container-fluid padding_set">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            <div class="col-md-4 zro" style="line-height:35px; height:35px; margin-bottom:10px;">
+                                <!--<strong>From:</strong> 01/01/2015 <strong>To:</strong> 01/31/2015-->
+                                <button type="button" ng-click="showProfiles = !showProfiles" class="btn btn-primary button_round  btn_height3" style="float:left;">Select Profiles</button>
+                            </div>
+
+                            <div class="col-md-3 zro">
+                                <div>
+                                    <div class="btn-group " style=" margin-bottom:10px;">
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_1 == true" ng-click="dateFilter(1)">15</button>
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_2 == true" ng-click="dateFilter(2)">30</button>
+                                        <!--<button type="button" class="btn btn-default" ng-click="dateFilter(45)">45</button>-->
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_3 == true" ng-click="dateFilter(3)">60</button>
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_4 == true" ng-click="dateFilter(4)">90</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 zro demo" style="margin-bottom:10px !important;">
+                                <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="opts" ng-model="date" />
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            </div>
+                            <!--<div class="col-md-2 text-right ">
+                                <button type="button" ng-click="generateReport()" class="btn btn-primary button_round  btn_height3" style="float:left;">Generate Report</button>
+                            </div>-->
+                        </div>
+
+                        <div ng-show="showProfiles" class="col-md-12 animate-show">
+                            <div class="col-md-12 zro">
+                                <div class="col-md-1 zro">
+                                    <div class="squaredSmall">
+                                        <input type="checkbox" value="None" id="checkAllProfiles" name="checkAllProfiles" ng-model="select" ng-change="checkAll()" />
+                                        <label for="checkAllProfiles"></label>
+                                    </div>
+                                </div>
+                                <span>Select/Deselect All</span>
+                            </div>
+                            <div id="soclistsProfilereport" class="col-md-12 zro" style="margin-top: 10px !important;">
+                                <div ng-repeat="x in attachedProfiles" ng-class-odd="table_alt_col" class="col-md-3" style="padding-bottom:10px; padding-top:2px;">
+                                    <div class="col-md-10 zro">
+                                        <img src="{{x.ProfilePicURL}}" alt="img" border="0" class="img_con img_con_height"><span class="soc_name">
+                                            {{x.ProfileName}}<br>
+                                            <p><img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}" /> @{{x.AccountName}}</p>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="squaredSmall" style="margin-top: 13px;">
+                                            <input type="checkbox" value="None" id="squaredSmall-{{x.CompositeId}}" name="check" ng-model="selected[x.CompositeId]" ng-change="profileSelectedChanged()" />
+                                            <label for="squaredSmall-{{x.CompositeId}}"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top: 15px;">GENERATE REPORT</button>-->
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal for New Group content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><i class="fa fa-folder-open"></i> CREATE GROUP</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            GROUP NAME *<input type="text" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="adeelgill@ibex" aria-describedby="sizing-addon2">
+                                            <a href="#" class="textlink">+ Add a New Profile</a>
+                                        </div>
+
+                                        <div style="margin-top:20px">
+                                            <i class="fa fa-folder-open icon_col"></i></span> <span class="heading_main">Link the group to existing profile</span>
+                                        </div>
+
+                                        <div id="soclists" style="margin-top:10px;">
+                                            <table class="table table-condensed">
+                                                <tr>
+                                                    <th class="td_styler"><i class="fa fa-link"></i> PROFILE ACCESS</th>
+                                                    <th style="width: 100px; text-align:center" class="td_styler"></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                            <label for="squaredSmall7"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table_alt_col">
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                            <label for="squaredSmall8"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                            <label for="squaredSmall9"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                            <label for="squaredSmall9"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                            <label for="squaredSmall9"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;">+ CREATE GROUP</button></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div><!-- /.box-header -->
+                    <div class="box-body" style="border-top:1px solid #ccc;">
+
+                        <div class="col-md-12 report_headings">
+                            <h1>Tweets Activity Overview (Inbound/Outbound)</h1>
+                            <div class="col-md-12" style="margin-top:40px;">
+                                <div class="col-md-4 text-center ">
+                                    <div class="data_circle_twitter3"><i style="margin:50px auto;" class="fa fa-tag data_circle_twitter_i1"></i></div><div class="data_circle_twitter_txt">
+                                        <h1 ng-if="reportData!=''">{{reportData.TotalMentionsReceived}}</h1>
+                                        <h1 ng-if="reportData==''">-</h1>
+                                        MENTIONS RECEIVED
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="data_circle_twitter" style=" background-color:#1da1f2"><i style="margin:50px auto;" class="fa fa-comments data_circle_twitter_i1"></i></div>
+                                    <div class="data_circle_twitter_txt">
+                                        <h1 ng-if="reportData!=''">{{reportData.TotalTweets}}</h1>
+                                        <h1 ng-if="reportData==''">-</h1>
+                                        TWEETS/RETWEETS SENT
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="data_circle_twitter3" style="background-color:#7b868a"><i style="margin:50px auto;" class="fa fa-reply data_circle_twitter_i1"></i></div>
+                                    <div class="data_circle_twitter_txt">
+                                        <h1 ng-if="reportData!=''">{{reportData.TotalReplies}}</h1>
+                                        <h1 ng-if="reportData==''">-</h1>
+                                        REPLIES SENT
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Posts & Conversations (Inbound/Outbound)</h1>
+                            <!--<div class="text-center graph_sett"><img src="Content/images/dummy_graph.jpg"></div>-->
+                            <div id="PostsAndConversation" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_header">
+                                        <td width="85%" class="td_padding">Sent/Received Metrics</td>
+                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                    </tr>
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Tweets sent</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalTweetsSent}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Direct Messages sent</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalDMsSent}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td_total">
+                                        <td class="td_padding">Total Sent</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalTweetsSent + reportData.TotalDMsSent}}</strong></td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>
+                                    The number of Tweets & DMS you sent 
+                                    <span ng-if="(reportData.TotalTweetsSent + reportData.TotalDMsSent) >= (reportData.LastTotalDMsSent + reportData.LastTotalTweetsSent)">increased by</span>
+                                    <span ng-if="(reportData.TotalTweetsSent + reportData.TotalDMsSent) < (reportData.LastTotalDMsSent + reportData.LastTotalTweetsSent)">decreased by</span>
+                                </h1>
+                                <h2 class="h2_postive" ng-if="(reportData.TotalTweetsSent + reportData.TotalDMsSent) >= (reportData.LastTotalDMsSent + reportData.LastTotalTweetsSent)">
+                                    <strong>
+                                        <i class="fa fa-arrow-up"></i>
+                                        {{findPerIncDec(reportData.TotalTweetsSent + reportData.TotalDMsSent, reportData.LastTotalDMsSent + reportData.LastTotalTweetsSent) * 100 | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="(reportData.TotalTweetsSent + reportData.TotalDMsSent) < (reportData.LastTotalDMsSent + reportData.LastTotalTweetsSent)">
+                                    <strong>
+                                        <i class="fa fa-arrow-down"></i>
+                                        {{findPerIncDec(reportData.TotalTweetsSent + reportData.TotalDMsSent, reportData.LastTotalDMsSent + reportData.LastTotalTweetsSent) * 100 | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h3>
+                                    <!--since last month-->
+                                    {{ReferenceTimePeriod}}
+                                </h3>
+
+                            </div>
+
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Mentions received</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalMentionsReceived}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Direct Messages received</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalDMsReceived}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td_total">
+                                        <td class="td_padding">Total Received</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalMentionsReceived + reportData.TotalDMsReceived}}</strong></td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>
+                                    The number of Tweets & DMS you received 
+                                    <span ng-if="(reportData.TotalMentionsReceived + reportData.TotalDMsReceived) >= (reportData.LastTotalDMsReceived + reportData.LastTotalMentionsReceived)">increased by</span>
+                                    <span ng-if="(reportData.TotalMentionsReceived + reportData.TotalDMsReceived) < (reportData.LastTotalDMsReceived + reportData.LastTotalMentionsReceived)">decreased by</span>
+                                </h1>
+                                <h2 class="h2_postive" ng-if="(reportData.TotalMentionsReceived + reportData.TotalDMsReceived) >= (reportData.LastTotalDMsReceived + reportData.LastTotalMentionsReceived)">
+                                    <strong>
+                                        <i class="fa fa-arrow-up"></i>{{findPerIncDec(reportData.TotalMentionsReceived + reportData.TotalDMsReceived, reportData.LastTotalDMsReceived + reportData.LastTotalMentionsReceived) * 100  | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="(reportData.TotalMentionsReceived + reportData.TotalDMsReceived) < (reportData.LastTotalDMsReceived + reportData.LastTotalMentionsReceived)">
+                                    <strong>
+                                        <i class="fa fa-arrow-down"></i>{{findPerIncDec(reportData.TotalMentionsReceived + reportData.TotalDMsReceived, reportData.LastTotalDMsReceived + reportData.LastTotalMentionsReceived) * 100  | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h3>
+                                    <!--since last month-->
+                                    {{ReferenceTimePeriod}}
+                                </h3>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Your Content & Engagement Habits (Outbound)</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <!--<div class="col-md-8 gridHeading">
+                                <h1>Sent Message Content</h1>
+
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+
+
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Plain Text</td>
+                                        <td align="right" class="td_padding"><strong>2</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Page Links</td>
+                                        <td align="right" class="td_padding"><strong>1</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Photo Links</td>
+                                        <td align="right" class="td_padding"><strong>0</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td_total">
+                                        <td class="td_padding">Tweet Sent</td>
+                                        <td align="right" class="td_padding"><strong>03</strong></td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                            <div class="col-md-4 gridHeading">
+                                <h1>Your Tweeting Behavior</h1>
+
+                                <div class="text-center col-md-12">
+                                    <div class="col-md-6 zro" style="margin-bottom:15px !important;">
+                                        <div class="c100 p10 ">
+                                            <span>10%</span>
+                                            <div class="slice">
+                                                <div class="bar"></div>
+                                                <div class="fill"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <strong class="blue_txtt">10%</strong> Converstaion<br>
+                                            <strong class="grey_txtt">90%</strong> Updates
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 zro">
+                                        <div class="c100 p55 green">
+                                            <span>55%</span>
+                                            <div class="slice">
+                                                <div class="bar"></div>
+                                                <div class="fill"></div>
+                                            </div>
+                                        </div><strong class="green_txtt">55%</strong> New Contacts<br>
+                                        <strong class="grey_txtt">45%</strong> Existing Contacts
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+                                <!--End Chart ->
+
+                            </div>-->
+                            <div class="col-md-6 gridHeading">
+                                <div id="contentEngagementAndHabbits1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                            </div>
+                            <div class="col-md-6 gridHeading">
+                                <div id="contentEngagementAndHabbits2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Audience Engagement (Outbound)</h1>
+                            <!--<div class="text-center graph_sett"><img src="Content/images/dummy_graph.jpg"></div>-->
+                            <div id="AudienceEngagement" style="min-width: 310px; height: 400px; max-width: 900px; margin: 0 auto"></div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_header">
+                                        <td width="85%" class="td_padding">Engagement Metrics</td>
+                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                    </tr>
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Replies</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalEngReplies}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Retweets</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalEngRetweets}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Tweets Sent</td>
+                                        <td align="right" class="td_padding"><strong>{{reportData.TotalEngTweets}}</strong></td>
+                                    </tr>
+                                    <!--<tr class="report_table_td">
+                                        <td class="td_padding">Likes</td>
+                                        <td align="right" class="td_padding"><strong>05</strong></td>
+                                    </tr>-->
+                                </table>
+
+
+
+
+
+                            </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>
+                                    The number of engagements 
+                                    <span ng-if="(reportData.TotalEngReplies + reportData.TotalEngRetweets + reportData.TotalEngTweets) >= (reportData.LastTotalEngReplies+ reportData.LastTotalEngRetweets + reportData.LastTotalEngTweets)">increased by</span>
+                                    <span ng-if="(reportData.TotalEngReplies + reportData.TotalEngRetweets + reportData.TotalEngTweets) < (reportData.LastTotalEngReplies+ reportData.LastTotalEngRetweets + reportData.LastTotalEngTweets)">decreased by</span>
+                                </h1>
+                                <h2 class="h2_postive" ng-if="(reportData.TotalEngReplies + reportData.TotalEngRetweets + reportData.TotalEngTweets) >= (reportData.LastTotalEngReplies+ reportData.LastTotalEngRetweets + reportData.LastTotalEngTweets)">
+                                    <strong>
+                                        <i class="fa fa-arrow-up"></i>
+                                        {{findPerIncDec(reportData.TotalEngReplies + reportData.TotalEngRetweets + reportData.TotalEngTweets, reportData.LastTotalEngReplies+ reportData.LastTotalEngRetweets + reportData.LastTotalEngTweets)*100  | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="(reportData.TotalEngReplies + reportData.TotalEngRetweets + reportData.TotalEngTweets) < (reportData.LastTotalEngReplies+ reportData.LastTotalEngRetweets + reportData.LastTotalEngTweets)">
+                                    <strong>
+                                        <i class="fa fa-arrow-down"></i>
+                                        {{findPerIncDec(reportData.TotalEngReplies + reportData.TotalEngRetweets + reportData.TotalEngTweets, reportData.LastTotalEngReplies+ reportData.LastTotalEngRetweets + reportData.LastTotalEngTweets)*100  | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h3>
+                                    <!--since last month-->
+                                    {{ReferenceTimePeriod}}
+                                </h3>
+
+                            </div>
+                            <!--<div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Engagements per Follower</td>
+                                        <td align="right" class="td_padding"><strong>0.8</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Impressions per Follower</td>
+                                        <td align="right" class="td_padding"><strong>127.5</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Engagements per Tweet</td>
+                                        <td align="right" class="td_padding"><strong>1.0</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Impressions per Tweet</td>
+                                        <td align="right" class="td_padding"><strong>170.0</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Engagements per Impression</td>
+                                        <td align="right" class="td_padding"><strong>0.6%</strong></td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div><div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>The number of engagements per media<br> increased by</h1>
+                                <h2>----</h2>
+                                <h3>since previous date range</h3>
+
+                            </div>
+                        </div>
+
+                        <!--<div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Audience Growth</h1>
+                            <div class="text-center graph_sett">                               
+                                <div id="audienceGrowthGraph" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <h1>Total Followers: <strong>110</strong></h1>
+                                <div class="col-md-4  text-center">
+                                    <strong>New Follower alerts</strong><br>
+                                    <div class="data_circle2">45</div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <strong>Actual Followers gained</strong><br>
+                                    <div class="data_circle1" style="background-color:#1da1f2">15</div>
+                                </div>
+                                <div class="col-md-4  text-center">
+                                    <strong>People that you followed</strong><br>
+                                    <div class="data_circle3">50</div>
+                                </div>
+                            </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>Your new followers<br> decreased by</h1>
+                                <h2 class="h2_negative"><strong><i class="fa fa-arrow-down"></i>  100%</strong></h2>
+                                <h3>                                    
+                                    
+                                </h3>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Audience Demographics</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 gridHeading">
+                                <h1>Followers by Age</h1>
+
+                                <div class="progress-group">
+
+                                    <div class="progress-group">
+                                        <span class="progress-text">18-20</span>
+                                        <span class="progress-number"><b>310</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 70%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">21-24</span>
+                                        <span class="progress-number"><b>310</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 70%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">25-34</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">35-44</span>
+                                        <span class="progress-number"><b>200</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">45-54</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">55-64</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">65+</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4 gridHeading">
+                                <h1>Followers by Gender</h1>
+
+                                <div class="text-center col-md-6">
+                                    <div class="c100 p75 ">
+                                        <span>75%</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="text-center col-md-6">
+                                    <div class="c100 p25 pink">
+                                        <span>25%</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 text-center" style="margin-bottom:20px;">
+                                    <i class="fa fa-male male_ico"></i> --- Male Followers<br><br>
+                                    <i class="fa fa-female female_ico"></i> --- Female Followers
+                                </div>
+
+                                <!--End Chart 
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Twitter Stats by Profile</h1><br>
+
+
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                <thead>
+                                    <tr class="report_table_td">
+                                        <th class="td_padding">Twitter Profile</th>
+                                        <th class="td_padding">Total Followers</th>
+                                        <th class="td_padding">Follower Increase</th>
+                                        <th class="td_padding">Impressions</th>
+                                        <th class="td_padding">Impressions per Follower</th>
+                                        <th class="td_padding">Engagements</th>
+                                        <th class="td_padding">Engagements per Follower</th>
+                                        <th class="td_padding">Retweets</th>
+                                        <th class="td_padding">Clicks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding"><img src="Content/images/dummy_logo.jpg"></td>
+                                        <td class="td_padding" align="center">2%</td>
+                                        <td class="td_padding" align="center">6%</td>
+                                        <td class="td_padding" align="center">10</td>
+                                        <td class="td_padding" align="center">19</td>
+                                        <td class="td_padding" align="center">03</td>
+                                        <td class="td_padding" align="center">10</td>
+                                        <td class="td_padding" align="center">02</td>
+                                        <td class="td_padding" align="center">02</td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding"><img src="Content/images/dummy_logo.jpg"></td>
+                                        <td class="td_padding" align="center">2%</td>
+                                        <td class="td_padding" align="center">6%</td>
+                                        <td class="td_padding" align="center">10</td>
+                                        <td class="td_padding" align="center">19</td>
+                                        <td class="td_padding" align="center">03</td>
+                                        <td class="td_padding" align="center">10</td>
+                                        <td class="td_padding" align="center">02</td>
+                                        <td class="td_padding" align="center">02</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>-->
+
+
+
+                    </div>
+                        
+                        <!--Top 5 Customers-->
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Top 5 Customers</h1>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive table-striped">
+                                <thead>
+                                    <tr class="report_table_td">
+                                        <th class="td_padding" width="10%">Sr.</th>
+                                        <th class="td_padding" width="20%">Customer Pic</th>
+                                        <th class="td_padding" width="30%">Customer Name</th>
+                                        <th class="td_padding" width="20%">Customer Posts</th>
+                                        <th class="td_padding" width="20%">Customer DMs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="report_table_td" ng-repeat="cust in reportData.TopFiveCustomers track by $index">
+                                        <td class="td_padding" style="width:10%;">{{$index + 1}}</td>
+                                        <td class="td_padding" width="20%">
+                                            <img src="{{cust.ProfilePic}}" alt="Image" style="width:50px; height:50px; object-fit:cover;" />
+                                        </td>
+                                        <td class="td_padding" style="width:30%;"><a target="_blank" href="{{'http://www.twitter.com/' + cust.UserName}}">{{cust.Name}}</a></td>
+                                        <td class="td_padding" style="width:20%;">{{cust.PostCount}}</td>
+                                        <td class="td_padding" style="width:20%;">{{cust.MsgCount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#inboxer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#tasker').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#socialer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+        $('#publi').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#disco').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#reporter').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+
+        $('#helper').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#userlists').slimscroll({
+            height: '499px',
+            disableFadeOut: true
+        });
+
+        $('#soclists').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+
+        $('#emailupdate').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+
+        $('#notifupdate').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+
+
+
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var currentDate = new Date();
+        $('#ctrlanalyticdatepicker').daterangepicker({
+            "endDate": currentDate.getDate(),
+            "startDate": new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000),
+            "dateLimit": { "days": 90 },
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+    });
+
+</script>

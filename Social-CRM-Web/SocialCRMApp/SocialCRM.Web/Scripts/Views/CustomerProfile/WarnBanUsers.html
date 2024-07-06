@@ -1,0 +1,562 @@
+﻿<div class="wrapper">
+    <style>
+        .disabled {
+            cursor: not-allowed;
+        }
+    </style>
+
+    <form name="myForm">
+        <div ng-app="CRMApp" id="WarnBanProfileController" ng-controller="WarnBanProfileController as ctrl">
+            <div class="content-wrapper" style="min-height:650px !important;">
+                <!-- Content Header (Page header) -->
+                <!-- header starts here -->
+                <div class="container-fluid page_name" style="border-bottom: 0px;">
+                    <div class="col-sm-10"><i class="fa fa-flag"></i> Banned & Warned Users</div>
+                </div>
+                <div class="container-fluid padding_set">
+                    <div class="col-md-12">
+                        <div class="box box-default">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="container-fluid page_name" style="border-bottom:0px;">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-primary button_round" ng-click="addUser()" style="float: right;">
+                                            ADD USER
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="warn-users">
+                                    <div class="container-fluid page_name" style="border-bottom:0px;">
+                                        <div class="col-sm-10"><i class="fa fa-flag"></i> Warned Users</div>
+                                    </div>
+                                    <div class="box-body no-padding">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 zro_left" title="Select Reason">
+                                                <div id="multisel" style="margin-bottom:10px !important;">
+                                                    Reason<br>
+                                                    <div class='sel_menu' ng-dropdown-multiselect="" options="ReasonList" selected-model="ReasonModelWarn"
+                                                         checkboxes="true" translation-texts="example5customTexts"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 zro_left" title="Select News Type">
+                                                <div id="multisel" style="margin-bottom:10px !important;">
+                                                    Platform<br>
+                                                    <div class='sel_menu' ng-dropdown-multiselect="" options="PlatformList" selected-model="PlatformModelWarn"
+                                                         checkboxes="true" translation-texts="example5customTexts"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 zro_left">
+                                                Name<br>
+                                                <div class="demo" style="margin-bottom:10px !important;">
+                                                    <input id="name" class="form-control" type="text" ng-model="nameWarn" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 zro_left">
+                                                Twitter/Facebook Id<br>
+                                                <div class="demo" style="margin-bottom:10px !important;">
+                                                    <input id="script" class="form-control" type="text" ng-model="usernameWarn" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button type="button" style="margin-top: 18px;" ng-click="filterWarnUsers('Outside')" class="btn btn-primary button_round  btn_height3"><i class="fa fa-filter"></i> FILTER</button>
+                                            </div>
+                                            <div class="col-md-1" style="margin-left:25px">
+                                                <button type="button" style="margin-top: 18px;margin-left: 20px;" ng-click="resetWarnUsers()" class="btn btn-primary button_round  btn_height3"><i class="fa fa-refresh"></i> RESET</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="media_table table">
+                                                <tr>
+                                                    <th width="10%">Post URL</th>
+                                                    <th width="10%">Username</th>
+                                                    <th width="6%">Reason</th>
+                                                    <th width="11%">Platform</th>
+                                                    <th width="25%">Details</th>
+                                                    <th width="15%">Banned By</th>
+                                                    <th width="5%" align="center">Screenshot</th>
+                                                    <th width="10%" class="greent">Status</th>
+                                                    <th width="10%" class="oranget">Actions</th>
+                                                </tr>
+                                                <tr ng-repeat="w in WarnUserList">
+                                                    <td>
+                                                        <div style="width: 145px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;vertical-align: bottom;">
+                                                            <a href="{{w.PostUrl}}" target="_blank">{{w.PostUrl}}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 145px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;vertical-align: bottom;">
+                                                            <a href="{{w.ProfileUrl}}" target="_blank">
+                                                                <span ng-show="w.Platform == 'Twitter'">{{w.UserHandle}}</span>
+                                                                <span ng-show="w.Platform == 'Facebook'">{{w.UserName}}</span>
+                                                            </a>
+                                                        </div>
+                                        <!--span ng-show="w.Platform == 'Twitter'">{{w.UserHandle}}</span>
+        <span ng-show="w.Platform == 'Facebook'">{{w.UserName}}</span>-->
+                                        </td>
+                                        <td>
+                                            <span>{{w.Reason}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{w.Platform}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{w.Details}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{w.BannedBy}}</span>
+                                        </td>
+                                        <td>
+                                            <div style="width: 145px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;vertical-align: bottom;">
+                                                <a href="javascript:" ng-click="viewAttachment(w.Id)">{{w.AttachmentName}}</a>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <span>Warned</span>
+                                        </td>
+                                        <td align="center" style="text-align: left;">
+                                            <a href="javascript:" ng-click="banUser(w.Id,w.StatusId)">Ban</a>
+                                            <a href="javascript:" ng-click="editUser(w.Id,w.StatusId)"><i class="fa fa-pencil edit"></i></a>
+                                            <a href="javascript:" ng-click="deleteUser(w.Id)"><i class="fa fa-trash del"></i></a>
+                                        </td>
+                                        </tr>
+                                        <!--<tr>
+            <td>
+                <span>https://twitter.com/omeraslam</span>
+            </td>
+            <td>
+                <span>omeraslam</span>
+            </td>
+            <td>
+                <span>Spamming</span>
+            </td>
+            <td>
+                <span>Facebook</span>
+            </td>
+            <td>
+                <span>Bla bla bla</span>
+            </td>
+            <td>
+                <span>Asjad</span>
+            </td>
+            <td>
+                <a href="javascript:">omeraslam</a>
+            </td>
+            <td align="center">
+                <span>Warned</span>
+            </td>
+            <td align="center">
+                <a href="#"><i class="fa fa-pencil edit"></i></a>
+                <a href="#"><i class="fa fa-trash del"></i></a>
+                <input name="" type="checkbox" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>https://twitter.com/omeraslam</span>
+            </td>
+            <td>
+                <span>omeraslam</span>
+            </td>
+            <td>
+                <span>Spamming</span>
+            </td>
+            <td>
+                <span>Facebook</span>
+            </td>
+            <td>
+                <span>Bla bla bla</span>
+            </td>
+            <td>
+                <span>Asjad</span>
+            </td>
+            <td>
+                <a href="javascript:">omeraslam</a>
+            </td>
+            <td align="center">
+                <span>Warned</span>
+            </td>
+            <td align="center">
+                <a href="#"><i class="fa fa-pencil edit"></i></a>
+                <a href="#"><i class="fa fa-trash del"></i></a>
+                <input name="" type="checkbox" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>https://twitter.com/omeraslam</span>
+            </td>
+            <td>
+                <span>omeraslam</span>
+            </td>
+            <td>
+                <span>Spamming</span>
+            </td>
+            <td>
+                <span>Facebook</span>
+            </td>
+            <td>
+                <span>Bla bla bla</span>
+            </td>
+            <td>
+                <span>Asjad</span>
+            </td>
+            <td>
+                <a href="javascript:">omeraslam</a>
+            </td>
+            <td align="center">
+                <span>Warned</span>
+            </td>
+            <td align="center">
+                <a href="#"><i class="fa fa-pencil edit"></i></a>
+                <a href="#"><i class="fa fa-trash del"></i></a>
+                <input name="" type="checkbox" value="">
+            </td>
+        </tr>-->
+                                        </table>
+                                    </div>
+                                        <div class="col-md-12 text-center">
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination pagination-sm">
+                                                    <!--<li ng-repeat="n in TotalWarnRecords">
+                                                        <a href="javascript:" ng-click="loadMoreWarnUsers($index)">{{"" + ($index+1)  + ""}}</a>
+                                                    </li>-->
+                                                    <li>
+                                                        <a href="javascript:" ng-class="{disabled:(pageNumberWarn == 0)}" ng-click="goToPreviousPageWarn();">Previous</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:" ng-click="goToNextPageWarn();">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="ban-users">
+                                    <div class="container-fluid page_name" style="border-bottom:0px;">
+                                        <div class="col-sm-10"><i class="fa fa-flag"></i> Banned Users</div>
+                                    </div>
+                                    <div class="box-body no-padding">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 zro_left" title="Select Reason">
+                                                <div id="multisel" style="margin-bottom:10px !important;">
+                                                    Reason<br>
+                                                    <div class='sel_menu' ng-dropdown-multiselect="" options="ReasonList" selected-model="ReasonModelBan"
+                                                         checkboxes="true" translation-texts="example5customTexts"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 zro_left" title="Select News Type">
+                                                <div id="multisel" style="margin-bottom:10px !important;">
+                                                    Platform<br>
+                                                    <div class='sel_menu' ng-dropdown-multiselect="" options="PlatformList" selected-model="PlatformModelBan"
+                                                         checkboxes="true" translation-texts="example5customTexts"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 zro_left">
+                                                Name<br>
+                                                <div class="demo" style="margin-bottom:10px !important;">
+                                                    <input id="name" class="form-control" type="text" ng-model="nameBan" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 zro_left">
+                                                Twitter/Facebook Id<br>
+                                                <div class="demo" style="margin-bottom:10px !important;">
+                                                    <input id="script" class="form-control" type="text" ng-model="usernameBan" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button type="button" style="margin-top: 18px;" ng-click="filterBanUsers('Outside')" class="btn btn-primary button_round  btn_height3"><i class="fa fa-filter"></i> FILTER</button>
+                                            </div>
+                                            <div class="col-md-1" style="margin-left:25px">
+                                                <button type="button" style="margin-top: 18px;margin-left: 20px;" ng-click="resetBanUsers()" class="btn btn-primary button_round  btn_height3"><i class="fa fa-refresh"></i> RESET</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="media_table table">
+                                                <tr>
+                                                    <th width="10%">Post URL</th>
+                                                    <th width="10%">Username</th>
+                                                    <th width="6%">Reason</th>
+                                                    <th width="11%">Platform</th>
+                                                    <th width="25%">Details</th>
+                                                    <th width="10%">Banned By</th>
+                                                    <th width="5%" align="center">Screenshot</th>
+                                                    <th width="10%" class="greent">Status</th>
+                                                    <th width="15%" class="oranget">Actions</th>
+                                                </tr>
+                                                <tr ng-repeat="w in BanUserList">
+                                                    <td>
+                                                        <div style="width: 145px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;vertical-align: bottom;">
+                                                            <a href="{{w.PostUrl}}" target="_blank">{{w.PostUrl}}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 145px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;vertical-align: bottom;">
+                                                            <a href="{{w.ProfileUrl}}" target="_blank">
+                                                                <span ng-show="w.Platform == 'Twitter'">{{w.UserHandle}}</span>
+                                                                <span ng-show="w.Platform == 'Facebook'">{{w.UserName}}</span>
+                                                            </a>
+                                                        </div>
+                                                        <!--<span ng-show="w.Platform == 'Twitter'">{{w.UserHandle}}</span>
+                                                        <span ng-show="w.Platform == 'Facebook'">{{w.UserName}}</span>-->
+                                                    </td>
+                                                    <td>
+                                                        <span>{{w.Reason}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{w.Platform}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{w.Details}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{w.BannedBy}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <div style="width: 145px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;vertical-align: bottom;">
+                                                            <a href="javascript:" ng-click="viewAttachment(w.Id)">{{w.AttachmentName}}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td align="center">
+                                                        <span>Banned</span>
+                                                    </td>
+                                                    <td align="center" style="text-align: left;">
+                                                        <a href="javascript:" ng-click="banUnbanUser(w.Id,'unban')">Unban</a>
+                                                        <a href="javascript:" ng-click="editUser(w.Id,w.StatusId)"><i class="fa fa-pencil edit"></i></a>
+                                                        <a href="javascript:" ng-click="deleteUser(w.Id)"><i class="fa fa-trash del"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <!--<tr>
+                                                    <td>
+                                                        <span>https://twitter.com/omeraslam</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>omeraslam</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Spamming</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Facebook</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Bla bla bla</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Asjad</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:">omeraslam</a>
+                                                    </td>
+                                                    <td align="center">
+                                                        <span>Warned</span>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a href="#"><i class="fa fa-pencil edit"></i></a>
+                                                        <a href="#"><i class="fa fa-trash del"></i></a>
+                                                        <input name="" type="checkbox" value="">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>https://twitter.com/omeraslam</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>omeraslam</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Spamming</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Facebook</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Bla bla bla</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>Asjad</span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:">omeraslam</a>
+                                                    </td>
+                                                    <td align="center">
+                                                        <span>Warned</span>
+                                                    </td>
+                                                    <td align="center">
+                                                        <a href="#"><i class="fa fa-pencil edit"></i></a>
+                                                        <a href="#"><i class="fa fa-trash del"></i></a>
+                                                        <input name="" type="checkbox" value="">
+                                                    </td>
+                                                </tr>-->
+                                            </table>
+                                        </div>
+                                        <div class="col-md-12 text-center">
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination pagination-sm">
+                                                    <!--<li ng-repeat="n in TotalBanRecords">
+                                                        <a href="javascript:" ng-click="loadMoreBanUsers($index)">{{"" + ($index+1)  + ""}}</a>
+                                                    </li>-->
+                                                    <li>
+                                                        <a href="javascript:" ng-class="{disabled:(pageNumberBan == 0)}" ng-click="goToPreviousPageBan();">Previous</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:" ng-click="goToNextPageBan();">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="warn-ban-report">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="col-md-12">
+                                                <highchart id="chart1" config="userStatusChartConfig" class="span10"></highchart>
+                                            </div>
+                                            <div class="col-md-12 zro gridHeading" style="margin-top:60px !important;">
+                                                <div>
+                                                    <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                                        <tr class="report_table_header">
+                                                            <td width="85%" class="td_padding">Status Metrics</td>
+                                                            <td width="15%" align="right" class="td_padding">Totals</td>
+                                                        </tr>
+
+                                                        <tr class="report_table_td">
+                                                            <td class="td_padding">Banned Users</td>
+                                                            <td align="right" class="td_padding"><strong>{{TotalBannedRecords}}</strong></td>
+                                                        </tr>
+                                                        <tr class="report_table_td">
+                                                            <td class="td_padding">Warned Users</td>
+                                                            <td align="right" class="td_padding"><strong>{{TotalWarnedRecords}}</strong></td>
+                                                        </tr>
+                                                        <tr class="report_table_td_total">
+                                                            <td class="td_padding">Total Users</td>
+                                                            <td align="right" class="td_padding"><strong>{{TotalWarnedRecords + TotalBannedRecords}}</strong></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="col-md-12">
+                                                <highchart id="chart2" config="reasonChartConfig" class="span10"></highchart>
+                                            </div>
+                                            <div class="col-md-12 zro gridHeading" style="margin-top:60px !important;">
+                                                <div>
+                                                    <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                                        <tr class="report_table_header">
+                                                            <td width="85%" class="td_padding">Reason Metrics</td>
+                                                            <td width="15%" align="right" class="td_padding">Totals</td>
+                                                        </tr>
+                                                        <tr class="report_table_td" ng-repeat="r in ReasonWiseRecords">
+                                                            <td class="td_padding">{{r.XAxisColumn}}</td>
+                                                            <td align="right" class="td_padding"><strong> {{r.NumOfRecords}}</strong></td>
+                                                        </tr>
+                                                        <tr class="report_table_td_total">
+                                                            <td class="td_padding">Total</td>
+                                                            <td align="right" class="td_padding"><strong>{{TotalReasonWiseRecords}}</strong></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 35px;">
+                                            <div class="col-md-12">
+                                                <div class="col-md-4 zro_left">
+                                                    <div class="demo" style="margin-bottom:10px !important;margin-top: 18px;">
+                                                        <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="opts" ng-model="date" />
+                                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-12 zro_left2" title="Select From Time">
+                                                    <div id="multisel" style="margin-bottom:10px !important;">
+                                                        From<br>
+                                                        <div class="input-group date">
+                                                            <input type="text" class="form-control" ng-focus="ctrl.openCalendar($event, 'picker1')" datetime-picker="HH:mm" ng-model="FromTime" is-open="ctrl.picker1.open" enable-date="false" timepicker-options="ctrl.picker1.timepickerOptions" close-on-selection="true" />
+                                                            <span class="input-group-addon" ng-click="ctrl.openCalendar($event, 'picker1')">
+                                                                <span class="glyphicon glyphicon-time"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-12 zro_left2" title="Select To Time">
+                                                    <div id="multisel" style="margin-bottom:10px !important;">
+                                                        To<br>
+                                                        <div class="input-group date">
+                                                            <input type="text" class="form-control" ng-focus="ctrl.openCalendar($event, 'picker2')" datetime-picker="HH:mm" ng-model="ToTime" is-open="ctrl.picker2.open" enable-date="false" timepicker-options="ctrl.picker2.timepickerOptions" close-on-selection="true" />
+                                                            <span class="input-group-addon" ng-click="ctrl.openCalendar($event, 'picker2')">
+                                                                <span class="glyphicon glyphicon-time"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12 zro_left2" title="">
+                                                    <button type="button" style="margin-top: 18px;" ng-click="getWarnBanUserReport()" class="btn btn-primary button_round  btn_height3"><i class="fa fa-filter"></i> FILTER</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <highchart id="chart3" config="bannedUserChartConfig" class="span10"></highchart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div>
+                </div>
+                <!-- Main content -->
+                <!-- /.content -->
+            </div><!-- /.content-wrapper -->
+        </div>
+    </form>
+</div>
+<div ui-view="Footer"></div>
+
+<script type="text/javascript">
+    //$(function () {
+        //$('#grplists').slimscroll({
+        //    height: '800px',
+        //    disableFadeOut: true
+        //}).bind('slimscroll', function (e, pos) {
+        //    if (pos == "bottom") {
+        //        angular.element('#MediaDashboardController').scope().loadMoreNews();
+        //        angular.element('#MediaDashboardController').scope().$apply();
+        //    }
+        //});
+    //});
+    $(document).ready(function () {
+        var today = new Date();
+        var last90Days = new Date();
+        last90Days.setDate(today.getDate() - 90);
+        $('#ctrlanalyticdatepicker').daterangepicker();
+        $('#btnApplyDateRange').bind('click', function () {
+            var startDate = $('input:text[name=daterangepicker_start]').val();
+            var endDate = $('input:text[name=daterangepicker_end]').val();
+            var startDateArray = startDate.split('/');
+            var endDateArray = endDate.split('/');
+
+            if (parseInt(startDateArray[0]) > parseInt(endDateArray[0])) {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            else if (parseInt(startDateArray[0]) == parseInt(endDateArray[0]) && parseInt(startDateArray[1]) > parseInt(endDateArray[1])) {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+
+        });
+    });
+
+</script>

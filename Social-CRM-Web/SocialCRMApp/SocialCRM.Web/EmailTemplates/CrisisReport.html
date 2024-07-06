@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KE</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <table width="800" border="0" cellspacing="0" cellpadding="0">
+
+        <!--<tr>
+            <td style="height:30px; text-align:left;">Traffic Levels <strong>(##ShiftTiming##)</strong> on ##SelectedDate##.</td>
+        </tr>-->
+
+        <tr style="height:70px">
+            <td>
+                <span style="text-decoration:underline; font-size:18px; font-weight:100;">Report On time:</span><br />
+                <span style="font-size:18px; color:#2e75b6;"><strong>##ReportOnTime##</strong></span>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <td>
+                <span style="text-decoration:underline; font-size:18px; font-weight:100;">Top Three Areas: </span><br />
+                <span style="font-size:18px; color:#2e75b6; font-weight:100;">##TopThreeAreas##</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding:30px 0 30px 0;"><img width="657" height="340" src="cid:crisisReportContentId" /></td>
+        </tr>
+
+        <tr>
+            <td>
+                <table width="800" cellspacing="0" cellpadding="0" style="border:solid 1px #bdd6ee;">
+                    <tr style="background-color:#deeaf6; color:#2e74b5; height:20px; font-size:12px; font-weight:bold; ">
+                        <td style="text-align:left; padding-left:5px; border-bottom:solid 3px #bdd6ee; border-right:solid 1px #bdd6ee;">Platform</td>
+                        ##Hours##
+                    </tr>
+                    <tr style="background-color:#fff; font-size:12px; color:#2e75b6; ">
+                        <td style="text-align:left; padding-left:5px; height:20px; border-bottom:solid 1px #bdd6ee; border-right:solid 1px #bdd6ee; ">Facebook</td>
+                        ##FBCrisisData##
+                    </tr>
+                    <tr style="background-color:#fff; font-size:12px; border:solid 1px #bdd6ee; color:#2e75b6; ">
+                        <td style="text-align:left; padding-left:5px; height:20px; border-bottom:solid 1px #bdd6ee; border-right:solid 1px #bdd6ee;">Twitter</td>
+                        ##TWCrisisData##
+                    </tr>
+                    <tr style="background-color:#deeaf6; color:#2e74b5; font-size:12px; height:20px; font-weight:bold; ">
+                        <td style="text-align:left; padding-left:5px;">&nbsp;Total</td>
+                        ##TotalCrisisData##
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿<link href="../../../Content/css/profile-tile.css" rel="stylesheet" />
+<style>
+    .deactivated {
+        background: #ff3322 !important;
+    }
+
+    .expired{
+        background: #ff6a00 !important;
+    }
+</style>
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="AdminDashboardController as ctrl">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10">
+                <i class="fa fa-envelope"></i> Companies
+            </div>
+        </div>
+        <!-- header ends here -->
+
+
+        <div class="container-fluid padding_set">
+
+            <div class="col-md-12">
+                <!--<button type="button" id="btnNewMessage" class="btn btn-primary button_round  btn_height3" ng-click="MoveToNewMessageScreen()"><i class="fa fa-pencil"></i> New Message</button>-->
+
+                <div class="box box-default" style="margin-bottom:0px;">
+                    <div class="box-body">
+                        <div class="col-md-12" ng-if="companiesData.length <= 0">
+                            <h3 style="color:#ff3322">No Data Found.</h3>
+                        </div>                        
+
+                        <div id="CompaniesStat" style="margin-top: 15px;">
+                            <div class="col-md-12">
+                                <div class="col-md-9 zro_left" style="margin-bottom: 15px;">
+                                    <h2>Companies Statistics</h2>
+                                </div>
+                                <div class="col-md-3 zro_left" style="margin-bottom: 15px;max-width: 230px;float: right;padding-right: 0px;">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="containerCompaniesActivation" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="containerCompaniesMembershipStatus" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+
+                        <div id="CompaniesOverview">
+                            <div class="col-md-12">
+                                <div class="col-md-9 zro_left" style="margin-bottom: 15px;">
+                                    <h2>Companies Overview</h2>
+                                </div>
+                                <div class="col-md-3 zro_left" style="margin-bottom: 15px;max-width: 230px;float: right;padding-right: 0px;">
+                                    <!--<input class="form-control" id="textSearch" placeholder="Search" ng-model="textSearch" ng-keyup="filterCompanies()" />-->
+                                </div>
+                            </div>
+                            <div id="company-" ng-click="" style="margin-bottom: 20px; height: 160px;" class="col-sm-3 ng-scope" role="button" tabindex="0" ng-repeat="company in companiesData">
+                                <div class="tile blue" ng-class="{deactivated : company.CompanyStatus == 'Disabled', expired : company.MembershipDaysRemaining <=0}" style="height:100%;border-radius: 4px;" ng-click="openCompanyDetails(company)">
+                                    <div class="trial_tag" ng-if="company.MembershipPlan == 'Trial'"></div>
+                                    <h3 class="title truncate ng-binding">{{company.CompannyName}}</h3>
+                                    <p class="ng-binding"><span class="fa fa-group"></span>&nbsp;Groups &nbsp;&nbsp;({{company.GroupCount}})</p>
+                                    <p class="ng-binding"><span class="fa fa-plus"></span>&nbsp;Team Members &nbsp;&nbsp;({{company.TeamMemberCount}})</p>
+                                    <p class="ng-binding"><span class="fa fa-user"></span>&nbsp;Profiles &nbsp;&nbsp;({{company.ProfileList.length}})</p>
+                                    <p ng-if="company.MembershipDaysRemaining>0">{{company.MembershipDaysRemaining}} Days Remaining</p>
+                                    <p ng-if="company.MembershipDaysRemaining<=0"><strong style="color:maroon">Company Expired</strong></p>
+                                </div>
+                            </div>
+                            <div ng-if="companiesDataMain.length > 4" class="col-md-offset-10 col-md-2">
+                                <a href="#/Companies" style="float:right">View More >>></a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+</div><!-- /.box-body -->
+<div ui-view="Footer"></div>

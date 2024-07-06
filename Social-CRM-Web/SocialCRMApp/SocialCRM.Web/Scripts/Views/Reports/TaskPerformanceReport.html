@@ -1,0 +1,239 @@
+﻿<style>
+    .datepickerdemoBasicUsage {
+        /** Demo styles for mdCalendar. */
+    }
+
+        .datepickerdemoBasicUsage md-content {
+            padding-bottom: 200px;
+        }
+
+        .datepickerdemoBasicUsage .validation-messages {
+            font-size: 12px;
+            color: #dd2c00;
+            margin: 10px 0 0 25px;
+        }
+
+    .img-center {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+<div ng-app="CRMApp" class="content-wrapper" style="min-height:650px !important;" id="TaskPerformanceReportController" ng-controller="TaskPerformanceReportController">
+    <!-- Content Header (Page header) -->
+    <!-- header starts here -->
+    <div class="container-fluid page_name">
+        <div class="col-sm-10"><i class="fa fa-building"></i> Task Performance Report</div>
+
+    </div>
+    <!-- header ends here -->
+    <!-- misc & reviews content starts here -->
+    <div class="container-fluid reviews_Section ">
+        <div class="col-sm-10" style="padding:0 !important">
+            
+        </div>
+        
+
+    </div>
+    <div class="container-fluid reviews_Section ">
+        <div class="col-sm-10 " style="padding:0 !important">
+            <h1><span><i class="fa fa-building"></i></span> {{ BusinessName | uppercase}}</h1>
+            <p>My Company</p>
+        </div>
+        <div class="col-sm-2" style="margin-top:6px;">
+            <a href="#"><i class="fa fa-file-pdf-o"></i> Export to PDF</a> <br>
+            <a href="#"><i class="fa fa-file-excel-o"></i> Export to CSV</a>
+        </div>
+    </div>
+    <!-- misc & reviews content starts here -->   
+
+    <div class="container-fluid padding_set">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <div class="col-md-12">
+                        <div class="col-md-3 zro" style="line-height:35px; height:35px; margin-bottom:10px;"><strong>From:</strong> {{startDate}} <strong>To:</strong> {{endDate}}</div>
+                        <div class="col-md-3 zro">
+                            <div>
+                                <div class="btn-group" style=" margin-bottom:10px;">
+                                    <button type="button" class="btn btn-default active" ng-click="dateFilter(1)">15</button>
+                                    <button type="button" class="btn btn-default" ng-click="dateFilter(2)">30</button>
+                                    <button type="button" class="btn btn-default " ng-click="dateFilter(3)">60</button>
+                                    <button type="button" class="btn btn-default " ng-click="dateFilter(4)">90</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 zro demo" style="margin-bottom:10px !important;">
+                            <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="opts" ng-model="date" />
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        </div>
+                        <!--<div class="col-md-8 zro demo" style="margin-bottom:10px !important;">
+                                <div class='col-lg-6'>
+                                    <input id="dateFrom" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="From" ng-model="dateFrom">
+                                </div>
+                                <div class='col-lg-6'>
+                                    <input id="dateTo" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="To" ng-model="dateTo">
+                                </div>
+                                
+                        </div>-->
+                        <!--<div class="col-md-4" style="margin-top: 25px;text-align: right;">
+                            <a href="#"><i class="fa fa-file-pdf-o"></i> Export to PDF</a> <br>
+                            <a href="#"><i class="fa fa-file-excel-o"></i> Export to CSV</a>
+                        </div>-->
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="col-md-12 report_headings">
+                        <h1>Assigned vs. Completed</h1><br>
+                        <highchart ng-if="ShowReport" id="chart1" config="chartConfig" class="span9"></highchart>
+                        <div ng-if="ShowReport == false" class="text-center graph_sett"><img src="../../../Content/images/dummy_graph.jpg"></div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_header">
+                                        <td width="85%" class="td_padding">Task Metrics</td>
+                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Total Task Assigned</td>
+                                        <td align="right" class="td_padding"><strong>{{TotalAssignedTasks}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Total Tasks Completed</td>
+                                        <td align="right" class="td_padding"><strong>{{TotalCompletedTasks}}</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1 ng-if="IncreaseInTasks">
+                                    The number of tasks assigned increased by
+                                </h1>
+                                <h1 ng-if="IncreaseInTasks == false">
+                                    The number of tasks assigned decreased by
+                                </h1>
+                                <br>
+                                <h2 class="h2_negative" ng-if="IncreaseInTasks">
+                                    <strong><i class="fa fa-arrow-up"></i> {{IncreaseInTasksVal}}</strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="IncreaseInTasks == false">
+                                    <strong><i class="fa fa-arrow-down"></i> {{IncreaseInTasksVal}}</strong>
+                                </h2>
+                                <h3>since last month</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 report_headings top_grp_marg top_liner">
+                        <h1>Task Performance by Team Member</h1><br>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                            <thead>
+                                <tr class="report_table_td">
+                                    <th class="td_padding">Team Member</th>
+                                    <th class="td_padding">Assigned</th>
+                                    <th class="td_padding">Completed</th>
+                                    <!--<th class="td_padding">First Touch</th>-->
+                                    <th class="td_padding">Active Task Time</th>
+                                    <th class="td_padding">Task Resolution</th>
+                                    <th class="td_padding">Completion Ratio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="report_table_td" ng-repeat="item in TasksByMember">
+                                    <td class="td_padding">
+                                        <!--<img src="images/soc_ico.jpg" alt="" border="0" class="img_con">-->
+                                        <span class="soc_name">{{item.TeamMemberName}}</span>
+                                    </td>
+                                    <td class="td_padding" align="center">{{item.TotalAssignedTasks}}</td>
+                                    <td class="td_padding" align="center">{{item.TotalCompletedTasks}}</td>
+                                    <!--<td class="td_padding" align="center">{{item.FirstTouch}}</td>-->
+                                    <td class="td_padding" align="center">{{item.ActiveTaskTime}}</td>
+                                    <td class="td_padding" align="center">{{item.TaskResolution}}</td>
+                                    <td class="td_padding" align="center">
+                                        <div class="progress-group">
+                                            <span class="progress-text">&nbsp;</span>
+                                            <span class="progress-number"><b>{{item.CompletionRatio}}%</b></span>
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-red" style="width: {{item.CompletionRatio}}%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--<tr class="report_table_td">
+                                    <td class="td_padding">
+                                        <img src="images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                            Adeel Gill<br>
+                                            <p><img src="images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                        </span>
+                                    </td>
+                                    <td class="td_padding" align="center">31</td>
+                                    <td class="td_padding" align="center">3.4</td>
+                                    <td class="td_padding" align="center">6.6h</td>
+                                    <td class="td_padding" align="center">36 min</td>
+                                    <td class="td_padding" align="center">6 min</td>
+                                    <td class="td_padding" align="center">
+                                        <div class="progress-group">
+                                            <span class="progress-text">&nbsp;</span>
+                                            <span class="progress-number"><b>82%</b></span>
+                                            <div class="progress sm">
+                                                <div class="progress-bar progress-bar-red" style="width: 82%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
+
+<!--<script>
+    $(document).ready(function () {
+        //var currentDate = new Date();
+        
+        $('#dateFrom').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('TaskPerformanceReportController')).scope().GetTaskPerformanceData();
+        });
+        $('#dateTo').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('TaskPerformanceReportController')).scope().GetTaskPerformanceData();
+        });
+
+     });
+</script>-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var today = new Date();
+        var last90Days = new Date();
+        last90Days.setDate(today.getDate() - 90);
+        //$('#ctrlanalyticdatepicker').daterangepicker({ startDate: last90Days, minDate: true, maxDate: true });//startDate: last90Days, minDate: true, maxDate: true
+        $('#ctrlanalyticdatepicker').daterangepicker();
+        $('#btnApplyDateRange').bind('click', function ()
+        {
+            var startDate = $('input:text[name=daterangepicker_start]').val();
+            var endDate = $('input:text[name=daterangepicker_end]').val();
+            var startDateArray = startDate.split('/');
+            var endDateArray = endDate.split('/');
+
+            if (parseInt(startDateArray[0]) > parseInt(endDateArray[0]))
+            {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            else if (parseInt(startDateArray[0]) == parseInt(endDateArray[0]) && parseInt(startDateArray[1]) > parseInt(endDateArray[1]))
+            {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }            
+        });
+    });
+
+</script>

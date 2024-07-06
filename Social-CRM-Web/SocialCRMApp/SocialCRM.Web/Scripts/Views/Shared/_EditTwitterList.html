@@ -1,0 +1,29 @@
+﻿<!-- Modal for New Create List-->
+<div class="modal-dialog">
+    <form name="myForm2">
+        <!-- Modal for New Group content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-list-ul"></i> EDIT LIST</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    LIST NAME *
+                    <p class="warnings_p warnings_p2_320 " ng-show="myForm2.ListName.$touched && myForm2.ListName.$invalid">List Name is required</p>
+                    <input type="text" name="ListName" ng-model="ListName" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="Enter List Name" aria-describedby="sizing-addon2" required>
+                </div>
+                <div>DESCRIPTION<textarea ng-model="ListDescrip" name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea></div>
+                <div style="margin-top:20px">
+                    PRIVACY<br>
+                    <input type="radio" ng-model="Mode" value="public" name="ListMode"> <strong>PUBLIC</strong> - <em><strong>Everyone</strong> can see this list.</em><br>
+                    <input type="radio" ng-model="Mode" value="private" name="ListMode"> <strong>PRIVATE</strong> - <em><strong>Only you</strong> can see this list.</em>
+                </div>
+
+                <div><button type="button" ng-disabled="myForm2.ListName.$invalid" ng-click="EditList();" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;" data-dismiss="modal">SAVE</button></div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<!-- Modal for New Create List-->

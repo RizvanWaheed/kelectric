@@ -1,0 +1,253 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="ClosedTaskController">
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-flag"></i> Closed Cases</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+
+                            <a href="/#/ClosedCase" ng-repeat="task in closedTasks">
+                                <div class="col-sm-12 inbox_blk unread_msg closed_task">
+                                    <div class="col-sm-2">
+                                        <div class="inbox_blk_img">
+                                            <div class="inbox_blk_img_ico"><img src="{{task.profileUrl}}" alt=""></div>
+                                            <img src="{{task.logoUrl}}" alt="User Image">
+                                        </div>
+                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                        <div class="inbox_blk_msg">
+                                            <strong>{{task.userName}}</strong> <i class="fa fa-twitter"></i> {{task.profileName}}<br>
+                                            {{task.msg}}<br>
+
+                                        </div>
+
+                                        <div class="inbox_blk_cred">
+                                            <strong>Assigned To:</strong> {{task.assignedTo}}<br>
+                                            <strong>Priority: </strong>{{task.priority}}<br>
+                                            <strong>Classification of Case:</strong>{{task.classification}}<br>
+                                            <strong>Last Updated:</strong>{{task.lastUpdated}}<br>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-3">
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;">
+
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-check"></i> CLASSIFICATION OF CASE</strong>&nbsp;<br>
+                            <select multiple class="sel_menu" id="lstFruits" ng-model="taskClassificationModel" ng-options="v as v.value for v in taskClassification">
+                                <!--<option value="1">Sales Lead</option>
+                                <option value="2">After Sales Support</option>
+                                <option value="3">Compliment</option>
+                                <option value="4">Complaint</option>
+                                <option value="5">General Inquiry</option>
+                                <option value="6">Referral</option>
+                                <option value="6">Review</option>-->
+                            </select>
+                        </div>
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-exclamation "></i> PRIORITY</strong>&nbsp;<br>
+                            <select multiple class="sel_menu" id="2stFruits" ng-model="taskPriorityModel" ng-options="v as v.value for v in taskPriority">
+                                <!--<option value="1">! High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>-->
+                            </select>
+                        </div>
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-users"></i> ASSIGNEE</strong>&nbsp;<br>
+                            <select multiple="MULTIPLE" class="sel_menu" id="3stFruits" ng-model="taskAssigneeModel" ng-options="v as v.value for v in taskAssignee">
+                                <!--<option value="1">Member A</option>
+                                <option value="2">Member B</option>
+                                <option value="3">Member C</option>
+                                <option value="4">Member D</option>-->
+                            </select>
+                        </div>
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-user"></i> PROFILE NAME</strong>&nbsp;<br>
+                            <select class="sel_menu" id="5stFruits" ng-model="attachedProfileModel" ng-options="v as v.value for v in attachedProfiles">
+                                <!--<option value="1">Adeel Gill</option>
+                                <option value="2">Umer Masood</option>
+                                <option value="3">Ayesha Shamim</option>
+                                <option value="4">Amber</option>
+                                <option value="5">Talha</option>-->
+                            </select>
+                        </div>
+                        <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-left:15px;" ng-click="Search()">SEARCH</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    window.onload = function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#4stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+        $('#5stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+    }
+    //$(function () {
+    //    $('#lstFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+
+    //    $('#2stFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+
+    //    $('#3stFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+
+    //    $('#4stFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+    //});
+</script>
+
+
+<script type="text/javascript">
+        $(function () {
+            $('#inboxer').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+            $('#tasker').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+            $('#socialer').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+            $('#publi').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+            $('#disco').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+            $('#reporter').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+
+            $('#helper').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+            $('#userlists').slimscroll({
+                height: '499px',
+                disableFadeOut: true
+            });
+
+            $('#grplists').slimscroll({
+                height: '595px',
+                disableFadeOut: true
+            });
+
+
+            $('#soclists').slimscroll({
+                height: '188px',
+                disableFadeOut: true
+            });
+            $('#soclistspop').slimscroll({
+                height: '200px',
+                disableFadeOut: true
+            });
+
+            $('#grpspop').slimscroll({
+                height: '200px',
+                disableFadeOut: true
+            });
+
+            $('#soclists2').slimscroll({
+                height: '168px',
+                disableFadeOut: true
+            });
+
+            $('#ulists').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+
+            $('#soclistspop2').slimscroll({
+                height: '280px',
+                disableFadeOut: true
+            });
+
+            $('#f_profile').slimscroll({
+                height: '150px',
+                disableFadeOut: true
+            });
+
+            $('#f_msg').slimscroll({
+                height: '150px',
+                disableFadeOut: true
+            });
+
+
+            $('#pop_vhis').slimscroll({
+                height: '200px',
+                disableFadeOut: true
+            });
+
+            $('#pop_sprof').slimscroll({
+                height: '100px',
+                disableFadeOut: true
+            });
+
+        });
+</script>
+
+<script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+</script>

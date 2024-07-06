@@ -1,0 +1,156 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="SocialFeedsTwitterController" ng-controller="SocialFeedsTwitterController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><img src="/Content/images/t_ico16.png" alt=""> Social Feeds- Twitter</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <div ng-if="listOption == 'timeline'" class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in inboxitemDetails">
+                                <div class="twitter_social_icos" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'"></div>
+                                <div class="fb_social_icos" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP'"></div>
+                                <div class="fb_social_icos" ng-if="msg.MessageType == 'IM'"></div>
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <div class="verified_icon" ng-if="msg.IsVerified == true && (msg.MessageType == 'TP' || msg.MessageType == 'TM')"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                        <div class="verified_icon" ng-if="msg.IsVerified == true && (msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP')"><img src="/Content/images/facebook-verified.png" alt="" title="Verified"></div>
+                                        <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ReplyedBy}}" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                                        <img src="{{msg.TwtImg}}" alt="User Image" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP' || msg.MessageType == 'IM'">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg">
+                                        <!--<a href="">{{msg.HandleName}}</a>-->{{msg.UserTwit}}
+                                    </div>
+                                    <div class="inbox_blk_cred">
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ReplyedBy}}" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'">{{msg.ReplyedBy}}</a>
+                                        <a href="" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP' || msg.MessageType == 'IM'">{{msg.ReplyedBy}}</a>
+                                        {{msg.ActivityType}}
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ToUser}}" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'">{{msg.ToUser}}</a>
+                                        <a href="" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP' || msg.MessageType == 'IM'">{{msg.ToUser}}</a>
+                                        {{msg.ReplyedDate}}
+                                    </div>
+                                    <div class="inbox_blk_actions">
+                                        <a href="" ng-click="CreateTask(msg)"><i class="fa fa-flag" title="Create Task"></i></a>
+                                        <a href=""><i class="fa fa-mail-reply" title="Reply" ng-click="openReplyAdd(msg)"></i></a>
+                                        <a href="" data-toggle="collapse" data-target="#msgSetting-{{msg.MessageType}}{{msg.Id}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'"><i class="fa fa-comments" title="Conversation" ng-click="openConversation(msg.StatusId,msg.ReplyedBy,msg.MessageType)"></i></a>
+                                        <div id="msgSetting-{{msg.MessageType}}{{msg.Id}}" class="collapse sub_msgsett">
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'" ng-click="openRetweet(msg)">Retweet |</a>
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'" ng-click="openRetweetWithComment(msg)">Retweet with Comment |</a>
+                                            <a href="" ng-click="likeTweet(msg)">Like</a> | <a href="" ng-click="openEmailTweets(msg)">Email Message |</a>
+                                            <a ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'" href="" ng-click="openReportAsSpam(msg.StatusId,msg.ReplyedBy,msg.MessageType)">Report as Spam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ng-if="listOption == 'member'" class="col-sm-12 inbox_blk unread_msg" ng-repeat="msg in followerItemDetails">
+                                <div class="twitter_social_icos"></div>
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <!--<div class="inbox_blk_img_ico"><img src="/Content/images/t_ico16.png" alt=""></div>-->
+                                        <div class="verified_icon" ng-if="msg.isContactVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                        <a href="javascript:;" ng-click="redirectTo(msg.contactTwitName);"><img src="{{msg.contactProfilePic}}" alt="User Image"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg">
+                                        <a href="javascript:;" ng-click="redirectTo(msg.contactTwitName);"><strong>{{msg.contactName}}</strong></a> <i class="fa fa-twitter"></i> {{msg.contactTwitName}}<br>
+                                        {{msg.contactMsg}}<br>
+                                        <i class="fa fa-map-marker"></i> {{msg.contactCountry}} &nbsp;&nbsp;<i class="fa fa-globe"></i>{{msg.contactURL}}
+                                    </div>
+                                    <div class="inbox_blk_cred">
+                                        Followers <a href="javascript:;"><strong>{{msg.totalFollower}}</strong></a> | Following <a href="javascript:;" style="margin-right:30px;"><strong>{{msg.totalFollowing}}</strong></a>
+                                    </div>
+                                    <div class="inbox_blk_actions">
+                                        <a href="javascript:;" ng-click="RemoveContactFromUserList($index)"><i class="fa fa-user-times" title="Remove From List"></i></a>
+                                        <!--<a href="javascript:;"><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a> <a href="javascript:;" data-toggle="modal" data-target="#newReply"><i class="fa fa-mail-reply" title="Reply"></i></a> <a href="javascript:;" data-toggle="collapse" data-target="#msgSetting{{msg.contactTwitName}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <div id="msgSetting{{msg.contactTwitName}}" class="collapse sub_msgsett">
+                                            <a href="javascript:;">Mention (public)</a> | <a href="javascript:;">Direct Message (private)</a> | <a href="javascript:;">Report as Spam</a> | <a href="javascript:;">Block User</a>
+                                            | <a href="javascript:;" ng-click="RemoveContactFromUserList($index)">Remove From List</a>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="tw_profile">
+                        <div style="height:25px;"><strong>Twitter Profiles</strong></div>
+                        <table class="table table-condensed">
+                            <tbody ng-repeat="profile in Profiles">
+                                <tr style="border-top:0 solid #ddd !important;">
+                                    <td width="91%">
+                                        <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                            {{profile.Name}}<br>
+                                            <p><a href="javascript:;" data-toggle="collapse" data-target="#profileExpand{{$index}}">All Friends &nbsp;<i class="fa fa-sort-desc"></i></a></p>
+                                        </span>
+                                    </td>
+                                    <td width="9%" align="center"><input type="radio" ng-model="$parent.profileSelect" ng-change="selectedProfileChanged();" ng-value="{{$index}}" name="test"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" width="100%" style="border:0 solid #ddd !important;">
+                                        <div id="profileExpand{{$index}}" class="collapse">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                                                <tr>
+                                                    <td colspan="2" height="30">
+                                                        <strong>LISTS</strong><br>
+                                                    </td>
+                                                </tr>
+                                                <tr ng-repeat="list in filteredProfileLists(profile)">
+                                                    <td width="91%" height="30"><i class="fa fa-list-ul"></i> {{list.Name}}</td>
+                                                    <td width="9%" align="center"><input type="radio" ng-model="$parent.$parent.profileSelect" ng-change="selectedProfileListChanged();" ng-value="{{list.Id}}" name="test"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr ng-if="isProfileSelected == false">
+                                    <td colspan="2">
+                                        <input name="listOption" ng-model="$parent.listOption" ng-change="selectedListOptionChanged();" type="radio" value="timeline"> Timeline &nbsp; &nbsp; &nbsp;
+                                        <input name="listOption" ng-model="$parent.listOption" ng-change="selectedListOptionChanged();" type="radio" value="member"> Members<br>
+                                        <!--<button style="margin-top:5px; margin-right:5px;" class="btn btn-primary button_round btn-sm " type="button"><i class="fa fa-list-ul "></i> Timeline</button>
+                <button style="margin-top:5px;" class="btn btn-primary button_round btn-sm " type="button"><i class="fa fa-users"></i> Members</button><br>-->
+                                        <button style="margin-top:5px; margin-right:5px;" class="btn btn-primary button_round btn-sm " type="button" ng-click="OpenEditList();"><i class="fa fa-pencil "></i> Edit List</button>
+                                        <button style="margin-top:5px; margin-right:5px;" class="btn btn-primary button_round btn-sm " type="button" ng-click="DeleteTwitterList();"><i class="fa fa-pencil "></i> Delete List</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ui-view="Footer"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#grplists').slimscroll({
+            height: '1200px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#SocialFeedsTwitterController').scope().profileLoadMoreFeeds();
+                angular.element('#SocialFeedsTwitterController').scope().$apply();
+            }
+        });
+    });
+</script>

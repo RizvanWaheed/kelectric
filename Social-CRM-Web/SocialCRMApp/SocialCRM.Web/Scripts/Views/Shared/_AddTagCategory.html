@@ -1,0 +1,97 @@
+﻿<style>
+    .modal-dialog {
+        width: 800px !important;
+        margin: 30px auto;
+    }
+
+    .truncate-item {
+        width: 230px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+</style>
+<form name="myForm" id="_AddTagCategoryController" >
+    <!-- Modal for retweet-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-user-circle" style="margin-right: 10px;"></i>Add Tag Category</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+
+                <div class="col-md-12 zro_left">
+                    <div class="box box-default">
+                        
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <div class="col-sm-12 zro">
+                                    <div class="col-sm-9">
+                                        <div>
+                                            CATEGORY TITLE *
+                                            <p class="warnings_p warnings_p2_320 " ng-show="myForm.CategoryTitle.$touched && myForm.CategoryTitle.$invalid">Category Title is required</p>
+                                            <input type="text" name="CategoryTitle" ng-model="CategoryTitle" class="form-control input_border_min input_login_h" style="max-width:430px; " placeholder="Enter Category Title" aria-describedby="sizing-addon2" required>
+                                            <div >
+                                                <a id="selected-color12" class="btn btn-mini dropdown-toggle" data-toggle="dropdown" style="padding:0 !important; margin-top: 10px;"><i id="colorPickerLink1" class="fa fa-eyedropper" style="color:FontColor ; background-color:BGColor ;"> <span>Select Font &amp; Background Color</span></i></a>
+                                                <ul class="dropdown-menu" style="width:350px; margin-left:-38px;margin-top:-130px">
+                                                    <li style="display:inline-block;">
+                                                        <div> font color</div>
+                                                        <div id="colorpalette12"></div>
+                                                    </li>
+                                                    <li style="display:inline-block;">
+                                                        <div> background color</div>
+                                                        <div id="colorpalette13"></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <br />
+                                            <button ng-disabled="myForm.CategoryTitle.$invalid" type="button" data-dismiss="modal" class="btn btn-primary button_round  btn_height3" ng-click="AddNewCategory();">
+                                                <span ng-if="isEditMode == true">Update</span>
+                                                <span ng-if="isEditMode == false">Add Category</span>
+                                       
+                                            </button>
+                                        </div>
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ccc;">
+                                            <h4>Tag Categories</h4>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div ng-repeat="brnd in BrandCategoryTypes" style="margin-top:5px; display:inline-block; position:relative;">
+                                                <div ng-click="EditTag(brnd)"  ng-style="{color:brnd.FontColor,'background-color': brnd.BGColor}" style="padding-right: 20px; margin-right: 5px; margin-top: 5px;" href="" class="btn button_round" title="Keyword: {{brnd.BrandType}}">{{brnd.BrandKeywordCategoryText}}</div>
+
+                                                <a title="delete" ng-click="deleteTag(brnd.BrandKeywordCategoryId)" style="position:absolute; top:5px; right:7px; color:#fff; text-shadow:1px 1px 1px #000; font-weight:100;"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div> <div style="margin-left:15px;"></div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</form>
+<script type="text/javascript">   
+
+    $('#colorpalette12').colorPalette().on('selectColor', function (e) {
+        $('#selected-color12 i').css('color', e.color);
+        angular.element('#_AddTagCategoryController').scope().setColor('Font', e.color);
+        angular.element('#_AddTagCategoryController').scope().$apply();
+      //  $scope.FontColor = e.color;
+    });
+    $('#colorpalette13').colorPalette().on('selectColor', function (e) {
+        $('#selected-color12 i').css('background-color', e.color);
+      //  $scope.FontColor = e.color;
+        angular.element('#_AddTagCategoryController').scope().setColor('back',e.color);
+        angular.element('#_AddTagCategoryController').scope().$apply();
+    });
+</script>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38B71013-C248-4BA1-A41B-611DD6B9369D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Insight360.Feedly</RootNamespace>
+    <AssemblyName>Insight360.Feedly</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataCollector\DataCollector.cs" />
+    <Compile Include="Endpoints\Auth.cs" />
+    <Compile Include="Endpoints\Categories.cs" />
+    <Compile Include="Endpoints\Entries.cs" />
+    <Compile Include="Endpoints\Feeds.cs" />
+    <Compile Include="Endpoints\Markers.cs" />
+    <Compile Include="Endpoints\Mixes.cs" />
+    <Compile Include="Endpoints\OPML.cs" />
+    <Compile Include="Endpoints\Preferences.cs" />
+    <Compile Include="Endpoints\Profile.cs" />
+    <Compile Include="Endpoints\Search.cs" />
+    <Compile Include="Endpoints\Streams.cs" />
+    <Compile Include="Endpoints\Subscriptions.cs" />
+    <Compile Include="Endpoints\Tags.cs" />
+    <Compile Include="Endpoints\Topics.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="FeedlyClient.cs" />
+    <Compile Include="FeedlyHttpClient.cs" />
+    <Compile Include="FeedlySharpException.cs" />
+    <Compile Include="IFeedlyClient.cs" />
+    <Compile Include="Models\FeedlyCategory.cs" />
+    <Compile Include="Models\FeedlyCategoryUnreadCount.cs" />
+    <Compile Include="Models\FeedlyEntry.cs" />
+    <Compile Include="Models\FeedlyFeed.cs" />
+    <Compile Include="Models\FeedlyImage.cs" />
+    <Compile Include="Models\FeedlyItem.cs" />
+    <Compile Include="Models\FeedlyLink.cs" />
+    <Compile Include="Models\FeedlyOrigin.cs" />
+    <Compile Include="Models\FeedlyReadOperations.cs" />
+    <Compile Include="Models\FeedlySearchFeed.cs" />
+    <Compile Include="Models\FeedlySearchResponse.cs" />
+    <Compile Include="Models\FeedlyStreamEntriesResponse.cs" />
+    <Compile Include="Models\FeedlyStreamEntryIdsResponse.cs" />
+    <Compile Include="Models\FeedlySubscription.cs" />
+    <Compile Include="Models\FeedlyTag.cs" />
+    <Compile Include="Models\FeedlyText.cs" />
+    <Compile Include="Models\FeedlyTopic.cs" />
+    <Compile Include="Models\FeedlyUser.cs" />
+    <Compile Include="ViewModel\FeedlyItem.cs" />
+    <Compile Include="ViewModel\FeedlyViewModel.cs" />
+    <Compile Include="Models\Responses.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\DataCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,114 @@
+﻿<div class="modal-content" style="padding-top:0px;">
+    <div class="modal-header" style="padding:7px; padding-left:30px;">
+        <div class="twitter_social_icos"></div>
+
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-mail-reply"></i> {{FormText}}</h4>
+    </div>
+    <div class="modal-body" style="height:550px; overflow:hidden; padding-top:3px;">
+        <div id="scrollerDiv">
+
+            <!--<div id="selectPostingProfile" class="collapse col-md-12 zro">
+                <div style="margin-bottom:10px " id="pop_sprof" slimscroll="slim" class="box box-default filter_box ng-scope">
+                    <table class="table table-condensed">
+                        <tr ng-repeat="profile in attachedProfiles">
+                            <td>
+                                <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                    {{profile.Name}}<br>
+                                    <p><img ng-src="/Content/images/fb_ico16.png" alt="linkedin-profile"> @{{profile.UserName}}</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="profile-{{profile.Id}}" name="check" ng-click="CheckProfile(profile.Id,profile.UserName,profile.IsPage,profile.ProfileExternalId, profile.ProfilePicURL);" ng-checked="{{profile.ischecked}}" />
+                                    <label for="profile-{{profile.Id}}"></label>
+                                    <span></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>-->
+
+            <div class="col-md-12 zro_left">
+                <!--<div style="margin-bottom:10px; margin-top:0px; padding-top:0px; ">
+                    <h5><strong>{{PostAuthor}}</strong>&nbsp; wrote <span class="inbox_blk_cred">{{MessagePostDateTime}}</span></h5>
+                </div>-->
+                <div style="margin-bottom:5px; margin-top:0px;">
+                    <h4>{{MessageItself}}</h4>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-sm-12" style="padding:0px;">
+                    <div class="col-sm-1" style="padding:0px;">
+                        <div class="inbox_blk inbox_blk_img" style="border-color:transparent; padding-top:0px; margin-top:-2px; margin-left:8px; padding-left:5px; margin-bottom:0px !important; width:50px; height:35px;">
+                            <a href="javascript:;"><img src="{{MessagePostUserImageUrl}}" alt="User Image"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-11 text-left inbox_blk_msg_blk">
+                        <textarea maxlength="{{totalConversation}}" ng-maxlength="{{totalConversation}}" ng-show="IsEnable" ng-model="replyedMsgModel" name="" cols="" rows="1" class="form-control input_border_min input_login_h" style="margin-bottom:8px" aria-describedby="sizing-addon2" placeholder="Type a message..."> </textarea>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 zro_left" style="margin-bottom:10px;">
+                    <div class="col-sm-6 zro_left">
+
+                        <!--<button type="button" data-toggle="collapse" data-target="#selectPostingProfile" class="btn btn-xs btn-primary button_round" style="margin-top:5px;"><i class="fa fa-user"></i> Select Profile</button>-->
+
+                        <button type="button" class="btn btn-xs btn-primary button_round" style="margin-top:5px;" ng-click="PostMessage()">
+                            <span><i class="fa fa-comment"></i> Message</span>
+                        </button>
+                    </div>
+                    <div class="col-sm-6" ng-show="IsEnable"><strong style="float:right; font-size:9px;"><em>{{totalConversation - replyedMsgModel.length}}</em></strong></div>
+                </div>
+            </div>
+
+            <div ng-show="IsEnable" style="margin-bottom:10px; margin-top:10px;">
+                <strong>Viewing conversation</strong> with <strong>{{PostAuthor}}</strong>
+            </div>
+            <div id="pop_vhis" slimscroll="commentsLength">
+                <div class="conversation" style="padding-right: 12px;">
+                    <div class="msgs" ng-repeat="msgs in inboxHistoryItemDetails">
+                        <div ng-if="UserId == msgs.UserId" class="col-sm-10 inbox_blk unread_msg" style="padding:0px; background-color:#F7F7F7">
+                            <div class="col-sm-1">
+                                <div class="inbox_blk_img" style="width:35px; height:35px;">
+                                    <a href="javascript:;" title="{{msgs.ReplyedBy}}"><img style="width:35px; height:35px;" src="{{msgs.TwtImg}}" alt="User Image"></a>
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                <div class="inbox_blk_msg ng-binding" style="margin-top: 20px;">
+                                    {{msgs.UserTwit}}
+                                </div>
+                            </div>-->
+                            <div class="col-sm-11 text-left inbox_blk_msg_blk" style="padding-left:20px;">
+                                <div class="inbox_blk_msg ng-binding">
+                                    {{msgs.UserTwit}}
+                                </div>
+                                <div class="inbox_blk_cred ng-binding">
+                                    {{msgs.ReplyedDate}}
+                                </div>
+                            </div>                            
+                        </div>
+                        <div ng-if="UserId != msgs.UserId" class="col-sm-10 col-sm-offset-2 inbox_blk unread_msg" style="padding: 0px 0px 0px 0px; background-color:#D1EEFC">                            
+                            <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                <div class="inbox_blk_msg ng-binding" style="text-align: right;">
+                                    {{msgs.UserTwit}}
+                                </div>
+                                <div class="inbox_blk_cred ng-binding" style="text-align: right;">
+                                    {{msgs.ReplyedDate}}
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="inbox_blk_img" style="width:35px; height:35px;">
+                                    <a href="javascript:;" title="{{msgs.ReplyedBy}}"><img style="width:35px; height:35px;" src="{{msgs.TwtImg}}" alt="User Image"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

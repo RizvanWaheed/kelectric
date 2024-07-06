@@ -1,0 +1,28 @@
+﻿<div class="" ng-controller="AccountActivationController">
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container main_box">
+            <div class="code-module effects" id="effects">
+                <h1> WELCOME TO THE COMPANY</h1>
+                <h2><i class="fa fa-building"></i> {{CompanyName|uppercase}}</h2>
+
+                <div class="text-center" style="margin-bottom:10px;"><img src="/Content/images/active_ico.jpg" alt=""></div>
+
+
+                <div class="btn_box">
+                    Click the button below to activate your account.<br><br>
+                    <button type="button" class="btn btn-default btn_size_full button_round" ng-click="Activate()"><i class="fa fa-check" ng-click="Activate()"></i> ACTIVATE ACCOUNT</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="container footer_box">© 2016, All Rights Reserved.</div>
+    </div>
+    </div>
+<script type="text/javascript">
+        $("head").append($("<link href='/Content/css/bootstrap.css' rel='stylesheet' />"));
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

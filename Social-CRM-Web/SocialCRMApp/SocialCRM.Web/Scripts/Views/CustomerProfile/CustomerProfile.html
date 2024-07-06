@@ -1,0 +1,316 @@
+﻿<div class="wrapper">
+    <style>
+    .disabled {
+        cursor: not-allowed;
+    }
+    </style>
+
+    <form name="myForm">
+        <div ng-app="CRMApp" id="CustomerProfileController" ng-controller="CustomerProfileController">
+            <div class="content-wrapper" style="min-height:650px !important;">
+                <!-- Content Header (Page header) -->
+                <!-- header starts here -->
+                <div class="container-fluid page_name">
+                    <div class="col-sm-10"><i class="fa fa-users"></i> Customer Profiles</div>
+                </div>
+                <div class="container-fluid padding_set">
+                    <div class="col-md-12">
+                        <div class="box box-default">
+                            <div class="box-body">
+                                <div class="box-body no-padding">
+                                    <span style="color:red;margin-left: 15px;" ng-show="errorMsg.length > 0">{{errorMsg}}</span>
+                                    <div class="col-md-12">
+                                        Import Customer Data Excel File<br>
+                                        <div class="col-md-4 zro_left">
+                                            <input class="form-control" type="text" ng-model="FilePathUpload" disabled />
+                                        </div>
+                                        <label class="custom-upload2"><input type="file" name="upload_file" onchange="angular.element(this).scope().updateFilePath()" ng-model="CustomerUpload" />Browse</label>
+                                        <button type="button" ng-click="uploadExcelFile()" class="btn btn-primary button_round  btn_height3" style="float:left !important; margin-left:5px;">
+                                            <i class="fa fa-cloud-upload"></i> Upload
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--<div class="box-body no-padding">
+                                    <span style="color:red;margin-left: 15px;" ng-show="socialErrorMsg.length > 0">{{socialErrorMsg}}</span>
+                                    <div class="col-md-12">
+                                        Import Customer Social Profile Mapping Excel File<br>
+                                        <div class="col-md-3 zro_left" title="Select Twitter Profile">
+                                            <select id="TwitProfileMappingSelector" class="sel_menu" ng-model="TwitProfileMappingSelected"
+                                                    ng-options="item as item.Name for item in TwitProfiles track by item.Id"></select>
+                                        </div>
+                                        <div class="col-md-4 zro_left">
+                                            <input class="form-control" type="text" ng-model="SocialFilePathUpload" disabled />
+                                        </div>
+                                        <label class="custom-upload2"><input type="file" name="upload_social_file" onchange="angular.element(this).scope().updateSocialFilePath()" ng-model="SocialCustomerUpload" />Browse</label>
+                                        <button type="button" ng-click="uploadSocialExcelFile()" class="btn btn-primary button_round  btn_height3" style="float:left !important; margin-left:5px;">
+                                            <i class="fa fa-cloud-upload"></i> Upload
+                                        </button>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <!-- Main content -->
+                        <!-- /.content -->
+                    </div><!-- /.content-wrapper -->
+                    <div class="col-md-12">
+                        <div class="box box-default">
+                            <div class="box-body">
+                                <div class="box-body no-padding">
+                                    <div class="col-md-12">
+                                        <div class="col-md-3 zro_left demo">
+                                            Date Range<br />
+                                            <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="dateOpts" ng-model="selectedDate" />
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                        </div>
+
+                                        <div class="col-md-3 zro_left" title="Select Twitter Profile">
+                                            <img src="/Content/images/t_ico16.png" alt="" style="vertical-align:text-top;">&nbsp;Twitter Profiles<br />
+                                            <select id="TwitProfileSelector" class="sel_menu" ng-model="TwitProfileSelected" ng-change="filterRecords()"
+                                                    ng-options="item as item.Name for item in TwitProfiles track by item.Id"></select>
+                                        </div>
+
+                                        <div class="col-md-3 zro_left" title="Select Facebook Profile">
+                                            <img src="/Content/images/fb_ico16.png" alt="" style="vertical-align:text-top;">&nbsp;Facebook Profiles<br />
+                                            <select id="FBProfileSelector" class="sel_menu" ng-model="FBProfileSelected" ng-change="filterRecords()"
+                                                    ng-options="item as item.Name for item in FBProfiles track by item.Id"></select>
+                                        </div>
+
+                                        <div class="col-md-3 zro_left" title="Select Search Option">
+                                            Search Option<br/>
+                                            <select id="FilterSelector" class="sel_menu" ng-model="selectedSearchOption" ng-change="SearchOptionChanged()"
+                                                    ng-options="item as item.Name for item in SearchByOptions track by item.Id"></select>
+                                        </div>
+
+                                        <div class="col-md-3 zro_left" title="Enter Search Text" ng-if="selectedSearchOption.Id != 0 && selectedSearchOption.Id != 6">
+                                            <input id="searchScript" class="form-control" type="text" ng-model="$parent.searchValue" placeholder="Search by {{selectedSearchOption.Name}}" ng-keyup="$event.keyCode == 13 && filterRecords()"/>
+                                        </div>
+
+                                        <div class="col-md-3 zro_left" title="Select Region" ng-if="selectedSearchOption.Id == 6">
+                                            <select id="KERegionSelector" class="sel_menu" ng-model="$parent.RegionSelected" ng-change="GetCustomerAreas();"
+                                                    ng-options="item as item.Name for item in KERegions track by item.Id"></select>
+                                        </div>
+
+                                        <div class="col-md-3 zro_left" title="Select Area" ng-if="selectedSearchOption.Id == 6">
+                                            <select id="KEAreaSelector" class="sel_menu" ng-model="$parent.AreaSelected" ng-change="filterRecords()"
+                                                    ng-options="item as item.Name for item in KEAreas track by item.Id"></select>
+                                        </div>
+
+                                        <!--<div class="col-md-6 zro_left">
+                                            <button type="button" ng-click="filterRecords()" class="btn btn-primary button_round  btn_height3"><i class="fa fa-filter"></i> FILTER</button>
+                                            <button type="button" ng-click="init()" style="margin-left:10px;" class="btn btn-primary button_round  btn_height3"><i class="fa fa-refresh"></i> RESET</button>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="media_table table">
+                                            <tr>
+                                                <th width="10%" title="Contract Account/ Name">Contract Account</th>
+                                                <th width="10%" title="Mobile/ Phone/ Email Address">Contact Information</th>
+                                                <th width="30%" title="Address/ Region/ IBC Code/ IBC">Address Information</th>
+                                                <th width="10%">Twitter</th>
+                                                <th width="5%" class="bluet">Twitter Warn/Ban</th>
+                                                <th width="5%" class="greent">Twitter Inbound / Outbound</th>
+                                                <th width="10%">Facebook</th>
+                                                <th width="5%" class="bluet">FB Warn/Ban</th>
+                                                <th width="5%" class="greent">FB Inbound / Outbound</th>
+                                                <th width="5%" class="oranget">Actions</th>
+                                            </tr>
+                                            <tr ng-repeat="w in customerDetailsList" ng-init="outerIndex=$index">
+                                                <td width="10%">
+                                                    <span title="Contract Account">{{w.ContractAccount}}</span><br />
+                                                    <span title="Name">{{w.Name}}</span>
+                                                </td>
+                                                <td width="10%">
+                                                    <span title="Email ID">{{w.EmailId}}</span><br />
+                                                    <span title="Mobile Number">{{w.MobileNum}}</span><br />
+                                                    <span title="Landline Number">{{w.LandlineNum}}</span>
+                                                </td>
+                                                <td width="30%">
+                                                    <span title="Address">{{w.Address}}</span><br />
+                                                    <span title="Region" class="greentxt">{{w.Region}}</span>&nbsp;
+                                                    <span title="IBC Code" class="orangetxt">{{w.IBC_Code}}</span>&nbsp;
+                                                    <span title="IBC" class="orangetxt">{{w.IBC}}</span><br />
+                                                </td>
+                                                <td width="10%">
+                                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: bottom;" ng-if="l.SocialType == 'Twitter'" ng-repeat="l in w.SocialProfiles">
+                                                        <a href="http://twitter.com/{{l.SocialUserName}}" title="{{l.SocialName}}">@{{l.SocialUserName}}</a>
+                                                    </div>
+                                                </td>
+                                                <td width="5%">
+                                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: bottom;" ng-if="l.SocialType == 'Twitter' && TempTwitSelected.Id != 0" ng-repeat="l in w.SocialProfiles">
+                                                        <a href="javascript:;" ng-click="WarnBanCustomer(outerIndex,$index)" title="Warn Customer" ng-if="l.WarnStatus == 0">Warn</a>
+                                                        <a href="javascript:;" ng-click="WarnBanCustomer(outerIndex,$index)" title="Ban Customer" ng-if="l.WarnStatus == 1">Ban</a>
+                                                        <a href="javascript:;" ng-click="WarnBanCustomer(outerIndex,$index)" title="Unban Customer" ng-if="l.WarnStatus == 2">Unban</a>
+                                                    </div>
+                                                </td>
+                                                <td width="10%">
+                                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: bottom;" ng-if="l.SocialType == 'Twitter' && TempTwitSelected.Id != 0" ng-repeat="l in w.SocialProfiles">
+                                                        <span>{{l.InboundCount}} / {{l.OutboundCount}}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: bottom;" ng-if="l.SocialType == 'Facebook'" ng-repeat="l in w.SocialProfiles">
+                                                        <a href="http://facebook.com/{{l.SocialExternalId}}" title="{{l.SocialName}}">{{l.SocialUserName}}</a>
+                                                    </div>
+                                                </td>
+                                                <td width="5%">
+                                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: bottom;" ng-if="l.SocialType == 'Facebook' && TempFBSelected.Id != 0 && TempFBSelected.IsPage" ng-repeat="l in w.SocialProfiles">
+                                                        <a href="javascript:;" ng-click="WarnBanCustomer(outerIndex,$index)" title="Warn Customer" ng-if="l.WarnStatus == 0">Warn</a>
+                                                        <a href="javascript:;" ng-click="WarnBanCustomer(outerIndex,$index)" title="Ban Customer" ng-if="l.WarnStatus == 1">Ban</a>
+                                                        <a href="javascript:;" ng-click="WarnBanCustomer(outerIndex,$index)" title="Unban Customer" ng-if="l.WarnStatus == 2">Unban</a>
+                                                    </div>
+                                                </td>
+                                                <td width="5%">
+                                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: bottom;" ng-if="l.SocialType == 'Facebook' && TempFBSelected.Id != 0" ng-repeat="l in w.SocialProfiles">
+                                                        <span>{{l.InboundCount}} / {{l.OutboundCount}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center" style="text-align: left;" width="5%">
+                                                    <a href="javascript:" ng-click="editCustomer(w)"><i class="fa fa-pencil edit"></i></a>
+                                                    <a href="javascript:" ng-click="deleteCustomer(w.ContractAccount)"><i class="fa fa-trash del"></i></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination" style="margin:0px;">
+                                                <li>
+                                                    <a href="javascript:" ng-class="{disabled:(PageNumber == 0)}" ng-click="goToPreviousPage();">Previous</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:" ng-click="goToNextPage();">Next</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-12 report_headings top_grp_marg">
+                                        <div class="col-md-12">
+                                            <h1>Region wise Analysis</h1>
+                                        </div>
+
+                                        <div class="col-md-12 report_headings top_grp_marg">
+                                            <div class="col-md-3 zro_left demo">
+                                                Date Range<br>
+                                                <input date-range-picker class="form-control date-picker" type="text" options="dateOptsRegion" ng-model="selectedRegionDate" />
+                                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" title="Select Social Media Platform">
+                                                Social Media Platform<br>
+                                                <select class="sel_menu" ng-model="selectedRegionPlatform" ng-change="fetchRegionReport()"
+                                                        ng-options="item as item.Name for item in MediaPlatforms track by item.Id"></select>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" title="Select Report Type">
+                                                Report Type<br>
+                                                <select class="sel_menu" ng-model="selectedRegionReport" ng-change="fetchRegionReport()"
+                                                        ng-options="item as item.Name for item in ReportFor track by item.Id"></select>
+                                            </div>
+                                            <div class="col-md-3 zro_left" title="Select Report Type" ng-show="selectedRegionReport.Id == 0">
+                                                Other Options<br>
+                                                <select class="sel_menu" ng-model="selectedRegionOtherOptions" ng-change="fetchRegionReport()"
+                                                        ng-options="item as item.Name for item in OtherOptions track by item.Id"></select>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" style="height:60px;" title="Show Evolution" ng-if="selectedRegionReport.Id == 0">
+                                                <span style="float:left;">Show Evolution</span>
+                                                <div class="squaredSmall" style="margin-top:3px;">
+                                                    <input type="checkbox" id="squaredSmal68" name="RegionEvolved" ng-change="fetchRegionReport()" ng-model="$parent.isRegionEvolved" />
+                                                    <label for="squaredSmal68"></label>
+                                                </div>
+                                                <!--<span ng-if="$parent.isRegionEvolved" style="float:left;">
+                                                    Inbound&nbsp;
+                                                    <input type="radio" value="Inbound" name="RegionInOutEvolved" ng-model="$parent.$parent.RegionInOutEvolved" style="margin:0px;"/>
+
+                                                    Outbound&nbsp;
+                                                    <input type="radio" value="Outbound" name="RegionInOutEvolved" ng-model="$parent.$parent.RegionInOutEvolved" style="margin:0px;"/>
+                                                </span>-->
+                                            </div>
+
+                                            <!--<div class="col-md-3 zro_left">
+                                                <br ng-if="selectedRegionReport.Id != 0" />
+                                                <button type="button" ng-click="fetchRegionReport()" class="btn btn-primary button_round  btn_height3"><i class="fa fa-filter"></i> FILTER</button>
+                                            </div>-->
+                                        </div>
+
+                                        <div id="single-chart" class="col-md-12 report_headings top_grp_marg">
+                                            <highchart id="chart1" config="RegionChartConfig" class="span10 sum-wise-report"></highchart>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="col-md-12 report_headings top_grp_marg">
+                                        <div class="col-md-12">
+                                            <h1>Area wise Analysis</h1>
+                                        </div>
+
+                                        <div class="col-md-12 report_headings top_grp_marg">
+                                            <div class="col-md-3 zro_left demo">
+                                                Date Range<br>
+                                                <input date-range-picker class="form-control date-picker" type="text" options="dateOptsArea" ng-model="selectedAreaDate" />
+                                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" title="Select Social Media Platform">
+                                                Social Media Platform<br>
+                                                <select class="sel_menu" ng-model="selectedAreaPlatform" ng-change="fetchAreaReport()"
+                                                        ng-options="item as item.Name for item in MediaPlatforms track by item.Id"></select>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" title="Select Report Type">
+                                                Report Type<br>
+                                                <select class="sel_menu" ng-model="selectedAreaReport" ng-change="fetchAreaReport()"
+                                                        ng-options="item as item.Name for item in ReportFor track by item.Id"></select>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" title="Select Region">
+                                                Region<br>
+                                                <select class="sel_menu" ng-model="selectedAreaRegion" ng-change="fetchAreaReport()"
+                                                        ng-options="item as item.Name for item in AreaReportKERegions track by item.Id"></select>
+                                            </div>
+                                            <div class="col-md-3 zro_left" title="Select Report Type" ng-show="selectedAreaReport.Id == 0">
+                                                Other Options<br>
+                                                <select class="sel_menu" ng-model="selectedAreaOtherOptions" ng-change="fetchAreaReport()"
+                                                        ng-options="item as item.Name for item in OtherOptions track by item.Id"></select>
+                                            </div>
+
+                                            <div class="col-md-3 zro_left" style="height:60px;" title="Show Evolution" ng-if="selectedAreaReport.Id == 0">
+                                                <span style="float:left;">Show Evolution</span>
+                                                <div class="squaredSmall" style="margin-top:3px;">
+                                                    <input type="checkbox" id="squaredSmal69" name="AreaEvolved" ng-model="$parent.isAreaEvolved" ng-change="fetchAreaReport()"/>
+                                                    <label for="squaredSmal69"></label>
+                                                </div>
+                                                <span ng-if="$parent.isAreaEvolved" style="float:left;">
+                                                    Inbound&nbsp;
+                                                    <input type="radio" value="Inbound" name="AreaInOutEvolved" ng-model="$parent.$parent.AreaInOutEvolved" style="margin:0px;" ng-change="fetchAreaReport()"/>
+
+                                                    Outbound&nbsp;
+                                                    <input type="radio" value="Outbound" name="AreaInOutEvolved" ng-model="$parent.$parent.AreaInOutEvolved" style="margin:0px;" ng-change="fetchAreaReport()"/>
+                                                </span>
+                                            </div>
+
+                                            <!--<div class="col-md-3 zro_left">
+                                                <button type="button" ng-click="fetchAreaReport()" class="btn btn-primary button_round  btn_height3"><i class="fa fa-filter"></i> FILTER</button>
+                                            </div>-->
+                                        </div>
+
+                                        <div id="single-chart" class="col-md-12 report_headings top_grp_marg">
+                                            <highchart id="chart1" config="AreaChartConfig" class="span10 sum-wise-report"></highchart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+</div>
+<div ui-view="Footer"></div>

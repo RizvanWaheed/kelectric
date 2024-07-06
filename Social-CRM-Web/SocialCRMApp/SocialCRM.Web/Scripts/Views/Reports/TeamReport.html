@@ -1,0 +1,377 @@
+﻿<style>
+    .datepickerdemoBasicUsage {
+        /** Demo styles for mdCalendar. */
+    }
+
+        .datepickerdemoBasicUsage md-content {
+            padding-bottom: 200px;
+        }
+
+        .datepickerdemoBasicUsage .validation-messages {
+            font-size: 12px;
+            color: #dd2c00;
+            margin: 10px 0 0 25px;
+        }
+
+    .img-center {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .team-bg {
+        background-color: #f6f6f6;
+    }
+
+    .profile-bg {
+        background-color: #fff;
+    }
+</style>
+<div ng-app="CRMApp" class="content-wrapper" style="min-height:650px !important;" id="TeamReportController" ng-controller="TeamReportController">
+    <!-- Content Header (Page header) -->
+    <!-- header starts here -->
+    <div class="container-fluid page_name">
+        <div class="col-sm-10"><i class="fa fa-building"></i> Agent Performance Report</div>
+        <!--<a href="javascript:" ng-click="downloadPDF()">Download PDF</a>-->
+    </div>
+    <!-- header ends here -->
+    <!-- misc & reviews content starts here -->
+    <!-- misc & reviews content starts here -->
+    <div class="container-fluid reviews_Section ">
+        <div class="col-sm-10 " style="padding:0 !important">
+            <h1><span><i class="fa fa-building"></i></span> {{ BusinessName | uppercase}}</h1>
+            <!--<p>My Company</p>-->
+        </div>
+        <!--<div class="col-sm-2" style="margin-top:6px;">
+            <a href="#"><i class="fa fa-file-pdf-o"></i> Export to PDF</a> <br>
+            <a href="#"><i class="fa fa-file-excel-o"></i> Export to CSV</a>
+        </div>-->
+    </div>
+
+    <div class="container-fluid padding_set">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <div class="col-md-12">
+                        <div class="col-md-4 zro" style="line-height:35px; height:35px; margin-bottom:10px;"><strong>From:</strong> {{startDate}} <strong>To:</strong> {{endDate}}</div>
+                        <div class="col-md-3 zro">
+                            <div>
+                                <div class="btn-group" style=" margin-bottom:10px;">
+                                    <button type="button" class="btn btn-default" ng-click="dateFilter(1)">15</button>
+                                    <button type="button" class="btn btn-default" ng-click="dateFilter(2)">30</button>
+                                    <button type="button" class="btn btn-default" ng-click="dateFilter(3)">60</button>
+                                    <button type="button" class="btn btn-default" ng-click="dateFilter(4)">90</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 zro demo" style="margin-bottom:10px !important;">
+                            <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="opts" ng-model="date" />
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        </div>
+                        <!--<div class="col-md-8 zro demo" style="margin-bottom:10px !important;">
+                                <div class='col-lg-6'>
+                                    <input id="dateFrom" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="From" ng-model="dateFrom">
+                                </div>
+                                <div class='col-lg-6'>
+                                    <input id="dateTo" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="To" ng-model="dateTo">
+                                </div>
+
+                        </div>-->
+                        <!--<div class="col-md-4" style="margin-top: 25px;text-align: right;">
+                            <a href="#"><i class="fa fa-file-pdf-o"></i> Export to PDF</a> <br>
+                            <a href="#"><i class="fa fa-file-excel-o"></i> Export to CSV</a>
+                        </div>-->
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="col-md-12 report_headings">
+                        <h1>Team Member Activity Overview</h1><br>
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                            <thead>
+                                <tr class="report_table_td">
+                                    <th class="td_padding">Team Member</th>
+                                    <th class="td_padding">Total Replies</th>
+                                    <th class="td_padding">Reply Thread Size</th>
+                                    <th class="td_padding">Avg. Reply Time</th>
+                                    <th class="td_padding">Median Reply TIme</th>
+                                    <th class="td_padding">Quickest Reply</th>
+                                    <th class="td_padding">Slowest Reply</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="report_table_td" ng-repeat="rpt in TeamReport">
+                                    <td class="td_padding">
+                                        <span class="soc_name" style="float:left;">
+                                            <img src="{{rpt.ProfilePic==null && '../../../Content/img/user2.jpg' || replaceTilda(rpt.ProfilePic)}}" alt="User Image" class="img-circle" style="width: 40px; height: 40px;"/>
+                                            {{rpt.ProfileName}}
+                                        </span>
+                                    </td>
+                                    <td class="td_padding" align="center">{{rpt.TotalReplies}}</td>
+                                    <td class="td_padding" align="center">{{rpt.ReplyThreadSize}}</td>
+                                    <td class="td_padding" align="center">{{rpt.AvgReplyTime}}</td>
+                                    <td class="td_padding" align="center">{{rpt.MedianReplyTime}}</td>
+                                    <td class="td_padding" align="center">{{rpt.QuickestReply}}</td>
+                                    <td class="td_padding" align="center">{{rpt.SlowestReply}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-12 report_headings top_grp_marg">
+                        <h1>Agent Outbound Overview</h1><br>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive" ng-repeat="rpt in TeamAndProfileReport">
+                            <thead ng-if="$index == 0">
+                                <tr class="report_table_td">
+                                    <th class="td_padding">Profile / Team Member</th>
+                                    <!--<th class="td_padding" style="text-align:center !important;">Posts</th>-->
+                                    <th class="td_padding" style="text-align:center !important;">Replies / Comments</th>
+                                    <th class="td_padding" style="text-align:center !important;">Chats / Direct Msgs</th>
+                                    <!--<th class="td_padding" style="text-align:center !important;">Reply Thread Size</th>-->
+                                    <th class="td_padding" style="text-align:center !important;">Avg. Reply Time</th>
+                                    <!--<th class="td_padding" style="text-align:center !important;">Median Reply TIme</th>-->
+                                    <th class="td_padding" style="text-align:center !important;">Quickest Reply</th>
+                                    <th class="td_padding" style="text-align:center !important;">Slowest Reply</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-if="IsAdmin == true || rpt.ProfileId == TeamMemberId ">
+                                <tr class="report_table_td" style="background-color:#f6f6f6">                                        
+                                    <td class="td_padding" width="23%">
+                                        <span class="soc_name" style="float:left;">
+                                            <a data-toggle="collapse" data-target="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
+                                                <img src="{{rpt.ProfilePic==null && '../../../Content/img/user2.jpg' || replaceTilda(rpt.ProfilePic)}}" alt="User Image" class="img-circle" style="width:40px; height:40px;">
+                                            </a>
+                                            <a data-toggle="collapse" data-target="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">{{rpt.ProfileName}} </a>
+                                        </span>
+                                        <a data-toggle="collapse" data-target="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
+                                            <i class="fa fa-caret-down arr_down"></i>
+                                        </a>
+                                    </td>
+                                    <!--<td class="td_padding" align="center" style="width: 9.5%;">{{rpt.TotalPosts}}</td>-->
+                                    <td class="td_padding" align="center" style="width: 10%;">{{rpt.CommentCount}}</td>                                        
+                                    <td class="td_padding" align="center" style="width: 10%;">{{rpt.ChatCount}}</td>
+                                    <!--<td class="td_padding" align="center" style="width: 9.5%;">{{rpt.ReplyThreadSize}}</td>-->
+                                    <td ng-if="rpt.CommentCount > 0 || rpt.ChatCount > 0" class="td_padding" align="center" style="width: 9.5%;">{{rpt.AvgReplyTime}}</td>
+                                    <td ng-if="rpt.CommentCount == 0 && rpt.ChatCount == 0" class="td_padding" align="center" style="width: 9.5%;">0 hrs</td>
+                                    <!--<td class="td_padding" align="center" style="width: 9.5%;">{{rpt.MedianReplyTime}}</td>-->                                        
+                                    <td ng-if="rpt.CommentCount > 0 || rpt.ChatCount > 0" class="td_padding" align="center" style="width: 9.5%;">{{rpt.QuickestReply}}</td> 
+                                    <td ng-if="rpt.CommentCount == 0 && rpt.ChatCount == 0" class="td_padding" align="center" style="width: 9.5%;">0 mins</td>                                         
+                                    <td ng-if="rpt.CommentCount > 0 || rpt.ChatCount > 0" class="td_padding" align="center" style="width: 9.5%;">{{rpt.SlowestReply}}</td>
+                                    <td ng-if="rpt.CommentCount == 0 && rpt.ChatCount == 0" class="td_padding" align="center" style="width: 9.5%;">0 mins</td>
+                                </tr>
+                                <tr ng-if="rpt.ProfilesReport.length > 0">
+                                    <td colspan="9">
+                                        <Div class="collapse" id="collapse-{{$index}}">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                                <tr class="report_table_td" ng-repeat="profiles in rpt.ProfilesReport">
+                                                    <td class="td_padding" style="padding-left:20px !important" width="23%">
+                                                        <img src="{{profiles.ProfilePic}}" alt="" border="0" style="width:42px;height:42px;" class="img_con">
+                                                        <span class="soc_name">
+                                                            <p class="user_names">{{profiles.ProfileName}}</p>
+                                                            <p>
+                                                                <img ng-if="profiles.ProfileType == 'FB_PROFILE' || profiles.ProfileType == 'FB_PAGE'" src="../../../Content/images/fb_ico16.png" alt="facebook-profile">
+                                                                <img ng-if="profiles.ProfileType == 'TW'" src="../../../Content/images/t_ico16.png" alt="twitter-profile">
+                                                                <img ng-if="profiles.ProfileType == 'IC'" src="../../../Content/images/insta_ico16.png" alt="instagram-profile">
+                                                                <strong>@{{profiles.ProfileUserName}}</strong>
+                                                            </p>
+                                                        </span>
+                                                    </td>
+                                                    <!--<td class="td_padding" align="center" style="width: 9.5%;">
+                                                        {{profiles.TotalPosts}}
+                                                    </td>-->
+                                                    <!--<td ng-if="profiles.CommentCount > 0" class="td_padding" align="center" style="width: 9.5%;">
+                                                        <a href="javascript:" ng-click="OpenReplies(rpt.ProfileId, profiles.ProfileId,profiles.ProfileType,'CM')">{{profiles.CommentCount}}</a>
+                                                    </td>-->
+                                                    <td class="td_padding" align="center" style="width: 9.5%;">
+                                                        {{profiles.CommentCount}}
+                                                    </td>
+                                                    <!--<td ng-if="profiles.ChatCount > 0" class="td_padding" align="center" style="width: 9.5%;">
+                                                        <a href="javascript:" ng-click="OpenReplies(rpt.ProfileId, profiles.ProfileId,profiles.ProfileType,'MSG')">{{profiles.ChatCount}}</a>
+                                                    </td>-->
+                                                    <td class="td_padding" align="center" style="width: 9.5%;">
+                                                        {{profiles.ChatCount}}
+                                                    </td>
+                                                    <!--<td class="td_padding" align="center" style="width: 9.5%;">{{profiles.ReplyThreadSize}}</td>-->
+                                                    <td class="td_padding" align="center" style="width: 9.5%;">{{profiles.AvgReplyTime}}</td>
+                                                    <!--<td class="td_padding" align="center" style="width: 9.5%;">{{profiles.MedianReplyTime}}</td>-->
+                                                    <td class="td_padding" align="center" style="width: 9.5%;">
+                                                        {{profiles.QuickestReply}}
+                                                        <!--<a href="javascript:" ng-click="OpenQuickOrSlowReply(rpt.ProfileId, profiles.ProfileId,profiles.ProfileType,'Q')">{{profiles.QuickestReply}}</a>-->
+                                                    </td>
+                                                    <td class="td_padding" align="center" style="width: 9.5%;">
+                                                        {{profiles.SlowestReply}}
+                                                        <!--<a href="javascript:" ng-click="OpenQuickOrSlowReply(rpt.ProfileId, profiles.ProfileId,profiles.ProfileType,'S')">{{profiles.SlowestReply}}</a>-->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </Div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-12 report_headings top_grp_marg">
+                        <highchart config="TeamOutboundChartConfig" class="span10"></highchart>
+                    </div>
+
+                    <!--<div class="col-md-12 zro text-left gridHeading">
+                        <div class="teams" style="width:100%">
+                            <div class="text-left gridHeading right_cornered" ng-repeat="rpt in TeamAndProfileReport" style="margin-top:20px !important; padding:15px !important;float:left;width:48%;margin-right: 15px !important;">
+                                <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                                    <tr>
+                                        <td valign="middle">
+                                            <h1 ng-if="rpt.ChangeInResponse > 0" style="text-align:left !important;">The number of replies increased by</h1>
+                                            <h1 ng-if="rpt.ChangeInResponse <= 0" style="text-align:left !important;">The number of replies decreased by</h1>
+                                            <span class="soc_name">
+                                                <img src="{{rpt.ProfilePic==null && '/Content/img/user2.jpg' || replaceTilda(rpt.ProfilePic)}}" alt="User Image" class="img-circle" style="width:40px; height:40px;"> {{rpt.ProfileName}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <h2 class="h2_postive" ng-if="rpt.ChangeInResponse > 0">
+                                                <strong>
+                                                    <i class="fa fa-arrow-up"></i>
+                                                    {{rpt.ChangeInResponse | number:2 | positive}}%
+                                                </strong>
+                                            </h2>
+                                            <h2 class="h2_negative" ng-if="rpt.ChangeInResponse <= 0">
+                                                <strong>
+                                                    <i class ="fa fa-arrow-down"></i>
+                                                    {{rpt.ChangeInResponse | number:2 | positive}}%
+                                                </strong>
+                                            </h2>
+                                            <h3>Since last {{dateDifference}} days</h3>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>                           
+                        </div>
+                    </div>-->
+
+                    <div class="col-md-6 report_headings top_grp_marg">
+                        <div id="TeamOutboundFirstShiftConfig" class="span10"></div>
+                    </div>
+
+                    <div class="col-md-6 report_headings top_grp_marg">
+                        <div id="TeamOutboundSecondShiftConfig" class="span10"></div>
+                    </div>
+
+                    <div class="col-md-12 report_headings top_grp_marg">
+                        <div id="TeamOutboundThirdShiftConfig" class="span10"></div>
+                    </div>
+
+                    <div class="col-md-12 report_headings top_grp_marg">
+                        <!--<h1>Agent Activities Overview</h1><br>-->
+                        <div ng-if="IsAdmin == true" class="col-md-8"></div>
+                        <div ng-if="IsAdmin == true"  id="multisel" class="col-md-4" style="margin-bottom:10px !important;">
+                            <div class='sel_menu' ng-dropdown-multiselect="" options="TeamMembers" events="teamEventListeners"
+                                 selected-model="TeamMemberModel" extra-settings="multiSelectSettings"
+                                 checkboxes="true" translation-texts="example5customTexts"></div>
+                        </div>
+                        <div id="TeamActivitieBreakdownChartConfig" class="span10"></div>
+                    </div>
+
+                    <div class="col-md-12 report_headings top_grp_marg">
+                        <highchart config="TeamActivitiesEvolutionChartConfig" class="span10"></highchart>
+                    </div>
+
+                        <!--<div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <highchart ng-if="TeamAndProfileReport.length > 0" id="chart1" config="TeamAndProfileMediaWiseChartConfig" class="span10"></highchart>
+                        </div>-->
+                        <!-- Team & Profile -->
+
+                    <!--<div class="col-md-12 report_headings top_grp_marg top_liner">
+                        <h1>Publishing Activity Overview</h1><br>
+
+                        <div class="col-md-12 report_headings top_grp_marg">
+                            <highchart ng-if="PublishedAndTeamReport.length > 0" id="chart1" config="PublisherChartConfig" class="span10"></highchart>
+                        </div>
+
+                        <div class="col-md-12 report_headings top_grp_marg">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                <thead>
+                                    <tr class="report_table_td">
+                                        <th width="27%" class="td_padding">Team Member</th>
+                                        <th width="10%" class="td_padding" align="center">Total Posts</th>
+                                        <th width="9%" class="td_padding" align="center">Daily Avg.</th>
+                                        <th width="9%" class="td_padding" align="center">Replies</th>
+                                        <th class="td_padding" colspan="2">Reply to Post Ratio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="report_table_td" ng-repeat="rpt in PublishedAndTeamReport">
+                                        <td class="td_padding">
+                                            <span class="soc_name">
+                                                <img src="../../../Content/img/user2.jpg" alt="User Image" class="img-circle" style="width: 40px; height: 40px;">
+                                                {{rpt.ProfileName}}
+                                        </td>
+                                        <td class="td_padding" align="center">{{rpt.TotalPosts}}</td>
+                                        <td class="td_padding" align="center">{{rpt.DailyAvg}}</td>
+                                        <td class="td_padding" align="center">{{rpt.Replies}}</td>
+                                        <td width="34%" align="center" class="td_padding">
+                                            <div class="progress-group">
+                                                <span class="progress-text">&nbsp;</span>
+                                                <span class="progress-number"><b>{{rpt.ReplyToPostRatio}}%</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar {{PerformanceLevel(rpt.ReplyToPostRatio)}}" style="width: {{rpt.ReplyToPostRatio}}%; max-width:100%;"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div> --><!-- Publisher -->
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
+<!--<script>
+    $(document).ready(function () {
+        //var currentDate = new Date();
+
+        $('#dateFrom').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('TeamReportController')).scope().GetTeamData();
+        });
+        $('#dateTo').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('TeamReportController')).scope().GetTeamData();
+        });
+
+     });
+</script>-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var today = new Date();
+        var last90Days = new Date();
+        last90Days.setDate(today.getDate() - 90);
+        //$('#ctrlanalyticdatepicker').daterangepicker({ startDate: last90Days, minDate: true, maxDate: true });//startDate: last90Days, minDate: true, maxDate: true
+        $('#ctrlanalyticdatepicker').daterangepicker();
+        $('#btnApplyDateRange').bind('click', function () {
+            var startDate = $('input:text[name=daterangepicker_start]').val();
+            var endDate = $('input:text[name=daterangepicker_end]').val();
+            var startDateArray = startDate.split('/');
+            var endDateArray = endDate.split('/');
+
+            if (parseInt(startDateArray[0]) > parseInt(endDateArray[0])) {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            else if (parseInt(startDateArray[0]) == parseInt(endDateArray[0]) && parseInt(startDateArray[1]) > parseInt(endDateArray[1])) {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+
+        });
+    });
+
+</script>

@@ -1,0 +1,28 @@
+﻿
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-retweet"></i> EMAIL MESSAGE</h4>
+    </div>
+    <div class="modal-body" >
+        <div style="margin-bottom:8px;"><strong>From:</strong> {{FromUser}}</div>
+        <div style="margin-bottom:8px;">
+            <input name="" type="text" class="form-control input_border_min input_login_h" placeholder="To" ng-model="ToUserEmail">
+        </div>
+        <div style="margin-bottom:8px;">
+            <input name="" type="text" class="form-control input_border_min input_login_h" placeholder="Subject" ng-model="EmailSubject">
+        </div>
+        <div>
+            <textarea name="" cols="" rows="10" class="form-control input_border_min input_login_h" ng-model="EmailBody" style="margin-bottom:8px" aria-describedby="sizing-addon2">lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p </textarea>
+            <div style="float:right"><strong><em>127</em></strong></div>
+        </div>
+
+
+        <div style="margin-top:20px">
+            <button type="button" class="btn btn-primary button_round  btn_height3" ng-click="EmailTweets()">SEND</button>
+            <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()">CANCEL</button>
+        </div>
+    </div>
+
+</div>

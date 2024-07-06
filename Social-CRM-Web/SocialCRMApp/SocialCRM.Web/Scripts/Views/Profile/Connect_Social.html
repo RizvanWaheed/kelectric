@@ -1,0 +1,74 @@
+﻿<div class="main_container2" ng-app="CRMApp" class="" ng-controller="ConnectSocialController">
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container main_box">
+            <div class="code-module">
+                <h1><i class="fa fa-link"></i> ATTACH A PROFILE</h1>
+                <h3>
+                    By adding the profile and clicking allow, you permit the application to access and publish content on your
+                    Social Network Account, on your behalf.
+                </h3><br>
+                <div style="display:inline-block; padding:20px; outline:hidden;">
+                    <a ng-click="ConnectFacebookPage($event)" class="hvr-bounce-in">
+                        <img src="/Content/img/fb_c.png">
+                        <br>FACEBOOK
+                    </a><br><br>
+                    <!--<button type="button" ng-click="ConnectFacebook()"  class="btn btn-default button_round "><i class="fa fa-link"></i> Connect</button>-->
+                    <div class="dropdown">
+                        <button type="button" data-toggle="dropdown" class="btn btn-default button_round dropdown-toggle "><i class="fa fa-link"></i> Connect <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="ConnectFacebookPage($event)" href=""><img src="/Content/images/fb_page_ico.jpg" class="img_circle img_mar" alt="">Attach a Facebook Page</a></li>
+                            <li><a ng-click="ConnectFacebookProfile()" href=""><img src="/Content/images/fb_profile_ico.jpg" class="img_circle img_mar" alt="">Attach a Facebook Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="display:inline-block; padding:20px;">
+                    <a ng-click="ConnectTwitter()" class="hvr-bounce-in">
+                        <img src="/Content/img/twit_c.png"><br>
+                        TWITTER
+                    </a><br><br>
+                    <button type="button" ng-click="ConnectTwitter()" class="btn btn-default button_round "><i class="fa fa-link"></i> Connect</button>
+                </div>
+
+                <div style="display:inline-block; padding:20px; display:none!important;">
+                    <a ng-click="ConnectLinkedinPage()" class="hvr-bounce-in">
+                        <img src="/Content/img/Instagram_c.png"><br>
+                        LINKEDIN
+                    </a><br><br>
+                    <!--<button type="button" ng-click="ConnectLinkedin()" class="btn btn-default button_round "><i class="fa fa-link"></i> Connect</button>-->
+                    <div class="dropdown">
+                        <button type="button" data-toggle="dropdown" class="btn btn-default button_round dropdown-toggle "><i class="fa fa-link"></i> Connect <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="ConnectLinkedinPage()" href=""><img src="/Content/images/in_page_ico.png" class="img_circle img_mar" alt=""> Attach a Company Page</a></li>
+                            <li><a ng-click="ConnectLinkedinProfile()" href=""><img src="/Content/images/fb_profile_ico.jpg" class="img_circle img_mar" alt=""> Attach a Personal Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="display:inline-block; padding:20px;">
+                    <a ng-click="ConnectInstagram()" class="hvr-bounce-in">
+                        <img src="/Content/images/instagram_c.png"><br>
+                        INSTAGRAM
+                    </a><br><br>
+                    <button type="button" ng-click="ConnectInstagram()" class="btn btn-default button_round "><i class="fa fa-link"></i> Connect</button>
+                </div>
+                <div style="display:inline-block; padding:20px;">
+                    <a ng-click="ConnectGoogle()" class="hvr-bounce-in">
+                        <img src="/Content/img/ana_c.png"><br>
+                        ANALYTICS
+                    </a><br><br>
+                    <button type="button" ng-click="ConnectGoogle()" class="btn btn-default button_round "><i class="fa fa-link"></i> Connect</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="container footer_box">© 2016, All Rights Reserved.</div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

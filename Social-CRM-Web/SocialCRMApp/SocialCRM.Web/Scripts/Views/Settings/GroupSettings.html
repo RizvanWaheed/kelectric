@@ -1,0 +1,185 @@
+﻿<div class="wrapper">
+ 
+    <script type="text/javascript">
+        $(function () {
+            $('#grplists').slimscroll({
+                height: '485px',
+                disableFadeOut: true
+            });
+            $('#soclists2').slimscroll({
+                height: '168px',
+                disableFadeOut: true
+            });
+
+            $('#ulists').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .thumb {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+
+    <form name="myForm">
+        <div ng-app="CRMApp" class="" ng-controller="GroupSettingsController">
+            <div class="content-wrapper" style="min-height:650px !important;">
+                <!-- Content Header (Page header) -->
+                <!-- header starts here -->
+                <div class="container-fluid page_name">
+                    <div class="col-sm-10"><i class="fa fa-folder-open"></i> Group Settings</div>
+
+                </div>
+                <!-- header ends here -->
+                <!-- misc & reviews content starts here -->
+                <div class="container-fluid reviews_Section ">
+                    <div class="col-sm-12 " style="padding:0 !important">
+                        <h1><span><i class="fa fa-building"></i></span> {{ CompanyName | uppercase}}</h1>
+                        <p>My Company</p>
+                    </div>
+
+                </div>
+                <!-- misc & reviews content starts here -->
+
+
+                <div class="container-fluid padding_set">
+
+                    <div class="col-md-6">
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <div class="col-md-6"><h3 class="box-title"><i class="fa fa-folder-open"></i> GROUPS <span>({{ GroupCount }})</span></h3></div>
+                                <div class="col-md-4">
+                                    <div class="has-feedback">
+                                        <input type="text" class="form-control button_round input-sm" placeholder="Search group" ng-model="searchText">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+
+                                    </div>
+                                </div> 
+                                <div class="col-md-2"><a href="#/GroupSettings/groupAdd?companyid={{CompanyId}}" class="btn btn-warning button_round btn_height2"><i class="fa fa-plus"></i></a></div>
+                               <!-- <a href="#/GroupSettings/groupAdd" class="btn btn-default">POPUP!</a>-->
+                                
+                               
+
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="box-body no-padding" id="grplists">
+                                    <ul class="users-list clearfix">
+                                        <li ng-repeat="x in groups  | filter:searchText">
+                                            <a href="" data-ng-click="GetGroupDetailsClick(x.GroupId)" >
+                                                <img src="/Content/img/grp_pic.jpg" alt="User Image">
+                                            </a>
+                                            <a href=""  class="users-list-name" data-ng-click="GetGroupDetailsClick(x.GroupId)">{{x.GroupName}}</a>
+                                            <span class="users-list-date">
+                                                <a href="" data-ng-click="GetGroupDetailsClick(x.GroupId)">Profiles: {{x.TotalProfiles}}</a></span>
+
+
+                                         
+                                        </li>
+                                        <li><a href="#/GroupSettings/groupAdd?companyid={{CompanyId}}" data-toggle="modal" data-target="#newGroupModal">
+    <img src="/Content/img/user_grp.jpg" alt="User Image">
+</a>
+                                            <a class="users-list-name" href="#/GroupSettings/groupAdd?companyid={{CompanyId}}">Create New</a>
+                                        <span class="users-list-date"><a href="#/GroupSettings/groupAdd?companyid={{CompanyId}}">Group</a></span></li>
+                                       
+                                    </ul><!-- /.users-list -->
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-default">
+                            <div class="box-header with-border" style=" background-color:#078b8d !important;">
+                                <div class="col-md-3"><img class="img-circle img-responsive" src="/Content/img/grp_pic128.jpg" alt="User Avatar" style="float:left"></div>
+                                <div class="col-md-7 box_header2_txt">
+                                    <h1>{{ GroupName }}</h1>
+                                    <h2>
+                                        Profiles: {{ TotalProfiles }}<br>
+                                        Total Members: {{ TotalMembers }}
+                                    </h2>
+                                </div>
+                            </div><!-- /.box-header -->
+
+                            <div class="box-header with-border">
+                                <div class="col-sm-8">
+                                    <span class="heading_subb">Profiles In:</span><br>
+                                    <i class="fa fa-folder-open icon_col"></i> <span class="heading_main">{{ GroupName }}</span>
+                                </div>
+                                <!--<div class="col-sm-3 text-right" style="margin-top:10px;"><a href="#/GroupSettings/profileAdd?groupid={{GroupId}}&companyid={{CompanyId}}" >+ Add Profile</a></div>-->
+                                <div class="col-sm-4 text-right" style="margin-top:10px;">
+                                    <a href="#/GroupSettings/profileAdd?groupid={{GroupId}}&companyid={{CompanyId}}">+ Add New Profile</a><br>
+                                    <a href="#/GroupSettings/ExistingProfile?groupid={{GroupId}}&companyid={{CompanyId}}">+ Add Existing Profile</a>
+                                </div>
+                            </div>
+                            <div class="box-body" id="soclists2">
+                                <table class="table table-condensed">
+
+                                    <tr id="ConnectedProfile{{x.ProfileId}}" ng-repeat="x in Connected_Profiles">
+                                        <td width="82%" >
+                                            <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                {{x.ProfileName}}<br>
+                                                <p>
+                                                    <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}"
+                                                         alt="{{x.ProfileTypeId == '1' && 'facebook-profile' || (x.ProfileTypeId=='4'&& 'twitter-profile' || (x.ProfileType=='3'&&'twitter-profile'|| (x.ProfileType=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||''))))}}">
+                                                    {{ x.AccountName }}
+                                                </p>
+                                            </span>
+                                        </td>
+
+
+                                        <td width="8%"><a style="cursor:pointer;" id="{{x.ProfileId}}profile" confirmed-click="RemoveProfileFromGroup(x.ProfileId,x.CompanyId,x.ProfileTypeId,x.IsPage)"
+                       ng-confirm-click="Would you like to remove profile from group?" ><i class="fa fa-trash" style="margin-top:13px;"></i></a></td>
+                                    </tr>
+                              
+                                    <!--data-ng-click="RemoveProfileFromGroup(x.ProfileId,x.CompanyId)"-->
+                                  
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <div class="col-sm-8">
+                                    <span class="heading_subb">Members In:</span><br>
+                                    <i class="fa fa-folder-open icon_col"></i> <span class="heading_main">{{ GroupName }}</span>
+                                </div>
+                                <!--<div class="col-sm-3 text-right" style="margin-top:10px;"><a href="#/GroupSettings/userAdd?groupid={{GroupId}}&companyid={{CompanyId}}" >+ Add Member</a></div>-->
+                                <div class="col-sm-4 text-right" style="margin-top:10px;">
+                                    <a href="#/GroupSettings/userAdd?groupid={{GroupId}}&companyid={{CompanyId}}">+ Add New Member</a><br>
+                                    <a href="#/GroupSettings/ExistingMember?groupid={{GroupId}}&companyid={{CompanyId}}">+ Add Existing Team Member</a>
+                                </div>
+                             </div>
+                            <div class="box-body no-padding" id="ulists">
+                                <ul class="users-list clearfix" >
+                                  
+                                </ul><!-- /.users-list -->
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div style="clear:both;"><button  ng-click="AddGroup()"  type="button" class="btn btn-primary button_round  btn_height3" style="margin-left:15px;">SAVE CHANGES</button> <button type="button" class="btn btn-cancel button_round  btn_height3"><i class="fa fa-remove"></i> CANCEL</button></div>
+
+
+                </div>
+
+            </div>
+            </div>
+        </form>
+    </div>
+

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e9a7ebe29c4f46f79d75e7e4ee027e91" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="SocialCRMModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.AccessLevel" Width="1.5" PointX="0.75" PointY="22.125" />
+        <EntityTypeShape EntityType="SocialCRMModel.AnalyticCompanyGroup" Width="1.5" PointX="7.5" PointY="37.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.AnalyticToken" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.ArchivedUnifiedInbox" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.AspNetRole" Width="1.5" PointX="0.75" PointY="41.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="53.625" />
+        <EntityTypeShape EntityType="SocialCRMModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="51.125" />
+        <EntityTypeShape EntityType="SocialCRMModel.AspNetUser" Width="1.5" PointX="3" PointY="39.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.BrandKeyword" Width="1.5" PointX="7.5" PointY="45.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.BrandKeywordCategory" Width="1.5" PointX="5.25" PointY="47.375" />
+        <EntityTypeShape EntityType="SocialCRMModel.CommentsFB" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.Company" Width="1.5" PointX="3" PointY="32.375" />
+        <EntityTypeShape EntityType="SocialCRMModel.CompanyType" Width="1.5" PointX="3" PointY="37.625" />
+        <EntityTypeShape EntityType="SocialCRMModel.CrisisReportData" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.CustomerProfileType" Width="1.5" PointX="18" PointY="54.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.CustomerSocialProfile" Width="1.5" PointX="13.5" PointY="54" />
+        <EntityTypeShape EntityType="SocialCRMModel.CustomerWarnBanReason" Width="1.5" PointX="15.75" PointY="51.625" />
+        <EntityTypeShape EntityType="SocialCRMModel.FeedlyKeyword" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.FeedlyMinnedData" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.FeedsMediaAttachment" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.FeedsSentiment" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="SocialCRMModel.Group" Width="1.5" PointX="5.25" PointY="42.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.InstagramComment" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.InstagramMinnedData" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.InstagramUserFollowHistory" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.KEArea" Width="1.5" PointX="16.5" PointY="60.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.KECustomer" Width="1.5" PointX="18.75" PointY="57.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.KERegion" Width="1.5" PointX="14.25" PointY="60.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.MembershipAccessLevel" Width="1.5" PointX="3" PointY="22" />
+        <EntityTypeShape EntityType="SocialCRMModel.MembershipPermission" Width="1.5" PointX="3" PointY="28" />
+        <EntityTypeShape EntityType="SocialCRMModel.MembershipRestriction" Width="1.5" PointX="3" PointY="25" />
+        <EntityTypeShape EntityType="SocialCRMModel.MembershipRestrictionType" Width="1.5" PointX="0.75" PointY="28.125" />
+        <EntityTypeShape EntityType="SocialCRMModel.MessagePostingTime" Width="1.5" PointX="20.25" PointY="40.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.MessagesTwitter" Width="1.5" PointX="10.5" PointY="24.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.PageChatsFB" Width="1.5" PointX="13.5" PointY="26.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.PostsFB" Width="1.5" PointX="10.5" PointY="30.125" />
+        <EntityTypeShape EntityType="SocialCRMModel.PostsTwitter" Width="1.5" PointX="10.5" PointY="18.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.PostUserStatusFB" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.PostUserStatusInstagram" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.PostUserStatusTwitter" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.Premission" Width="1.5" PointX="0.75" PointY="31.125" />
+        <EntityTypeShape EntityType="SocialCRMModel.Profile" Width="1.5" PointX="8.25" PointY="21.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfileComapnyGroup" Width="1.5" PointX="10.5" PointY="37.5" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfileFeedsTag" Width="1.5" PointX="9.75" PointY="46.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfilePage" Width="1.5" PointX="8.25" PointY="32.375" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfileQueueTime" Width="1.5" PointX="15" PointY="39.375" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfilesHistory" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfileStatus" Width="1.5" PointX="15.75" PointY="49.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfileToCustSocialProfile" Width="1.5" PointX="15.75" PointY="54.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.ProfileType" Width="1.5" PointX="6" PointY="23" />
+        <EntityTypeShape EntityType="SocialCRMModel.PublisherUploadedFile" Width="1.5" PointX="18" PointY="32.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.QueuedMessageProfile" Width="1.5" PointX="12.75" PointY="38.125" />
+        <EntityTypeShape EntityType="SocialCRMModel.QueuePostingTime" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.QueueWaitingMessage" Width="1.5" PointX="15" PointY="36.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.SampleReply" Width="1.5" PointX="13.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.ScheduledMessage" Width="1.5" PointX="15.75" PointY="32.625" />
+        <EntityTypeShape EntityType="SocialCRMModel.ScheduledMessageProfile" Width="1.5" PointX="18" PointY="40.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.SearchWordPattern" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.Sentiment" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialActivity" Width="1.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialActivityType" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialMediaUpdate" Width="1.5" PointX="5.25" PointY="39.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialMediaUsersUpdateReceiver" Width="1.5" PointX="5.25" PointY="32" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialMediaUserType" Width="1.5" PointX="15.75" PointY="57.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialProfileContactComment" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.SocialProfileContactInfo" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="SocialCRMModel.SubscriberType" Width="1.5" PointX="0.75" PointY="24.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.TaskAssignee" Width="1.5" PointX="15" PointY="46" />
+        <EntityTypeShape EntityType="SocialCRMModel.TaskComment" Width="1.5" PointX="15" PointY="67.375" />
+        <EntityTypeShape EntityType="SocialCRMModel.TaskCompleted" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.TaskLog" Width="1.5" PointX="15" PointY="64" />
+        <EntityTypeShape EntityType="SocialCRMModel.TaskManager" Width="1.5" PointX="12.75" PointY="48" />
+        <EntityTypeShape EntityType="SocialCRMModel.Team" Width="1.5" PointX="12.75" PointY="41.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.UnifiedDeckColumnSetting" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.UserAccessLevel" Width="1.5" PointX="15" PointY="43.25" />
+        <EntityTypeShape EntityType="SocialCRMModel.UserAccessToken" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.UserAnalyticAccount" Width="1.5" PointX="5.25" PointY="27.625" />
+        <EntityTypeShape EntityType="SocialCRMModel.UserCompany" Width="1.5" PointX="5.25" PointY="36" />
+        <EntityTypeShape EntityType="SocialCRMModel.UserNotification" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.UserNotificationSetting" Width="1.5" PointX="7.5" PointY="42" />
+        <EntityTypeShape EntityType="SocialCRMModel.WarnBanCustomerFeed" Width="1.5" PointX="20.25" PointY="44.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.WarnBanCustomer" Width="1.5" PointX="18" PointY="44.875" />
+        <EntityTypeShape EntityType="SocialCRMModel.WarnBanCustomersAttachment" Width="1.5" PointX="20.25" PointY="47.5" />
+        <AssociationConnector Association="SocialCRMModel.FK_MembershipAccessLevels_AccessLevel" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserAccessLevel_AccessLevel" />
+        <AssociationConnector Association="SocialCRMModel.FK_AnalyticCompanyGroup_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_AnalyticCompanyGroup_Group" />
+        <AssociationConnector Association="SocialCRMModel.FK_AnalyticCompanyGroup_UserAnalyticAccount" />
+        <AssociationConnector Association="SocialCRMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SocialCRMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SocialCRMModel.FK_Team_AspNetUsers" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserCompany_AspNetUsers" />
+        <AssociationConnector Association="SocialCRMModel.FK_BrandKeyword_BrandKeywordCategory" />
+        <AssociationConnector Association="SocialCRMModel.FK_BrandKeyword_Group" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileFeedsTags_BrandKeyword" />
+        <AssociationConnector Association="SocialCRMModel.FK_Company_SubscriberType" />
+        <AssociationConnector Association="SocialCRMModel.FK_Group_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileComapnyGroup_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_SocialMediaUpdates_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_SocialMediaUsersUpdateReceivers_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_Team_Company1" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserCompany_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserNotificationSetting_Company" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserCompany_CompanyType" />
+        <AssociationConnector Association="SocialCRMModel.FK_CustomerProfileType_ProfileToCustSocialProfile" />
+        <AssociationConnector Association="SocialCRMModel.FK_CustomerProfileType_SocialMediaUserTypes" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileToCustSocialProfile_CustomerSocialProfile" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomers_CustomerWarnBanReasons" />
+        <AssociationConnector Association="SocialCRMModel.FK_FeedsSentiment_Sentiment" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileComapnyGroup_Group" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserNotificationSetting_Group" />
+        <AssociationConnector Association="SocialCRMModel.FK_KEArea_KERegion" />
+        <AssociationConnector Association="SocialCRMModel.FK_KECustomer_KEArea" />
+        <AssociationConnector Association="SocialCRMModel.FK_MembershipAccessLevels_SubscriberType" />
+        <AssociationConnector Association="SocialCRMModel.FK_MembershipPermissions_Premissions" />
+        <AssociationConnector Association="SocialCRMModel.FK_MembershipPermissions_SubscriberType" />
+        <AssociationConnector Association="SocialCRMModel.FK_MembershipRestrictions_MembershipRestrictionType" />
+        <AssociationConnector Association="SocialCRMModel.FK_MembershipRestrictions_SubscriberType" />
+        <AssociationConnector Association="SocialCRMModel.FK_MessagePostingTime_ScheduledMessageProfile" />
+        <AssociationConnector Association="SocialCRMModel.FK_MessagesTwitter_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_PageChatsFB_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_PageChatsFB_ProfilePage" />
+        <AssociationConnector Association="SocialCRMModel.FK_PostsFB_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_PostsFB_ProfilePage" />
+        <AssociationConnector Association="SocialCRMModel.FK_PostsTwitter_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_Profile_ProfileType" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileComapnyGroup_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileCustomerProfiles_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfilePage_Profile" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileComapnyGroup_ProfilePage" />
+        <AssociationConnector Association="SocialCRMModel.FK_QueuedMessageProfile_ProfileComapnyGroup" />
+        <AssociationConnector Association="SocialCRMModel.FK_ScheduledMessageProfile_ProfileComapnyGroup" />
+        <AssociationConnector Association="SocialCRMModel.FK_ProfileQueueTime_QueuedMessageProfile" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomers_ProfileStatus" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomers_ProfileToCustSocialProfile" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomers_ProfileType" />
+        <AssociationConnector Association="SocialCRMModel.FK_PublisherUploadedFiles_ScheduledMessage" />
+        <AssociationConnector Association="SocialCRMModel.FK_QueueWaitingMessages_QueuedMessageProfile" />
+        <AssociationConnector Association="SocialCRMModel.FK_ScheduledMessageProfile_ScheduledMessage" />
+        <AssociationConnector Association="SocialCRMModel.FK_ScheduledMessageProfile_Team" />
+        <AssociationConnector Association="SocialCRMModel.FK_SocialProfileContactComments_SocialProfileContactInfo" />
+        <AssociationConnector Association="SocialCRMModel.FK_TaskAssignee_TaskManager" />
+        <AssociationConnector Association="SocialCRMModel.FK_TaskAssignee_Team" />
+        <AssociationConnector Association="SocialCRMModel.FK_TaskComment_TaskManager" />
+        <AssociationConnector Association="SocialCRMModel.FK_TaskLog_TaskManager" />
+        <AssociationConnector Association="SocialCRMModel.FK_UserAccessLevel_Team" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomers_Team" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomerFeed_WarnBanCustomers" />
+        <AssociationConnector Association="SocialCRMModel.FK_WarnBanCustomersAttachment_WarnBanCustomers" />
+        <AssociationConnector Association="SocialCRMModel.AnalyticManagement" />
+        <AssociationConnector Association="SocialCRMModel.AspNetUserRoles" />
+        <AssociationConnector Association="SocialCRMModel.CustToCustSocialProfile" />
+        <AssociationConnector Association="SocialCRMModel.ProfileManagment" />
+        <AssociationConnector Association="SocialCRMModel.TeamGroup" />
+        <AssociationConnector Association="SocialCRMModel.UserPermission" />
+        <EntityTypeShape EntityType="SocialCRMModel.LogCode" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.Log" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMModel.AgentPerformanceReport" Width="1.5" PointX="5.375" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

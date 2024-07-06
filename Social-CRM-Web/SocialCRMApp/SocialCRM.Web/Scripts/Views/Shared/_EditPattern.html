@@ -1,0 +1,23 @@
+﻿<form name="myForm">
+    <!-- Modal for retweet-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title" ng-if="Type == 'Add'"><i class="fa fa-pencil"></i> ADD PATTERN</h4>
+            <h4 class="modal-title" ng-if="Type == 'Edit'"><i class="fa fa-pencil"></i> EDIT PATTERN</h4>
+        </div>
+        <div class="modal-body">
+            <div style="margin-bottom:8px;">
+                <label>Pattern <span style="color:red">(Multiple pattern must be space separated)</span></label>
+                <input type="text" class="form-control input_border_min input_login_h" ng-model="RegexFor" name="RegexFor" aria-describedby="sizing-addon2" placeholder="Enter Pattern">
+                <label ng-show="Type == 'Edit'" style="margin-top:10px;">Regex</label>
+                <textarea name="Pattern" ng-show="Type == 'Edit'" ng-model="Pattern" cols="20" rows="10" class="form-control input_border_min input_login_h1" style="max-width:580px; margin-bottom:8px; margin-top:10px; " aria-describedby="sizing-addon2" placeholder="Enter Regex"> </textarea>
+            </div>
+            <p class="warnings_p f_warning" ng-show="myForm.RegexFor.$touched && myForm.RegexFor.$invalid">Pattern cannot be empty.</p>
+            <div style="margin-top:20px">
+                <button type="button" class="btn btn-primary button_round  btn_height3" ng-disabled="myForm.$invalid" ng-click="SavePattern()">SAVE</button>
+                <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+</form>

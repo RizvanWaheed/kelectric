@@ -1,0 +1,169 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="OutlookController" ng-controller="OutlookController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div ng-show="EmailItemType == 'Inbox'" class="col-sm-10"><img src="/Content/images/outlook_ico16.png" alt=""> Outlook- Inbox Items</div>
+            <div ng-show="EmailItemType == 'Sent'" class="col-sm-10"><img src="/Content/images/outlook_ico16.png" alt=""> Outlook- Sent Items</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="EmailList">
+                            <div class="col-sm-12 inbox_blk {{msg.newMsg}}" ng-repeat="msg in EmailDetails">
+                                <div class="outlook_social_icos"></div>
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <img src="/Content/images/mail128.jpg" alt="User Image">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg">From: <a href="">{{msg.From}}</a> on {{msg.Date}}</div>
+                                    <div class="inbox_blk_msg">
+                                        To:  <a href="">{{msg.To[0]}}</a>; <span ng-if="msg.To.length > 1">
+                                            <a href="" title="See More To: Recepients" data-target="#tomail{{msg.Id}}" aria-expanded="true" data-toggle="collapse" class="fa fa-caret-down"></a>
+                                        </span>
+
+                                        <div id="tomail{{msg.Id}}" class="collapse">
+                                            <span ng-repeat="to in msg.To track by $index" ng-if="$index >= 1">
+                                                <a href="">{{to}}</a>;
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="inbox_blk_msg">
+                                        <div ng-if="msg.CC.length > 0">
+                                            CC: <a href="">{{msg.CC[0]}}</a>; <span ng-if="msg.CC.length > 1">
+                                                <a href="" title="See More CC: Recepients" data-target="#ccmail{{msg.Id}}" aria-expanded="true" data-toggle="collapse" class="fa fa-caret-down"></a>
+                                            </span>
+                                            <div id="ccmail{{msg.Id}}" class="collapse">
+                                                <span ng-repeat="cc in msg.CC track by $index" ng-if="$index >= 1">
+                                                    <a href="">{{cc}}</a>;
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inbox_blk_msg" style="margin-top:10px;"><strong>Subject: {{msg.Subject}}</strong></div>
+
+                                    <div class="inbox_blk_msg" ng-show="msg.Attachments.length > 0" style="margin-top:10px;">
+                                        Attachment(s): <span ng-repeat="att in msg.Attachments">
+                                            <a ng-show="EmailItemType == 'Inbox'" download href="/Content/img/email/inbox_attachment/{{msg.Formatted_Date}}/{{att.Name}}">
+                                                <!--<i class="fa fa-mail-reply-all" title="Reply All"></i>-->
+                                                {{att.Name}}&nbsp;|&nbsp;
+                                            </a>
+
+                                            <a ng-show="EmailItemType == 'Sent'" download href="/Content/img/email/sent_attachment/{{msg.Formatted_Date}}/{{att.Name}}">
+                                                <!--<i class="fa fa-mail-reply-all" title="Reply All"></i>-->
+                                                {{att.Name}}&nbsp;|&nbsp;
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="inbox_blk_msg">
+                                        <br />
+                                        <a href="" ng-hide="text[msg.Id] == 'show'" ng-click="setShowText('show', msg.Id, msg.Date)"><i class="fa fa-envelope"></i> View Mail Content</a>
+                                        <a href="" ng-hide="text[msg.Id] != 'show'" ng-click="setShowText('hide', msg.Id, msg.Date)"><i class="fa fa-envelope-open"></i> Hide Mail Content</a>
+                                    </div>
+                                    <div class="inbox_blk_msg" ng-show="text[msg.Id] == 'show'" ng-bind-html="trustedHtml(msg.Full_Text)">
+                                    </div>
+                                    <br />
+                                    <div class="inbox_blk_actions">
+                                        <a href="" ng-click="openOutlookReply(msg, 'ReplyTo')"><i class="fa fa-reply" title="Reply"></i></a>
+                                        <a href="" ng-click="openOutlookReply(msg, 'ReplyToAll')"><i class="fa fa-reply-all" title="Reply All"></i></a>
+                                        <a href="" ng-click="openOutlookReply(msg, 'Fwd')"><i class="fa fa-share" title="Forward"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="tw_profile">
+                        <div style="height:25px;"><strong>Email Profiles</strong></div>
+                        <table class="table table-condensed">
+                            <tbody>
+                                <tr ng-repeat="profile in Profiles" style="border-top:0 solid #ddd !important;">
+                                    <td width="91%" style="padding-top:10px;padding-bottom:10px;">
+                                        <img src="/Content/images/mail2.jpg" alt="" border="0" class="img_con img_height"><span class="soc_name">
+                                            <b>{{profile.Domain.split('.')[0]}}\{{profile.AccountName}}</b><br>
+                                            <!--<p><i class="fa fa-list-ul"></i> Inbox Items</p>-->
+                                            <p><a href="javascript:;" data-toggle="collapse" data-target="#profileExpand">Mail Options &nbsp;<i class="fa fa-sort-desc"></i></a></p>
+                                        </span>
+                                    </td>
+                                    <td width="9%" align="center"><input type="radio" ng-model="$parent.profileSelect" ng-change="selectedProfileChanged();" value="{{$index}}" name="Inbox"></td>
+                                </tr>
+                                <tr ng-show="Profiles.length>0">
+                                    <td colspan="2" width="100%" style="border:0 solid #ddd !important;">
+                                        <div id="profileExpand" class="collapse">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+
+                                                <tr>
+                                                    <td>
+                                                        <input name="EmailItemType" ng-model="EmailItemType" ng-change="optionChanged();" type="radio" value="Inbox"> Inbox
+                                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                        <input name="EmailItemType" ng-model="EmailItemType" ng-change="optionChanged();" type="radio" value="Sent"> Sent
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-show="GroupManager || IsPersonal == 'true'">
+                                    <td width="100%" height="30">&nbsp; <a href="" ng-click="openProfileConnect()"> <strong>+</strong> Connect a profile</a></td>
+                                    <!--<td width="9%"></td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ui-view="Footer"></div>
+
+<style>
+    .new_email {
+        background-color: #e7f5f6;
+        animation: new_email 0.5s 1;
+        -webkit-animation: new_email 0.5s 1;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+    }
+
+    a:link {
+        text-decoration: none !important;
+    }
+
+    a:visited {
+        color: #0563C1;
+    }
+
+    .img_height {
+        height: 32px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $('#EmailList').slimscroll({
+            height: '750px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#OutlookController').scope().profileLoadMoreFeeds();
+                angular.element('#OutlookController').scope().$apply();
+            }
+        });
+
+    });
+</script>

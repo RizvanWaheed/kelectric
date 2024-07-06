@@ -1,0 +1,21 @@
+﻿
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="Cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-info-circle"></i> {{ConfirmationTitle}}</h4>
+    </div>
+    <div class="modal-body">
+       
+
+        <div style="margin-bottom:8px;">{{ConfirmationMessage}}</div>
+
+
+        <div style="margin-top:20px">
+            <button type="button" class="btn btn-primary button_round  btn_height3" ng-click="Save()">YES</button>
+            <button ng-hide="hideButton" type="button" class="btn btn-primary button_round  btn_height3" ng-click="DeActivate()">NO</button>
+            <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="Cancel()">CANCEL</button>
+        </div>
+    </div>
+
+</div>

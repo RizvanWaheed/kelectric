@@ -1,0 +1,54 @@
+﻿
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-folder-open"></i> CREATE GROUP</h4>
+                </div>
+                <form name="myForm">
+                    <div class="modal-body">
+                        <div>GROUP NAME *
+                            <input type="text" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " name="groupname" ng-model="groupname" placeholder="Group Name" aria-describedby="sizing-addon2" required></div>
+                        <p class="warnings_p f_warning" ng-show="myForm.groupname.$touched && myForm.groupname.$invalid">Group Name cannot be empty</p>
+                        <div style="margin-top:20px">
+                            <i class="fa fa-folder-open icon_col"></i><span class="heading_main">Link the group to existing profile</span>
+                        </div>
+
+                        <div id="soclists" style="margin-top:10px;" slimscroll="slim">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th class="td_styler"><i class="fa fa-link"></i> PROFILE ACCESS</th>
+                                    <th style="width: 100px; text-align:center" class="td_styler"></th>
+                                </tr>
+                                <tr ng-repeat="x in Connected_Profiles">
+                                    <td>
+                                        <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                            {{x.ProfileName}}<br>
+                                            <p>
+                                                <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileTypeId=='3'&&linkedinIcon|| (x.ProfileTypeId=='5'&&fbIcon|| (x.ProfileTypeId=='6'&& instaIcon||( x.ProfileType='google'&&googleIcon ||'')))))}}"
+                                                     alt="{{x.ProfileTypeId == '1' && 'facebook-profile' || (x.ProfileTypeId=='4'&& 'twitter-profile' || (x.ProfileTypeId=='3'&&'twitter-profile'|| (x.ProfileTypeId=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||(x.ProfileTypeId=='6'&&'instagram-profile' ||'')))))}}">
+                                                {{ x.AccountName }}
+                                               
+                                            </p>
+                                        </span>
+                                    </td>
+
+                                    <td align="center" valign="middle">
+                                        <div class="squaredSmall" style="margin-top:13px;">
+                                            <input type="checkbox" value="None" id="{{x.CompositeId}}profile" name="check" ng-model="selected[x.CompositeId]"/>
+                                            <label for="{{x.CompositeId}}profile"  ></label>
+                                        </div>
+                                    </td>
+
+
+
+                                </tr>
+
+                            </table>
+                        </div>
+                        <p class=" warnings_p f_warning" ng-show="ErrorShow">{{ErrorMessage}}</p>
+                        <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;" 
+                                     ng-disabled="myForm.$invalid" ng-click="AddGroup()">
+    + CREATE GROUP
+</button></div>
+                    </div>
+                </form>

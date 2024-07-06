@@ -1,0 +1,199 @@
+﻿<div class="wrapper">
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+    </style>
+
+    <div ui-view="Header"></div>
+    <div ng-app="CRMApp" class="" id="AnalyticReportController" ng-controller="AnalyticReportController">
+        <div class="content-wrapper" style="min-height:650px !important;">
+            <!-- Content Header (Page header) -->
+            <!-- header starts here -->
+            <div class="container-fluid page_name">
+                <div class="col-sm-10"><i class="fa fa-building"></i> Google Analytics</div>
+
+            </div>
+            <!-- header ends here -->
+            <!-- misc & reviews content starts here -->
+            <!--<div class="container-fluid reviews_Section ">
+                <div class="col-sm-12 " style="padding:0 !important">
+                    <h1><span><i class="fa fa-building"></i></span> {{ BusinessName | uppercase}}</h1>
+                    <p>My Company</p>
+                </div>-->
+
+            <!--</div>-->
+            <!-- misc & reviews content starts here -->
+
+
+            <div class="container-fluid padding_set">
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="col-md-12">
+                                <div class="col-md-9 zro_left">
+                                    <h3 class="box-title" style="margin-top:10px !important; margin-bottom:5px !important;"><i class="fa fa-line-chart"></i> WEBSITE : {{AnalyticAccountName}}</h3>
+                                </div>
+                                <div class="col-md-3 text-right zro">
+                                    <select class="form-control input_border_min" ng-model="SelectedAnalyticAccounts" ng-change="selectedAnalyticAccount(SelectedAnalyticAccounts)" id="ddlanalyticAccounts"
+                                            data-ng-options="account.Id as (account.AccountName + ' - ' +  account.AccountUrl) for account in analyticAccountList track by account.Id"></select>
+                                    <!--<select name="" class="form-control input_border_min ">
+                                        <option>Choose Account</option>
+                                        <option>Read Notifications</option>
+                                        <option>Unread Notifications</option>
+                                    </select>-->
+                                </div>
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <div class="col-md-3 zro" style="line-height:35px; height:35px; margin-bottom:10px;"><strong>From:</strong> {{SearchFromDate}} <strong>To:</strong> {{SearchToDate}}</div>
+                                <div class="col-md-3 zro">
+                                    <div>
+                                        <div class="btn-group" style=" margin-bottom:10px;">
+                                            <button type="button" class="btn btn-default" ng-click="GetAnalytics(1)">15</button>
+                                            <button type="button" class="btn btn-default" ng-click="GetAnalytics(2)">30</button>
+                                            <button type="button" class="btn btn-default " ng-click="GetAnalytics(3)">60</button>
+                                            <button type="button" class="btn btn-default " ng-click="GetAnalytics(4)">90</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 zro demo" style="margin-bottom:10px !important;">
+                                    <input type="text" id="ctrlanalyticdatepicker" class="form-control">
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                </div>
+                                <div class="col-md-3 text-center" style=" height:35px;visibility:hidden;">
+                                    <a href="" ng-click="exportPdf()"><i class="fa fa-file-pdf-o"></i> Export to PDF</a> <br>
+                                    <a href="" ng-click="exportCsv()"><i class="fa fa-file-excel-o"></i> Export to CSV</a>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-9 zro" style="margin-top:60px !important;">
+                                    <!--<img src="/Content/images/example_graph.jpg">-->
+                                    <highchart id="chart1" config="chartConfig" class="span9"></highchart>
+                                </div> <div class="col-md-3 zro" style="margin-top:60px !important;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="16%" height="45">
+                                                <div class="squaredSmall" style="margin-top:10px;">
+                                                    <input type="checkbox" value="None" id="squaredSmal27" name="check" />
+                                                    <label for="squaredSmal27"></label>
+                                                </div>
+                                            </td>
+                                            <td width="84%"><i class="fa fa-globe"></i> Website Traffic <span class="txt_larg">{{websiteTraffic}}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="16%" height="45">
+                                                <div class="squaredSmall" style="margin-top:10px;">
+                                                    <input type="checkbox" value="None" id="squaredSmal28" name="check" />
+                                                    <label for="squaredSmal28"></label>
+                                                </div>
+                                            </td>
+                                            <td width="84%"><i class="fa fa-twitter"></i> Bounces <span class="txt_larg">{{websiteBounces}}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="16%" height="45">
+                                                <div class="squaredSmall" style="margin-top:10px;">
+                                                    <input type="checkbox" value="None" id="squaredSmal29" name="check" />
+                                                    <label for="squaredSmal29"></label>
+                                                </div>
+                                            </td>
+                                            <td width="84%"><i class="fa fa-rss "></i> Bounce Rate <span class="txt_larg">{{websiteBounceRate}} %</span></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 social_traffic" style="display:none;">
+                                <h1><i class="fa fa-globe"></i> SOCIAL TRAFFIC SOURCES</h1>
+                                <div class="progress-group">
+                                    <span class="progress-text">Facebook</span>
+                                    <span class="progress-number"><b>400</b></span>
+                                    <div class="progress sm">
+                                        <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                    </div>
+                                </div><!-- /.progress-group -->
+                                <div class="progress-group">
+                                    <span class="progress-text">Twitter</span>
+                                    <span class="progress-number"><b>310</b></span>
+                                    <div class="progress sm">
+                                        <div class="progress-bar progress-bar-red" style="width: 70%"></div>
+                                    </div>
+                                </div><!-- /.progress-group -->
+                                <div class="progress-group">
+                                    <span class="progress-text">Youtube</span>
+                                    <span class="progress-number"><b>280</b></span>
+                                    <div class="progress sm">
+                                        <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                                    </div>
+                                </div><!-- /.progress-group -->
+                                <div class="progress-group">
+                                    <span class="progress-text">Yelp</span>
+                                    <span class="progress-number"><b>200</b></span>
+                                    <div class="progress sm">
+                                        <div class="progress-bar progress-bar-yellow" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <span class="progress-text">Blogs</span>
+                                    <span class="progress-number"><b>280</b></span>
+                                    <div class="progress sm">
+                                        <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-group">
+                                    <span class="progress-text">Others</span>
+                                    <span class="progress-number"><b>100</b></span>
+                                    <div class="progress sm">
+                                        <div class="progress-bar progress-bar-aqua progress-bar-purple" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+</div>
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var today = new Date();
+        var last90Days = new Date();
+        last90Days.setDate(today.getDate() - 90);
+        $('#ctrlanalyticdatepicker').daterangepicker({ startDate: last90Days, minDate: true, maxDate: true });
+        $('#btnApplyDateRange').bind('click', function ()
+        {
+            var startDate = $('input:text[name=daterangepicker_start]').val();
+            var endDate = $('input:text[name=daterangepicker_end]').val();
+            var startDateArray = startDate.split('/');
+            var endDateArray = endDate.split('/');
+
+            if (parseInt(startDateArray[0]) > parseInt(endDateArray[0]))
+            {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            else if (parseInt(startDateArray[0]) == parseInt(endDateArray[0]) && parseInt(startDateArray[1]) > parseInt(endDateArray[1]))
+            {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            angular.element('#AnalyticReportController').scope().SearchFromDate = startDate;
+            angular.element('#AnalyticReportController').scope().SearchToDate = endDate;
+            angular.element('#AnalyticReportController').scope().GetAnalytics(5);
+            angular.element('#AnalyticReportController').scope().$apply();
+        });
+    });
+
+</script>

@@ -1,0 +1,60 @@
+﻿    <!-- Modal for New Profile content-->
+<!--<div class="modal-dialog">-->
+
+<form name="myForm">
+    <!-- Modal for New Group content before-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-envelope"></i> Connect - Outlook</h4>
+            <h5>(Local Intranet Connection may be required, depending on Exchange Server settings.)</h5>
+        </div>
+
+        <!--<div class="input-group bott_marg_10 input_width">-->
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <div class="col-sm-6 zro_left">
+                        <div class="input-group bott_marg_10">
+                            <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user icon_error" style="font-size:13px; width: 9px;"></i></span>
+                            <input type="text" class="form-control input_border_min input_login_h " placeholder="Domain - NT Login ID" aria-describedby="sizing-addon2" ng-model="UserID" name="UserID" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 zro_left">
+                        <div class="input-group bott_marg_10">
+                            <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-key icon_normal" style="font-size:13px; width: 9px;"></i></span>
+                            <input type="password" class="form-control input_border_min input_login_h" placeholder="Domain - NT Password" aria-describedby="sizing-addon2" ng-model="Passwrd" name="Passwrd" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 zro_left">
+                        <div class="input-group bott_marg_10">
+                            <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user icon_normal" style="font-size:11px; width: 9px;"></i></span>
+                            <input type="text" class="form-control input_border_min input_login_h" placeholder="Domain (eg: abc.com)" aria-describedby="sizing-addon2" ng-model="Domain" name="Domain" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 zro_left">
+                        <div class="input-group bott_marg_10">
+                            <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-envelope icon_normal" style="font-size:11px; width: 9px;"></i></span>
+                            <input type="text" class="form-control input_border_min input_login_h" ng-model="Email" name="Email" required placeholder="E-mail (eg: xyz@abc.com)" aria-describedby="sizing-addon2">
+                        </div>
+                        <p class="warnings_p warnings_p2_320" ng-show="myForm.Email.$error.email">Not a valid Email address</p>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" ng-disabled="myForm.$invalid" class="btn btn-primary button_round  btn_height3" style="margin-left:15px; margin-top:10px;" ng-click="Save()">
+                        <i class="fa fa-link"></i>
+                        Connect
+                    </button>
+                    <button type="button" class="btn btn-cancel button_round  btn_height3" style="margin-left:5px; margin-top:10px;" ng-click="cancel()">
+                        Cancel
+                    </button>
+                </div>
+
+            <!--</div>-->
+        </div>
+    </div>
+</form>
+
+<!-- Modal for New Group content before-->
+<!-- Modal for Facebook New Group content after-->
+<!-- Modal for Facebook New Group content after-->
+<!--</div>-->

@@ -1,0 +1,65 @@
+﻿<div class="modal-dialog">
+    <link rel="stylesheet" href="/Content/css/signup_styles.css">
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .thumb {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="text-center"><img src="{{iconURL}}" alt=""> YOUR {{PageType|uppercase}} PAGES</h4>
+    </div>
+    
+    <div class="modal-body" >
+        <div class="text-center" ng-hide="dataLoaded">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+        <div class="col-sm-12" ng-show="dataLoaded">
+            <div>
+
+                <div id="soclistspop2">
+                    <table class="table table-condensed table-bordered">
+
+                        <tr ng-repeat="x in Connected_Pages track by $index">
+                            <td width="87%">
+                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                    {{x.AccountName}}<br>
+                                    <p><img src="{{classType}}" alt="pages">{{x.AccountUrl}}</p>
+                                </span>
+                            </td>
+
+                            <td width="13%" align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="{{x.Id}}page" name="check" ng-checked="x.IsConnected" ng-disabled="x.IsConnected" ng-click="AddPageList(x.Id,x.IsConnected)" />
+                                    <label for="{{x.Id}}page"></label>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    </table>
+
+                </div>
+                <div style="margin-top:20px;">
+                    <button type="button" class="btn btn-primary button_round btn_height3" ng-click="connect()" ng-disabled="Connected_Pages.length == 0"><i class="fa fa-link"></i> CONNECT</button>
+                    <button type="button" class="btn btn-cancel button_round btn_height3" ng-click="cancel()"><i class="fa fa-remove"></i> CANCEL</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="margin-left:15px; margin-top:25px;">&nbsp;</div>
+    </div>
+</div>

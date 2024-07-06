@@ -1,0 +1,192 @@
+﻿@{
+    Layout = "";
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="CRMApp">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico?v=2" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>360 CRM </title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/customdaterangepicker.css" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/hover.css" rel="stylesheet" />
+    <link href="~/Content/css/dialog.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    @*<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900' />*@
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+
+    
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="~/Content/css/web.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/styler.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/styler_media.css" />
+    <link href="~/Content/css/_all-skins.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="~/Content/css/bootstrap-multiselect.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-example.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap-colorpalette.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/color_p_s.css" type="text/css" />   
+    <link rel="stylesheet" href="~/Content/css/hotkeys.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/angucomplete.css" type="text/css" />
+
+    @*<link href="~/Content/css/styles.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="~/Content/css/signup_styles.css" type="text/css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css" />*@
+
+    <style type="text/css">
+        md-backdrop.md-opaque.md-default-theme,
+        .md-dialog-container {
+            position: fixed;
+        }
+
+        .img_con_height {
+            height: 40px;
+        }
+
+        .badge1 {
+           position:relative;
+        }
+        .badge1[data-badge]:after {
+           content:attr(data-badge);
+           position:absolute;
+           top:-12px;
+           right:-12px;
+           font-size:.7em;
+           background:#078b8d;
+           color:white;
+           width:18px;height:18px;
+           text-align:center;
+           line-height:18px;
+           border-radius:50%;
+           box-shadow:0 0 1px #333;
+        }
+    </style>
+</head>
+
+<body id="appBody" class="skin-blue sidebar-mini" style="overflow: auto">
+    <!-- Contentloader Overlay -->
+    @*<div class="contentloader">
+            <div class="inner">
+                <div class="contentloader-spinner"></div>
+
+            </div>
+            <div class="contentloaderBg"></div>
+        </div>*@
+    <!-- END Contentloader Overlay -->
+
+
+
+    <div class="wrapper">
+        <div ui-view="header"></div>
+        <div ui-view="container"></div>
+        
+    </div>
+    <div ui-view="footer"></div>
+    <script src="~/Content/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="~/Content/plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="//code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
+
+  @*  @Scripts.Render("~/bundles/CRMjs")*@
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyB5-5WwKx76aKOa5jQzuYyPBHV3y8mJXmQ&libraries=places,visualization,drawing,geometry"></script>@*&sensor=false*@
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+    @Scripts.Render("~/bundles/angularjs")
+
+    @Scripts.Render("~/bundles/Angular/App")
+    @*@Scripts.Render("~/bundles/Angular/Constants")*@
+   
+    @Scripts.Render("~/bundles/Angular/Services")
+    @Scripts.Render("~/bundles/Angular/Directives")
+    @Scripts.Render("~/bundles/Angular/Controllers")
+
+    <script src="~/Scripts/Angular Resources/angucomplete.js"></script>
+    <script src="~/Scripts/Angular Resources/hotkeys.js"></script>
+
+    <!-- Sortable.js -->
+    <script src="~/Content/js/Sortable.js"></script>
+
+    <!-- ng-sortable.js -->
+    <!-- Read Documentation Link: https://github.com/RubaXa/Sortable#options : Asjad Azeem-->
+    <script src="~/Content/js/ng-sortable.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
+
+
+    <link href="~/Content/libs/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Content/libs/prettify/prettify.js"></script>
+    <script type="text/javascript" src="~/Content/plugins/slimScroll/jquery.slimscroll.js"></script>
+
+    <script type="text/javascript" src="~/Content/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap-multiselect-collapsible-groups.js"></script>
+    <script type="text/javascript" src="~/Content/js/moment.js"></script>
+    <script src="/Content/js/daterangepicker.js"></script>
+    <script src="/Scripts/Angular%20Resources/angular-daterangepicker.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/customDatepicker.js"></script>
+    @*<script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>*@
+    <script type="text/javascript"  src="~/Content/js/app.min.js"></script>
+    <script type="text/javascript"  src="~/Content/js/easyResponsiveTabs.js"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap-timepicker.min.js"></script>
+   
+    <script src="/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap-colorpalette.js"></script>
+    <link href="/Content/css/daterangepicker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/angular-block-ui.min.css" />
+    <link href="~/Scripts/Angular%20Resources/angular-notify.min.css" rel="stylesheet" />
+    <!-- After AngularJS -->
+   @* <script src="path-to-block-ui/angular-block-ui.min.js"></script>*@
+   
+    <!--asj-->
+    <script src="~/Scripts/datetime-picker.js"></script>
+    @*<script src="~/Scripts/ui-bootstrap-tpls-1.0.3.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.0/ui-bootstrap-tpls.js"></script>    
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#ctrlanalyticdatepicker').daterangepicker();
+           
+        });
+        $(window).load(function () {
+            setTimeout(function () {
+                var path = window.location.href.split('?')[0];
+                var page = path.split("/").pop();
+                //console.log(page);
+                //alert(window.location.href)
+                //alert("1")
+                $("#" + page).parent().parent().show();
+                $("#" + page).parent().parent().parent().addClass('active');
+              //  alert(1);
+            }, 300);
+            
+        });
+    </script>
+
+
+
+
+      
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+﻿   <!-- Modal for existing profile content-->
+<div class="modal-dialog">
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .thumb {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+    <!-- Modal for New Group content-->
+    <form name="myForm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-user"></i> CREATE NEW COMMENT</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12 zro">
+                    <div class="col-sm-9">
+                        <div>
+                            COMMENT TITLE *
+                            <p class="warnings_p warnings_p2_320 " ng-show="myForm.CommentTitle.$touched && myForm.CommentTitle.$invalid">Comment Title is required</p>
+                            <input type="text" name="CommentTitle" ng-model="CommentTitle" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="Enter Comment Title" aria-describedby="sizing-addon2" required>
+                        </div>
+                        <div>COMMENT DESCRIPTION *
+                            <p class="warnings_p warnings_p2_320 " ng-show="myForm.CommentDescription.$touched && myForm.CommentDescription.$invalid">Comment Description is required</p>
+                            <textarea name="CommentDescription" ng-model="CommentDescription" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:10px; " aria-describedby="sizing-addon2" placeholder="Enter Comment Description Here" required> </textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="padding-top:10px;"><strong>Note:</strong> <em>Comments will be visible to your team members.<br> This information will not be visible to the respective contact.</em></div>
+                </div> <div style="margin-left:15px;"><button ng-disabled="myForm.CommentTitle.$invalid || myForm.CommentDescription.$invalid" type="button" data-dismiss="modal" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;" ng-click="AddNewComment();">+ ADD COMMENT</button></div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+        <!-- Modal for existing profile content-->

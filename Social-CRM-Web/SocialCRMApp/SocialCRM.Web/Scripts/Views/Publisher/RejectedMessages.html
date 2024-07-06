@@ -1,0 +1,587 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="PublisherRejectedMessagesController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-envelope"></i> Schedule a Message</div>
+
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-sm-12 zro"><a href=""><i class="fa fa-times"></i> Go Back</a></div>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <div class="col-sm-12">
+
+                                <div class="col-sm-6 col-sm-push-6">
+                                    <div style="margin-bottom:10px " id="pop_schprof">
+                                        <table class="table table-condensed">
+                                            <tr>
+                                                <td>
+                                                    <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                        Adeel Gill<br>
+                                                        <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                    </span>
+                                                </td>
+                                                <td align="center" valign="middle">
+                                                    <div class="squaredSmall" style="margin-top:13px;">
+                                                        <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                        <label for="squaredSmall7"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="table_alt_col">
+                                                <td>
+                                                    <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                        Adeel Gill<br>
+                                                        <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                    </span>
+                                                </td>
+                                                <td align="center" valign="middle">
+                                                    <div class="squaredSmall" style="margin-top:13px;">
+                                                        <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                        <label for="squaredSmall8"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                        Adeel Gill<br>
+                                                        <p><img src="/Content/images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                                    </span>
+                                                </td>
+                                                <td align="center" valign="middle">
+                                                    <div class="squaredSmall" style="margin-top:13px;">
+                                                        <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                        <label for="squaredSmall9"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="table_alt_col">
+                                                <td>
+                                                    <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                        Adeel Gill<br>
+                                                        <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                    </span>
+                                                </td>
+                                                <td align="center" valign="middle">
+                                                    <div class="squaredSmall" style="margin-top:13px;">
+                                                        <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                        <label for="squaredSmall9"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                        Adeel Gill<br>
+                                                        <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                    </span>
+                                                </td>
+                                                <td align="center" valign="middle">
+                                                    <div class="squaredSmall" style="margin-top:13px;">
+                                                        <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                        <label for="squaredSmall9"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-sm-pull-6 zro_left">
+                                    <textarea name="" cols="" rows="" class="form-control input_border_min input_login_h1" style="max-width:580px; margin-bottom:8px; margin-top:10px; " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> Enter Message Here</textarea>
+                                    <div class="col-md-12 zro ">
+                                        <div class="col-md-8 zro" style="margin:7px 0 7px 0 !important;"> <a href="" title="Location"><i class="fa fa-map-marker icon_sizes"></i></a> &nbsp;&nbsp;<a href="" title="Attachment"><i class="fa fa-paperclip icon_sizes"></i></a> &nbsp;&nbsp;<a href="" title="Shorten URL"><i class="fa fa-scissors icon_sizes"></i></a> &nbsp;&nbsp;<a href="" title="Target Audience"><i class="fa fa-star icon_sizes"></i></a> <a href="" title="Tag"><i class="fa fa-tag icon_sizes"></i></a></div>
+                                        <div class="col-md-4 zro">
+                                            <div style="float:right; margin-top:8px; margin-left:10px;"><strong><em>127</em></strong></div>
+                                            <div class='input-group date' id='datetimepicker3'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-12 calender_bott zro">
+                                    <button type="button" data-toggle="collapse" data-target="#msgSchedule" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;"><i class="fa fa-calendar"></i> SET DATE & TIME</button>
+                                    <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;"><i class="fa fa-clock-o"></i> HISTORY</button>
+
+
+
+
+                                    <div id="msgSchedule" class="collapse col-md-12 zro">
+                                        <div class="tabs_blk" style="margin-top:30px;">
+                                            <div class="sch_heading"><i class="fa fa-calendar"></i> QUEUE SETTINGS</div>
+                                            <div id="parentHorizontalTab" style="margin-top:50px !important;">
+                                                <ul class="resp-tabs-list resp-tabs-marg hor_1">
+                                                    <li>Select Preconfigured</li>
+                                                    <li>Set Time</li>
+                                                </ul>
+                                                <div class="resp-tabs-container hor_1 " style="border-top:solid 1px #333;">
+                                                    <div>
+                                                        <p>
+                                                            <div class="col-md-12 zro">
+
+
+                                                                <div class="col-md-12 zro">
+                                                                    <div class="content_txt" style="padding:10px">
+                                                                        <input name="" type="radio" value=""> Queue at the beginning<br>
+                                                                        <input name="" type="radio" value=""> Queue at the end
+                                                                    </div>
+                                                                    <div class="content_txt col-md-6 zro_left" style="margin-bottom:10px;">
+
+                                                                        <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;">SELECT</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p>
+                                                            <div class="col-md-12 zro">
+                                                                <div class="col-md-6 zro_left">
+                                                                    <div class="col-md-6 zro_left" id="multisel" style="margin-bottom:10px;">
+                                                                        <select multiple="MULTIPLE" class="sel_menu" id="lstFruits">
+                                                                            <option value="1">Monday</option>
+                                                                            <option value="2">Tuesday</option>
+                                                                            <option value="3">Wednesday</option>
+                                                                            <option value="4">Thursday</option>
+                                                                            <option value="4">Friday</option>
+                                                                            <option value="4">Saturday</option>
+                                                                            <option value="4">Sunday</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="content_txt col-md-6 zro_left">
+                                                                        <div class="demo" style="margin-bottom:10px !important;">
+                                                                            <input type="text" id="datepicker" class="form-control " placeholder="Select Time">
+                                                                            <i class="fa fa-clock-o"></i>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-md-12 zro">
+                                                                        <div style="margin-bottom:10px " id="profilemulSelect">
+                                                                            <table class="table table-condensed">
+                                                                                <tr>
+                                                                                    <th>Select All</th>
+                                                                                    <th align="center" valign="middle">
+                                                                                        <div class="squaredSmall" style="margin-top:2px;">
+                                                                                            <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                                                            <label for="squaredSmall7"></label>
+                                                                                        </div>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">Adeel Gill<br>
+                                                        <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                        </span></td>
+                                                        <td align="center" valign="middle">
+                                                            <div class="squaredSmall" style="margin-top:13px;">
+                                                                <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                                <label for="squaredSmall7"></label>
+                                                            </div>
+                                                        </td>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                                    <label for="squaredSmall8"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="content_txt col-md-6 zro_left" style="margin-bottom:10px; margin-top:20px;">
+
+                                                    <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:0">SELECT</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 zro">
+                                                <div style="margin-bottom:10px;" id="tableGridSelect">
+                                                    <table class="table table-condensed table-bordered">
+                                                        <tr>
+                                                            <th colspan="2"><i class="fa fa-clock-o"></i> QUEUE TIMES</th>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td height="25">Mon, Tue, Web, Thu, Fri, Sat, Sun <strong>@3:30 PM</strong></td>
+                                                            <td align="center"><a href=""><i class="fa fa-trash"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr class="table_alt_col">
+                                                            <td height="25">Mon, Tue, Wed <strong>@3:30 PM</strong></td>
+                                                            <td align="center"><a href=""><i class="fa fa-trash"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+
+
+
+                                                        <tr class="table_alt_col">
+                                                            <td height="25">Mon, Tue, Web, Thu <strong>@3:30 PM</strong></td>
+                                                            <td align="center"><a href=""><i class="fa fa-trash"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.box-body -->
+</div>
+<div ui-view="Footer"></div>
+<!--Plug-in Initialisation-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        //Horizontal Tab
+        $('#parentHorizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+
+        // Child Tab
+        $('#ChildVerticalTab_1').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+            tabidentify: 'ver_1', // The tab groups identifier
+            activetab_bg: '#fff', // background color for active tabs in this group
+            inactive_bg: '#3ba1c2', // background color for inactive tabs in this group
+            active_border_color: '#fff', // border color for active tabs heads in this group
+            active_content_border_color: '#fff' // border color for active tabs contect in this group so that it matches the tab head border
+        });
+
+        //Vertical Tab
+        $('#parentVerticalTab').easyResponsiveTabs({
+            type: 'vertical', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo2');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+
+		$('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+
+		$('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+		$('#inboxer').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  $('#tasker').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+      $('#socialer').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+	  		$('#publi').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  	  		$('#disco').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  	  $('#reporter').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+
+	  	  	  		$('#helper').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  	  	  	  		$('#userlists').slimscroll({
+		  height: '499px',
+        disableFadeOut: true
+      });
+
+	  	  	  	  	  		$('#grplists').slimscroll({
+		  height: '485px',
+        disableFadeOut: true
+      });
+
+	  $('#rsslists').slimscroll({
+		  height: '585px',
+        disableFadeOut: true
+      });
+
+
+	  	  	  	  	  		$('#soclists').slimscroll({
+		  height: '188px',
+        disableFadeOut: true
+      });
+	  	  	  	  	  	  		$('#soclistspop').slimscroll({
+		  height: '200px',
+        disableFadeOut: true
+      });
+
+	  	 $('#grpspop').slimscroll({
+		  height: '200px',
+        disableFadeOut: true
+      });
+
+	  	 $('#soclists2').slimscroll({
+		  height: '168px',
+        disableFadeOut: true
+      });
+
+	  	$('#ulists').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  $('#soclistspop2').slimscroll({
+		  height: '280px',
+        disableFadeOut: true
+      });
+
+		$('#f_profile').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+
+	  		$('#tw_profile').slimscroll({
+		  height: '200px',
+        disableFadeOut: true
+      });
+
+	  $('#f_msg').slimscroll({
+		  height: '90px',
+        disableFadeOut: true
+      });
+
+	  	  $('#pop_schprof').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+
+	  $('#schList2').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+
+	  	  $('#profilemulSelect').slimscroll({
+		  height: '180px',
+        disableFadeOut: true
+      });
+	 	  	  $('#tableGridSelect').slimscroll({
+		  height: '250px',
+        disableFadeOut: true
+      });
+    });
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+$(function(){
+  var animspeed = 950; // animation speed in milliseconds
+
+  var $blockquote = $('.bigtext');
+  var height = $blockquote.height();
+  var mini = $('.bigtext p').eq(0).height();
+
+  $blockquote.attr('data-fullheight',height+'px');
+  $blockquote.attr('data-miniheight',mini+'px');
+  $blockquote.css('height',mini+'px');
+
+
+  $('.expand').on('click', function(e){
+    $text = $(this).prev();
+
+    $text.animate({
+      'height': $text.attr('data-fullheight')
+    }, animspeed);
+    $(this).next('.contract').removeClass('hide');
+    $(this).addClass('hide');
+  });
+
+  $('.contract').on('click', function(e){
+    $text = $(this).prev().prev();
+
+    $text.animate({
+      'height': $text.attr('data-miniheight')
+    }, animspeed);
+    $(this).prev('.expand').removeClass('hide');
+    $(this).addClass('hide');
+  });
+});
+</script>
+
+<script type="text/javascript">
+          $(document).ready(function () {
+              $('#ctrlanalyticdatepicker').daterangepicker();
+          });
+
+</script>

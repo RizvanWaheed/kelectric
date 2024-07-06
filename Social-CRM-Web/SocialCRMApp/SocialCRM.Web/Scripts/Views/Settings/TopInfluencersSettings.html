@@ -1,0 +1,120 @@
+﻿<div class="wrapper">
+    <style>
+        .disabled {
+            cursor: not-allowed;
+        }
+    </style>
+        
+        <div ng-app="CRMApp" class="" ng-controller="TopInfluencersSettingController">
+            <div class="content-wrapper" style="min-height:650px !important;">
+                <!-- Content Header (Page header) -->
+                <!-- header starts here -->
+                <div class="container-fluid page_name">
+                    <div class="col-sm-10"><i class="fa fa-flag"></i> Customer Settings</div>
+                </div>
+                <div class="container-fluid padding_set">
+                    <div class="col-md-12">
+                        <div class="box box-default" style="margin-bottom:0px;">
+                            <div class="box-body">
+                                <form name="AddEmailForm">
+                                    <div class="col-md-12">
+                                        <div class="col-md-2 zro_left">
+                                            <span>Social Customer Handle</span>
+                                        </div>
+                                        <div class="col-md-3 zro_left">
+                                            <input type="text" class="form-control" ng-disabled="Id > 0" ng-model="socialMediaURL" name="socialMediaURL" placeholder="Enter URL" />
+                                        </div>
+                                        <div class="col-md-1">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-md-2 zro_left">
+                                            <span>Account Type</span>
+                                        </div>
+                                        <div class="col-md-4 zro_left">
+                                            <div class='sel_menu' ng-dropdown-multiselect1="" options="UserTypesdata" selected-model="UserTypesmodel" 
+                                                 checkboxes="true" translation-texts="example5customTexts" extra-settings="selectsettings"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:10px;">
+                                        <div class="col-md-2 zro_left">
+                                            <span>Social Platform</span>
+                                        </div>
+                                        <div class="col-md-3 zro_left">
+                                            <div class="btn-group">
+                                                <a ng-disabled="disablePlatform" style="width: 247px;" class="multiselect dropdown-toggle ng-binding btn btn-default" href="" data-toggle="dropdown">
+                                                    <i ng-if="selectedPlatform == 'Twitter'" class="fa fa-twitter" style="color:#00aced"></i>
+                                                    <i ng-if="selectedPlatform == 'Facebook'" class="fa fa-facebook-f" style="color:#3b5998"></i>
+                                                    {{selectedPlatform}} <i class="fa fa-angle-down"></i>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a ng-click="platformChanged(4)"><i class="fa fa-twitter" style="color:#00aced"></i> Twitter</a></li>
+                                                    <li><a ng-click="platformChanged(1)"><i class="fa fa-facebook-f" style="color:#3b5998"></i> Facebook</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-md-2 zro_left">
+                                            <span>Profile</span>
+                                        </div>
+                                        <div class="col-md-4 zro_left">
+                                            <div class='sel_menu' ng-dropdown-multiselect1="" options="connectedTwitterProfiles" selected-model="selectedTwitterProfile" ng-dropdown-multiselect-disabled="Id > 0"
+                                                 checkboxes="false" translation-texts="example5customTexts" extra-settings="selectsettings"></div>
+                                        </div>                                                                               
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:10px; margin-bottom:10px;">
+                                        <a ng-click="saveInfluencer()" class="btn btn-primary button_round"><i class="fa fa-plus"></i> <span id="AddUpdateURL">Add URL</span></a>
+                                        <a ng-click="cancel()" class="btn btn-primary button_round"><i class="fa fa-times"></i> Clear Fields</a>
+                                    </div>
+                                    <div class="col-md-12 zro_left" style="padding-top:15px !important; border-top: 1px solid #ccc;">
+                                        <table class="table-striped" style="width:100%;">
+                                            <tr>
+                                                <th style="padding:5px;">Social Media URL</th>
+                                                <th>Connected Profile</th>
+                                                <th>Type</th>
+                                                <th>Action Items</th>                                                
+                                            </tr>
+                                            <tr ng-repeat="user in InfluencersList">
+                                                <td style="padding:5px;">
+                                                    <a href="javascript:" class="col-md-3"><img src="{{user.profilePicURL}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive" style="width:50px; height:50px;"></a>
+                                                    <span style="float: left">{{user.CustomerName}}</span>
+                                                </td>
+                                                <td>
+                                                    <span ng-if="user.PlatformId == 1"><img src="../../../Content/img/fb_c.png" style="width:14px; top: -1px; position: relative;"/></span>
+                                                    <span ng-if="user.PlatformId == 4"><img src="../../../Content/img/twit_c.png" style="width:14px; top: -1px; position: relative;"/></span>
+                                                    {{user.ProfileName}}
+                                                </td>
+                                                <td>{{user.AccountType}}</td>                                                
+                                                <td>
+                                                    <a ng-click="editInfluencer(user.Id)" title="Edit" class="edit btn"><i class="fa fa-pencil"></i></a>
+                                                    <a ng-click="deleteInfluencer(user.Id)" title="Delete" class="delete btn"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination pagination-sm">
+                                                <li>
+                                                    <a href="javascript:" ng-class="{disabled:(pageNumber == 0)}" ng-click="goToPreviousPage();">Previous</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:" ng-click="goToNextPage();">Next</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </form>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Main content -->
+                <!-- /.content -->
+            </div><!-- /.content-wrapper -->
+        </div>    
+</div>
+<div ui-view="Footer"></div>

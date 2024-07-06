@@ -1,0 +1,20 @@
+﻿<form name="myForm">
+    <!-- Modal for retweet-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title" ng-if="EditWhat == 'Group'"><i class="fa fa-pencil"></i> EDIT GROUP NAME</h4>
+            <h4 class="modal-title" ng-if="EditWhat == 'Business'"><i class="fa fa-pencil"></i> EDIT BUSINESS NAME</h4>
+        </div>
+        <div class="modal-body">
+            <div style="margin-bottom:8px;">
+                <input name="GroupName" ng-model="GroupName" value="360 CRM Group" maxlength="40" ng-maxlength="40"  required type="text" class="form-control input_border_min input_login_h" placeholder="Group Name">
+            </div>
+            <p class="warnings_p f_warning" ng-show="myForm.GroupName.$touched && myForm.GroupName.$invalid">Group Name cannot be empty.</p>
+            <div style="margin-top:20px">
+                <button type="button" class="btn btn-primary button_round  btn_height3" ng-disabled="myForm.$invalid" ng-click="save()">SAVE</button>
+                <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+</form>

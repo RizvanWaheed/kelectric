@@ -1,0 +1,354 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="CreateTaskController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-flag"></i> Cases</div>
+
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <!--<div style="margin-bottom:8px;"><a href="/#/UnifiedInbox"><i class="fa fa-times"></i> Go Back</a></div>-->
+                            <div class="col-sm-12 inbox_blk {{twitReadCss}} "> <!--{{isClosedCss}}-->
+                                <div class="twitter_social_icos" ng-if="messageType == 'TP' || messageType == 'TM'"></div>
+                                <div class="fb_social_icos" ng-if="messageType == 'FP' || messageType == 'FC' || messageType == 'FCP'"></div>
+                                <div class="insta_social_icos" ng-if="messageType == 'IM' || messageType == 'IC'"></div>
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <a href="/#/UnifiedContact?fromUser={{userName}}&ofUser={{replyedBy}}" ng-if="messageType == 'TP' || messageType == 'STP' || messageType == 'TM'"><img src="{{userImgUrl}}" alt="User Image"></a>
+                                        <img src="{{userImgUrl}}" alt="User Image" ng-if="messageType == 'FP' || messageType == 'FC' || messageType == 'FCP' || messageType == 'IM' || messageType == 'IC'">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg" id="{{ActivityId}}-{{messageType}}-converted_url">
+                                        <span ng-if="messageType == 'IM' || messageType == 'IC'">{{TextToURLConvert(twitMsg,ActivityId,messageType)}}</span> 
+                                        <span ng-if="messageType != 'IM' || messageType != 'IC'">{{twitMsg}}</span>
+                                    </div>
+
+                                    <div class="inbox_blk_cred">
+                                        <a href="/#/UnifiedContact?fromUser={{userName}}&ofUser={{replyedBy}}" ng-if="messageType == 'TP' || messageType == 'STP' || messageType == 'TM'">{{replyedBy}}</a>
+                                        <a href="" ng-if="messageType == 'FP' || messageType == 'FC' || messageType == 'FCP' || messageType == 'IM' || messageType == 'IC'">{{replyedBy}}</a>
+                                        {{activityType}}
+                                        <a href="/#/UnifiedContact?fromUser={{userName}}&ofUser={{replyedTo}}" ng-if="messageType == 'TP' || messageType == 'STP' || messageType == 'TM'">{{replyedTo}}</a>
+                                        <a href="" ng-if="messageType == 'FP' || messageType == 'FC' || messageType == 'FCP' || messageType == 'IM' || messageType == 'IC'">{{replyedTo}}</a>
+                                        {{replyedDate}}
+                                    </div>
+                                    <div class="inbox_blk_actions">
+                                        <!--<a href=""><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a>-->
+                                        <a href=""><i class="fa fa-mail-reply" title="Reply" ng-click="openReplyAdd()"></i></a>
+                                        <a href="" data-toggle="collapse" data-target="#msgSetting-{{messageType}}{{ActivityId}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <a href="" ng-if="messageType == 'TP' || messageType == 'STP' || messageType == 'TM'"><i class="fa fa-comments" title="Conversation" ng-click="openConversation(StatusId,replyedBy,messageType)"></i></a>
+                                        <div id="msgSetting-{{messageType}}{{ActivityId}}" class="collapse sub_msgsett">
+                                            <a href="" ng-if="messageType == 'TP' || messageType == 'STP'" ng-click="openRetweet()">Retweet |</a>
+                                            <a href="" ng-if="messageType == 'TP' || messageType == 'STP'" ng-click="openRetweetWithComment()">Retweet with Comment |</a>
+                                            <!--<a href="" ng-if="messageType == 'TP' || messageType == 'STP'" ng-click="deleteTweet(msg)">Delete Tweet |</a> -->
+                                            <a href="" ng-if="messageType != 'TM'" ng-click="likeTweet()">Like</a> | <a href="" ng-click="openEmailTweets()">Email Message |</a>
+                                            <a ng-if="messageType == 'TP' || messageType == 'STP' || messageType == 'TM'" href="" ng-click="openReportAsSpam(StatusId,replyedBy,messageType)">Report as Spam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <!--<button ng-show="{{VisOptions}}" type="button" class="btn btn-primary button_round  btn_height3" ng-click="SaveAsDraft()">SAVE AS DRAFT</button>-->
+                                <button ng-show="{{VisOptions}}" type="button" class="btn btn-primary button_round  btn_height3" ng-click="SaveExit()">SAVE & EXIT</button>
+                                <button ng-show="{{VisOptions}}" type="button" class="btn btn-cancel button_round  btn_height3" confirmed-click="Delete()" ng-disabled="TaskStatus == 0"
+                                        ng-confirm-click="Would you like to remove this case?">
+                                    DELETE
+                                </button>
+                            </div>
+                            <div class="col-sm-12 zro">
+                                <div class="panel-group">
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-file-text-o"></i> <strong>LOGS</strong></div>
+
+                                                <!--public string ProfileUrl { get; set; }
+                                                public string ProfileName { get; set; }
+                                                public string TaskMessage { get; set; }
+                                                public string AssignedTo { get; set; }
+                                                public Priority TaskPriority { get; set; }
+                                                public Classificaiton TaskClassification { get; set; }
+                                                public string LastUpdated { get; set; }
+                                                public int TaskId { get; set; }
+                                                public TaskStatus Status { get; set; }-->
+
+                                               
+
+                                                <div class="col-sm-12 inbox_blk read_msg" ng-repeat="log in taskLog">
+                                                    <div class="col-sm-12 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <strong> {{ log.AssigneeTo == "" ? log.Text : "Case Assigned To:" }}</strong> {{log.AssigneeTo}}<br>
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href=""> {{ log.AssigneeTo == "" ? "Added Comment" : log.Text }}</a> {{log.CreatedDate}}</div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal for conv history-->
+                                                
+                                                <!-- Modal for conv history-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;">
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-check"></i> CLASSIFICATION OF CASE</strong>&nbsp;<br>
+                            <!--<select class="sel_menu" id="lstFruits" ng-model="taskClassificationModel" ng-options="v as v.value for v in taskClassification">
+                        
+                            </select>-->
+                            <div class='sel_menu' ng-dropdown-multiselect1="" events="myEventListeners" options="taskClassification" selected-model="taskClassificationModel" checkboxes="true" translation-texts="example5customTexts" extra-settings="groupsettings"></div> 
+                        </div>
+                        <p class="warnings_p f_warning">{{ ErrorTaskClassification }}</p>
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-exclamation "></i> PRIORITY</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect1="" events="myEventListeners" options="taskPriority" selected-model="taskPriorityModel" checkboxes="true" translation-texts="example5customTexts" extra-settings="groupsettings"></div> 
+                            <!--<select class="sel_menu" id="2stFruits" ng-model="taskPriorityModel" ng-options="v as v.value for v in taskPriority">
+                              
+                            </select>-->
+                        </div>
+                        <p class="warnings_p f_warning">{{ ErrorTaskPriority }}</p>
+                        <!--<div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-user"></i> GROUP</strong>&nbsp;<br>
+                            <select class="sel_menu" ng-model="AssigneeGroupSelected" ng-change="GroupSelectedChanged(AssigneeGroupSelected)"
+                                    data-ng-options="group as group.GroupName group by group.CompanyName for group in grouplist track by group.GroupId"></select>
+                        </div>-->
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-user"></i> ASSIGNEE</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect="" options="taskAssignee" selected-model="taskAssigneemodel" checkboxes="true" translation-texts="example5customTexts"></div>
+                            <!--<select multiple="MULTIPLE" class="sel_menu" id="3stFruits" ng-model="taskAssigneeModel" ng-options="v as v.value for v in taskAssignee"></select>-->
+                        </div>
+                        <p class="warnings_p f_warning" >{{ ErrorTaskAssignee }}</p>
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-star "></i> STATUS</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect1="" events="myEventListeners" options="taskStatus" selected-model="taskStatusModel" checkboxes="true" translation-texts="example5customTexts" extra-settings="groupsettings"></div> 
+                            <!--<select class="sel_menu" id="4stFruits" ng-options="v as v.value for v in taskStatus" ng-model="taskStatusModel"></select>-->
+                        </div>
+                        <p class="warnings_p f_warning">{{ ErrorTaskStatus }}</p>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box" ng-if="TaskStatus != 0">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                        <tr class="filter_header">
+                            <th colspan="2"><strong>COMMENTS</strong></th>
+                        </tr>
+                    </table>
+                    <div style="margin-right:10px; margin-top:10px;">
+                        <a ng-show="{{VisOptions}}" href="" ng-click="OpenComment()"> <strong>+</strong> Add New Comment</a>
+                   
+
+                        <div  ng-repeat="obj in taskComment">  
+                            <div id="commentBlock-{{ obj.Id }}">
+                                <div><a href="" data-toggle="collapse" data-target="#comment1-{{ obj.Id }}" class="{{obj.colorHead}}"><i class="fa fa-quote-left"></i> {{ obj.CommentTitle }}</a> </div>
+                                <div id="comment1-{{ obj.Id }}" class="collapse sub_msgsettnote {{obj.colorDetail}}">
+                                    <a href="" confirmed-click="DelComment(obj.Id)" ng-show="{{VisOptions}}"
+                                       ng-confirm-click="Would you like to remove this comment?" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                                    {{ obj.CommentDescription }}<br>
+                                    <span>{{ obj.PerformedBy }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--<div><a href="" data-toggle="collapse" data-target="#comment1" class="note_head_yellow"><i class="fa fa-quote-left"></i> Sample Comment 1</a> </div>
+                        <div id="comment1" class="collapse sub_msgsettnote note_color_yellow">
+                            <a href="#" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf jsdf adfsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>
+
+                        <div><a href="" data-toggle="collapse" data-target="#comment2" class="note_head_blue"><i class="fa fa-quote-left"></i> Sample Comment 2</a></div>
+                        <div id="comment2" class="collapse sub_msgsettnote note_color_blue">
+                            <a href="#" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>
+
+                        <div><a href="" data-toggle="collapse" data-target="#comment3" class="note_head_green"><i class="fa fa-quote-left"></i> Sample Comment 3</a></div>
+                        <div id="comment3" class="collapse sub_msgsettnote note_color_green">
+                            <a href="#" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>
+
+                        <div><a href="" data-toggle="collapse" data-target="#comment4" class="note_head_red"><i class="fa fa-quote-left"></i> Sample Comment 4</a></div>
+                        <div id="comment4" class="collapse sub_msgsettnote note_color_red">
+                            <a href="#" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                            samksdf skldfj sdfkjsdf sdkfjsdf slkdjlsdkfjsdf<br>
+                            <span>Asad @ 3:45PM 5 April 2016</span>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<div ui-view="Footer"></div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#4stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+    }
+    //$(function () {
+    //    $('#lstFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+
+    //    $('#2stFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+
+    //    $('#3stFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+
+    //    $('#4stFruits').multiselect({
+    //        includeSelectAllOption: true,
+    //        buttonWidth: '100%',
+    //    });
+    //});
+</script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#inboxer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#tasker').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#socialer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+        $('#publi').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#disco').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#reporter').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+
+        $('#helper').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#userlists').slimscroll({
+            height: '499px',
+            disableFadeOut: true
+        });
+
+        $('#grplists').slimscroll({
+            height: '595px',
+            disableFadeOut: true
+        });
+
+
+        $('#soclists').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+        $('#soclistspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#grpspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#soclists2').slimscroll({
+            height: '168px',
+            disableFadeOut: true
+        });
+
+        $('#ulists').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#soclistspop2').slimscroll({
+            height: '280px',
+            disableFadeOut: true
+        });
+
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#f_msg').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+
+        $('#pop_vhis').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#pop_sprof').slimscroll({
+            height: '100px',
+            disableFadeOut: true
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

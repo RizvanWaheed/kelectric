@@ -1,0 +1,427 @@
+﻿<style>
+   .datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ }
+  .datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+  .datepickerdemoBasicUsage .validation-messages {
+    font-size: 12px;
+    color: #dd2c00;
+    margin: 10px 0 0 25px; }
+  .img-center{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>
+
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" id="DashboardController" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="DashboardController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-tachometer"></i> Dashboard</div>
+        </div>
+        <!-- header ends here -->
+        <!-- misc & reviews content starts here -->
+        <div class="container-fluid reviews_Section ">
+            <!-- -->
+
+        </div>
+        <!-- misc & reviews content starts here -->
+
+        <div class="container-fluid padding_set">
+            <div class="container-fluid">
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <div class="col-md-12 dash_box_header text-center "><h1>GROUP KEY STATISTICS</h1></div>
+                            <div>
+                                <div>
+                                    <div class="row top_grp_marg">
+                                        <!-- /.col-lg-6 -->
+                                        <div class='col-lg-6'>
+                                            <input id="gskDateFrom" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="From" data-date-format="mm/dd/yy" ng-model="gskDateFrom" >
+                                        </div><!-- /.col-lg-6 -->
+                                        <div class='col-lg-6'>
+                                            <input id="gskDateTo" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="To" data-date-format="mm/dd/yy" ng-model="gskDateTo">
+                                        </div>
+
+                                    </div><!-- /.row -->
+                                </div>
+
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="box box-default" style="position:relative;">
+                                            <div class="scoial_icon_set"><img src="Content/images/t_ico.png"></div>
+                                            <div class="box-header with-border text-center social_b_headers" style="height:70px">
+                                                <h1>Tweets</h1>
+                                                <h2>{{gksTwNumOfTweets}}</h2>
+                                            </div>
+                                            <div class="social_t_set text-center">Followers: {{gksTwNumOfFollowers}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="box box-default" style="position:relative;">
+                                            <div class="scoial_icon_set"><img src="Content/images/fb_ico.png"></div>
+                                            <div class="box-header with-border text-center social_b_headers" style="height:70px">
+                                                <h1>Posts</h1>
+                                                <h2>{{gksFbProfileNumOfPosts}}</h2>
+                                            </div>
+                                            <div class="social_fb_set text-center">Friends: {{gksTFbProfileNumOfFriends}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="box box-default" style="position:relative;">
+                                            <div class="scoial_icon_set"><img src="Content/images/fb_ico.png"></div>
+                                            <div class="box-header with-border text-center social_b_headers" style="height:70px">
+                                                <h1>Posts</h1>
+                                                <h2>{{gksFbPageNumOfPosts}}</h2>
+                                            </div>
+                                            <div class="social_fb_set text-center">Page Likes: {{gksFbPageNumOfLikes}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="box box-default" style="position:relative;">
+                                            <div class="scoial_icon_set"><img src="Content/images/insta_ico.png"></div>
+                                            <div class="box-header with-border text-center social_b_headers" style="height:70px">
+                                                <h1>Posts</h1>
+                                                <h2>{{gksInstaNumOfPosts}}</h2>
+                                            </div>
+                                            <div class="social_in_set text-center">Followers: {{gksInstaNumOfFollowers}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="col-md-8">
+                                <h3 class="box-title" style="margin-top:8px !important; margin-bottom:5px !important;"><i class="fa fa-user"></i> GROUP MEMBERS <span>({{groupMembers.length}})</span></h3>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="has-feedback">
+                                    <input type="text" class="form-control button_round input-sm" placeholder="Search name" ng-model="searchText2">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-2">
+                                <a type="button" class="btn btn-warning button_round btn_height2" href="#/GroupAndTeam/GroupsUserAdd?companyid={{CompanyId}}"><i class="fa fa-plus"></i></a>
+                            </div>-->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-body no-padding" id="userlistsd">
+                                <ul ng-if="groupMembers.length > 0" class="users-list clearfix">
+                                    <li ng-repeat="x in groupMembers  | filter:searchText2" ng-class="teamActiveClass(x.TeamMemberId)">
+                                        <a href="" ng-click="loadUserData(CompanyId,x.TeamMemberId); toggleVis('team')">
+                                            <img src="{{x.ProfileUrl==null && '/Content/img/user2.jpg' || replaceTilda(x.ProfileUrl)}}" style="height:75px; width:75px;" alt="User Image">
+                                        </a>
+                                        <a class="users-list-name" href="" ng-click="loadUserData(CompanyId,x.TeamMemberId); toggleVis('team')">{{x.Name}}</a>
+                                        <span class="users-list-date"><a href="" ng-click="loadUserData(CompanyId,x.TeamMemberId); toggleVis('team')">{{x.Email == null ? "N/A" : x.Email}}</a></span>
+                                    </li>
+
+                                    <!--<li>
+                                        <a href="#/GroupAndTeam/GroupsUserAdd?companyid={{CompanyId}}" data-toggle="modal" data-target="#newUserModal"><img src="/Content/img/user_add.jpg" style="height:75px; width:75px;" alt="User Image"></a>
+                                        <a class="users-list-name" href="#/GroupAndTeam/GroupsUserAdd?companyid={{CompanyId}}">Invite New</a>
+                                        <span class="users-list-date"><a href="#/GroupAndTeam/GroupsUserAdd?companyid={{CompanyId}}">Team Member</a></span>
+                                    </li>-->
+                                </ul>
+                                <!-- /.users-list -->
+                                <img class="img-center" ng-if="groupMembers.length == 0" src="../../../Content/img/no_data_dashboard.png" />
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <!-- words cloud --->
+                <div class="col-md-6">
+                    <div class="box box-default" style="min-height: 450px;">
+                        <div class="box-header">
+                            <div class="col-md-12 dash_box_header text-center "><h1>WORD CLOUD</h1></div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <div class="text-center">
+                                    <ul class="cloud" ng-if="ConversationCloud.length > 0">
+                                        <li ng-repeat="obj in ConversationCloud">
+                                            <a href="{{obj.Link}}" class="{{obj.ViewClass}}">{{obj.Text}}</a>
+                                        </li>
+                                        <!--<li><a href="#" class="tag3">Streaming</a></li>
+                                        <li><a href="#" class="tag7">Audio Files</a></li>
+                                        <li><a href="#" class="tag2">Basic</a></li>
+                                        <li><a href="#" class="tag1">Tags for a Web Site</a></li>
+                                        <li><a href="#" class="tag5">Best Web Design Software</a></li>
+                                        <li><a href="#" class="tag2">Software</a></li>
+                                        <li><a href="#" class="tag2">Building a Web Page for the Totally Lost</a></li>
+                                        <li><a href="#" class="tag2">Color Symbolism</a></li>
+                                        <li><a href="#" class="tag4">Adding Streaming Audio Files</a></li>
+                                        <li><a href="#" class="tag3">Basic Tags for a Web Site</a></li>
+                                        <li><a href="#" class="tag7">Best Web Design Software</a></li>
+                                        <li><a href="#" class="tag2">Building a Web Page for the Totally Lost</a></li>
+                                        <li><a href="#" class="tag2">Color Symbolism</a></li>
+                                        <li><a href="#" class="tag4">Adding Streaming Audio Files</a></li>
+                                        <li><a href="#" class="tag3">Basic Tags for a Web Site</a></li>
+                                        <li><a href="#" class="tag2">Best Web Design Software</a></li>
+                                        <li><a href="#" class="tag2">Building a Web Page for the Totally Lost</a></li>
+                                        <li><a href="#" class="tag6">Color Symbolism</a></li>
+                                        <li><a href="#" class="tag4">Adding Streaming Audio Files</a></li>
+                                        <li><a href="#" class="tag3">Basic Tags for a Web Site</a></li>
+                                        <li><a href="#" class="tag7">Best Web Design Software</a></li>
+                                        <li><a href="#" class="tag6">Color Symbolism</a></li>
+                                        <li><a href="#" class="tag4">Adding Streaming Audio Files</a></li>
+                                        <li><a href="#" class="tag3">Basic Tags for a Web Site</a></li>-->
+                                    </ul>
+                                    <img class="img-center" ng-if="ConversationCloud.length == 0" src="../../../Content/img/no_data_dashboard.png" />
+                                </div>
+
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <!-- words cloud --->
+                <!-- bars perfom --->
+                <div class="col-md-6">
+                    <div class="box box-default" style="min-height: 450px;">
+                        <div class="box-header">
+                            <div class="col-md-12 dash_box_header text-center "><h1>TOP INFLUENCERS</h1></div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+
+                            <div class="progress-group" ng-repeat="obj in TopInfluencers">
+                                <span class="progress-text">{{obj.firstName}}</span>
+                                <span class="progress-number"><b>{{obj.statusCount}}</b></span>
+                                <div class="progress sm">
+                                    <div class="progress-bar {{PerformanceLevel(obj.statusCount)}}" style="width: {{obj.statusCount}}%"></div>
+                                </div>
+
+                                <!--
+                                <div ng-if="obj.Accomplishment >= 80" class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: {{obj.Accomplishment}}%"></div>
+                                </div>
+                                <div ng-if="obj.Accomplishment < 80 && obj.Accomplishment >= 60" class="progress sm">
+                                    <div class="progress-bar progress-bar-aqua" style="width: {{obj.Accomplishment}}%"></div>
+                                </div>
+                                <div ng-if="obj.Accomplishment < 60 && obj.Accomplishment >= 40" class="progress sm">
+                                    <div class="progress-bar progress-bar-yellow" style="width: {{obj.Accomplishment}}%"></div>
+                                </div> 
+                                <div ng-if="obj.Accomplishment < 40 && obj.Accomplishment >= 20" class="progress sm">
+                                    <div class="progress-bar progress-bar-light-blue" style="width: {{obj.Accomplishment}}%"></div>
+                                </div>  
+                                <div ng-if="obj.Accomplishment < 20 && obj.Accomplishment >= 0" class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: {{obj.Accomplishment}}%"></div>                         
+                                </div>
+                                -->  
+                            </div>
+                            <img class="img-center" ng-if="TopInfluencers.length == 0 || TopInfluencers == null" src="../../../Content/img/no_data_dashboard.png" />
+
+                            <!--<div class="progress-group">
+                                <span class="progress-text">Ayesha Shamim</span>
+                                <span class="progress-number"><b>310</b></span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <span class="progress-text">Adeel Gill</span>
+                                <span class="progress-number"><b>280</b></span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <span class="progress-text">Umer Masood</span>
+                                <span class="progress-number"><b>200</b></span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-yellow" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <span class="progress-text">Umer Masood</span>
+                                <span class="progress-number"><b>150</b></span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-light-blue" style="width: 20%"></div>
+                                </div>
+                            </div>-->
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <!-- bars perfom --->
+            </div>
+
+            <div class="container-fluid">
+                <!-- words cloud --->
+                <div class="col-md-6">
+                    <div class="box box-default" style="min-height:317px;">
+                        <div class="box-body">
+
+                            <div class="text-center">
+                                <img src="Content/images/map.jpg" style="width:340px; float:none !important; margin:0 auto" class="img-responsive"><br>
+                                <strong>Male :</strong> 
+                                <span class="dm">{{DemographicMaleCount}}</span> &nbsp; &nbsp;&nbsp;  
+                                <strong>Female :</strong> 
+                                <span class="df">{{DemographicFemaleCount}}</span> &nbsp;&nbsp;&nbsp;    
+                                <strong>Unspecified :</strong> 
+                                <span class="du">{{DemographicUnspecifiedCount}}</span>
+                            </div>
+
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <!-- words cloud --->
+                <!-- bars perfom --->
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <div class="col-md-12 dash_box_header text-center "><h1>GROUP PERFORMANCE</h1></div>
+                            <div>
+                                <div>
+                                    <div class="row top_grp_marg">
+                                        
+                                        <div class='col-lg-6'>
+                                            <input id="demoGraphicsDateFrom" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="From" ng-model="demoGraphicsDateFrom">
+                                            
+                                        </div><!-- /.col-lg-6 -->
+                                        <div class='col-lg-6'>
+                                            <input id="demoGraphicsDateTo" type="text" style="margin-bottom:5px;" class="form-control button_round input-sm" placeholder="To" ng-model="demoGraphicsDateTo">
+                                            
+                                        </div>
+
+                                    </div><!-- /.row -->
+                                </div>
+
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+
+                            <div class="col-md-6">
+
+                                <div class="progress-pie-chart" data-percent="60">
+                                    <!--Pie Chart -->
+                                    <div class="ppc-progress">
+                                        <div class="ppc-progress-fill"></div>
+                                    </div>
+                                    <div class="ppc-percents">
+                                        <div class="pcc-percents-wrapper">
+                                            <span>{{ClosedPercentage}} %</span>
+                                            <strong>Completed Tasks</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--End Chart -->
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="progress-pie-chart2" data-percent="40">
+                                    <!--Pie Chart -->
+                                    <div class="ppc-progress2">
+                                        <div class="ppc-progress-fill2"></div>
+                                    </div>
+                                    <div class="ppc-percents2">
+                                        <div class="pcc-percents-wrapper2">
+                                            <span>{{InProgressPercentage}}%</span>
+                                            <strong>Incomplete Tasks</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--End Chart -->
+
+                            </div>
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <!-- bars perfom --->
+            </div>
+
+
+            <!--<div class="container-fluid">
+                <div class="col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <div class="col-md-12 dash_box_header text-center "><h1>ENGAGEMENT</h1></div>
+                            <div>
+                                <div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <img src="Content/images/circles.png" alt="" class="img-responsive">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="Content/images/diag.png" alt="" class="img-responsive" style="margin:0 auto;">
+                </div>
+            </div>-->
+        </div>
+        <!-- Main content -->
+        <!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <!-- <footer class="main-footer">-->
+
+
+</div><!-- ./wrapper -->
+
+<div ui-view="Footer"></div>
+
+<!--Plug-in Initialisation-->
+<script type="text/javascript">
+    $(function () {
+            $('#userlistsd').slimscroll({
+                height: '330px',
+                disableFadeOut: true
+            });
+        });
+</script>
+
+<script>
+    $(document).ready(function () {
+        //var currentDate = new Date();
+        $('#gskDateTo').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('DashboardController')).scope().filterGroupKeyStatistics();
+        });
+
+        $('#gskDateFrom').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('DashboardController')).scope().filterGroupKeyStatistics();
+        });
+        $('#demoGraphicsDateFrom').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('DashboardController')).scope().filterGroupPerformance();
+        });
+        $('#demoGraphicsDateTo').daterangepicker({ singleDatePicker: true, timePicker: false }).on('apply.daterangepicker', function (ev, picker) {
+            //do something, like clearing an input
+            angular.element(document.getElementById('DashboardController')).scope().filterGroupPerformance();
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+     });
+</script>

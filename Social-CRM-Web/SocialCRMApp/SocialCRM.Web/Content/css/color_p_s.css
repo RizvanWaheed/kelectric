@@ -1,0 +1,20 @@
+
+
+ul.dropdown-menu {
+	z-index:1000;
+  /* min-width: 144px*/ 
+}
+
+#selected-color2 i {
+    display: inline-block;
+	font-size:12px;
+    /*font-weight: bold;*/
+    width: auto;
+	padding:10px;
+    text-align: center;
+}
+
+#selected-color2 i span {
+	font-family:Arial, Helvetica, sans-serif;
+
+}

@@ -1,0 +1,95 @@
+﻿
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-comments"></i> VIEW CONVERSTAION</h4>
+    </div>
+    <div class="modal-body">
+        <div style="margin-bottom:8px;"> conversation history with <strong>{{replyedMsgModel}}</strong></div>
+        <div slimscroll="slim">
+            <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in inboxHistoryItemDetails">
+                <div class="col-sm-2">
+                    <div class="inbox_blk_img">
+                        <div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>
+                        <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                    </div>
+                </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg">
+                        <!--<a href="javascript:;">{{msg.HandleName}}</a>-->
+                        {{msg.UserTwit}}
+                    </div>
+                    <div class="inbox_blk_cred"><a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ToUser);">{{msg.ToUser}}</a>{{msg.ReplyedDate}}</div>
+                </div>
+            </div>
+
+            <!--<div class="col-sm-12 inbox_blk unread_msg">
+                <div class="col-sm-2">
+                    <div class="inbox_blk_img">
+                        <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                        <a href="#"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                    </div>
+                </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg">
+                        <a href="#">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                    </div>
+
+                    <div class="inbox_blk_cred"><a href="#">chocoh0llic</a> replied to <a href="#">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                </div>
+
+            </div>
+            <div class="col-sm-12 inbox_blk unread_msg">
+                <div class="col-sm-2">
+                    <div class="inbox_blk_img">
+                        <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                        <a href="#"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                    </div>
+                </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg">
+                        <a href="#">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                    </div>
+
+                    <div class="inbox_blk_cred"><a href="#">chocoh0llic</a> replied to <a href="#">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                </div>
+
+            </div>
+            <div class="col-sm-12 inbox_blk unread_msg">
+                <div class="col-sm-2">
+                    <div class="inbox_blk_img">
+                        <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                        <a href="#"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                    </div>
+                </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg">
+                        <a href="#">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                    </div>
+
+                    <div class="inbox_blk_cred"><a href="#">chocoh0llic</a> replied to <a href="#">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                </div>
+
+            </div>
+            <div class="col-sm-12 inbox_blk unread_msg">
+                <div class="col-sm-2">
+                    <div class="inbox_blk_img">
+                        <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                        <a href="#"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                    </div>
+                </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg">
+                        <a href="#">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                    </div>
+
+                    <div class="inbox_blk_cred"><a href="#">chocoh0llic</a> replied to <a href="#">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                </div>
+
+            </div>-->
+        </div>
+
+        <div> &nbsp;</div>
+    </div>
+
+</div>

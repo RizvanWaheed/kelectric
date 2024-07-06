@@ -1,0 +1,952 @@
+﻿<style type="text/css">
+        .custom-popup-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: #f9f9f9;
+            min-height: 80px;
+            overflow: auto;
+        }
+    video
+        .message {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            color: #868686;
+        }
+
+        .custom-popup-wrapper > .dropdown-menu {
+            position: static;
+            float: none;
+            display: block;
+            min-width: 160px;
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            min-height: 80px;
+            overflow: auto;
+        }
+
+        .new_msg {
+            background-color: #e7f5f6; /*#f7f7f7;*/
+            animation: new_msg 0.5s 1;
+            -webkit-animation: new_msg 0.5s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 10s;
+            -webkit-animation-delay: 10s; /* Safari and Chrome */
+            -webkit-animation-fill-mode: forwards;
+        }
+
+        @keyframes new_msg {
+            from {
+                background-color: #e7f5f6;
+            }
+            /*#f7f7f7*/
+            to {
+                background-color: #FFF;
+            }
+        }
+
+        @-webkit-keyframes new_msg {
+            from {
+                background-color: #e7f5f6;
+            }
+            /*#f7f7f7*/
+            to {
+                background-color: #FFF;
+            }
+        }
+
+        .MarkedAsCompleted {
+            background-color: #f6f6f6 !important;
+        }
+
+        .inbox_blk_msg {
+            word-wrap: break-word;
+        }
+
+        .itemWarning {
+            background-color: #ccf1bb /*#F9BF3B*/;
+        }
+
+        .itemAlert {
+            background-color: #f5fcbb /*#3FC380*/;
+        }
+
+        .itemDanger {
+            background-color: #fdbfbf /*#EF4836*/;
+        }
+
+        .text_wrapper {
+            width: 100px;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            display: inline-block;
+        }
+
+        .columnSeparator {
+        }
+
+        .inboxObject {
+        }
+
+        .inboxObject.selected {
+            border: 1px solid #000 !important;
+            box-sizing: border-box;
+        }
+
+        .showCross {
+            display: none;
+        }
+
+        .inboxTag {
+            position: relative;
+            margin-right: 2px;
+            display: inline-block;
+            padding: 2px 12px 3px 5px;
+            background-color: #6e889c;
+            color: #ffffff;
+        }
+
+        .inboxTag:hover .showCross {
+            display: inline;
+            position: absolute;
+            right: -4px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+        .halfOpacity{
+            opacity: 0.3;
+        }
+
+        .halfOpacity:hover{
+            opacity: 1;
+            border: solid 1px #ffffff;
+        }
+
+        .fullOpacity{
+            opacity: 1;
+            border: solid 1px #ffffff;        
+        }
+</style>
+<!--<link href="../../../Content/css/bjqs.css" rel="stylesheet" />
+<link href="../../../Content/css/demo.css" rel="stylesheet" />
+<script src="../../bjqs-1.3.min.js"></script>-->
+<script type="text/ng-template" id="customPopupTemplate.html">
+
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <p class="message">Select Profile</p>
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <div uib-typeahead-match=uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+            </li>
+        </ul>
+    </div>
+</script>
+
+<div class="wrapper">
+    <style>
+        .materialpicker-colors {
+            -webkit-user-select: none;
+            user-select: none;
+            position: relative;
+            border: 1px solid #FFF;
+            border-radius: 2px;
+            display: inline-block;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .materialpicker-colors div.selected {
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 4px #000;
+            border: 2px solid #FFF;
+        }
+
+        div.materialpicker-white.selected {
+            border-color: #78909C;
+        }
+
+        .materialpicker.ng-invalid .materialpicker-colors {
+            border-color: #a94442;
+            box-shadow: 0 1px 5px #a94442;
+        }
+    </style>
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="UnifiedinboxController" ng-controller="UnifiedinboxController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10" ng-if="PageType == 'Unified'"><i class="fa fa-envelope"></i> Unified Inbox</div>
+            <div class="col-sm-10" ng-if="PageType == 'Archive'"><i class="fa fa-envelope"></i> Archive Inbox</div>
+            <div class="col-sm-10" ng-if="PageType == 'Completed'"><i class="fa fa-envelope"></i> Completed</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set" ng-hide="PageEmpty">
+
+            <div class="col-md-9">
+                <!--<div class="box box-default" style="text-align: center;" ng-show="latestInboxitemDetails.length > 0">
+                    <a id="new-posts" href="javascript:" ng-click="loadLatestInboxItems()">({{latestInboxitemDetails.length}}) New Post(s)</a>
+                </div>-->
+                <!--<div id="fb-root"></div>
+                <div class="fb-video" data-href="{{inboxitemDetails[0].Attachments[0].Url}}" data-width="450" data-show-text="false"></div>
+                <br/><div class="fb-video" data-href="{{tempURL}}" data-width="450" data-show-text="false"></div>-->
+
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+
+                            <!--<iframe src="{{tempURLIFrame}}" class="slide slide-animation nonDraggableImage img-responsive"
+                                    id="player_1" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="650" height="366"></iframe>-->
+
+
+                            <div id="inbox-{{msg.Id}}" class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in inboxitemDetails">
+                                <div class="twitter_search_social_icos" ng-if="msg.MessageType == 'STP'"></div>
+                                <div class="twitter_social_icos" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'"></div>
+                                <div class="fb_social_icos" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP'"></div>
+                                <div class="insta_social_icos" ng-if="msg.MessageType == 'IM' || msg.MessageType == 'IC'"></div>
+                                <!--Nested Comment identifier-->
+                                <!--<div ng-if="item.ParentId != ''" class="col-sm-12">-->
+                                <div ng-if="msg.ParentId != ''" class="col-sm-12 inboxTag_marg" id="NC-{{msg.MessageType}}-{{msg.Id}}">
+                                    <a id="NC-{{msg.Id}}"
+                                       title="It is a Nested Comment"
+                                       class="inboxTag">Nested Comment</a>
+                                </div>
+                                <!--</div>-->
+                                <!--End Nested Comment identifier-->
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <div class="verified_icon" ng-if="msg.IsVerified == true && (msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM')"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                        <div class="verified_icon" ng-if="msg.IsVerified == true && (msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP')"><img src="/Content/images/facebook-verified.png" alt="" title="Verified"></div>
+                                        <!--<a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ReplyedBy}}" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                        <a target="_blank" href="//facebook.com/{{msg.ReplyedByUserId}}" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC'"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                        <a target="_blank" href="//facebook.com/{{msg.ReplyedByUserId}}" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'FCP'"><img src="{{msg.User == msg.ReplyedBy && msg.TwtImg || '/Content/img/user2.jpg'}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>-->
+                                        <a href="javascript:" ng-click="OpenConsumerPopup(msg)" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                        <a target="_blank" href="javascript:" ng-click="OpenConsumerPopup(msg)" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC'"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                        <a target="_blank" href="javascript:" ng-click="OpenConsumerPopup(msg)" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'FCP'"><img src="{{msg.User == msg.ReplyedBy && msg.TwtImg || '/Content/img/user2.jpg'}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                        <a target="_blank" href="//instagram.com/{{msg.ReplyedBy}}" title="Click to open {{msg.ReplyedBy}} profile" ng-if="msg.MessageType == 'IM' || msg.MessageType == 'IC'"><img src="{{msg.TwtImg}}" onerror="this.onerror = null; this.src = 'Content/img/user2.jpg';" alt="User Image" class="img-circle img-responsive"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="text-left inbox_blk_msg_blk">
+                                        <div class="inbox_blk_msg">
+                                            <strong>{{msg.ReplyedByFullName}}</strong>
+                                            <a ng-if="msg.MessageType == 'TP'" ng-click="$event.stopPropagation()" ng-href="https://twitter.com/{{msg.ReplyedBy}}/status/{{msg.StatusId}}" target="_blank">
+                                                <Span style="float:right;" title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span>
+                                            </a>
+                                            <a ng-if="msg.MessageType == 'TM'" ng-click="$event.stopPropagation()" ng-href="https://twitter.com/messages/{{msg.UserId}}-{{msg.ReplyedByUserId}}" target="_blank">
+                                                <Span style="float:right;" title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span>
+                                            </a>
+                                            <a ng-if="msg.MessageType == 'FP'" ng-click="$event.stopPropagation()" ng-href="http://www.facebook.com/{{msg.ToUserId}}/posts/{{msg.StatusId | FBPost}}" target="_blank">
+                                                <Span style="float:right;" title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span>
+                                            </a>
+                                            <a ng-if="msg.MessageType == 'FC'" ng-click="$event.stopPropagation()" ng-href="http://www.facebook.com/{{msg.ToUserId}}/posts/{{msg.StatusId | FBComment}}" target="_blank">
+                                                <Span style="float:right;" title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span>
+                                            </a>
+                                            <a ng-if="msg.MessageType =='FCP'" ng-click="$event.stopPropagation()" ng-href="https://www.facebook.com/{{msg.ToUserId}}/messages/{{msg.StatusId | FBPageChat}}" target="_blank">
+                                                <Span style="float:right;" title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span>
+                                            </a>
+                                            <Span ng-if="msg.MessageType !== 'FCP' &&msg.MessageType !== 'FC' &&msg.MessageType !== 'FP' && msg.MessageType !== 'TM' && msg.MessageType !== 'TP'" style="float:right;" title="{{msg.ReplyedDate}}">{{msg.ReplyedDateForDeck}}</Span>
+                                        </div>
+                                        <div class="inbox_blk_msg" id="{{msg.Id}}-{{msg.MessageType}}-converted_url">
+                                            <!--<a href="">{{msg.HandleName}}</a>-->
+                                            {{TextToURLConvert(msg.UserTwit,msg.Id,msg.MessageType,msg.Tags,msg.Attachments)}}
+                                            <!--{{msg.UserTwit}}-->
+                                        </div>
+                                    </div>
+                                    <div class="inbox_blk_cred">
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ReplyedBy}}" title="Click to open {{msg.ReplyedByFullName}} profile" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'">{{msg.ReplyedByFullName}}</a>
+                                        <a target="_blank" href="//facebook.com/{{msg.ReplyedByUserId}}" title="Click to open {{msg.ReplyedByFullName}} profile" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP'">{{msg.ReplyedByFullName}}</a>
+                                        <a target="_blank" href="//instagram.com/{{msg.ReplyedBy}}" title="Click to open {{msg.ReplyedByFullName}} profile" ng-if="msg.MessageType == 'IM' || msg.MessageType == 'IC'">{{msg.ReplyedByFullName}}</a>
+                                        {{msg.ActivityType}}
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ToUser}}" title="Click to open {{msg.ToUserFullName}} profile" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'">{{msg.ToUserFullName}}</a>
+                                        <a target="_blank" href="//facebook.com/{{msg.ToUserId}}" title="Click to open {{msg.ToUserFullName}} profile" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP'">{{msg.ToUserFullName}}</a>
+                                        <a target="_blank" href="//instagram.com/{{msg.ToUser}}" title="Click to open {{msg.ToUserFullName}} profile" ng-if="msg.MessageType == 'IM' || msg.MessageType == 'IC'">{{msg.ToUserFullName}}</a>
+                                        <!--{{msg.ReplyedDate}}-->
+                                        <span ng-show="msg.IsArchived == false && PageType == 'Completed'"> [   Replied by : {{msg.CompletedBy}} on {{msg.CompletedDate}} ]</span>
+                                    </div>
+                                    <div ng-if="msg.Attachments.length > 0 && msg.MessageType != 'IM'" style="margin-top:15px;">
+                                        <img ng-if="msg.Attachments[0].Type == 'image'" ng-src="{{msg.Attachments[0].Url}}" style="border-radius: 0px;max-width:294px;max-height:294px;" />
+                                        <iframe ng-if="msg.Attachments[0].Type == 'video_share'" src="{{msg.Attachments[0].Url}}" style="border-radius: 0px;max-width:294px;max-height:294px;"
+                                                allowtransparency="true" frameborder="0" scrolling="no" name="wistia_embed" width="294" height="294"></iframe>
+                                        <iframe ng-if="msg.Attachments[0].Type == 'video_fb'" src="{{msg.Attachments[0].Url}}" width="294" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                                        <video ng-if="msg.Attachments[0].Type == 'twitVid_share'" style="border-radius: 0px;max-width:294px;max-height:294px;" controls>
+                                            <source src="{{msg.Attachments[0].Url}}" type="video/mp4">
+                                        </video>
+
+                                        <div ng-if="msg.MessageType == 'FCP'">
+                                            <div ng-repeat="item in msg.Attachments">
+                                                <a ng-if="item.Type == 'video_download'" href="{{item.Url}}" target="_blank">Download</a>&nbsp;&nbsp;
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <a id="more-slide" ng-if="msg.Attachments.length > 1" href="javascript:" ng-click="openSlider(msg.Attachments)">View more</a>
+                                    </div>
+                                    <div class="inboxTag_marg">
+                                        <a ng-click="quickRemoveTagFromPost(msg.Id, msg.MessageType, tag, $index, $parent.$index)" ng-repeat="tag in msg.Tags" href="javascript:;" class="inboxTag" title="{{tag}}" ng-style="getTagStyle(tag)">
+                                            {{getTagName(tag)}}
+                                            <div class="showCross"><i class="fa fa-times"></i></div>
+                                        </a>
+                                    </div>
+                                    <div class="inbox_blk_actions">
+                                        <!--<a href=""><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a>
+                                        <a ng-hide="msg.IsTaskCompleted" href="" ng-click="MarkAsCompleted(msg,$index)"><i class="fa fa-check-circle-o" title="Mark as Complete"></i></a>
+                                        <a ng-show="msg.IsTaskCompleted" href="" ng-click="MarkAsInComplete(msg,$index)"><i class="fa fa-check-circle" title="Mark as InComplete"></i></a>-->
+                                        <a href="" ng-show="msg.IsArchived == false && PageType != 'Completed'"><i class="fa fa-archive" title="Archive Message" ng-click="addToArchiveList(msg)"></i></a>
+                                        <a href="" ng-show="msg.IsArchived == true && PageType != 'Completed'"><i class="fa fa-undo" title="UnArchive Message" ng-click="removeFromArchiveList(msg)"></i></a>
+                                        <a href=""><i class="fa fa-envelope" title="Email Message" ng-click="openEmailTweets(msg)"></i></a>
+                                        <a href=""><i class="fa fa-tags" title="Select Tags" ng-click="openUpdateTags(msg)"></i></a>
+                                        <a href="" data-toggle="dropdown"><i ng-class="getSentimentClass(msg.Sentiment)" ng-style="getSentimentStyle(msg.Sentiment)" title="Sentiments"></i></a>
+                                        <ul class="dropdown-menu" style="z-index:1100; left:105px;">
+                                            <li ng-repeat="sent in sentTypes" ng-click="changeSentimentOfPost(msg.Id, msg.MessageType, sent.sentName, $parent.$index)">
+                                                <a href=""><i ng-class="getSentimentClass(sent.sentName)" ng-style="getSentimentStyle(sent.sentName)"></i> {{sent.sentName}}</a>
+                                            </li>
+                                        </ul>
+                                        <!--<a href="" ng-click="CreateTask(msg)"><i class="fa fa-flag" title="Create Task"></i></a>-->
+                                        <a href="" ng-show="msg.MessageType != 'FCP' && msg.MessageType != 'TM' && $parent.$parent.PostRespond"><i class="fa fa-mail-reply" title="Reply" ng-click="openReplyAdd(msg)"></i></a>
+                                        <a href="" ng-show="msg.MessageType == 'FCP' && $parent.$parent.PostRespond"><i class="fa fa-mail-reply" title="Reply" ng-click="openReplyFbPageChat(msg)"></i></a>
+                                        <a href="" ng-show="msg.MessageType == 'TM' && $parent.$parent.PostRespond"><i class="fa fa-mail-reply" title="Reply" ng-click="openDirectMessage(msg)"></i></a>
+                                        <a href="" ng-show="msg.MessageType != 'TM' && msg.MessageType != 'IC' && msg.MessageType != 'FCP'"><i class="fa fa-heart" title="Like" ng-click="likeTweet(msg)"></i></a>
+                                        <a href="" ng-show="msg.MessageType == 'TP' || msg.MessageType == 'STP'"><i class="fa fa-retweet" title="Retweet" ng-click="openRetweet(msg)"></i></a>
+                                        <a href="" ng-show="msg.MessageType == 'TP' || msg.MessageType == 'STP'"><i class="fa fa-comment" title="Retweet with Comment" ng-click="openRetweetWithComment(msg)"></i></a>
+                                        <a href="" ng-show="msg.MessageType != 'FCP' && msg.MessageType != 'IM' && $parent.$parent.PostEdit && (((msg.MessageType == 'TP' || msg.MessageType == 'TM') && msg.UserId == msg.ReplyedByUserId) || (msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'IC'))">
+                                            <i class="fa fa-trash" title="Delete" ng-click="deleteObj(msg)"></i>
+                                        </a>
+                                        <a href="" ng-show="(msg.MessageType == 'FP' || msg.MessageType == 'FC') && $parent.$parent.PostEdit"><i class=" fa fa-eye-slash" title="Hide/Unhide" ng-click="hideObj(msg)"></i></a>
+                                        <!--<a href="" ng-show="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'"><i class="fa fa-ban" title="Report as Spam" ng-click="openReportAsSpam(msg.StatusId,msg.ReplyedBy,msg.MessageType)"></i></a>
+                                        <a href="" data-toggle="collapse" data-target="#msgSetting-{{msg.MessageType}}{{msg.Id}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'"><i class="fa fa-comments" title="Conversation" ng-click="openConversation(msg.StatusId,msg.ReplyedBy,msg.MessageType)"></i></a>
+                                        <div id="msgSetting-{{msg.MessageType}}{{msg.Id}}" class="collapse sub_msgsett">
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP'" ng-click="openRetweet(msg)">Retweet |</a>
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP'" ng-click="openRetweetWithComment(msg)">Retweet with Comment |</a>
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP'" ng-click="deleteTweet(msg)">Delete Tweet |</a> 
+                                            <a href="" ng-if="msg.MessageType != 'TM' && msg.MessageType != 'IC' && msg.MessageType != 'FCP'" ng-click="likeTweet(msg)">Like |</a>
+                                            <a href="" ng-click="openEmailTweets(msg)">Email Message |</a>
+                                            <a href="" ng-if="msg.IsArchived == false" ng-click="addToArchiveList(msg)">Archive Message</a>
+                                            <a href="" ng-if="msg.IsArchived == true" ng-click="removeFromArchiveList(msg)">UnArchive Message</a>
+                                            <a ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'" href="" ng-click="openReportAsSpam(msg.StatusId,msg.ReplyedBy,msg.MessageType)">Report as Spam</a>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+            
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box" style="padding-left:0px !important;">
+                    <div class="col-md-12">
+                        <div class="col-md-4 social_stat">
+                            <img src="/Content/img/fb_c.png" alt="" style="width:35px; height:35px;"><br>
+                            <strong class="fb_txt">{{FbCount}}</strong>
+                        </div>
+                        <div class="col-md-4 social_stat">
+                            <div>
+                                <img src="/Content/images/instagram_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="in_txt">{{InCount}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-4 social_stat">
+                            <div>
+                                <img src="/Content/img/twit_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="twit_txt">{{TwitCount}}</strong>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-3 social_stat">
+                            <div>
+                                <img src="/Content/images/ana_ico.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="ana_txt">{{AnaCount}}</strong>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                <!--<div ng-hide="hideTCFilter" class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr style="padding-top: 10px;height: 30px;">
+                                <th><strong>HIDE COMPLETED ITEMS</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Hide Completed Items">
+                                        <input type="checkbox" value="None" id="squaredSmal6811" name="check" ng-model="HCItems" ng-change="HideCompletedItems()" />
+                                        <label for="squaredSmal6811"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr style="padding-top: 10px;height: 30px;">
+                                <th><strong>SHOW COMPLAINTS</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Hide Completed Items">
+                                        <input type="checkbox" value="None" id="squaredSmal6811-sc" name="check-sc" ng-model="SComplaints" ng-change="ShowComplaints()" />
+                                        <label for="squaredSmal6811-sc"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr style="padding-top: 10px;height: 30px;">
+                                <th><strong>SHOW OUTLOOK</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Show Outlook">
+                                        <input type="checkbox" value="None" id="squaredSmal6811-outlook" name="check-outlook" ng-model="SComplaints" ng-change="ShowOutlook()" />
+                                        <label for="squaredSmal6811-outlook"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>-->
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="margin-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>DATE RANGE</strong></th>
+                            </tr>
+                            <tr>
+                                <td class="zro demo" style="padding: 10px 0px 0px 0px;">
+                                    <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" options="opts" type="text" ng-model="dateRange" />
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box" ng-if="IsPersonal == 'false'">
+                    <div style="margin-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>SEARCH</strong></th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px 0px 0px 0px;">
+                                    <input type="text" ng-model="$parent.AuthorName" class="form-control" name="userText" ng-focus="$parent.AuthorUserName = '';" placeholder="Enter Name"><br />
+                                    <input type="text" ng-model="$parent.AuthorUserName" class="form-control" name="userText" ng-focus="$parent.AuthorName = '';" placeholder="Enter Twitter Handle">
+                                    <button type="button" class="btn btn-primary button_round btn_height3" style="margin-top:15px;" ng-click="SearchByUserName()">Search</button>
+                                    <button type="button" class="btn btn-primary button_round btn_height3" style="margin-top:15px;" ng-click="$parent.AuthorName = '';$parent.AuthorUserName = '';SearchByUserName();">Reset</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="f_profile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>PROFILES</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal68" name="check" ng-model="select" ng-change="checkAll()" />
+                                        <label for="squaredSmal68"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="profileInfo in Profiles">
+                                <td width="91%" height="30">
+                                    &nbsp; <a href="">
+                                        <img ng-src="{{profileInfo.ProfileTypeId == '1' && fbIcon || (profileInfo.ProfileTypeId=='4'&& twitterIcon || (profileInfo.ProfileType=='3'&& linkedinIcon || (profileInfo.ProfileType=='6' && instaIcon || (profileInfo.ProfileType='google'&&googleIcon ||''))))}}"
+                                             alt="{{profileInfo.ProfileTypeId == '1' && 'facebook-profile' || (profileInfo.ProfileTypeId=='4'&& 'twitter-profile' || (profileInfo.ProfileType=='3'&&'twitter-profile'|| (profileInfo.ProfileType=='6' && 'instagram-profile'|| (profileInfo.ProfileType='google'&&'analytics-profile' ||''))))}}">&nbsp;{{profileInfo.ProfileName}}
+                                    </a>
+                                </td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="Profile1234-{{profileInfo.UserId}}" name="check" ng-model="selected[profileInfo.UserId]" ng-change="profileSelectedChanged()" />
+                                        <label for="Profile1234-{{profileInfo.UserId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="$parent.IsAdmin">
+                                <td width="91%" height="30">&nbsp; <a href="" ng-click="openProfileConnect()"> <strong>+</strong> Connect a profile</a></td>
+                                <td width="9%"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div id="f_msg" style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>MESSAGE TYPES</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal69" name="check" ng-model="selectMsg" ng-change="checkAllMsgs()" />
+                                        <label for="squaredSmal69"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="msg in msgTypes">
+                                <td width="91%" height="30">&nbsp; <a href=""><img ng-if="msg.msgTypeId != '3'" src="/Content/images/{{msg.msgTypelogo}}.png" alt=""><i ng-if="msg.msgTypeId == '3'" class="fa fa-paper-plane "></i>{{msg.MsgType}}</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="msg-{{msg.msgTypeId}}" name="check" ng-model="selectedMsg[msg.msgTypeId]" ng-change="msgSelectedChanged()" />
+                                        <label for="msg-{{msg.msgTypeId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <!--<td width="91%" height="30">&nbsp; <a href=""><i class="fa fa-paper-plane "></i> Sent Messages</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                        <label for="squaredSmall9"></label>
+                                    </div>
+                                </td>-->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div ng-show="PageType == 'Completed'" class="col-md-12 box box-default filter_box">
+                    <div id="f_team" style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>COMPLETED BY</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal70" name="check" ng-model="selectTeamMember" ng-change="checkAllTeamMembers()" />
+                                        <label for="squaredSmal70"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="tm in TeamMembers">
+                                <td width="91%" height="30">&nbsp; <a href="">{{tm.Name}}</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="team-{{tm.TeamMemberId}}" name="check" ng-model="selectedTeamMembers[tm.TeamMemberId]" ng-change="teamMemberSelectedChanged()" />
+                                        <label for="team-{{tm.TeamMemberId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-12 box box-default filter_box" ng-if="IsPersonal == 'false'">
+                    <div id="c_consumer" style="margin-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>COMPLAINTS</strong></th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px 0px 0px 0px;">
+                                    <input type="text" ng-model="customPopupSelected" typeahead-on-select="onSelectedProfile($item)" placeholder="Search Profile" uib-typeahead="profile as profile.Text for profile in customerProfiles | filter:{Text:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control">
+                                </td>
+                            </tr>
+                            <tr class="filter_header">
+                                <th><strong>CONSUMER NUMBERS</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="AllConsumerNumbers" name="check-consumer" ng-model="$parent.selectConsumer" ng-change="checkAllConsumerNumbers()" />
+                                        <label for="AllConsumerNumbers"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="option in consumerNumbers">
+                                <td width="91%" height="30">&nbsp; <a href="" class="inboxTag">{{option.Text}}</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="brand-{{option.Value}}" name="check" ng-model="$parent.selectedConsumerNum[option.Value]" ng-change="consumerNumSelectedChanged()" />
+                                        <label for="brand-{{option.Value}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>-->
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div id="f_sent" style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>SENTIMENTS</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal70" name="check" ng-model="selectSent" ng-change="checkAllSents()" />
+                                        <label for="squaredSmal70"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="sent in sentTypes">
+                                <td width="91%" height="30">&nbsp; <a href=""><i ng-class="getSentimentClass(sent.sentName)" ng-style="getSentimentStyle(sent.sentName)">&nbsp;</i>{{sent.sentName}}</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="sent-{{sent.sentId}}" name="check" ng-model="selectedSent[sent.sentId]" ng-change="sentSelectedChanged()" />
+                                        <label for="sent-{{sent.sentId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box" ng-if="IsPersonal == 'false'">
+                    <div id="f_tag" style="margin-right:10px;">
+                        <!--<strong>BRAND KEYWORDS</strong><br>-->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th width="91%"><strong>TAGS</strong></th>
+                                <!--<th width="20%"></th>-->
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="AllBrandTags" name="check" ng-model="$parent.selectTag" ng-change="checkAllTags()" />
+                                        <label for="AllBrandTags"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <!--<tr>
+                                <td colspan="2">
+                                    <a href="" data-toggle="collapse" data-target="#addTag"> <strong>+</strong>  Add Tag</a>
+                                    <div id="addTag" class="collapse">
+                                        <form name="myFormTag">
+                                            <div class="btn-group">
+                                                <a id="selected-color2" class="btn btn-mini dropdown-toggle" data-toggle="dropdown" style="padding:0 !important;"><i class="fa fa-eyedropper" style="color:FontColor ; background-color:BGColor ;"> <span>Select Font &amp; Background Color</span></i></a>
+                                                <ul class="dropdown-menu" style="width:350px; margin-left:-38px;">
+                                                    <li style="display:inline-block;">
+                                                        <div> font color</div>
+                                                        <div id="colorpalette2" ng-click="clickFont()"></div>
+                                                    </li>
+                                                    <li style="display:inline-block;">
+                                                        <div> background color</div>
+                                                        <div id="colorpalette3" ng-click="clickBG()"></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" class="form-control input_border_min " name="TagText" ng-model="$parent.TagText" id="txtTag" placeholder="Enter Tag *" aria-describedby="sizing-addon2" style="margin-top:10px;" required>
+                                            <p class="warnings_p warnings_p2_320 " ng-show="myFormTag.TagText.$touched && myFormTag.TagText.$invalid">Tag Text is required</p>
+                                            <input type="text" class="form-control input_border_min " name="TagName" ng-model="$parent.TagName" placeholder="Name Tag" aria-describedby="sizing-addon2" style="margin-top:10px;">
+                                            <button ng-disabled="myFormTag.TagText.$invalid" type="button" class="btn btn-primary button_round  btn_height3" id="btnbrand" style="margin-top:15px;" data-toggle="collapse" data-target="#addTag" ng-click="AddBrandTag()">SAVE TAG</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>-->
+                            <tr ng-repeat="brnd in TagsTypes">
+                                <td width="91%" height="30">
+                                    &nbsp;
+                                    <a href="" class="inboxTag" title="Keyword: {{brnd.BrandType}}" ng-if="brnd.BrandName != ''" ng-style="{color:brnd.FontColor,'background-color': brnd.BGColor}">{{brnd.BrandName}}</a>
+                                    <a href="" class="inboxTag" title="Keyword: {{brnd.BrandType}}" ng-if="brnd.BrandName == ''" ng-style="{color:brnd.FontColor,'background-color': brnd.BGColor}">{{brnd.BrandType}}</a>
+                                    <!--<a href="" class="inboxTag" title="Edit" ng-if="brnd.BrandName != ''" ng-click="populateTagInEditMode(brnd.BrandTypeId)" ng-style="">Edit</a>-->
+
+                                </td>
+                                <!--<td width="20%">
+                                    <a href="javascript:" class="inboxTag" title="Delete" ng-click="deleteTag(brnd.BrandTypeId)" ng-if="brnd.BrandName != ''" ng-style="">Delete</a>
+                                    <a href="javascript:" class="inboxTag" title="Delete" ng-click="deleteTag(brnd.BrandTypeId)" ng-if="brnd.BrandName == ''" ng-style="">Delete</a>
+                                </td>-->
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="brand-{{brnd.BrandTypeId}}" name="check" ng-model="$parent.selectedtag[brnd.BrandTypeId]" ng-change="tagSelectedChanged()" />
+                                        <label for="brand-{{brnd.BrandTypeId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-12 box box-default filter_box" ng-if="IsPersonal == 'false'">
+                    <div id="f_keyword" style="margin-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th width="71%"><strong>KEYWORDS</strong></th>
+                                <th width="20%"></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal690" name="check" ng-model="$parent.selectBrand" ng-change="checkAllBrands()" />
+                                        <label for="squaredSmal690"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <a href="" data-toggle="collapse" data-target="#addKeword"> <strong>+</strong>  Add Keyword</a>
+                                    <div id="addKeword" class="collapse">
+                                        <form name="myFormKeyword">
+                                            <input type="text" class="form-control input_border_min " name="KeywordText" ng-model="$parent.KeywordText" id="txtkeyword" placeholder="Enter Keyword(s) *" aria-describedby="sizing-addon2" style="margin-top:10px;" required>
+                                            <p class="warnings_p warnings_p2_320 " ng-show="myFormKeyword.KeywordText.$touched && myFormKeyword.KeywordText.$invalid">Keyword Text is required</p>
+                                            <input type="text" class="form-control input_border_min " name="KeywordName" ng-model="$parent.KeywordName" placeholder="Name Keyword(s)" aria-describedby="sizing-addon2" style="margin-top:10px;">
+                                            <input type="text" class="form-control input_border_min " name="LocationId" ng-model="$parent.result1" placeholder="Select Location" aria-describedby="sizing-addon2" style="margin-top:10px;" ng-autocomplete details="$parent.details1" options="$parent.options1">
+                                            <button ng-disabled="myFormKeyword.KeywordText.$invalid" type="button" class="btn btn-primary button_round  btn_height3" id="btnbrand" style="margin-top:15px;" data-toggle="collapse" data-target="#addKeword" ng-click="AddBrandKeyword()">SAVE KEYWORD</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="brnd in BrandsTypes">
+                                <td width="71%" height="30">
+                                    &nbsp;
+                                    <a href="" title="Keyword: {{brnd.BrandType}}" ng-if="brnd.BrandName != '' && brnd.LocationName == '0'">{{brnd.BrandName}}</a>
+                                    <a href="" title="Keyword: {{brnd.BrandType}}" ng-if="brnd.BrandName == '' && brnd.LocationName == '0'">{{brnd.BrandType}}</a>
+                                    <a href="" title="Keyword: {{brnd.BrandType}}, Location: {{brnd.LocationName}}" ng-if="brnd.BrandName != ''&& brnd.LocationName != '0'">{{brnd.BrandName}}</a>
+                                    <a href="" title="Keyword: {{brnd.BrandType}}, Location: {{brnd.LocationName}}" ng-if="brnd.BrandName == ''&& brnd.LocationName != '0'">{{brnd.BrandType}}</a>
+                                </td>
+                                <td width="20%">
+                                    <a href="javascript:" class="inboxTag" title="Delete" ng-click="deleteKeyword(brnd.BrandTypeId)" ng-if="brnd.BrandName != ''" ng-style="">Delete</a>
+                                    <a href="javascript:" class="inboxTag" title="Delete" ng-click="deleteKeyword(brnd.BrandTypeId)" ng-if="brnd.BrandName == ''" ng-style="">Delete</a>
+                                </td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="brand-{{brnd.BrandTypeId}}" name="check" ng-model="$parent.selectedbrand[brnd.BrandTypeId]" ng-change="brandSelectedChanged()" />
+                                        <label for="brand-{{brnd.BrandTypeId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>-->
+
+            </div>
+        </div>
+
+        <div class="container-fluid padding_set" ng-show="PageEmpty && PageType == 'Unified'">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <img src="/Content/images/social_img.png" alt="" class="img-responsive" style="margin:0 auto !important'"><br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <span class="error_heading">Getting Started</span><br>
+                                <span class="error_heading2">Your Inbox is lonely. Hurry up and associate your social networks with it.  </span><br><br>
+                                <br>
+                                <a href="" ng-click="openProfileConnect()"><img src="{{fbIcon}}" alt=""> Associate Facebook Profile</a><br><br>
+                                <a href="" ng-click="openProfileConnect()"><img src="{{twitterIcon}}" alt=""> Associate Twitter Profile</a><br><br>
+                                <a href="" ng-click="openProfileConnect()"><img src="{{instaIcon}}" alt=""> Associate Instagram Profile</a><br><br>
+                                <a href="" ng-click="openProfileConnect()"><img src="{{googleIcon}}" alt=""> Associate Google Analytics</a><br>
+                            </div>
+                        </div>
+
+                    </div><!-- /.box-header -->
+
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+        <div class="container-fluid padding_set" ng-show="PageEmpty && PageType == 'Archive'">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <img src="/Content/images/archive_img.jpg" alt="" class="img-responsive" style="margin:0 auto !important'"><br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <span class="error_heading">Getting Started</span><br>
+                                <span class="error_heading2">You can archive any important messages for future references. You have no archived messages at the moment.</span><br><br>
+                                <br>
+                                <a href="/#/UnifiedInbox">Archive Your Message</a><br>
+                            </div>
+
+
+                        </div>
+                    </div><!-- /.box-header -->
+
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+        <div class="container-fluid padding_set" ng-show="PageEmpty && PageType == 'Completed'">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <img src="/Content/images/archive_img.jpg" alt="" class="img-responsive" style="margin:0 auto !important'"><br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <span class="error_heading">Getting Started</span><br>
+                                <span class="error_heading2">Responded customer queries will be displayed here. You have no completed query at the moment.</span><br><br>
+                                <br>
+                                <a href="/#/Responder">Respond to Customer Queries</a><br>
+                            </div>
+
+
+                        </div>
+                    </div><!-- /.box-header -->
+
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.content-wrapper -->
+</div><!-- ./wrapper -->
+
+<div ui-view="Footer"></div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
+<!--<div id="fb-root"></div>
+<script>
+    setTimeout(function () {
+        debugger;
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));``
+    }, 15000);
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>-->
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#grplists').slimscroll({
+            height: '1070px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#UnifiedinboxController').scope().profileLoadMoreFeeds();
+                angular.element('#UnifiedinboxController').scope().$apply();
+            }
+        });
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+        $('#f_msg').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+        $('#f_team').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+        setTimeout(function () {
+            $('#f_tag').slimscroll({
+                height: '150px',
+                disableFadeOut: true
+            });
+            $('#f_keyword').slimscroll({
+                height: '150px',
+                disableFadeOut: true
+            });
+            $('#c_consumer').slimscroll({
+                height: '150px',
+                disableFadeOut: true
+            });
+        }
+        , 2000);
+    });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $('#colorpalette2').colorPalette()
+      .on('selectColor', function (e) {
+          $('#selected-color2 i').css('color', e.color);
+
+      });
+    $('#colorpalette3').colorPalette()
+      .on('selectColor', function (e) {
+          $('#selected-color2 i').css('background-color', e.color);
+      });
+
+    //$('#colorpalette2edit').colorPalette()
+    //  .on('selectColor', function (e) {
+    //      $('#selected-color2-edit i').css('color', e.color);
+
+    //  });
+    //$('#colorpalette3edit').colorPalette()
+    //  .on('selectColor', function (e) {
+    //      $('#selected-color2-edit i').css('background-color', e.color);
+    //  });
+
+    $('#colorpalette2edit').colorPalette();
+    $('#colorpalette3edit').colorPalette();
+
+    //$(function () {
+    //    // Declare a proxy to reference the hub.
+    //    var notifications = $.connection.notificationHub;
+    //    // Create a function that the hub can call to broadcast messages.
+
+    //    notifications.client.updateMessages = function () {
+    //        getAllMessages();
+
+    //    };
+    //    notifications.client.recieveNotification = function (totalNewMessages, totalNewCircles, totalNewJobs, totalNewNotifications) {
+    //        // Add the message to the page.
+    //        alert(totalNewMessages);
+    //        //$('#spanNewCircles').text(totalNewCircles);
+    //        //$('#spanNewJobNotifications').text(totalNewJobs);
+    //        //$('#spanNewNotifications').text(totalNewNotifications);
+    //    };
+    //    // Start the connection.
+    //    $.connection.hub.start().done(function () {
+
+    //        $('#btnbrand').click(function () {
+    //            notifications.server.sendNotifications();
+    //        });
+    //    }).fail(function (e) {
+    //        alert(e);
+    //    });
+    //    //$.connection.hub.start();
+    //});
+    //$(function () {
+    //    // Declare a proxy to reference the hub.
+    //    var notifications = $.connection.notificationHub;
+
+    //    //debugger;
+    //    // Create a function that the hub can call to broadcast messages.
+    //    notifications.client.updateMessages = function () {
+    //        getAllMessages()
+
+    //    };
+    //    // Start the connection.
+    //    $.connection.hub.start().done(function () {
+    //        alert("connection started")
+    //        getAllMessages();
+    //    }).fail(function (e) {
+    //        alert(e);
+    //    });
+    //});
+
+
+    //function getAllMessages() {
+    //    var tbl = $('#messagesTable');
+    //    $.ajax({
+    //        url: '/api/Company/GetAllMessages/5',
+    //        contentType: 'application/html ; charset:utf-8',
+    //        type: 'GET',
+    //        dataType: 'html'
+    //    }).success(function (result) {
+    //        tbl.empty().append(result);
+    //    }).error(function () {
+
+    //    });
+    //}
+</script>
+<!--<script src="/Content/js/jquery.min.js"></script>
+<script type="text/javascript">
+    function convert()
+    {
+      var text=document.getElementById("url").value;
+      var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+      var text1=text.replace(exp, "<a href='$1'>$1</a>");
+      var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+      document.getElementById("converted_url").innerHTML=text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+    }
+    convert();
+</script>-->

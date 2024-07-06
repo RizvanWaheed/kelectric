@@ -1,0 +1,251 @@
+﻿<div class="wrapper">
+
+  
+  
+    <script type="text/javascript">
+        $(function () {
+            $('#searchTextResults').slimscroll({
+                height: '485px',
+                disableFadeOut: true
+            });
+
+            $('#soclists').slimscroll({
+                height: '188px',
+                disableFadeOut: true
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .thumb {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+
+    
+    <form name="myForm">
+        <div ng-app="CRMApp" class="" ng-controller="UserNSocialProfileController">
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper" style="min-height:650px !important;">
+                <!-- Content Header (Page header) -->
+                <!-- header starts here -->
+                <div class="container-fluid page_name">
+                    <div class="col-sm-10"><i class="fa fa-group"></i> Team Settings</div>
+                </div>
+                <!-- header ends here -->
+                <!-- misc & reviews content starts here -->
+                <div class="container-fluid reviews_Section ">
+                    <div class="col-sm-12 " style="padding:0 !important">
+                        <h1><span><i class="fa fa-building"></i></span> {{ CompanyName | uppercase}}</h1>
+                        <p>My Company</p>
+                    </div>
+                </div>
+                <!-- misc & reviews content starts here -->
+
+                <div class="container-fluid padding_set">
+                    <div class="col-md-6">
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <div class="col-md-6">
+                                    <h3 class="box-title"><i class="fa fa-user"></i> COMPANY TEAM MEMBERS <span>({{TeamMemberInGroup}})</span></h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="has-feedback">
+                                        <input type="text" class="form-control button_round input-sm" placeholder="Search name" ng-model="searchText">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <a type="button" class="btn btn-warning button_round btn_height2" href="#/UserNSocialProfile/GroupsUserAdd?companyid=1"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="box-body no-padding"  id="searchTextResults">
+                                    <ul class="users-list clearfix">
+                                        <li ng-repeat="x in groupMembers  | filter:searchText">
+                                            <a href="" ng-click="loadUserData(companyId,x.TeamMemberId)"><img src="
+                                        {{x.ProfileUrl==null && '/Content/img/user2.jpg' || replaceTilda(x.ProfileUrl)}}" style="height:80px; width:80px;" alt="User Image"></a> <a class="users-list-name" href="" ng-click="loadUserData(companyId,x.TeamMemberId)">{{x.Name}}</a>
+                                            <span class="users-list-date"><a href="" ng-click="loadUserData(companyId,x.TeamMemberId)">{{x.Email == null ? "N/A" : x.Email}}</a></span>
+                                        </li>
+                                        <li> 
+                                            <a href="#/UserNSocialProfile/GroupsUserAdd?companyid=1" data-toggle="modal" data-target="#newUserModal">
+                                                <img src="/Content/img/user_add.jpg" alt="User Image">
+                                            </a> 
+                                            <a class="users-list-name" href="#/UserNSocialProfile/GroupsUserAdd?companyid=1">Invite New</a> 
+                                        <span class="users-list-date"><a href="#/UserNSocialProfile/GroupsUserAdd?companyid=1">Team Member</a></span> </li>
+                                    </ul>
+                                    <!-- /.users-list -->
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="box box-default">
+                            <div class="box_header2 with-border">
+                                <div class="widget-user-image">
+                                    <div class="col-sm-3"> <img class="img-circle img-responsive" src="{{SelectedUserPic}}" alt="User Avatar" style="float:left; height:90px"> </div>
+                                    <div class="box_header2_txt col-sm-7">
+                                        <h1>{{SelectedUserName}}</h1>
+                                        <h2>Assigned to {{ProfilesAssignedToUser}} profiles</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="box-body no-padding">
+
+                                    <div class="col-sm-12" id="multisel" style="margin-bottom:8px !important;">
+                                        <i class="fa fa-line-chart"></i> Assigned Reports&nbsp;<br>
+                                        <div class='sel_menu' ng-dropdown-multiselect="" options="reportsdata" selected-model="reportsmodel" checkboxes="true" translation-texts="example5customTexts"></div> <!--<pre>Selected Model: {{example14model}} | json</pre>-->
+
+                                      
+                                    </div>
+                                    <div class="col-sm-6" id="multisel">
+                                        <i class="fa fa-check"></i> Assigned Rights&nbsp;<br>
+                                        <div class='sel_menu' ng-dropdown-multiselect="" options="rightsdata" selected-model="rightsmodel" checkboxes="true" translation-texts="example5customTexts"></div> <!--<pre>Selected Model: {{example14model}} | json</pre>-->
+
+                                      
+                                    </div>
+                                    <div class="col-sm-6 " id="multisel">
+                                        <i class="fa fa-folder-open"></i> Group&nbsp;<br>
+                                        <div class='sel_menu'  ng-dropdown-multiselect1="" events="myEventListeners" options="groupdata" selected-model="groupmodel" checkboxes="true" translation-texts="example5customTexts" extra-settings="groupsettings"></div> 
+                                        <!--<pre>Selected Model: {{groupmodel}} | json</pre>-->
+
+                                      
+                                    </div>
+                                </div>
+                                <div class="text-right col-sm-12" style="margin-top:8px"><a href="" class="text-red" confirmed-click="RemoveTeamFromGroup(selectedGroupId,SelectedTeamMemberId)"
+                       ng-confirm-click="Would you like to remove group?"> <i class="fa fa-remove"></i> Remove {{SelectedUserName}} from {{selectedGroupName}} </a></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <span class="heading_subb">Managing {{profileCount}} profiles in</span><br>
+                                <i class="fa fa-folder-open icon_col"></i> <span class="heading_main">{{selectedGroupName}}</span>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="box-body no-padding" id="soclists">
+                                    <table class="table table-condensed">
+                                        <tr>
+                                            <th class="td_styler"><i class="fa fa-link"></i> PROFILE ACCESS</th>
+                                            <th style="width: 100px; text-align:center" class="td_styler">VIEW & POST</th>
+                                        </tr>
+                                       
+                                        <tr ng-repeat="x in Connected_Profiles">
+                                            <td>
+                                                <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                    {{x.ProfileName}}<br>
+                                                    <p>
+                                                        <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}"
+                                                             alt="{{x.ProfileTypeId == '1' && 'facebook-profile' || (x.ProfileTypeId=='4'&& 'twitter-profile' || (x.ProfileType=='3'&&'twitter-profile'|| (x.ProfileType=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||''))))}}">
+                                                        {{ x.AccountName }}
+                                                    </p>
+                                                </span>
+                                            </td>
+
+                                            <td align="center" valign="middle">
+                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                    <input type="checkbox" value="None" id="{{x.ProfileId}}profile" ng-model="x.IsConnected" name="check" />
+                                                    <label for="{{x.ProfileId}}profile"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!--<tr class="table_alt_col">
+                                            <td>
+                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                    Adeel Gill<br>
+                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                </span>
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                    <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                    <label for="squaredSmall8"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                    Adeel Gill<br>
+                                                    <p><img src="/Content/images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                                </span>
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                    <label for="squaredSmall9"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table_alt_col">
+                                            <td>
+                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                    Adeel Gill<br>
+                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                </span>
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                    <label for="squaredSmall9"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                    Adeel Gill<br>
+                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                </span>
+                                            </td>
+                                            <td align="center" valign="middle">
+                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                    <label for="squaredSmall9"></label>
+                                                </div>
+                                            </td>
+                                        </tr>-->
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-left:15px;" ng-click="Save()">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-cancel button_round  btn_height3"><i class="fa fa-remove" ng-click="Cancel()"></i> CANCEL</button>
+                    </div>
+                </div>
+
+                <!-- Main content -->
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <!-- <footer class="main-footer">-->
+            </div>
+</form>
+</div>
+
+

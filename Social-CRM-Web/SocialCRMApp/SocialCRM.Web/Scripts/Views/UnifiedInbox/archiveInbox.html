@@ -1,0 +1,170 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="ArchiveInboxController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-envelope"></i> Archive Inbox</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <div class="col-sm-12 inbox_blk {{msg.className}}" ng-repeat="msg in inboxitemDetails">
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.twtImg}}.png' alt=""></div>
+                                        <a href="/#/ArchiveContact"><img src="/Content/img/{{msg.user}}.jpg" alt="User Image"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg">
+                                        <a href="/#/ArchiveInbox">{{msg.handleName}}</a>{{msg.userTwit}}
+                                    </div>
+                                    <div class="inbox_blk_cred"><a href="/#/ArchiveInbox">{{msg.replyedBy}}</a> replied to <a href="/#/ArchiveInbox">{{msg.userName}}</a> {{msg.replyedDate}}</div>
+                                    <div class="inbox_blk_actions">
+                                        <a href="/#/ArchiveInbox"><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a>
+                                        <a href="/#/ArchiveInbox"><i class="fa fa-check-circle-o" title="Mark as Complete"></i></a>
+                                        <a href="/#/CreateCase"><i class="fa fa-flag" title="Create Case"></i></a>
+                                        <a href="/#/ArchiveInbox"><i class="fa fa-mail-reply" title="Reply"></i></a>
+                                        <a href="/#/ArchiveInbox" data-toggle="collapse" data-target="#msgSetting"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <a href="/#/ArchiveInbox"><i class="fa fa-comments" title="Converstaion"></i></a>
+                                        <div id="msgSetting" class="collapse sub_msgsett">
+                                            <a href="/#/ArchiveInbox">Retweet</a> | <a href="/#/ArchiveInbox">Retweet with Comment</a> | <a href="/#/ArchiveInbox">Like</a> | <a href="/#/ArchiveInbox">Email Message</a> | <a href="/#/ArchiveInbox">Report as Spam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box" style="padding-left:0px !important;display:none;">
+                    <div class="col-md-12">
+                        <div class="col-md-3 social_stat">
+                            <img src="/Content/img/fb_c.png" alt="" style="width:35px; height:35px;"><br>
+                            <strong class="fb_txt">{{FbCount}}</strong>
+                        </div>
+                        <div class="col-md-3 social_stat">
+                            <div>
+                                <img src="/Content/img/instagram_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="in_txt">{{InCount}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-3 social_stat">
+                            <div>
+                                <img src="/Content/img/twit_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="twit_txt">{{TwitCount}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-3 social_stat">
+                            <div>
+                                <img src="/Content/img/ana_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="ana_txt">{{AnaCount}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="f_profile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>PROFILES</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal68" name="check" />
+                                        <label for="squaredSmal68"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="profileInfo in Profiles">
+                                <td width="91%" height="30">&nbsp; <a href="/#/ArchiveInbox"><img src="/Content/images/{{profileInfo.ProfileIco}}.png" alt="">{{profileInfo.HandleName}}</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="profile-{{profileInfo.Id}}" name="check" />
+                                        <label for="profile-{{profileInfo.Id}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="91%" height="30">&nbsp; <a href="/#/ArchiveInbox"> <strong>+</strong> Connect a profile</a></td>
+                                <td width="9%"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box">
+                    <div id="f_msg" style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>MESSAGE TYPES</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal69" name="check" />
+                                        <label for="squaredSmal69"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="msg in msgTypes">
+                                <td width="91%" height="30">&nbsp; <a href="/#/ArchiveInbox"><img src="/Content/images/{{msg.msgTypelogo}}.png" alt="">{{msg.MsgType}}</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="msg-{{msg.msgTypeId}}" name="check" />
+                                        <label for="msg-{{msg.msgTypeId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="91%" height="30">&nbsp; <a href="/#/ArchiveInbox"><i class="fa fa-paper-plane "></i> Sent Messages</a></td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                        <label for="squaredSmall9"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="margin-right:10px;">
+                        <strong>BRAND KEYWORDS</strong><br>
+                        <a href="/#/ArchiveInbox" data-toggle="collapse" data-target="#addKeword"> <strong>+</strong>  Add Keword</a>
+                        <div id="addKeword" class="collapse">
+                            <input type="text" class="form-control input_border_min " placeholder="Enter Keyword(s) *" aria-describedby="sizing-addon2" style="margin-top:10px;">
+                            <input type="text" class="form-control input_border_min " placeholder="Name Keyword(s)" aria-describedby="sizing-addon2" style="margin-top:10px;">
+                            <select class="form-control input_border_min " name="" style="margin-top:10px;" ng-options="item as item.label for item in items track by item.id" ng-model="selected"></select>
+                            <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;">SAVE KEYWORD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<!-- /.content -->
+</div><!-- /.content-wrapper -->
+    </div><!-- ./wrapper -->
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    $(function(){
+$('#grplists').slimscroll({
+		  height: '485px',
+        disableFadeOut: true
+      });
+		$('#f_profile').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+	  $('#f_msg').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+    });
+</script>

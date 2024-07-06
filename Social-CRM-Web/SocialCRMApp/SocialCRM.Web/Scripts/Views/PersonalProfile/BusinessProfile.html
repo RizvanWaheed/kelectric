@@ -1,0 +1,139 @@
+﻿<div class="wrapper">
+
+    
+    <style>
+
+
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+    </style>
+
+    <div ui-view="Header"></div>
+   
+    <div ng-app="CRMApp" class="" ng-controller="BusinessProfileController">
+        <!-- =============================================== -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="min-height:650px !important;">
+            <!-- Content Header (Page header) -->
+             <!--header starts here--> 
+            <div class="container-fluid page_name">
+                <div class="col-sm-10"><i class="fa fa-bell"></i> Notifications</div>
+
+            </div>
+            <!-- header ends here -->
+            <!-- misc & reviews content starts here 
+            <div class="container-fluid reviews_Section ">
+                <div class="col-sm-12 " style="padding:0 !important">
+                    <h1><span><i class="fa fa-building"></i></span> {{ BusinessName | uppercase}}</h1>
+                    <p>My Company</p>
+                </div>
+
+            </div>-->
+            <!-- misc & reviews content starts here -->
+
+
+            <div class="container-fluid padding_set">
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <!--<div class="box-header with-border">
+                            <div class="col-sm-12"><h3 class="box-title"><i class="fa fa-bell"></i> Notifications</h3></div>
+
+
+
+
+                         
+                        </div>--><!-- /.box-header -->
+                        <div class="box-body">
+                            <div>
+                                <!--<div class="col-sm-12">BUSINESS NAME
+                                    <input type="text" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="Business Name" ng-model="Changed_BusinessName" aria-describedby="sizing-addon2" value="{{Changed_BusinessName}}">
+                                </div>-->
+                                <div class="col-md-6 ">
+                                    <div class="box-body no-padding" id="soclists">
+                                        <div style=" margin-bottom:15px;" class="blue_txt">
+
+                                            <i class="fa fa-envelope blue_txt"></i> Email Updates <label class="switch switch-green pull-right">
+                                                <input type="checkbox" class="switch-input" ng-model="emailUpdate" checked>
+                                                <span class="switch-label" data-on="On" data-off="Off" ng-click="emailOff()"></span>
+                                                <span class="switch-handle"></span>
+                                            </label>
+                                        </div>
+                                        <div id="emailupdate">
+                                            <table class="table table-condensed table-bordered" ng-repeat="y in Submit_groups">
+                                                <caption>{{ y.CompanyName }}</caption>
+                                                <tr  ng-repeat="x in y.Notificaitons">
+                                                    <td width="87%"><i class="fa fa-folder blue_txt"></i> <span class="soc_name">{{ x.GroupName }}<br></span></td>
+
+                                                    <td width="13%" align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:4px;">
+                                                            <!--<input type="checkbox" ng-model=" x.email ">-->
+                                                            <input type="checkbox" value="{{ x.IsEmailEnabled }}" ng-model=" x.IsEmailEnabled " ng-disabled="disableEmail" id="{{ x.GroupId }}email" name="check" ng-checked="{{x.IsEmailEnabled}}" />
+                                                            <label for="{{ x.GroupId }}email"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                               
+
+
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="box-body no-padding" id="soclists">
+                                        <div style=" margin-bottom:15px;" class="orange_txt">
+
+                                            <i class="fa fa-bell orange_txt"></i> Notifications Updates <label class="switch switch-green pull-right">
+                                                <input type="checkbox" class="switch-input" ng-model="notificationUpdate" checked>
+                                                <span class="switch-label" data-on="On" data-off="Off" ng-click="notificationOff()"></span>
+                                                <span class="switch-handle"></span>
+                                            </label>
+                                        </div>
+                                        <div id="notifupdate">
+                                            <table class="table table-condensed table-bordered" ng-repeat="y in Submit_groups">
+                                                <caption>{{ y.CompanyName }}</caption>
+                                                <tr ng-repeat="x in y.Notificaitons">
+                                                    <td width="87%"><i class="fa fa-bell orange_txt"></i> <span class="soc_name">{{ x.GroupName }}<br></span></td>
+
+                                                    <td width="13%" align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:4px;">
+                                                            <input type="checkbox" value="{{ x.IsPushNotificationEnabled }}" ng-disabled="disableNotification" ng-model=" x.IsPushNotificationEnabled " id="{{ x.GroupId }}notification" name="check" ng-checked="{{x.IsPushNotificationEnabled}}" />
+                                                            <label for="{{ x.GroupId }}notification"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            
+
+
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+
+                <div>
+                <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-left:15px;" ng-click="save()">SAVE CHANGES</button>
+                 <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()"><i class="fa fa-remove"></i> CANCEL</button></div>
+            </div>
+
+            <!-- Main content -->
+            <!-- /.content -->
+        </div><!-- /.content-wrapper -->
+        <!-- <footer class="main-footer">-->
+
+    </div>
+</div><!-- ./wrapper -->
+<div ui-view="Footer"></div>

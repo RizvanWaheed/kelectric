@@ -1,0 +1,33 @@
+
+.zro_left2{ padding-left:0 !important; padding-top:0 !important; padding-bottom:0 !important; padding-right:10px !important; margin:0 !important;}
+
+
+.custom-upload2 {
+	float: left;
+	margin-top: 0px;
+	background-color: #6e889c;
+	border: 1px solid #6e889c;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight:normal;
+	font-size:14px;
+	color: #fff;
+	padding: 6px 15px;
+}
+.custom-upload2 input {
+	left: -9999px;
+	position: absolute;
+}
+
+
+.textarea_h {
+    resize: none;
+    overflow: hidden;
+    min-height: 50px;
+    max-height: 100px;
+}
+
+.tick_green{ color:#090;}
+.tick_grey{ color:#CCC;}
+
+

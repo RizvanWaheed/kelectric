@@ -1,0 +1,62 @@
+﻿   <!-- Modal for existing profile content-->
+    <div class="modal-dialog">
+        <style>
+            table tr:nth-child(odd) {
+                background-color: #ffffff;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #f7f7f7;
+            }
+
+            .thumb {
+                width: 100px;
+                height: 100px;
+                margin: 5px;
+            }
+        </style>
+        <!-- Modal for New Group content-->
+        
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-link"></i> ATTACH EXISTING PROFILE(S)</h4>
+            </div>
+            <div class="modal-body">
+                <div id="soclistspop" slimscroll="slim" style="margin-top:10px;">
+                    <table class="table table-condensed">
+                        <tr>
+                            <th class="td_styler"><i class="fa fa-link"></i> PROFILE ACCESS</th>
+                            <th style="width: 100px; text-align:center" class="td_styler"></th>
+                        </tr>
+
+                        <tr ng-repeat="x in Connected_Profiles">
+                            <td>
+                                <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                    {{x.ProfileName}}<br>
+                                    <p>
+                                        <img ng-src="{{x.ProfileTypeId=='8' && outlookIcon || (x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileTypeId=='6'&& instaIcon||( x.ProfileType='google'&&googleIcon ||''))))))}}"
+                                             alt="{{x.ProfileTypeId == '8' && 'outlook-profile' || (x.ProfileTypeId == '1' && 'facebook-profile' || (x.ProfileTypeId=='4'&& 'twitter-profile' || (x.ProfileType=='3'&&'twitter-profile'|| (x.ProfileType=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||(x.ProfileTypeId=='6'&&'instagram-profile' ||''))))))}}">
+                                        {{ x.AccountName }}
+                                    </p>
+                                </span>
+                            </td>
+
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="{{x.CompositeId}}profile" name="check" ng-model="selected[x.CompositeId]" />
+                                    <label for="{{x.CompositeId}}profile"></label>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+                <p class=" warnings_p f_warning" ng-show="ErrorShow">{{ErrorMessage}}</p>
+                <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;" ng-click="AddProfile()">+ ADD PROFILE(S)</button></div>
+            </div>
+
+        </div>
+
+ 
+<!-- Modal for existing profile content--> 

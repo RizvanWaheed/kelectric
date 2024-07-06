@@ -1,0 +1,138 @@
+﻿<div class="wrapper">
+    <style>
+        .save, .cancel {
+            display: none;
+        }
+    </style>
+    <div ng-app="CRMApp" class="" ng-controller="TagsSettingsController">
+        <div class="content-wrapper" style="min-height:650px !important;">
+            <!-- Content Header (Page header) -->
+            <!-- header starts here -->
+            <div class="container-fluid page_name">
+                <div class="col-sm-10"><i class="fa fa-flag"></i> Tags Settings</div>
+            </div>
+            <div class="container-fluid padding_set">
+                <div class="col-md-12">
+                    <div class="box box-default" style="margin-bottom:0px;">
+                        <div class="box-body">
+                            <form name="myFormTag">
+                                <div class="btn-group">
+                                    <div class="col-md-12">
+
+                                        <div class="col-md-3 zro_left">
+                                        
+
+                                            <select class="form-control custom_txt_field" style="margin-top:10px;" ng-options="obj.BrandKeywordCategoryId as obj.BrandKeywordCategoryText for obj in BrandCategoryTypes" ng-model="TagCategory" name="TagCategory" required>
+                                                <option value="">Select Tag Category</option>
+                                            </select>
+                                            <div class="alert alert-danger" role="alert" ng-show="myForm.TagCategory.$touched && myForm.TagCategory.$error.required">Category is required</div>
+
+                                        </div>
+                                        <div class="col-md-3 zro_left">
+                                            <input type="text" class="form-control input_border_min " name="TagText" ng-model="TagText" ng-disabled="isEditMode" id="txtTag" placeholder="Enter Tag *" aria-describedby="sizing-addon2" style="margin-top:10px;" required>
+                                            <p class="warnings_p warnings_p2_320 " ng-show="myFormTag.TagText.$touched && myFormTag.TagText.$invalid">Tag Text is required</p>
+                                        </div>
+                                        <div class="col-md-3 zro_left">
+                                            <input type="text" class="form-control input_border_min " name="TagName" ng-model="TagName" placeholder="Name Tag" aria-describedby="sizing-addon2" style="margin-top:10px;" required>
+                                            <p class="warnings_p warnings_p2_320 " ng-show="myFormTag.TagName.$touched && myFormTag.TagName.$invalid">Tag Name is required</p>
+                                        </div>
+                                        <div class="col-md-4 zro_left">
+                                            <a id="selected-color2" class="btn btn-mini dropdown-toggle" data-toggle="dropdown" style="padding:0 !important; margin-top: 10px;"><i id="colorPickerLink" class="fa fa-eyedropper" style="color:FontColor ; background-color:BGColor ;"> <span>Select Font &amp; Background Color</span></i></a>
+                                            <ul class="dropdown-menu" style="width:350px; margin-left:-38px;">
+                                                <li style="display:inline-block;">
+                                                    <div> font color</div>
+                                                    <div id="colorpalette2"></div>
+                                                </li>
+                                                <li style="display:inline-block;">
+                                                    <div> background color</div>
+                                                    <div id="colorpalette3"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-2 zro_left">
+                                            <button ng-disabled="myFormTag.TagText.$invalid || myFormTag.TagName.$invalid || myFormTag.TagCategory.$invalid" type="button" class="btn btn-primary button_round  btn_height3" id="btnbrand" style="margin-top:15px;" data-toggle="collapse" data-target="#addTag" ng-click="AddBrandTag()">
+                                                <span ng-if="isEditMode == true">Update</span>
+                                                <span ng-if="isEditMode == false">Add Tag</span>
+                                            </button>
+
+                                        </div>
+                                        <div class="col-md-2 zro_left">
+
+                                            <button id="btnAddCategory" type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;" data-toggle="collapse" ng-click="AddCategory()">
+                                                Add New Tag Category
+                                            </button>
+                                        </div>
+                                        </div>
+                                </div>
+                            </form>
+
+                            <div class="col-md-12" style="border-bottom: 1px solid #ccc;">
+                                <h4>Tags</h4>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div ng-repeat="brnd in TagsTypes" style="margin-top:5px; display:inline-block; position:relative;">
+                                    <div ng-click="EditTag(brnd)" style="padding-right: 20px; margin-right: 5px; margin-top: 5px;" href="" class="btn button_round" title="Keyword: {{brnd.BrandType}}" ng-if="brnd.BrandName != ''" ng-style="{color:brnd.FontColor,'background-color': brnd.BGColor}">{{brnd.BrandName}}</div>
+                                    <div ng-click="EditTag(brnd)" style="padding-right: 20px; margin-right: 5px; margin-top: 5px;" href="" class="btn button_round" title="Keyword: {{brnd.BrandType}}" ng-if="brnd.BrandName == ''" ng-style="{color:brnd.FontColor,'background-color': brnd.BGColor}">{{brnd.BrandType}}</div>
+
+                                    <a title="delete" ng-if="brnd.BrandName == ''" ng-click="deleteTag(brnd.BrandTypeId)" style="position:absolute; top:5px; right:7px; color:#fff; text-shadow:1px 1px 1px #000; font-weight:100;"><i class="fa fa-times"></i></a>
+                                    <a title="delete" ng-if="brnd.BrandName != ''" ng-click="deleteTag(brnd.BrandTypeId)" style="position:absolute; top:5px; right:7px; color:#fff; text-shadow:1px 1px 1px #000; font-weight:100;"><i class="fa fa-times"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="box box-default" style="margin-bottom:0px; margin-top:10px;">
+                        <div class="box-body">
+                            <div class="col-md-12" style="border-bottom: 1px solid #ccc;">
+                                <h4>Sample Replies</h4>
+                            </div>
+
+                            <div class="col-md-10 zro_left">
+                                <table class="table-striped">
+                                    <tr ng-repeat="replyItem in sampleReplies track by $index">
+                                        <td style="padding:10px;" width="85%">
+                                            <span id="replyTextOriginal-{{replyItem.Id}}">{{replyItem.ReplyText}}</span>
+                                            <input ng-model="replyTextModel" id="replyText-{{replyItem.Id}}" type="text" class="form-control" ng-init="replyTextModel = replyItem.ReplyText" style="display:none;" />
+                                        </td>
+                                        <td width="15%">
+                                            <a ng-click="replyBtnClick('Edit', replyItem.Id, replyTextModel)" id="Edit-{{replyItem.Id}}" title="Edit" class="edit btn btn-primary button_round"><i class="fa fa-edit"></i></a>
+                                            <a ng-click="replyBtnClick('Delete', replyItem.Id, replyTextModel)" id="delete-{{replyItem.Id}}" title="Delete" class="delete btn btn-primary button_round"><i class="fa fa-trash"></i></a>
+                                            <a ng-click="replyBtnClick('Save', replyItem.Id, replyTextModel)" id="Save-{{replyItem.Id}}" title="Save" class="save btn btn-primary button_round"><i class="fa fa-save"></i></a>
+                                            <a ng-click="replyBtnClick('Cancel', replyItem.Id, replyTextModel)" id="Cancel-{{replyItem.Id}}" title="Cancel" class="cancel btn btn-primary button_round"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px;" width="85%"><input ng-model="addNewReplyTextModel" id="newReplyTextModel" type="text" class="form-control" style="width:90%;" placeholder="Add New Sample Reply" /></td>
+                                        <td width="15%"><a ng-click="replyBtnClick('Add', 0, addNewReplyTextModel)" title="Add new" class="btn btn-primary button_round"><i class="fa fa-plus"></i> Add New Reply</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main content -->
+            <!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+<div ui-view="Footer"></div>
+
+
+<script type="text/javascript">
+    //$('#colorpalette2').colorPalette()
+    //  .on('selectColor', function (e) {
+    //      $('#selected-color2 i').css('color', e.color);
+
+    //  });
+    //$('#colorpalette3').colorPalette()
+    //  .on('selectColor', function (e) {
+    //      $('#selected-color2 i').css('background-color', e.color);
+    //  });
+
+    $('#colorpalette2').colorPalette();
+    $('#colorpalette3').colorPalette();
+</script>

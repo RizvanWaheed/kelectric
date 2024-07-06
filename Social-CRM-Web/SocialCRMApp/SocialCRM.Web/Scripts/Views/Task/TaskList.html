@@ -1,0 +1,276 @@
+﻿<link href="../../../Content/css/profile-tile.css" rel="stylesheet" />
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="TaskListController" ng-controller="TaskListController">
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-flag"></i> {{PageTypeHeading}}</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <a href="/#/CreateCase?ActivityId={{task.ActivityId}}&ActivityTable={{task.ActivityTable}}&Status={{task.Status}}" ng-repeat="task in taskList">
+                                <div class="col-sm-12 inbox_blk {{task.CssClass}}">
+                                    <div class="{{task.Profile == '1' && 'fb_social_icos' || (task.Profile=='4'&& 'twitter_social_icos' || (task.Profile=='3'&&'linkedin_social_icos'|| (task.Profile=='5'&& 'fb_social_icos' || (task.Profile=='6'&& 'insta_social_icos' || ''))))}}"></div>
+                                    <div class="{{task.Status=='1' && 'open_tag' || (task.Status=='2' && 'closed_tag' || '')}}"></div>
+                                    <div class="col-sm-2">
+                                        <div class="inbox_blk_img">
+                                            <img src="{{replaceTilda(task.ProfileUrl)=='' && '/Content/img/user2.jpg'||replaceTilda(task.ProfileUrl)}}" style="height:65px;" alt="User Image">
+                                        </div>
+                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                        <div class="inbox_blk_msg">
+                                            <strong>{{task.CustomerProfileName}}</strong> 
+                                            >>
+                                            <!--<i class="fa {{task.Profile == '1' && 'fa-facebook' || (task.Profile=='4'&& 'fa-twitter' || (task.Profile=='3'&&'fa-linkedin '|| (task.Profile=='5'&&'fa-facebook'|| '')))}}"></i>--> 
+                                            {{task.ProfileName}}<br>
+                                            {{task.TaskMessage}}<br>
+
+                                        </div>
+
+                                        <div class="inbox_blk_cred">
+                                            <strong>Assigned To:</strong> {{task.AssignedTo}}<br>
+                                            <strong>Created By:</strong> {{task.AssignedBy}}<br>
+                                            <strong>Priority: </strong>{{task.TaskPriority =='1'&&'High'||(task.TaskPriority =='2'&&'Medium' ||(task.TaskPriority =='3'&&'Low'||task.TaskPriority))}}<br>
+                                            <strong>Classification of Task:</strong> {{task.TaskClassification =='1'&&'Sales Lead'||(task.TaskClassification =='2'&&'After Sales'||(task.TaskClassification =='3'&&'Compliment'||(task.TaskClassification =='4'&&'Complaint'||(task.TaskClassification =='5'&&'General Inquiry'||(task.TaskClassification =='6'&&'Referral'||(task.TaskClassification =='7'&&'Review'||(task.TaskClassification)))))))}}<br>
+                                            <strong>Last Updated:</strong> {{task.LastUpdated}}<br>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </a>
+
+
+
+                           </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;">
+                        <!--<div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-check"></i> CLASSIFICATION OF TASK</strong>&nbsp;<br>
+                            <select multiple class="sel_menu" id="lstFruits" ng-model="taskClassificationModel" ng-options="v as v.value for v in taskClassification">
+                             </select>
+                        </div>-->
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-check"></i> CLASSIFICATION OF CASE</strong>&nbsp;<br>
+                            <!--<select class="sel_menu" id="lstFruits" ng-model="taskClassificationModel" ng-options="v as v.value for v in taskClassification">
+
+        </select>-->
+                            <div class='sel_menu' ng-dropdown-multiselect="" options="taskClassification" selected-model="taskClassificationModel" checkboxes="true" translation-texts="example5customTexts" ></div>
+                        </div>
+
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-exclamation "></i> PRIORITY</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect=""  options="taskPriority" selected-model="taskPriorityModel" checkboxes="true" translation-texts="example5customTexts" ></div>
+                            <!--<select class="sel_menu" id="2stFruits" ng-model="taskPriorityModel" ng-options="v as v.value for v in taskPriority">
+
+        </select>-->
+                        </div>
+
+                        <!--<div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-user"></i> GROUP</strong>&nbsp;<br>
+                            <select class="sel_menu" ng-model="AssigneeGroupSelected" ng-change="GroupSelectedChanged(AssigneeGroupSelected)" 
+                                    data-ng-options="group as group.GroupName group by group.CompanyName for group in grouplist track by group.GroupId"></select>
+                        </div>-->
+
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-user"></i> ASSIGNEE</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect="" options="taskAssignee" selected-model="taskAssigneemodel" checkboxes="true" translation-texts="example5customTexts" extra-settings="searchsettings"></div>
+                            <!--<select multiple="MULTIPLE" class="sel_menu" id="3stFruits" ng-model="taskAssigneeModel" ng-options="v as v.value for v in taskAssignee"></select>-->
+                        </div>
+                       
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-user"></i> PROFILE NAME</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect="" options="attachedProfiles" selected-model="attachedProfileModel" checkboxes="true" translation-texts="example5customTexts" extra-settings="searchsettings"></div>
+
+                            <!--<select class="sel_menu" id="5stFruits" ng-model="attachedProfileModel" ng-options="v as v.value for v in attachedProfiles">
+                            </select>-->
+                        </div>
+                        <div class="col-sm-12" id="multisel" style="margin-bottom:20px;" ng-show="statusVis">
+                            <strong><i class="fa fa-star "></i> STATUS</strong>&nbsp;<br>
+                            <div class='sel_menu' ng-dropdown-multiselect="" options="taskStatus" selected-model="taskStatusModel" checkboxes="true" translation-texts="example5customTexts" extra-settings="searchsettings"></div>
+                            <!--<select class="sel_menu" id="4stFruits" ng-options="v as v.value for v in taskStatus" ng-model="taskStatusModel"></select>-->
+                        </div>
+                        <!--<div class="col-sm-12" id="multisel" style="margin-bottom:20px;">
+                            <strong><i class="fa fa-star "></i> STATUS</strong>&nbsp;<br>
+                            <select class="sel_menu" id="4stFruits" ng-options="v as v.value for v in taskStatus" ng-model="taskStatusModel">
+                            </select>
+                        </div>-->
+                    <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-left:15px;" ng-click="Search()">SEARCH</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    window.onload = function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#4stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+        $('#5stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+    };
+    /*$(function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+
+		$('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+
+		$('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+
+				$('#4stFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+
+				$('#5stFruits').multiselect({
+            includeSelectAllOption: true,
+			buttonWidth: '100%',
+        });
+    });*/
+</script>
+<script type="text/javascript">
+    $(function(){
+		$('#inboxer').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  $('#tasker').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+      $('#socialer').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+	  		$('#publi').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  	  		$('#disco').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  	  $('#reporter').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+
+	  	  	  		$('#helper').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  	  	  	  		$('#userlists').slimscroll({
+		  height: '499px',
+        disableFadeOut: true
+      });
+
+	  	  	  	  	  		$('#grplists').slimscroll({
+		  height: '595px',
+        disableFadeOut: true
+      });
+
+
+	  	  	  	  	  		$('#soclists').slimscroll({
+		  height: '188px',
+        disableFadeOut: true
+      });
+	  	  	  	  	  	  		$('#soclistspop').slimscroll({
+		  height: '200px',
+        disableFadeOut: true
+      });
+
+	  	 $('#grpspop').slimscroll({
+		  height: '200px',
+        disableFadeOut: true
+      });
+
+	  	 $('#soclists2').slimscroll({
+		  height: '168px',
+        disableFadeOut: true
+      });
+
+	  	$('#ulists').slimscroll({
+		  height: '130px',
+        disableFadeOut: true
+      });
+
+	  $('#soclistspop2').slimscroll({
+		  height: '280px',
+        disableFadeOut: true
+      });
+
+		$('#f_profile').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+
+	  $('#f_msg').slimscroll({
+		  height: '150px',
+        disableFadeOut: true
+      });
+
+
+	  $('#pop_vhis').slimscroll({
+		  height: '200px',
+        disableFadeOut: true
+      });
+
+	  	  $('#pop_sprof').slimscroll({
+		  height: '100px',
+        disableFadeOut: true
+      });
+
+    });
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script type="text/javascript">
+
+    //$("head").append($("<link href='/Content/css/styles.css' rel='stylesheet' />"));
+
+</script>

@@ -1,0 +1,7 @@
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\bin\Debug\Insight360.Feedly.dll
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\bin\Debug\Insight360.Feedly.pdb
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\bin\Debug\Newtonsoft.Json.dll
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\bin\Debug\Newtonsoft.Json.xml
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\obj\Debug\Insight360.Feedly.csprojResolveAssemblyReference.cache
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\obj\Debug\Insight360.Feedly.dll
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Insight360.Feedly\obj\Debug\Insight360.Feedly.pdb

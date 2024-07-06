@@ -1,0 +1,60 @@
+﻿<link href="../../../Content/css/profile-tile.css" rel="stylesheet" />
+<style>
+    table tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f7f7f7;
+    }
+
+    .thumb {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+    }
+</style>
+
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="MembershipPackagesController" ng-controller="MembershipPackagesController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10">
+                <i class="fa fa-envelope"></i> Packages Configuration
+            </div>
+        </div>
+        <!-- header ends here -->
+
+
+        <div class="container-fluid padding_set">
+
+            <div class="col-md-12">
+                <!--<button type="button" id="btnNewMessage" class="btn btn-primary button_round  btn_height3" ng-click="MoveToNewMessageScreen()"><i class="fa fa-pencil"></i> New Message</button>-->
+
+                <div class="box box-default" style="margin-bottom:0px;">
+
+
+                    <div class="box-body">
+                        <div id="company-" ng-click="" style="margin-bottom: 20px; height: 220px;" class="col-sm-4 ng-scope" role="button" tabindex="0">
+                            <div class="tile blue" style="height:100%;border-radius: 4px;" ng-click="openMembershipDetails();">
+                                <h2 class="title truncate ng-binding">{{packageName}} Package</h2>
+                                <p class="ng-binding"><span class="fa fa-group"></span>&nbsp;Groups Allowed &nbsp;&nbsp;({{GroupsAllowed}})</p>
+                                <p class="ng-binding"><span class="fa fa-user"></span>&nbsp;Team Members Allowed &nbsp;&nbsp;({{TeamsAllowed}})</p>
+                                <p class="ng-binding"><span class="fa fa-key"></span>&nbsp;Keywords Allowed &nbsp;&nbsp;({{KeywordsAllowed}})</p>
+                                <p class="ng-binding"><span class="fa fa-tags"></span>&nbsp;Tags Allowed &nbsp;&nbsp;({{TagsAllowed}})</p>
+                                <p class="ng-binding"><span class="fa fa-facebook"></span>&nbsp;Facebook Profiles Allowed &nbsp;&nbsp;({{FbProfilesAllowed}})</p>
+                                <p class="ng-binding"><span class="fa fa-twitter"></span>&nbsp;Twitter Profiles Allowed&nbsp;&nbsp;({{TwProfilesAllowed}})</p>
+                                <p class="ng-binding"><span class="fa fa-instagram"></span>&nbsp;Instagram Profiles Allowed&nbsp;&nbsp;({{InProfilesAllowed}})</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+</div>

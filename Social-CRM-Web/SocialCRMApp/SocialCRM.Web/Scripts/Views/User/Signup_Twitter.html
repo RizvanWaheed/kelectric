@@ -1,0 +1,36 @@
+﻿<div class="" ng-controller="SignupTwitterController">
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container main_box">
+            <div class="code-module">
+                <h1><i class="fa fa-link"></i> ATTACH A PROFILE</h1>
+                <h3>
+                    By adding the profile and clicking allow, you permit the application to access and publish content on your
+                    Social Network Account, on your behalf.
+                </h3><br>
+
+
+                <div style="display:inline-block; padding:20px;">
+                    <a  ng-click="ConnectTwitter()" class="hvr-bounce-in">
+                        <img src="/Content/img/twit_c.png"><br>
+                        TWITTER
+                    </a><br><br>
+                    <button type="button" ng-click="ConnectTwitter()" class="btn btn-default button_round "><i class="fa fa-link"></i> Connect Twitter</button>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container footer_box">© 2016, All Rights Reserved.</div>
+</div>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

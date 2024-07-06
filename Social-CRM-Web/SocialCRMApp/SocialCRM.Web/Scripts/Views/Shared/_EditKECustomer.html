@@ -1,0 +1,96 @@
+﻿<style>
+    .modal-dialog{
+        width: 800px !important;
+        margin: 30px auto;
+    }
+</style>
+<form name="myForm">
+    <!-- Modal for retweet-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="Cancel()">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-pencil" style="margin-right: 10px;"></i> EDIT CUSTOMER</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+
+                <div class="col-md-12 zro_left">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="col-sm-12 zro"><i class="fa fa-bullhorn"></i> CUSTOMER DETAILS</div>
+                        </div>
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <div style="color:red;margin-left: 15px;" ng-show="myForm.cust_name.$error.pattern">Customer name cannot contain Numbers</div>
+                                <div style="color:red;margin-left: 15px;" ng-show="myForm.cust_email.$error.email">Not a valid Email ID!</div>
+                                <div style="color:red;margin-left: 15px;" ng-show="myForm.cust_mob.$error.pattern">Mobile number can only contain Numbers</div>
+                                <div style="color:red;margin-left: 15px;" ng-show="myForm.cust_land.$error.pattern">Landline number can only contain Numbers</div>
+                                <div class="col-md-12">
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Contract Account">
+                                        <div style="margin-bottom:10px !important;">
+                                            Contract Account<br>
+                                            <input type="text" class="form-control" disabled placeholder="Contract Account" ng-model="items.Cust.ContractAccount">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Enter Name">
+                                        <div style="margin-bottom:10px !important;">
+                                            Name<br>
+                                            <input type="text" class="form-control" name="cust_name" placeholder="Name" ng-pattern="/^[^[0-9]*]*$/" ng-model="items.Cust.Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Enter Email Address">
+                                        <div style="margin-bottom:10px !important;">
+                                            Email ID<br>
+                                            <input type="email" name="cust_email" class="form-control" placeholder="Email" ng-model="items.Cust.EmailId">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Enter Mobile Number">
+                                        <div style="margin-bottom:10px !important;">
+                                            Mobile Number<br>
+                                            <input type="text" class="form-control" name="cust_mob" placeholder="Mobile Number" ng-pattern="/^[0-9-\s]*$/" ng-model="items.Cust.MobileNum">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Enter Landline Number">
+                                        <div style="margin-bottom:10px !important;">
+                                            Landline Number<br>
+                                            <input type="text" class="form-control" name="cust_land" placeholder="Landline Number" ng-pattern="/^[0-9-\s]*$/" ng-model="items.Cust.LandlineNum">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Region">
+                                        <div style="margin-bottom:10px !important;">
+                                            Region<br>
+                                            <select class="sel_menu" ng-model="RegionSelected" ng-change="GetCustomerAreas(false)"
+                                                    ng-options="item as item.Name for item in KERegions track by item.Id"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Region">
+                                        <div style="margin-bottom:10px !important;">
+                                            IBC<br>
+                                            <select class="sel_menu" ng-model="AreaSelected"
+                                                    ng-options="item as item.Name for item in KEAreas track by item.Id"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-xs-12 zro_left2" title="Address">
+                                        <div style="margin-bottom:10px !important;">
+                                            Address<br>
+                                            <textarea class="form-control" rows="5" ng-model="items.Cust.Address"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+                <div style="margin-left:15px">
+                    <button type="button" ng-click="SubmitUser()" ng-disabled="myForm.$invalid" class="btn btn-primary button_round  btn_height3">SUBMIT</button>
+                    <button type="button" ng-click="Cancel()" class="btn btn-cancel button_round  btn_height3">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

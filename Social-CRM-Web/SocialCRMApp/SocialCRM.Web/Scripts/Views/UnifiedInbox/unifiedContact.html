@@ -1,0 +1,776 @@
+﻿<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="UnifiedContactController" ng-controller="UnifiedContactController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-user"></i> Contact's Profile</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <!--<div style="margin-bottom:8px;"><a href="/#/UnifiedInbox"><i class="fa fa-times"></i> Go Back</a></div>-->
+                            <div class="col-sm-12 inbox_blk unread_msg">
+                                <div class="twitter_social_icos"></div>
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <!--<div class="inbox_blk_img_ico"><img src="/Content/images/t_ico16.png" alt=""></div>-->
+                                        <div class="verified_icon" ng-if="isContactVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                        <a href="javascript:;"><img src="{{contactProfilePic}}" alt="User Image"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk" >
+                                    <div class="inbox_blk_msg">
+                                        <a href="javascript:;"><strong>{{contactName}}</strong></a> <i class="fa fa-twitter"></i> {{contactTwitName}}<br>
+                                        {{contactMsg}}<br><br>
+                                        <i class="fa fa-map-marker"></i> {{contactCountry}} &nbsp;&nbsp;<i class="fa fa-globe"></i>{{contactURL}}
+                                    </div>
+                                    <div class="inbox_blk_cred">
+                                        Followers <a href="javascript:;" ng-click="loadFollowers();" data-toggle="collapse" data-target="#collapseFour" data-parent="#accordion" aria-expanded="true" aria-controls="collapseFour"><strong>{{totalFollower}}</strong></a>
+                                         | Following <a href="javascript:;" ng-click="loadFriends();" data-toggle="collapse" data-target="#collapseFive" data-parent="#accordion" aria-expanded="true" aria-controls="collapseFive"><strong>{{totalFollowing}}</strong></a>
+                                     
+                                        <span ng-repeat="data in friendshipItemDetails">
+                                            <a href="javascript:;" ng-if="data.IsFollowingContact == true" id="{{data.Id}}" title="Unfollow with @{{data.UserName}}" ng-click="unfollowUser(data);"><img src="{{data.ProfilePicURL}}" style="height:22px;margin-left:30px;"> is Following</a>
+                                            <a href="javascript:;" ng-if="data.IsFollowingContact == false" id="{{data.Id}}" title="Follow with @{{data.UserName}}" ng-click="followUser(data);"><img src="{{data.ProfilePicURL}}" style="height:22px;margin-left:30px;"> is not Following</a>
+                                            <i class="fa fa-info-circle" title="{{data.Name}} @{{data.UserName}}"></i>
+                                           
+                                          <span id="frnship-{{data.Id}}" style="display:none" >{{(data.IsFollowingContact == true && data.IsFollowedByContact == true) ?  true : false }}</span>
+                                        </span>
+                                      
+                                        <!--<a href="javascript:;"><img src="/Content/img/user20.jpg" alt="User Image"> is not following</a> <i class="fa fa-info-circle" title="chocOholic @ayeshashamim"></i> -->
+                                    </div>
+                                    <!--<div class="inbox_blk_actions">
+                                        <a href="javascript:;"><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a> <a href="javascript:;" data-toggle="modal" data-target="#newReply"><i class="fa fa-mail-reply" title="Reply"></i></a> <a href="javascript:;" data-toggle="collapse" data-target="#msgSetting"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <div id="msgSetting" class="collapse sub_msgsett">
+                                            <a href="javascript:;">Mention (public)</a> | <a href="" ng-show="isShowDM" ng-click="openDirectMessage()" >Direct Message (private) |</a> <a href="javascript:;">Report as Spam</a> | <a href="javascript:;">Block User</a>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <!-- Modal for Reply-->
+                                <div id="newReply" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal for Reply content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><i class="fa fa-mail-reply"></i> PUBLIC REPLY</h4>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div style="margin-bottom:10px " id="pop_sprof">
+                                                    <table class="table table-condensed">
+
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                                    <label for="squaredSmall7"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                                    <label for="squaredSmall8"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="table_alt_col">
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    Adeel Gill<br>
+                                                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                                                </span>
+                                                            </td>
+                                                            <td align="center" valign="middle">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                                    <label for="squaredSmall9"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <div style="margin-bottom:10px; margin-top:20px; "><em></em>from <strong>@Ayeshashamim7</strong> <em>to</em> <strong>@chocoholic</strong></div>
+                                                <div>
+                                                    <textarea name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:580px; margin-bottom:8px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea>
+                                                    <a href="javascript:;"><i class="fa fa-camera"></i></a> <div style="float:right"><strong><em>127</em></strong></div>
+                                                    <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;">SEND</button></div>
+                                                </div>
+
+                                                <div style="margin-bottom:10px; margin-top:10px; "><strong>VIEWING HISTORY</strong> with <strong>@chocoholic</strong></div>
+                                                <div id="pop_vhis">
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                        <div class="col-sm-2">
+                                                            <div class="inbox_blk_img">
+                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                            </div>
+                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                            <div class="inbox_blk_msg">
+                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                            </div>
+
+                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Modal for Reply-->
+                            </div>
+                            <div class="col-sm-12 zro">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" ng-click="loadHistory();" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" title="History"><i class="fa fa-history"></i></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" ng-click="loadTweets();" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" title="Tweets"><i class="fa fa-twitter"></i></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" ng-click="loadMentions();" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" title="Mentions"><span class="ion ion-at"></span></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" ng-click="loadFollowers();" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" title="Followers"><i class="fa fa-user"></i><i class="fa fa-arrow-right"></i></button>
+                                    </div>
+
+                                    <div class="btn-group" role="group">
+                                        <button type="button" ng-click="loadFriends();" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive" title="Following"><i class="fa fa-user"></i><i class="fa fa-arrow-left"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>HISTORY</strong></div>
+                                               
+                                                <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in inboxHistoryItemDetails">
+                                                    <div class="twitter_social_icos"></div>
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                                                            <div class="verified_icon" ng-if="msg.IsVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <!--<a href="javascript:;">{{msg.HandleName}}</a>-->
+                                                            {{msg.UserTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ToUser);">{{msg.ToUser}}</a> {{msg.ReplyedDate}}</div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal for conv history-->
+                                                <div id="viewConversation" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                        <!-- Modal for conv history-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title"><i class="fa fa-comments"></i> VIEW CONVERSTAION</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div style="margin-bottom:8px;"><strong>@ayeshashamim7</strong> conversation history with <strong>@chocoholic</strong></div>
+                                                                <div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-sm-12 inbox_blk unread_msg">
+                                                                        <div class="col-sm-2">
+                                                                            <div class="inbox_blk_img">
+                                                                                <div class="inbox_blk_img_ico"><img src="/Content/images/in_ico16.png" alt=""></div>
+                                                                                <a href="javascript:;"><img src="/Content/img/user2.jpg" alt="User Image"></a>
+                                                                            </div>
+                                                                        </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                            <div class="inbox_blk_msg">
+                                                                                <a href="javascript:;">@AyeshaShamim7</a> lol, remember we met at CP, you were stuck in a confidential task and I was playing batman there :p
+                                                                            </div>
+
+                                                                            <div class="inbox_blk_cred"><a href="javascript:;">chocoh0llic</a> replied to <a href="javascript:;">AyeshaShamim7</a> Mar 08, 2016</div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div> &nbsp;</div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- Modal for conv history-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>TWEETS</strong></div>
+                                                
+                                                <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in tweetItemDetails">
+                                                    <div class="twitter_social_icos"></div>
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="verified_icon" ng-if="msg.IsVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                                            <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                                                            <a href="javascript:;"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <!--<a href="javascript:;">{{msg.HandleName}}</a>-->
+                                                            {{msg.UserTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="javascript:;">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;">{{msg.ToUser}}</a> {{msg.ReplyedDate}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>MENTIONS</strong></div>
+                                                <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in mentionItemDetails">
+                                                    <div class="twitter_social_icos"></div>
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <div class="verified_icon" ng-if="msg.IsVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                                            <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                                                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                                                        </div>
+                                                    </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <!--<a href="javascript:;">{{msg.HandleName}}</a>-->
+                                                            {{msg.UserTwit}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred"><a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ToUser);">{{msg.ToUser}}</a> {{msg.ReplyedDate}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>FOLLOWERS</strong></div>
+                                                <div class="col-sm-12 inbox_blk unread_msg" ng-repeat="msg in followerItemDetails">
+                                                    <div class="twitter_social_icos"></div>
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <!--<div class="inbox_blk_img_ico"><img src="/Content/images/t_ico16.png" alt=""></div>-->
+                                                            <div class="verified_icon" ng-if="msg.isContactVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.contactTwitName);"><img src="{{msg.contactProfilePic}}" alt="User Image"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.contactTwitName);"><strong>{{msg.contactName}}</strong></a> <i class="fa fa-twitter"></i> {{msg.contactTwitName}}<br>
+                                                            {{msg.contactMsg}}<br>
+                                                            <i class="fa fa-map-marker"></i> {{msg.contactCountry}} &nbsp;&nbsp;<i class="fa fa-globe"></i>{{msg.contactURL}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred">
+                                                            Followers <a href="javascript:;"><strong>{{msg.totalFollower}}</strong></a> | Following <a href="javascript:;" style="margin-right:30px;"><strong>{{msg.totalFollowing}}</strong></a>
+                                                        </div>
+                                                        <!--<div class="inbox_blk_actions">
+                                                            <a href="javascript:;"><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a> <a href="javascript:;" data-toggle="modal" data-target="#newReply"><i class="fa fa-mail-reply" title="Reply"></i></a> <a href="javascript:;" data-toggle="collapse" data-target="#msgSetting{{msg.contactTwitName}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                                            <div id="msgSetting{{msg.contactTwitName}}" class="collapse sub_msgsett">
+                                                                <a href="javascript:;">Mention (public)</a> | <a href="javascript:;">Direct Message (private)</a> | <a href="javascript:;">Report as Spam</a> | <a href="javascript:;">Block User</a>
+                                                            </div>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default panel_reset">
+
+                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                            <div class="panel-body">
+                                                <div style="margin-bottom:10px;"><i class="fa fa-history"></i> <strong>FOLLOWING</strong></div>
+                                                <div class="col-sm-12 inbox_blk unread_msg" ng-repeat="msg in followingItemDetails">
+                                                    <div class="twitter_social_icos"></div>
+                                                    <div class="col-sm-2">
+                                                        <div class="inbox_blk_img">
+                                                            <!--<div class="inbox_blk_img_ico"><img src="/Content/images/t_ico16.png" alt=""></div>-->
+                                                            <div class="verified_icon" ng-if="msg.isContactVerified == true"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.contactTwitName);"><img src="{{msg.contactProfilePic}}" alt="User Image"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                        <div class="inbox_blk_msg">
+                                                            <a href="javascript:;" ng-click="redirectTo(fromUser,msg.contactTwitName);"><strong>{{msg.contactName}}</strong></a> <i class="fa fa-twitter"></i> {{msg.contactTwitName}}<br>
+                                                            {{msg.contactMsg}}<br>
+                                                            <i class="fa fa-map-marker"></i> {{msg.contactCountry}} &nbsp;&nbsp;<i class="fa fa-globe"></i>{{msg.contactURL}}
+                                                        </div>
+                                                        <div class="inbox_blk_cred">
+                                                            Followers <a href="javascript:;"><strong>{{msg.totalFollower}}</strong></a> | Following <a href="javascript:;" style="margin-right:30px;"><strong>{{msg.totalFollowing}}</strong></a>
+                                                        </div>
+                                                        <!--<div class="inbox_blk_actions">
+                                                            <a href="javascript:;"><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a> <a href="javascript:;" data-toggle="modal" data-target="#newReply"><i class="fa fa-mail-reply" title="Reply"></i></a> <a href="javascript:;" data-toggle="collapse" data-target="#msgSetting{{msg.contactTwitName}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                                            <div id="msgSetting{{msg.contactTwitName}}" class="collapse sub_msgsett">
+                                                                <a href="javascript:;">Mention (public)</a> | <a href="javascript:;">Direct Message (private)</a> | <a href="javascript:;">Report as Spam</a> | <a href="javascript:;">Block User</a>
+                                                            </div>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th colspan="2"><strong>OWN NETWORKS</strong></th>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="2" align="center">
+                                    <a href="https://www.twitter.com/{{contactTwitName}}"><img src="/Content/img/twit_c.png" alt="" style="width:35px; margin-right:10px; height:35px; margin-top:10px;" title="https://www.twitter.com/{{contactTwitName}}"></a>
+                                    <a ng-repeat="account in OwnedSocialAccounts" href="{{account.ProfileURL}}">
+                                        <img src="/Content/img/{{account.ProfileTypeId == 1 ? 'fb_c': (account.ProfileTypeId == 6 ? 'instagram_c' : (account.ProfileTypeId == 4 ? 'twit_c' : 'twit_c'))}}.png"
+                                             alt="" style="width:35px; margin-right:10px; height:35px; margin-top:10px;" title="{{account.ProfileURL}}">
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box" ng-if="IsPersonal == 'false'">
+                    <div style="padding-right:10px;" id="f_profile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th colspan="2"><strong>CONTACT INFORMATION</strong></th>
+                            </tr>
+                            <tr style="display:block;" id="trActualRowCompany">
+                                <td width="91%" height="30">
+                                    <span ng-model="myvar" ng-if="CompanyName == ''">[ Company ]</span>
+                                    <span ng-model="myvar" ng-if="CompanyName != ''">{{CompanyName}}</span>
+                                </td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-pencil" ng-click="EditField('#trActualRowCompany','#trEditableRowCompany');"></i></a></td>
+                            </tr>
+                            <tr style="display:none;" id="trEditableRowCompany">
+                                <td width="91%" height="30"><span><input name="" type="text" value="{{CompanyName}}" ng-model="CompanyName" placeholder="[ Company ]"></span></td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-floppy-o " ng-click="SaveCompanyName(CompanyName);"></i></a></td>
+                            </tr>
+
+                            <tr style="display:block;" id="trActualRowTitle">
+                                <td width="91%" height="30">
+                                    <span ng-model="myvar" ng-if="UserTitle == ''">[ Title ]</span>
+                                    <span ng-model="myvar" ng-if="UserTitle != ''">{{UserTitle}}</span>
+                                </td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-pencil " ng-click="EditField('#trActualRowTitle','#trEditableRowTitle');"></i></a></td>
+                            </tr>
+                            <tr style="display:none;" id="trEditableRowTitle">
+                                <td width="91%" height="30"><span><input name="" type="text" value="{{UserTitle}}" ng-model="UserTitle" placeholder="[ Title ]"></span></td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-floppy-o " ng-click="SaveUserTitle(UserTitle);"></i></a></td>
+                            </tr>
+
+                            <tr style="display:block;" id="trActualRowEmail">
+                                <td width="91%" height="30">
+                                    <span ng-model="myvar" ng-if="UserEmail == ''">[ Email ]</span>
+                                    <span ng-model="myvar" ng-if="UserEmail != ''">{{UserEmail}}</span>
+                                </td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-pencil " ng-click="EditField('#trActualRowEmail','#trEditableRowEmail');"></i></a></td>
+                            </tr>
+                            <tr style="display:none;" id="trEditableRowEmail">
+                                <td width="91%" height="30"><span><input name="" type="text" value="{{UserEmail}}" ng-model="UserEmail" placeholder="[ Email ]"></span></td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-floppy-o " ng-click="SaveUserEmail(UserEmail);"></i></a></td>
+                            </tr>
+
+                            <tr style="display:block;" id="trActualRowPhone">
+                                <td width="91%" height="30">
+                                    <span ng-model="myvar" ng-if="UserPhone == ''">[ Phone ]</span>
+                                    <span ng-model="myvar" ng-if="UserPhone != ''">{{UserPhone}}</span>
+                                </td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-pencil " ng-click="EditField('#trActualRowPhone','#trEditableRowPhone');"></i></a></td>
+                            </tr>
+                            <tr style="display:none;" id="trEditableRowPhone">
+                                <td width="91%" height="30"><span><input name="" type="text" value="{{UserPhone}}" ng-model="UserPhone" placeholder="[ Phone ]"></span></td>
+                                <td width="9%"><a href="javascript:;"><i class="fa fa-floppy-o " ng-click="SaveUserPhone(UserPhone);"></i></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                        <tr class="filter_header">
+                            <th colspan="2"><strong>TWITTER LISTS</strong></th>
+                        </tr>
+                        <tr ng-repeat="account in TwitterAccounts">
+                            <td height="30" colspan="2" ng-if="account.IsMember == true"><i class="fa fa-list-ul"></i> <strong>{{account.Name}}</strong> {{account.OwnerName}}</td>
+                            <td width="18%" align="center" ng-if="account.IsMember == true"><a href="javascript:;" ng-click="RemoveContactFromUserList(account);"><i class="fa fa-trash"></i></a></td></span>
+                        </tr>
+                    </table>
+                    <div style="margin-right:10px;">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#addList"> <strong>+</strong>  Add To List</a>
+                        <div id="addList" class="collapse">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                                <tr ng-repeat="account in TwitterAccounts">
+                                    <td width="91%" height="30" ng-if="account.IsMember == false"><i class="fa fa-globe"></i> <strong>{{account.Name}}</strong> {{account.OwnerName}}</td>
+                                    <td width="9%" ng-if="account.IsMember == false">
+                                        <div class="squaredSmall" style="margin-top:0px;">
+                                            <input type="checkbox" value="None" id="squaredSmal79{{account.Id}}" ng-model="lists[account.Id]" name="check" />
+                                            <label for="squaredSmal79{{account.Id}}"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button type="button" ng-click="AddContactToUserLists();" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;">+ Add</button> <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;" data-toggle="modal" data-target="#newCreateList">+ Create</button>
+                            <!-- Modal for New Create List-->
+                            <div id="newCreateList" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <form name="myForm2">
+                                        <!-- Modal for New Group content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title"><i class="fa fa-list-ul"></i> CREATE A NEW LIST</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-sm-12 zro_left" style="margin-top:10px; margin-bottom:20px;">
+                                                    <div style="margin-bottom:10px !important;"><i class="fa fa-link"></i> PROFILE NAMES</div>
+                                                    <div id="soclistspopss">
+                                                        <table class="table table-condensed">
+                                                            <tr ng-repeat="profile in TwitterProfiles" class="{{$index % 2 == 0 ? '' : 'table_alt_col'}}">
+                                                                <td>
+                                                                    <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                        {{profile.Name}}<br>
+                                                                        <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @{{profile.UserName}}</p>
+                                                                    </span>
+                                                                </td>
+                                                                <td align="center" valign="middle"><input type="radio" ng-model="$parent.profileSelect" ng-value="{{$index}}" name="test" /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div>LIST NAME *
+                                                    <p class="warnings_p warnings_p2_320 " ng-show="myForm2.ListName.$touched && myForm2.ListName.$invalid">List Name is required</p>
+                                                    <input type="text" name="ListName" ng-model="ListName" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="Enter List Name" aria-describedby="sizing-addon2" required>
+                                                </div>
+                                                <div>DESCRIPTION<textarea ng-model="ListDescrip" name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea></div>
+                                                <div style="margin-top:20px">
+                                                    PRIVACY<br>
+                                                    <input type="radio" ng-model="Mode" value="public" name="ListMode"> <strong>PUBLIC</strong> - <em><strong>Everyone</strong> can see this list.</em><br>
+                                                    <input type="radio" ng-model="Mode" value="private" name="ListMode"> <strong>PRIVATE</strong> - <em><strong>Only you</strong> can see this list.</em>
+                                                </div>
+
+                                                <div style="margin-top:10px;">
+                                                    <em><strong>@{{TwitterProfiles[profileSelect].UserName}}</strong> new Twitter list will be created and <strong>@{{ofUser}}</strong> will be added to it.</em>
+                                                </div>
+
+                                                <div><button type="button" ng-disabled="myForm2.ListName.$invalid" ng-click="AddNewList();" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;" data-dismiss="modal">+ CREATE &amp; ADD</button></div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Modal for New Create List-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 box box-default filter_box" ng-if="IsPersonal == 'false'">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                        <tr class="filter_header">
+                            <th colspan="2"><strong>COMMENTS</strong></th>
+                        </tr>
+                    </table>
+                    <div style="margin-right:10px; margin-top:10px; margin-bottom:10px;">
+                        <a href="javascript:;" ng-click="OpenComment()"> <strong>+</strong> Add New Comment</a><br>
+                        <br>
+                        <div ng-repeat="usercomment in Comments">
+                            <div>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#comment{{usercomment.Id}}" class="note_head_yellow{{(usercomment.Id % 4) + 1}}">
+                                    <i class="fa fa-quote-left"></i> {{usercomment.Title}}
+                                </a>
+                            </div>
+                            <div id="comment{{usercomment.Id}}" class="collapse sub_msgsettnote note_color_yellow{{(usercomment.Id % 4) + 1}}">
+                                <a href="javascript:;" ng-click="DeleteComment(usercomment.Id);" class="del_icon_set"><i class="fa fa-trash"></i></a>
+                                {{usercomment.Description}}<br>
+                                <span>{{usercomment.CreatedBy}} @ <span ng-bind="usercomment.CreatedAt | date:'h:ma d MMMM yyyy'"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+    </div>
+</div><!-- ./wrapper -->
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    $(function () {
+        $('#inboxer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#tasker').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#socialer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+        $('#publi').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#disco').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#reporter').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+
+        $('#helper').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#userlists').slimscroll({
+            height: '499px',
+            disableFadeOut: true
+        });
+
+        $('#grplists').slimscroll({
+            height: '595px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+
+                angular.element('#UnifiedContactController').scope().loadMoreDataOfCurrentTab();
+                angular.element('#UnifiedContactController').scope().$apply();
+            }
+        });
+
+
+        $('#soclists').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+        $('#soclistspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+        $('#soclistspopss').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#grpspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#soclists2').slimscroll({
+            height: '168px',
+            disableFadeOut: true
+        });
+
+        $('#ulists').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#soclistspop2').slimscroll({
+            height: '280px',
+            disableFadeOut: true
+        });
+
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#f_msg').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+
+        $('#pop_vhis').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#pop_sprof').slimscroll({
+            height: '100px',
+            disableFadeOut: true
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

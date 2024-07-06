@@ -1,0 +1,193 @@
+﻿<style>
+    .animate-show {
+        opacity: 1;
+    }
+    .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+        transition: all linear 0.3s;
+    }
+
+    .animate-show.ng-hide {
+        opacity: 0;
+    }
+</style>
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" id="adi" style="min-height:650px !important;" ng-controller="ShiftReportController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-building"></i> Shift Report</div>
+            <a  style="display:none;" ng-click="downloadPDF()">Download PDF</a>
+        </div>
+        <!-- header ends here -->
+
+        <div class="container-fluid padding_set">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            
+                            <div class="col-md-3 demo" style="margin-bottom:10px !important;">
+                                <div class="col-md-12 zro">
+                                    Select Date <br />
+                                    <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" ranged="false" type="text" options="opts" ng-model="selectedDate" />
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 zro_left" title="Select Shift">
+                                Select Shift <br />
+                                <select class="sel_menu" ng-change="filterChanged()" ng-model="selectedShift">
+                                    <option value="1">Morning Shift</option>
+                                    <option value="2">Evening Shift</option>
+                                    <option value="3">Night Shift</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 zro_left" title="Select Tags">
+                                Select Tags <br />
+                                <div id="multisel" style="margin-bottom:10px !important;">
+                                    <div class='sel_menu' events="events" ng-dropdown-multiselect="" extra-settings="customMultiselectExtraSettings" options="TagsListShift" selected-model="TagsSelected" checkboxes="true" translation-texts="customMultiselectBtnText"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="col-md-12 zro">
+                                    &nbsp; <br />
+                                    <a ng-click="emailReport()" href="javascript:void(0)" class="btn btn-primary button_round">Email Report</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="shiftReport">
+                            <div class="col-md-12">
+
+                                <div class="col-md-12">
+                                    Traffic Levels ({{shiftDisplay}}) on {{dateDisplay}}
+                                </div>
+
+                                <div class="row top_grp_marg top_liner">
+                                    <div class="col-md-4 text-center gridHeading right_cornered">
+                                        <h1>
+                                            Total Inbound Traffic
+                                        </h1>
+                                        <br>
+                                        <h2 class="h2_negative">
+                                            <strong>{{shiftReport.TotalInboundTraffic}}</strong>
+                                        </h2>
+                                    </div>
+                                    <div class="col-md-8 text-center gridHeading right_cornered">
+                                        <h1>
+                                            Top Three Areas
+                                        </h1>
+                                        <br>
+                                        <h2 class="h2_negative">
+                                            <strong>{{top3Areas}}</strong>
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 report_headings top_grp_marg top_liner" ng-show="filteredTags().length>0">
+                                    <h1>Tag Stats</h1> <br />
+                                    <div class="col-md-4 text-center gridHeading right_cornered" ng-repeat="t in filteredTags()">
+                                        <h1>
+                                            {{t.Name}}
+                                        </h1>
+                                        <br>
+                                        <h2 class="h2_negative">
+                                            <strong>{{t.Count}} out of {{shiftReport.TotalInboundTraffic}}</strong>
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <!--<div class="col-md-12">
+                                    <h3 style="text-decoration:underline;margin-top: 5px;">Total Inbound Traffic:</h3>
+                                    <h2 style="color:#2E75B6;margin-top: 0px;">{{shiftReport.TotalInboundTraffic}}</h2>
+                                </div>
+                                <div ng-repeat="t in shiftReport.TagNames" class="col-md-12">
+                                    <h3 style="text-decoration:underline;margin-top: 5px;">{{t}}:</h3>
+                                    <h2 style="color:#2E75B6;margin-top: 0px;">{{shiftReport.TagIds[$index]}} out of {{shiftReport.TotalInboundTraffic}}</h2>
+                                </div>
+                                <div class="col-md-12">
+                                    <h3 style="text-decoration:underline;margin-top: 5px;">Top Three Areas:</h3>
+                                    <h2 style="color:#2E75B6;margin-top: 0px;">{{top3Areas}}</h2>
+                                </div>
+                                -->
+
+                            </div>
+                            
+                            <div class="col-md-12 report_headings top_grp_marg top_liner">
+                                <div id="single-chart" class="col-md-12 report_headings top_grp_marg">
+                                    <highchart id="graphDiv"  config="ShiftChartConfig" class="span10 sum-wise-report"></highchart>
+                                </div>
+                                <small ng-show="shiftReport.FbAverage != 0 || shiftReport.TwAverage != 0">* Average is calculated from last year {{monthDisplay}}.</small>
+                            </div>
+
+                            <div class="col-md-12 report_headings top_grp_marg top_liner">
+                                <table border="0" class="table-responsive table-striped table">
+                                    <thead>
+                                        <tr class="report_table_header">
+                                            <th class="td_padding" width="30%">Platform</th>
+                                            <th class="td_padding" width="10%" ng-repeat="d in shiftReport.WeekData">
+                                                {{d.Date.split('T')[0]}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="report_table_td">
+                                            <td class="td_padding">Facebook</td>
+                                            <td class="td_padding" ng-repeat="d in shiftReport.WeekData">
+                                                {{d.FbData}}
+                                            </td>
+                                        </tr>
+                                        <tr class="report_table_td">
+                                            <td class="td_padding">Twitter</td>
+                                            <td class="td_padding" ng-repeat="d in shiftReport.WeekData">
+                                                {{d.TwData}}
+                                            </td>
+                                        </tr>
+                                        <tr class="report_table_td">
+                                            <td class="td_padding">Total</td>
+                                            <td class="td_padding" ng-repeat="d in shiftReport.WeekData">
+                                                {{d.TwData + d.FbData}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md-12">
+                                <p style="color:#2E75B6;">
+                                    On Duty Agents: {{shiftReport.OnDutyAgents=="" || shiftReport.OnDutyAgents==null? "None" : shiftReport.OnDutyAgents}}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div><!-- /.box-header -->
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#lstFruits').multiselect({
+                includeSelectAllOption: true,
+                buttonWidth: '100%',
+            });
+            $('#inboxer').slimscroll({
+                height: '130px',
+                disableFadeOut: true
+            });
+            var currentDate = new Date();
+            $('#ctrlanalyticdatepicker').daterangepicker({
+                "endDate": currentDate.getDate(),
+                "startDate": new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000),
+                "dateLimit": { "days": 90 },
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            });
+        });
+    </script>

@@ -1,0 +1,3255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SocialCRMMinningModelStoreContainer" CdmEntityContainer="SocialCRMMinningEntities">
+    <EntitySetMapping Name="AirLine_Classes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.AirLine_Classes">
+        <MappingFragment StoreEntitySet="AirLine_Classes">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditActivitiesTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.AuditActivitiesType">
+        <MappingFragment StoreEntitySet="AuditActivitiesType">
+          <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditTrails">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.AuditTrail">
+        <MappingFragment StoreEntitySet="AuditTrail">
+          <ScalarProperty Name="ActivityTime" ColumnName="ActivityTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Author_Categories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Author_Categories">
+        <MappingFragment StoreEntitySet="Author_Categories">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Author">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="CleanLocation" ColumnName="CleanLocation" />
+          <ScalarProperty Name="checked" ColumnName="checked" />
+          <ScalarProperty Name="Influence" ColumnName="Influence" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="following" ColumnName="following" />
+          <ScalarProperty Name="followers" ColumnName="followers" />
+          <ScalarProperty Name="utc_offset" ColumnName="utc_offset" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="ImageUri" ColumnName="ImageUri" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="Document_Time" ColumnName="Document_Time" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors_MediaUrl">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Authors_MediaUrl">
+        <MappingFragment StoreEntitySet="Authors_MediaUrl">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="WebUri" ColumnName="WebUri" />
+          <ScalarProperty Name="ImageUri" ColumnName="ImageUri" />
+          <ScalarProperty Name="Followings" ColumnName="Followings" />
+          <ScalarProperty Name="Followers" ColumnName="Followers" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand_Kpi">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Brand_Kpi">
+        <MappingFragment StoreEntitySet="Brand_Kpi">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand_KPI_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Brand_KPI_Rel">
+        <MappingFragment StoreEntitySet="Brand_KPI_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="KPIId" ColumnName="KPIId" />
+          <ScalarProperty Name="KPI_REL_ID" ColumnName="KPI_REL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand_Term">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Brand_Term">
+        <MappingFragment StoreEntitySet="Brand_Term">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Brand">
+        <MappingFragment StoreEntitySet="Brands">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Brand1" ColumnName="Brand" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="calenders">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.calender">
+        <MappingFragment StoreEntitySet="calender">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_CloseReason_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_CloseReason_Rel">
+        <MappingFragment StoreEntitySet="Case_CloseReason_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="CloseReasonId" ColumnName="CloseReasonId" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_Customer">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_Customer">
+        <MappingFragment StoreEntitySet="Case_Customer">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_Documents">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_Documents">
+        <MappingFragment StoreEntitySet="Case_Documents">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="caseId" ColumnName="caseId" />
+          <ScalarProperty Name="stagingId" ColumnName="stagingId" />
+          <ScalarProperty Name="documentId" ColumnName="documentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_Entity_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_Entity_Rel">
+        <MappingFragment StoreEntitySet="Case_Entity_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_History">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_History">
+        <MappingFragment StoreEntitySet="Case_History">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EscalationInterval" ColumnName="EscalationInterval" />
+          <ScalarProperty Name="IsEscalate" ColumnName="IsEscalate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="VersionId" ColumnName="VersionId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_OpenReason_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_OpenReason_Rel">
+        <MappingFragment StoreEntitySet="Case_OpenReason_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="OpenReasonId" ColumnName="OpenReasonId" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_StaticItems">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_StaticItems">
+        <MappingFragment StoreEntitySet="Case_StaticItems">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case_WorkItem">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case_WorkItem">
+        <MappingFragment StoreEntitySet="Case_WorkItem">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="WorkItemId" ColumnName="WorkItemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cases">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Case">
+        <MappingFragment StoreEntitySet="Cases">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EscalationInterval" ColumnName="EscalationInterval" />
+          <ScalarProperty Name="IsEscalate" ColumnName="IsEscalate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="ParentCaseId" ColumnName="ParentCaseId" />
+          <ScalarProperty Name="VersionId" ColumnName="VersionId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CategoryTitle" ColumnName="CategoryTitle" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities_new">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.cities_new">
+        <MappingFragment StoreEntitySet="cities_new">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="City1" ColumnName="City" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conf_TimeZone">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Conf_TimeZone">
+        <MappingFragment StoreEntitySet="Conf_TimeZone">
+          <ScalarProperty Name="DocumentSourceType_ID" ColumnName="DocumentSourceType_ID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="offset" ColumnName="offset" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSource">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSource">
+        <MappingFragment StoreEntitySet="Config_DocumentSource">
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="IsEmailAlerts" ColumnName="IsEmailAlerts" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="FBProfileType" ColumnName="FBProfileType" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSource_Organization">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSource_Organization">
+        <MappingFragment StoreEntitySet="Config_DocumentSource_Organization">
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Organization_Id" ColumnName="Organization_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSource_SearchTerm">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSource_SearchTerm">
+        <MappingFragment StoreEntitySet="Config_DocumentSource_SearchTerm">
+          <ScalarProperty Name="Untill_Time" ColumnName="Untill_Time" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="LastFetch_Time" ColumnName="LastFetch_Time" />
+          <ScalarProperty Name="LastFetch_Id2" ColumnName="LastFetch_Id2" />
+          <ScalarProperty Name="LastFetch_Id" ColumnName="LastFetch_Id" />
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSourceType">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSourceType">
+        <MappingFragment StoreEntitySet="Config_DocumentSourceType">
+          <ScalarProperty Name="LastFetchTime" ColumnName="LastFetchTime" />
+          <ScalarProperty Name="LastFetchId" ColumnName="LastFetchId" />
+          <ScalarProperty Name="IsModuleEnabled" ColumnName="IsModuleEnabled" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSourceType_Indexing">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSourceType_Indexing">
+        <MappingFragment StoreEntitySet="Config_DocumentSourceType_Indexing">
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="WhereCondition" ColumnName="WhereCondition" />
+          <ScalarProperty Name="TopCount" ColumnName="TopCount" />
+          <ScalarProperty Name="FindSearchTerms" ColumnName="FindSearchTerms" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="ViewName" ColumnName="ViewName" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_ExcludedDocumentSource">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_ExcludedDocumentSource">
+        <MappingFragment StoreEntitySet="Config_ExcludedDocumentSource">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="ProfileType" ColumnName="ProfileType" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_FacebookExcludeURL">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_FacebookExcludeURL">
+        <MappingFragment StoreEntitySet="Config_FacebookExcludeURL">
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_GoogleProximity">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_GoogleProximity">
+        <MappingFragment StoreEntitySet="Config_GoogleProximity">
+          <ScalarProperty Name="IsSiteSearch" ColumnName="IsSiteSearch" />
+          <ScalarProperty Name="orTerms" ColumnName="orTerms" />
+          <ScalarProperty Name="GoogleHost" ColumnName="GoogleHost" />
+          <ScalarProperty Name="Geolocation" ColumnName="Geolocation" />
+          <ScalarProperty Name="IsExcludeTerms" ColumnName="IsExcludeTerms" />
+          <ScalarProperty Name="IsExactTerms" ColumnName="IsExactTerms" />
+          <ScalarProperty Name="CountryRestrict" ColumnName="CountryRestrict" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_GoogleProximity_ExactTerm_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_GoogleProximity_ExactTerm_Rel">
+        <MappingFragment StoreEntitySet="Config_GoogleProximity_ExactTerm_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="ProximityId" ColumnName="ProximityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_GoogleProximity_ExcludeTerm_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_GoogleProximity_ExcludeTerm_Rel">
+        <MappingFragment StoreEntitySet="Config_GoogleProximity_ExcludeTerm_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="ProximityId" ColumnName="ProximityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_GoogleProximity_ExcludeUrl_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_GoogleProximity_ExcludeUrl_Rel">
+        <MappingFragment StoreEntitySet="Config_GoogleProximity_ExcludeUrl_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="UrlId" ColumnName="UrlId" />
+          <ScalarProperty Name="ProximityId" ColumnName="ProximityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_KeyTerm">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_KeyTerm">
+        <MappingFragment StoreEntitySet="Config_KeyTerm">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="KeyTerm" ColumnName="KeyTerm" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_Labels">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_Labels">
+        <MappingFragment StoreEntitySet="Config_Labels">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedIOn" ColumnName="CreatedIOn" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="LabelColor" ColumnName="LabelColor" />
+          <ScalarProperty Name="LabelName" ColumnName="LabelName" />
+          <ScalarProperty Name="LabelId" ColumnName="LabelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_MediaUrl">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_MediaUrl">
+        <MappingFragment StoreEntitySet="Config_MediaUrl">
+          <ScalarProperty Name="Media_Id" ColumnName="Media_Id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Media_Type" ColumnName="Media_Type" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="DocumentSourceType_id" ColumnName="DocumentSourceType_id" />
+          <ScalarProperty Name="Media_Link" ColumnName="Media_Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_Organization">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_Organization">
+        <MappingFragment StoreEntitySet="Config_Organization">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_Organization_SearchTerm">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_Organization_SearchTerm">
+        <MappingFragment StoreEntitySet="Config_Organization_SearchTerm">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Organization_Id" ColumnName="Organization_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_SearchTerm">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_SearchTerm">
+        <MappingFragment StoreEntitySet="Config_SearchTerm">
+          <ScalarProperty Name="IsMiningEnabled" ColumnName="IsMiningEnabled" />
+          <ScalarProperty Name="IsGeneralKeyword" ColumnName="IsGeneralKeyword" />
+          <ScalarProperty Name="IsEmailAlerts" ColumnName="IsEmailAlerts" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="SearchTermType_Id" ColumnName="SearchTermType_Id" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_SearchTerm_KeyTerm_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_SearchTerm_KeyTerm_Rel">
+        <MappingFragment StoreEntitySet="Config_SearchTerm_KeyTerm_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="KeyTermId" ColumnName="KeyTermId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_SearchTerm_Location">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_SearchTerm_Location">
+        <MappingFragment StoreEntitySet="Config_SearchTerm_Location">
+          <ScalarProperty Name="TwitterPlaceId" ColumnName="TwitterPlaceId" />
+          <ScalarProperty Name="TwitterGranuality" ColumnName="TwitterGranuality" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_SearchTermType">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_SearchTermType">
+        <MappingFragment StoreEntitySet="Config_SearchTermType">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_WebExactTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_WebExactTerms">
+        <MappingFragment StoreEntitySet="Config_WebExactTerms">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_WebExcludeTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_WebExcludeTerms">
+        <MappingFragment StoreEntitySet="Config_WebExcludeTerms">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_WebExcludeURL">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_WebExcludeURL">
+        <MappingFragment StoreEntitySet="Config_WebExcludeURL">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountriesAlternateNames">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.CountriesAlternateName">
+        <MappingFragment StoreEntitySet="CountriesAlternateNames">
+          <ScalarProperty Name="Regions" ColumnName="Regions" />
+          <ScalarProperty Name="AlternateName" ColumnName="AlternateName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Country1" ColumnName="Country" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Daywise_PostEngagement">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Daywise_PostEngagement">
+        <MappingFragment StoreEntitySet="Daywise_PostEngagement">
+          <ScalarProperty Name="Media_DocumentId" ColumnName="Media_DocumentId" />
+          <ScalarProperty Name="Retweets" ColumnName="Retweets" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Shares" ColumnName="Shares" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Update_Time" ColumnName="Update_Time" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dealers">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Dealer">
+        <MappingFragment StoreEntitySet="Dealers">
+          <ScalarProperty Name="Dealer1" ColumnName="Dealer" />
+          <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesiNames">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.DesiName">
+        <MappingFragment StoreEntitySet="DesiNames">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Document">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="MediaCnt" ColumnName="MediaCnt" />
+          <ScalarProperty Name="MediaUrl3" ColumnName="MediaUrl3" />
+          <ScalarProperty Name="MediaUrl2" ColumnName="MediaUrl2" />
+          <ScalarProperty Name="MediaUrl" ColumnName="MediaUrl" />
+          <ScalarProperty Name="IsTracked" ColumnName="IsTracked" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="KPI_Id" ColumnName="KPI_Id" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+          <ScalarProperty Name="ViewsCount" ColumnName="ViewsCount" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+          <ScalarProperty Name="IsNestlePakistanPost" ColumnName="IsNestlePakistanPost" />
+          <ScalarProperty Name="IsImportant" ColumnName="IsImportant" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Parent_Staging_Id" ColumnName="Parent_Staging_Id" />
+          <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+          <ScalarProperty Name="Parent_WebSourceId" ColumnName="Parent_WebSourceId" />
+          <ScalarProperty Name="Parent_UniqueId" ColumnName="Parent_UniqueId" />
+          <ScalarProperty Name="UniqueCommentersCount" ColumnName="UniqueCommentersCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="TranslatedText" ColumnName="TranslatedText" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="SentimentProcessingState" ColumnName="SentimentProcessingState" />
+          <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+          <ScalarProperty Name="Followup" ColumnName="Followup" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="IndexTime" ColumnName="IndexTime" />
+          <ScalarProperty Name="IndexedTermsCount" ColumnName="IndexedTermsCount" />
+          <ScalarProperty Name="Unread" ColumnName="Unread" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="SentimentScore" ColumnName="SentimentScore" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents_MediaUrl">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Documents_MediaUrl">
+        <MappingFragment StoreEntitySet="Documents_MediaUrl">
+          <ScalarProperty Name="MediaUrl" ColumnName="MediaUrl" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="MediaUrl_Id" ColumnName="MediaUrl_Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailAlerts">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.EmailAlert">
+        <MappingFragment StoreEntitySet="EmailAlerts">
+          <ScalarProperty Name="MediaUrl_DocumentId" ColumnName="MediaUrl_DocumentId" />
+          <ScalarProperty Name="IsTrendEmailSent" ColumnName="IsTrendEmailSent" />
+          <ScalarProperty Name="IsCommentEmailSent" ColumnName="IsCommentEmailSent" />
+          <ScalarProperty Name="IsProfileEmailSent" ColumnName="IsProfileEmailSent" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailAlerts_Configuration">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.EmailAlerts_Configuration">
+        <MappingFragment StoreEntitySet="EmailAlerts_Configuration">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entities">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Entity">
+        <MappingFragment StoreEntitySet="Entities">
+          <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entity_EntityRelation">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Entity_EntityRelation">
+        <MappingFragment StoreEntitySet="Entity_EntityRelation">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Entity_EntiityRelId" ColumnName="Entity_EntiityRelId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacebookPageHistories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.FacebookPageHistory">
+        <MappingFragment StoreEntitySet="FacebookPageHistory">
+          <ScalarProperty Name="TalkingAbout" ColumnName="TalkingAbout" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FB_Pagefrequency">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.FB_Pagefrequency">
+        <MappingFragment StoreEntitySet="FB_Pagefrequency">
+          <ScalarProperty Name="orgId" ColumnName="orgId" />
+          <ScalarProperty Name="Staging_SearchTerm_Id" ColumnName="Staging_SearchTerm_Id" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="page" ColumnName="page" />
+          <ScalarProperty Name="frequency" ColumnName="frequency" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FBPosts">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.FBPost">
+        <MappingFragment StoreEntitySet="FBPosts">
+          <ScalarProperty Name="rowNumber" ColumnName="rowNumber" />
+          <ScalarProperty Name="Staging_SearchTerm_Id" ColumnName="Staging_SearchTerm_Id" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="staging_Id" ColumnName="staging_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ForwardIndexes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.ForwardIndex">
+        <MappingFragment StoreEntitySet="ForwardIndex">
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Document_Id" ColumnName="Document_Id" />
+          <ScalarProperty Name="Term_Id" ColumnName="Term_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Gender1" ColumnName="Gender" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Geonames_NameVariations">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Geonames_NameVariations">
+        <MappingFragment StoreEntitySet="Geonames_NameVariations">
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="AlternateName" ColumnName="AlternateName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_CountryCodes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Google_CountryCodes">
+        <MappingFragment StoreEntitySet="Google_CountryCodes">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Google_CountryValues">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Google_CountryValues">
+        <MappingFragment StoreEntitySet="Google_CountryValues">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Graphs_Cache">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Graphs_Cache">
+        <MappingFragment StoreEntitySet="Graphs_Cache">
+          <ScalarProperty Name="to" ColumnName="to" />
+          <ScalarProperty Name="from" ColumnName="from" />
+          <ScalarProperty Name="GroupIdentifier" ColumnName="GroupIdentifier" />
+          <ScalarProperty Name="Negative" ColumnName="Negative" />
+          <ScalarProperty Name="Positive" ColumnName="Positive" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Graphs_Exclusion">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Graphs_Exclusion">
+        <MappingFragment StoreEntitySet="Graphs_Exclusion">
+          <ScalarProperty Name="analysis" ColumnName="analysis" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="honda_dealers">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.honda_dealer">
+        <MappingFragment StoreEntitySet="honda dealers">
+          <ScalarProperty Name="dealer" ColumnName="dealer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hyundai_dealers">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.hyundai_dealer">
+        <MappingFragment StoreEntitySet="hyundai dealers">
+          <ScalarProperty Name="dealer" ColumnName="dealer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hyundai_dealers1">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.hyundai_dealers1">
+        <MappingFragment StoreEntitySet="hyundai dealers1">
+          <ScalarProperty Name="dealer" ColumnName="dealer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Index_Term">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Index_Term">
+        <MappingFragment StoreEntitySet="Index_Term">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="Document_Time" ColumnName="Document_Time" />
+          <ScalarProperty Name="Term_Frequency" ColumnName="Term_Frequency" />
+          <ScalarProperty Name="Term_OccurrenceCount" ColumnName="Term_OccurrenceCount" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Document_Id" ColumnName="Document_Id" />
+          <ScalarProperty Name="Term_Id" ColumnName="Term_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Internal_FK_Definition_Storage">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Internal_FK_Definition_Storage">
+        <MappingFragment StoreEntitySet="Internal_FK_Definition_Storage">
+          <ScalarProperty Name="Table_TruncationStatement" ColumnName="Table_TruncationStatement" />
+          <ScalarProperty Name="FK_DestructionStatement" ColumnName="FK_DestructionStatement" />
+          <ScalarProperty Name="FK_CreationStatement" ColumnName="FK_CreationStatement" />
+          <ScalarProperty Name="FK_Name" ColumnName="FK_Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IsImportants">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.IsImportant">
+        <MappingFragment StoreEntitySet="IsImportant">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsImportant1" ColumnName="IsImportant" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KnownLocations">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.KnownLocation">
+        <MappingFragment StoreEntitySet="KnownLocations">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kpi_Keyword">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Kpi_Keyword">
+        <MappingFragment StoreEntitySet="Kpi_Keyword">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+          <ScalarProperty Name="KPIId" ColumnName="KPIId" />
+          <ScalarProperty Name="KPI_KeywordId" ColumnName="KPI_KeywordId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages1">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Language1">
+        <MappingFragment StoreEntitySet="Languages">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages2">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Languages2">
+        <MappingFragment StoreEntitySet="Languages2">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogEntries">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.LogEntry">
+        <MappingFragment StoreEntitySet="LogEntries">
+          <ScalarProperty Name="ProcedureName" ColumnName="ProcedureName" />
+          <ScalarProperty Name="Operation" ColumnName="Operation" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogMiners">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.LogMiner">
+        <MappingFragment StoreEntitySet="LogMiner">
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="MinerMessage" ColumnName="MinerMessage" />
+          <ScalarProperty Name="MinerStep" ColumnName="MinerStep" />
+          <ScalarProperty Name="DocumentSourceTypeName" ColumnName="DocumentSourceTypeName" />
+          <ScalarProperty Name="DocumentSourceTypeId" ColumnName="DocumentSourceTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps_CitiesOfWorld">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Maps_CitiesOfWorld">
+        <MappingFragment StoreEntitySet="Maps_CitiesOfWorld">
+          <ScalarProperty Name="offset_hrs" ColumnName="offset_hrs" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps_CountryCodes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Maps_CountryCodes">
+        <MappingFragment StoreEntitySet="Maps_CountryCodes">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CC" ColumnName="CC" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps_PostsData">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Maps_PostsData">
+        <MappingFragment StoreEntitySet="Maps_PostsData">
+          <ScalarProperty Name="cleanLocation" ColumnName="cleanLocation" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Offset_hrs" ColumnName="Offset_hrs" />
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="isImportant" ColumnName="isImportant" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="Documentsourcetype_id" ColumnName="Documentsourcetype_id" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps_PostsData2">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Maps_PostsData2">
+        <MappingFragment StoreEntitySet="Maps_PostsData2">
+          <ScalarProperty Name="LocationLength" ColumnName="LocationLength" />
+          <ScalarProperty Name="CleanLocation" ColumnName="CleanLocation" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Offset_hrs" ColumnName="Offset_hrs" />
+          <ScalarProperty Name="Offset_ms" ColumnName="Offset_ms" />
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="isImportant" ColumnName="isImportant" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="Documentsourcetype_id" ColumnName="Documentsourcetype_id" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterSettings">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.MasterSetting">
+        <MappingFragment StoreEntitySet="MasterSettings">
+          <ScalarProperty Name="BrandVsKeyword" ColumnName="BrandVsKeyword" />
+          <ScalarProperty Name="MentionsUsed" ColumnName="MentionsUsed" />
+          <ScalarProperty Name="MentionsThreshold" ColumnName="MentionsThreshold" />
+          <ScalarProperty Name="UsersUsed" ColumnName="UsersUsed" />
+          <ScalarProperty Name="UsersThreshold" ColumnName="UsersThreshold" />
+          <ScalarProperty Name="BrandsUsed" ColumnName="BrandsUsed" />
+          <ScalarProperty Name="BrandThreshold" ColumnName="BrandThreshold" />
+          <ScalarProperty Name="KeywordsUsed" ColumnName="KeywordsUsed" />
+          <ScalarProperty Name="KeywordThreshold" ColumnName="KeywordThreshold" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaxInfluencers">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.MaxInfluencer">
+        <MappingFragment StoreEntitySet="MaxInfluencer">
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="author_scores" ColumnName="author_scores" />
+          <ScalarProperty Name="scores" ColumnName="scores" />
+          <ScalarProperty Name="shares" ColumnName="shares" />
+          <ScalarProperty Name="likes" ColumnName="likes" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="documentsourcetype_id" ColumnName="documentsourcetype_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Morphologies">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Morphology">
+        <MappingFragment StoreEntitySet="Morphology">
+          <ScalarProperty Name="lemma" ColumnName="lemma" />
+          <ScalarProperty Name="word" ColumnName="word" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Networks">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Network">
+        <MappingFragment StoreEntitySet="Networks">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Network1" ColumnName="Network" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pakistan_Data">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Pakistan_Data">
+        <MappingFragment StoreEntitySet="Pakistan_Data">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PakistanCities">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.PakistanCity">
+        <MappingFragment StoreEntitySet="PakistanCities">
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personalities">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Personality">
+        <MappingFragment StoreEntitySet="Personalities">
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostCounts_by_Province">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.PostCounts_by_Province">
+        <MappingFragment StoreEntitySet="PostCounts_by_Province">
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province_Code" ColumnName="Province_Code" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostsClassifiedLocations">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.PostsClassifiedLocation">
+        <MappingFragment StoreEntitySet="PostsClassifiedLocations">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostsClassifiedLocationsTests">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.PostsClassifiedLocationsTest">
+        <MappingFragment StoreEntitySet="PostsClassifiedLocationsTest">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.PostType">
+        <MappingFragment StoreEntitySet="PostTypes">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Province1" ColumnName="Province" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regions">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.region">
+        <MappingFragment StoreEntitySet="regions">
+          <ScalarProperty Name="cities" ColumnName="cities" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RssSources">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.RssSource">
+        <MappingFragment StoreEntitySet="RssSources">
+          <ScalarProperty Name="RssUrl" ColumnName="RssUrl" />
+          <ScalarProperty Name="WebsiteUrl" ColumnName="WebsiteUrl" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Search_Type">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Search_Type">
+        <MappingFragment StoreEntitySet="Search_Type">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_AccessLevels">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_AccessLevels">
+        <MappingFragment StoreEntitySet="Sec_AccessLevels">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AccessLevelType" ColumnName="AccessLevelType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="AccessLevelID" ColumnName="AccessLevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Actions">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Actions">
+        <MappingFragment StoreEntitySet="Sec_Actions">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Applications">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Applications">
+        <MappingFragment StoreEntitySet="Sec_Applications">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Groups">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Groups">
+        <MappingFragment StoreEntitySet="Sec_Groups">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="MenuAlternateImageURL" ColumnName="MenuAlternateImageURL" />
+          <ScalarProperty Name="MenuImageURL" ColumnName="MenuImageURL" />
+          <ScalarProperty Name="IsMenuVDisplay" ColumnName="IsMenuVDisplay" />
+          <ScalarProperty Name="IsMenuHDisplay" ColumnName="IsMenuHDisplay" />
+          <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+          <ScalarProperty Name="GroupDisplayText" ColumnName="GroupDisplayText" />
+          <ScalarProperty Name="GroupURL" ColumnName="GroupURL" />
+          <ScalarProperty Name="ParentGroupID" ColumnName="ParentGroupID" />
+          <ScalarProperty Name="GroupTypeID" ColumnName="GroupTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_GroupTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_GroupTypes">
+        <MappingFragment StoreEntitySet="Sec_GroupTypes">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AccessLevelTypeID" ColumnName="AccessLevelTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="GroupTypeID" ColumnName="GroupTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Permission_MenuPage_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Permission_MenuPage_Rel">
+        <MappingFragment StoreEntitySet="Sec_Permission_MenuPage_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PageGroupID" ColumnName="PageGroupID" />
+          <ScalarProperty Name="MenuPermissionAccessDetailsID" ColumnName="MenuPermissionAccessDetailsID" />
+          <ScalarProperty Name="PermissionMenuPageRelID" ColumnName="PermissionMenuPageRelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_PermissionAccessDetails">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_PermissionAccessDetails">
+        <MappingFragment StoreEntitySet="Sec_PermissionAccessDetails">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="SecActionsID" ColumnName="SecActionsID" />
+          <ScalarProperty Name="AccessLevelID" ColumnName="AccessLevelID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="PermissionAccessDetailsID" ColumnName="PermissionAccessDetailsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_PermissionCategories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_PermissionCategories">
+        <MappingFragment StoreEntitySet="Sec_PermissionCategories">
+          <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="PermissionCategoryID" ColumnName="PermissionCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Permissions">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Permissions">
+        <MappingFragment StoreEntitySet="Sec_Permissions">
+          <ScalarProperty Name="PermissionTypeID" ColumnName="PermissionTypeID" />
+          <ScalarProperty Name="TempGroupID" ColumnName="TempGroupID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="HasAssignmentType" ColumnName="HasAssignmentType" />
+          <ScalarProperty Name="PermissionCategoryID" ColumnName="PermissionCategoryID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_RolePermissions_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_RolePermissions_Rel">
+        <MappingFragment StoreEntitySet="Sec_RolePermissions_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AssignmentType" ColumnName="AssignmentType" />
+          <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="RolePermissionID" ColumnName="RolePermissionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Roles">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Roles">
+        <MappingFragment StoreEntitySet="Sec_Roles">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_SessionDetails">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_SessionDetails">
+        <MappingFragment StoreEntitySet="Sec_SessionDetails">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="AccessDate" ColumnName="AccessDate" />
+          <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+          <ScalarProperty Name="SessionString" ColumnName="SessionString" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="SessionDetailID" ColumnName="SessionDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Sessions">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Sessions">
+        <MappingFragment StoreEntitySet="Sec_Sessions">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="AccessDate" ColumnName="AccessDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SessionString" ColumnName="SessionString" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_UserFacebook">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_UserFacebook">
+        <MappingFragment StoreEntitySet="Sec_UserFacebook">
+          <ScalarProperty Name="IsEnableLiveFeed" ColumnName="IsEnableLiveFeed" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ProfileImgUrl" ColumnName="ProfileImgUrl" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FacebookUserId" ColumnName="FacebookUserId" />
+          <ScalarProperty Name="TokenExpiry" ColumnName="TokenExpiry" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="AppSecret" ColumnName="AppSecret" />
+          <ScalarProperty Name="AppKey" ColumnName="AppKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_UserInstagram">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_UserInstagram">
+        <MappingFragment StoreEntitySet="Sec_UserInstagram">
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ProfileImgUrl" ColumnName="ProfileImgUrl" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="ClientSecret" ColumnName="ClientSecret" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InstaId" ColumnName="InstaId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_UserPermissions_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_UserPermissions_Rel">
+        <MappingFragment StoreEntitySet="Sec_UserPermissions_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="UserPermissionID" ColumnName="UserPermissionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_UserRoles_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_UserRoles_Rel">
+        <MappingFragment StoreEntitySet="Sec_UserRoles_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="UserRoleRelID" ColumnName="UserRoleRelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_Users">
+        <MappingFragment StoreEntitySet="Sec_Users">
+          <ScalarProperty Name="iosDeviceKey" ColumnName="iosDeviceKey" />
+          <ScalarProperty Name="andoridDeviceKey" ColumnName="andoridDeviceKey" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="LandingPage" ColumnName="LandingPage" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordValue" ColumnName="PasswordValue" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sec_userSocialTokens">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.sec_userSocialTokens">
+        <MappingFragment StoreEntitySet="sec_userSocialTokens">
+          <ScalarProperty Name="TwTokenSecret" ColumnName="TwTokenSecret" />
+          <ScalarProperty Name="TwToken" ColumnName="TwToken" />
+          <ScalarProperty Name="TwConsumerSecret" ColumnName="TwConsumerSecret" />
+          <ScalarProperty Name="TwConsumerKey" ColumnName="TwConsumerKey" />
+          <ScalarProperty Name="FbAccessToken" ColumnName="FbAccessToken" />
+          <ScalarProperty Name="FbAppKey" ColumnName="FbAppKey" />
+          <ScalarProperty Name="FbOrgName" ColumnName="FbOrgName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sec_UserTwitter">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Sec_UserTwitter">
+        <MappingFragment StoreEntitySet="Sec_UserTwitter">
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ProfileImgUrl" ColumnName="ProfileImgUrl" />
+          <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="TokenSecret" ColumnName="TokenSecret" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="ConsumerSecret" ColumnName="ConsumerSecret" />
+          <ScalarProperty Name="ConsumerKey" ColumnName="ConsumerKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SentimentCategories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.SentimentCategory">
+        <MappingFragment StoreEntitySet="SentimentCategories">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SentimentID" ColumnName="SentimentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialWords">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.SpecialWord">
+        <MappingFragment StoreEntitySet="SpecialWords">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="partOfSpeech" ColumnName="partOfSpeech" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialWords2">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.SpecialWords2">
+        <MappingFragment StoreEntitySet="SpecialWords2">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="partOfSpeech" ColumnName="partOfSpeech" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Comment">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Comment">
+        <MappingFragment StoreEntitySet="Staging_blogger_Comment">
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_PostID" ColumnName="Staging_PostID" />
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="SelfURI" ColumnName="SelfURI" />
+          <ScalarProperty Name="Rights" ColumnName="Rights" />
+          <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+          <ScalarProperty Name="MediaURI" ColumnName="MediaURI" />
+          <ScalarProperty Name="LinkReadOnly" ColumnName="LinkReadOnly" />
+          <ScalarProperty Name="LinkCount" ColumnName="LinkCount" />
+          <ScalarProperty Name="IdURI" ColumnName="IdURI" />
+          <ScalarProperty Name="TotalResults" ColumnName="TotalResults" />
+          <ScalarProperty Name="StartIndex" ColumnName="StartIndex" />
+          <ScalarProperty Name="Self" ColumnName="Self" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Feed" ColumnName="Feed" />
+          <ScalarProperty Name="EditURI" ColumnName="EditURI" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Src" ColumnName="Src" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+          <ScalarProperty Name="Staging_Comment_Id" ColumnName="Staging_Comment_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Users">
+        <MappingFragment StoreEntitySet="Staging_blogger_Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="URI" ColumnName="URI" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Facebook_Post_Comment_Likes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Facebook_Post_Comment_Likes">
+        <MappingFragment StoreEntitySet="Staging_Facebook_Post_Comment_Likes">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Staging_Facebook_Post_Comment_Id" ColumnName="Staging_Facebook_Post_Comment_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Facebook_Post_Comments">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Facebook_Post_Comments">
+        <MappingFragment StoreEntitySet="Staging_Facebook_Post_Comments">
+          <ScalarProperty Name="Staging_MediaUrl_DocId" ColumnName="Staging_MediaUrl_DocId" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_LikesCount" ColumnName="Staging_LikesCount" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="created_time" ColumnName="created_time" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="from_id" ColumnName="from_id" />
+          <ScalarProperty Name="from_name" ColumnName="from_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Staging_Facebook_Post_Id" ColumnName="Staging_Facebook_Post_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Facebook_Post_Likes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Facebook_Post_Likes">
+        <MappingFragment StoreEntitySet="Staging_Facebook_Post_Likes">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Staging_Facebook_Post_Id" ColumnName="Staging_Facebook_Post_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Facebook_Posts">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Facebook_Posts">
+        <MappingFragment StoreEntitySet="Staging_Facebook_Posts">
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="user_stagingid" ColumnName="user_stagingid" />
+          <ScalarProperty Name="Staging_refresh" ColumnName="Staging_refresh" />
+          <ScalarProperty Name="shares_count" ColumnName="shares_count" />
+          <ScalarProperty Name="comments_count" ColumnName="comments_count" />
+          <ScalarProperty Name="likes_count" ColumnName="likes_count" />
+          <ScalarProperty Name="Staging_SearchTerm_Id" ColumnName="Staging_SearchTerm_Id" />
+          <ScalarProperty Name="Staging_DocumentSource_Id" ColumnName="Staging_DocumentSource_Id" />
+          <ScalarProperty Name="Staging_ProcessingState_Refresh" ColumnName="Staging_ProcessingState_Refresh" />
+          <ScalarProperty Name="Staging_UniqueCommentersCount" ColumnName="Staging_UniqueCommentersCount" />
+          <ScalarProperty Name="Staging_LikesCount" ColumnName="Staging_LikesCount" />
+          <ScalarProperty Name="Staging_CommentsCount" ColumnName="Staging_CommentsCount" />
+          <ScalarProperty Name="Staging_ProcessingState_Comments" ColumnName="Staging_ProcessingState_Comments" />
+          <ScalarProperty Name="Staging_Followup" ColumnName="Staging_Followup" />
+          <ScalarProperty Name="targeting_locale" ColumnName="targeting_locale" />
+          <ScalarProperty Name="targeting_region" ColumnName="targeting_region" />
+          <ScalarProperty Name="targeting_city" ColumnName="targeting_city" />
+          <ScalarProperty Name="targeting_country" ColumnName="targeting_country" />
+          <ScalarProperty Name="updated_time" ColumnName="updated_time" />
+          <ScalarProperty Name="created_time" ColumnName="created_time" />
+          <ScalarProperty Name="attribution" ColumnName="attribution" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="from_name" ColumnName="from_name" />
+          <ScalarProperty Name="from_id" ColumnName="from_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Facebook_Posts_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Facebook_Posts_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_Facebook_Posts_SearchTerms">
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Facebook_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Facebook_Users">
+        <MappingFragment StoreEntitySet="Staging_Facebook_Users">
+          <ScalarProperty Name="Followings" ColumnName="Followings" />
+          <ScalarProperty Name="Followers" ColumnName="Followers" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="staging_id" ColumnName="staging_id" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="updated_time" ColumnName="updated_time" />
+          <ScalarProperty Name="third_party_id" ColumnName="third_party_id" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="locale" ColumnName="locale" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Feedly_Feeds">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Feedly_Feeds">
+        <MappingFragment StoreEntitySet="Staging_Feedly_Feeds">
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+          <ScalarProperty Name="CoverUrl" ColumnName="CoverUrl" />
+          <ScalarProperty Name="VisualUrl" ColumnName="VisualUrl" />
+          <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+          <ScalarProperty Name="Hint" ColumnName="Hint" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="DeliciousTags" ColumnName="DeliciousTags" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Velocity" ColumnName="Velocity" />
+          <ScalarProperty Name="EstimatedEngagement" ColumnName="EstimatedEngagement" />
+          <ScalarProperty Name="CoverageScore" ColumnName="CoverageScore" />
+          <ScalarProperty Name="Coverage" ColumnName="Coverage" />
+          <ScalarProperty Name="TwitterFollowers" ColumnName="TwitterFollowers" />
+          <ScalarProperty Name="TwitterScreenName" ColumnName="TwitterScreenName" />
+          <ScalarProperty Name="FacebookLikes" ColumnName="FacebookLikes" />
+          <ScalarProperty Name="FacebookUserName" ColumnName="FacebookUserName" />
+          <ScalarProperty Name="Subscribers" ColumnName="Subscribers" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Feedly_Items">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Feedly_Items">
+        <MappingFragment StoreEntitySet="Staging_Feedly_Items">
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_Refresh" ColumnName="Staging_Refresh" />
+          <ScalarProperty Name="CrawledDate" ColumnName="CrawledDate" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="IsUnread" ColumnName="IsUnread" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Content_Text" ColumnName="Content_Text" />
+          <ScalarProperty Name="Summary_Text" ColumnName="Summary_Text" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="OriginId" ColumnName="OriginId" />
+          <ScalarProperty Name="Fingerprint" ColumnName="Fingerprint" />
+          <ScalarProperty Name="BaseUri" ColumnName="BaseUri" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Staging_Feedly_Feed_Id" ColumnName="Staging_Feedly_Feed_Id" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_DocumentSource_Id" ColumnName="Staging_DocumentSource_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Feedly_Items_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Feedly_Items_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_Feedly_Items_SearchTerms">
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Feedly_Links">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Feedly_Links">
+        <MappingFragment StoreEntitySet="Staging_Feedly_Links">
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="RelationshipType" ColumnName="RelationshipType" />
+          <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Staging_Feedly_Item_Id" ColumnName="Staging_Feedly_Item_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Instagram_Comments">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Instagram_Comments">
+        <MappingFragment StoreEntitySet="Staging_Instagram_Comments">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="InstaCommentID" ColumnName="InstaCommentID" />
+          <ScalarProperty Name="Staging_PostID" ColumnName="Staging_PostID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Instagram_Posts">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Instagram_Posts">
+        <MappingFragment StoreEntitySet="Staging_Instagram_Posts">
+          <ScalarProperty Name="DocumentSourceId" ColumnName="DocumentSourceId" />
+          <ScalarProperty Name="Staging_ProcessingState_Refresh" ColumnName="Staging_ProcessingState_Refresh" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Comments_Count" ColumnName="Comments_Count" />
+          <ScalarProperty Name="Likes_Count" ColumnName="Likes_Count" />
+          <ScalarProperty Name="Location_Id" ColumnName="Location_Id" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_refresh" ColumnName="Staging_refresh" />
+          <ScalarProperty Name="Staging_UserID" ColumnName="Staging_UserID" />
+          <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="CommentsUpdated" ColumnName="CommentsUpdated" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="Post_Id" ColumnName="Post_Id" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="Image_Url" ColumnName="Image_Url" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Created_Time" ColumnName="Created_Time" />
+          <ScalarProperty Name="Filter" ColumnName="Filter" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Attribution" ColumnName="Attribution" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Instagram_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Instagram_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_Instagram_SearchTerms">
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Instagram_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Instagram_Users">
+        <MappingFragment StoreEntitySet="Staging_Instagram_Users">
+          <ScalarProperty Name="Follow_Count" ColumnName="Follow_Count" />
+          <ScalarProperty Name="Followers_Count" ColumnName="Followers_Count" />
+          <ScalarProperty Name="Posts_Count" ColumnName="Posts_Count" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="staging_id" ColumnName="staging_id" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="locale" ColumnName="locale" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Myspace_FeedEntry">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Myspace_FeedEntry">
+        <MappingFragment StoreEntitySet="Staging_Myspace_FeedEntry">
+          <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="SyncDate" ColumnName="SyncDate" />
+          <ScalarProperty Name="SyncId" ColumnName="SyncId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="AuthorUri" ColumnName="AuthorUri" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Myspace_Links">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Myspace_Links">
+        <MappingFragment StoreEntitySet="Staging_Myspace_Links">
+          <ScalarProperty Name="HRef" ColumnName="HRef" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Rel" ColumnName="Rel" />
+          <ScalarProperty Name="FKId" ColumnName="FKId" />
+          <ScalarProperty Name="LinkTypeId" ColumnName="LinkTypeId" />
+          <ScalarProperty Name="LinkId" ColumnName="LinkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Myspace_LinkType">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Myspace_LinkType">
+        <MappingFragment StoreEntitySet="Staging_Myspace_LinkType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_RSS_Categories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_RSS_Categories">
+        <MappingFragment StoreEntitySet="Staging_RSS_Categories">
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Staging_RSS_Item_Id" ColumnName="Staging_RSS_Item_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_RSS_Items">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_RSS_Items">
+        <MappingFragment StoreEntitySet="Staging_RSS_Items">
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_Refresh" ColumnName="Staging_Refresh" />
+          <ScalarProperty Name="Title_Type" ColumnName="Title_Type" />
+          <ScalarProperty Name="Title_Text" ColumnName="Title_Text" />
+          <ScalarProperty Name="Summary_Type" ColumnName="Summary_Type" />
+          <ScalarProperty Name="Summary_Text" ColumnName="Summary_Text" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+          <ScalarProperty Name="Copyright_Type" ColumnName="Copyright_Type" />
+          <ScalarProperty Name="Copyright_Text" ColumnName="Copyright_Text" />
+          <ScalarProperty Name="BaseUri" ColumnName="BaseUri" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_DocumentSource_Id" ColumnName="Staging_DocumentSource_Id" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_RSS_Items_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_RSS_Items_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_RSS_Items_SearchTerms">
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_RSS_Links">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_RSS_Links">
+        <MappingFragment StoreEntitySet="Staging_RSS_Links">
+          <ScalarProperty Name="BaseUri" ColumnName="BaseUri" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="RelationshipType" ColumnName="RelationshipType" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Staging_RSS_Item_Id" ColumnName="Staging_RSS_Item_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_RSS_Persons">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_RSS_Persons">
+        <MappingFragment StoreEntitySet="Staging_RSS_Persons">
+          <ScalarProperty Name="Staging_IsAuthor" ColumnName="Staging_IsAuthor" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Staging_RSS_Item_Id" ColumnName="Staging_RSS_Item_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_SkyTrax_Review_Organization">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_SkyTrax_Review_Organization">
+        <MappingFragment StoreEntitySet="Staging_SkyTrax_Review_Organization">
+          <ScalarProperty Name="staging_insertTime" ColumnName="staging_insertTime" />
+          <ScalarProperty Name="staging_updateTime" ColumnName="staging_updateTime" />
+          <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+          <ScalarProperty Name="staging_review_Id" ColumnName="staging_review_Id" />
+          <ScalarProperty Name="organization_Id" ColumnName="organization_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_SkyTrax_Reviews">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_SkyTrax_Reviews">
+        <MappingFragment StoreEntitySet="Staging_SkyTrax_Reviews">
+          <ScalarProperty Name="CabinFlown" ColumnName="CabinFlown" />
+          <ScalarProperty Name="user_Staging_Id" ColumnName="user_Staging_Id" />
+          <ScalarProperty Name="Recomended" ColumnName="Recomended" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Entertainment" ColumnName="Entertainment" />
+          <ScalarProperty Name="Catering" ColumnName="Catering" />
+          <ScalarProperty Name="Staff_Service" ColumnName="Staff_Service" />
+          <ScalarProperty Name="Seat_Comfort" ColumnName="Seat_Comfort" />
+          <ScalarProperty Name="Value_For_Money" ColumnName="Value_For_Money" />
+          <ScalarProperty Name="staging_processingState" ColumnName="staging_processingState" />
+          <ScalarProperty Name="staging_updateTime" ColumnName="staging_updateTime" />
+          <ScalarProperty Name="staging_insertTime" ColumnName="staging_insertTime" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="review_text" ColumnName="review_text" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_SkyTrax_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_SkyTrax_Users">
+        <MappingFragment StoreEntitySet="Staging_SkyTrax_Users">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Staging_updateTime" ColumnName="Staging_updateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="staging_user_Id" ColumnName="staging_user_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_SkyTrax_Web">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_SkyTrax_Web">
+        <MappingFragment StoreEntitySet="Staging_SkyTrax_Web">
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Staging_SearchTerm_Id" ColumnName="Staging_SearchTerm_Id" />
+          <ScalarProperty Name="Staging_DocumentSource_Id" ColumnName="Staging_DocumentSource_Id" />
+          <ScalarProperty Name="Staging_ProcessingState_Refresh" ColumnName="Staging_ProcessingState_Refresh" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="News_CreatedAt" ColumnName="News_CreatedAt" />
+          <ScalarProperty Name="News_Description" ColumnName="News_Description" />
+          <ScalarProperty Name="News_Author" ColumnName="News_Author" />
+          <ScalarProperty Name="Staging_AuthorId" ColumnName="Staging_AuthorId" />
+          <ScalarProperty Name="News_Url" ColumnName="News_Url" />
+          <ScalarProperty Name="News_Title" ColumnName="News_Title" />
+          <ScalarProperty Name="News_Id" ColumnName="News_Id" />
+          <ScalarProperty Name="Staging_ProcessingState_Comments" ColumnName="Staging_ProcessingState_Comments" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_SocialMedia_Feed_Comments_Labels">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_SocialMedia_Feed_Comments_Labels">
+        <MappingFragment StoreEntitySet="Staging_SocialMedia_Feed_Comments_Labels">
+          <ScalarProperty Name="Label_Id" ColumnName="Label_Id" />
+          <ScalarProperty Name="Comment_Id" ColumnName="Comment_Id" />
+          <ScalarProperty Name="Staging_Comment_Id" ColumnName="Staging_Comment_Id" />
+          <ScalarProperty Name="Post_Id" ColumnName="Post_Id" />
+          <ScalarProperty Name="Staging_Post_Id" ColumnName="Staging_Post_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Twitter_Statuses">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Twitter_Statuses">
+        <MappingFragment StoreEntitySet="Staging_Twitter_Statuses">
+          <ScalarProperty Name="Media_Cnt" ColumnName="Media_Cnt" />
+          <ScalarProperty Name="Media_Url3" ColumnName="Media_Url3" />
+          <ScalarProperty Name="Media_Url2" ColumnName="Media_Url2" />
+          <ScalarProperty Name="Media_Url" ColumnName="Media_Url" />
+          <ScalarProperty Name="Likes_Count" ColumnName="Likes_Count" />
+          <ScalarProperty Name="Staging_DocumentSource_Id" ColumnName="Staging_DocumentSource_Id" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_Refresh" ColumnName="Staging_Refresh" />
+          <ScalarProperty Name="user_staging_id" ColumnName="user_staging_id" />
+          <ScalarProperty Name="place_contained_within" ColumnName="place_contained_within" />
+          <ScalarProperty Name="place_geo_cords" ColumnName="place_geo_cords" />
+          <ScalarProperty Name="place_bounding_box_cords" ColumnName="place_bounding_box_cords" />
+          <ScalarProperty Name="place_geo_type" ColumnName="place_geo_type" />
+          <ScalarProperty Name="place_bounding_box_type" ColumnName="place_bounding_box_type" />
+          <ScalarProperty Name="place_url" ColumnName="place_url" />
+          <ScalarProperty Name="place_full_name" ColumnName="place_full_name" />
+          <ScalarProperty Name="place_type" ColumnName="place_type" />
+          <ScalarProperty Name="place_country" ColumnName="place_country" />
+          <ScalarProperty Name="place_Id" ColumnName="place_Id" />
+          <ScalarProperty Name="place_country_code" ColumnName="place_country_code" />
+          <ScalarProperty Name="place_street_adr" ColumnName="place_street_adr" />
+          <ScalarProperty Name="place_name" ColumnName="place_name" />
+          <ScalarProperty Name="Staging_Followup" ColumnName="Staging_Followup" />
+          <ScalarProperty Name="truncated" ColumnName="truncated" />
+          <ScalarProperty Name="retweeted" ColumnName="retweeted" />
+          <ScalarProperty Name="favorited" ColumnName="favorited" />
+          <ScalarProperty Name="retweet_count" ColumnName="retweet_count" />
+          <ScalarProperty Name="in_reply_to_screen_name" ColumnName="in_reply_to_screen_name" />
+          <ScalarProperty Name="in_reply_to_user_id" ColumnName="in_reply_to_user_id" />
+          <ScalarProperty Name="in_reply_to_status_id" ColumnName="in_reply_to_status_id" />
+          <ScalarProperty Name="geo" ColumnName="geo" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="iso_language_code" ColumnName="iso_language_code" />
+          <ScalarProperty Name="profile_image_url" ColumnName="profile_image_url" />
+          <ScalarProperty Name="to_user_id" ColumnName="to_user_id" />
+          <ScalarProperty Name="to_user" ColumnName="to_user" />
+          <ScalarProperty Name="from_user_id" ColumnName="from_user_id" />
+          <ScalarProperty Name="from_user" ColumnName="from_user" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="Status_Html" ColumnName="Status_Html" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_ProcessingState_Details" ColumnName="Staging_ProcessingState_Details" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Twitter_Statuses_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Twitter_Statuses_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_Twitter_Statuses_SearchTerms">
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Twitter_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Twitter_Users">
+        <MappingFragment StoreEntitySet="Staging_Twitter_Users">
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
+          <ScalarProperty Name="staging_id" ColumnName="staging_id" />
+          <ScalarProperty Name="profile_txt_color" ColumnName="profile_txt_color" />
+          <ScalarProperty Name="profile_use_bg_img" ColumnName="profile_use_bg_img" />
+          <ScalarProperty Name="profile_bg_tiled" ColumnName="profile_bg_tiled" />
+          <ScalarProperty Name="profile_link_color" ColumnName="profile_link_color" />
+          <ScalarProperty Name="profile_bg_img_url" ColumnName="profile_bg_img_url" />
+          <ScalarProperty Name="profile_bg_color" ColumnName="profile_bg_color" />
+          <ScalarProperty Name="is_follow_request_sent" ColumnName="is_follow_request_sent" />
+          <ScalarProperty Name="is_translator" ColumnName="is_translator" />
+          <ScalarProperty Name="is_verified" ColumnName="is_verified" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="notifications" ColumnName="notifications" />
+          <ScalarProperty Name="following" ColumnName="following" />
+          <ScalarProperty Name="listed_count" ColumnName="listed_count" />
+          <ScalarProperty Name="contributors_enabled" ColumnName="contributors_enabled" />
+          <ScalarProperty Name="lang" ColumnName="lang" />
+          <ScalarProperty Name="statuses_count" ColumnName="statuses_count" />
+          <ScalarProperty Name="geo_enabled" ColumnName="geo_enabled" />
+          <ScalarProperty Name="time_zone" ColumnName="time_zone" />
+          <ScalarProperty Name="utc_offset" ColumnName="utc_offset" />
+          <ScalarProperty Name="favourites_count" ColumnName="favourites_count" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="friends_Count" ColumnName="friends_Count" />
+          <ScalarProperty Name="followers_count" ColumnName="followers_count" />
+          <ScalarProperty Name="protected" ColumnName="protected" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="profile_image_url" ColumnName="profile_image_url" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="screen_name" ColumnName="screen_name" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Web_Comments">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Web_Comments">
+        <MappingFragment StoreEntitySet="Staging_Web_Comments">
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="WebCommentID" ColumnName="WebCommentID" />
+          <ScalarProperty Name="Staging_WebID" ColumnName="Staging_WebID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Web_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Web_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_Web_SearchTerms">
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="StagingId" ColumnName="StagingId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Youtube_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Youtube_SearchTerms">
+        <MappingFragment StoreEntitySet="Staging_Youtube_SearchTerms">
+          <ScalarProperty Name="SearchTerm_Id" ColumnName="SearchTerm_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_YouTube_Users">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_YouTube_Users">
+        <MappingFragment StoreEntitySet="Staging_YouTube_Users">
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="SubscriberCount" ColumnName="SubscriberCount" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="School" ColumnName="School" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="Music" ColumnName="Music" />
+          <ScalarProperty Name="Movies" ColumnName="Movies" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+          <ScalarProperty Name="Hobbies" ColumnName="Hobbies" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FeedUri" ColumnName="FeedUri" />
+          <ScalarProperty Name="Etag" ColumnName="Etag" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_YouTube_Video_Comments">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_YouTube_Video_Comments">
+        <MappingFragment StoreEntitySet="Staging_YouTube_Video_Comments">
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="YouTubeCommentID" ColumnName="YouTubeCommentID" />
+          <ScalarProperty Name="Staging_VideoID" ColumnName="Staging_VideoID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_YouTube_Videos">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_YouTube_Videos">
+        <MappingFragment StoreEntitySet="Staging_YouTube_Videos">
+          <ScalarProperty Name="DocumentSourceId" ColumnName="DocumentSourceId" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="DurationText" ColumnName="DurationText" />
+          <ScalarProperty Name="Staging_refresh" ColumnName="Staging_refresh" />
+          <ScalarProperty Name="Staging_UserID" ColumnName="Staging_UserID" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Thumbnails" ColumnName="Thumbnails" />
+          <ScalarProperty Name="DisLikes" ColumnName="DisLikes" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="FavoriteCount" ColumnName="FavoriteCount" />
+          <ScalarProperty Name="NumRaters" ColumnName="NumRaters" />
+          <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="CommentsUpdated" ColumnName="CommentsUpdated" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="YoutubeURL" ColumnName="YoutubeURL" />
+          <ScalarProperty Name="YoutubeID" ColumnName="YoutubeID" />
+          <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaticItems">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.StaticItem">
+        <MappingFragment StoreEntitySet="StaticItems">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Templates_Standard_Responses">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Templates_Standard_Responses">
+        <MappingFragment StoreEntitySet="Templates_Standard_Responses">
+          <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempPostsDataForMaps">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TempPostsDataForMap">
+        <MappingFragment StoreEntitySet="TempPostsDataForMap">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="isimportant" ColumnName="isimportant" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="documentsourcetype_id" ColumnName="documentsourcetype_id" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Terms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Term">
+        <MappingFragment StoreEntitySet="Terms">
+          <ScalarProperty Name="Term1" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tests">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.test">
+        <MappingFragment StoreEntitySet="test">
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="stuck" ColumnName="stuck" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="parse" ColumnName="parse" />
+          <ScalarProperty Name="Doc" ColumnName="Doc" />
+          <ScalarProperty Name="Senti" ColumnName="Senti" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+          <ScalarProperty Name="Staging_Type" ColumnName="Staging_Type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="test2">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.test2">
+        <MappingFragment StoreEntitySet="test2">
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="stuck" ColumnName="stuck" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="parse" ColumnName="parse" />
+          <ScalarProperty Name="Doc" ColumnName="Doc" />
+          <ScalarProperty Name="Senti" ColumnName="Senti" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+          <ScalarProperty Name="Staging_Type" ColumnName="Staging_Type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopInf_data">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TopInf_data">
+        <MappingFragment StoreEntitySet="TopInf_data">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="isImportant" ColumnName="isImportant" />
+          <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+          <ScalarProperty Name="ViewsCount" ColumnName="ViewsCount" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Followers" ColumnName="Followers" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Author_id" ColumnName="Author_id" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tweets">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Tweet">
+        <MappingFragment StoreEntitySet="Tweets">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="retweet_count" ColumnName="retweet_count" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="staging_Id" ColumnName="staging_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TwitterMentionCountbyAuthors">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TwitterMentionCountbyAuthor">
+        <MappingFragment StoreEntitySet="TwitterMentionCountbyAuthors">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="IsImportant" ColumnName="IsImportant" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="Author_id" ColumnName="Author_id" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeCategories">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TypeCategory">
+        <MappingFragment StoreEntitySet="TypeCategories">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_SearchCategory">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.User_SearchCategory">
+        <MappingFragment StoreEntitySet="User_SearchCategory">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="PortalId" ColumnName="PortalId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_SearchTerm">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.User_SearchTerm">
+        <MappingFragment StoreEntitySet="User_SearchTerm">
+          <ScalarProperty Name="SearchTerm" ColumnName="SearchTerm" />
+          <ScalarProperty Name="PortalId" ColumnName="PortalId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_SearchTerm_Detail">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.User_SearchTerm_Detail">
+        <MappingFragment StoreEntitySet="User_SearchTerm_Detail">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Setting" ColumnName="Setting" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_SearchTerm_New">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.User_SearchTerm_New">
+        <MappingFragment StoreEntitySet="User_SearchTerm_New">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="SearchTerm" ColumnName="SearchTerm" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="PortalId" ColumnName="PortalId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Video">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="viewCount" ColumnName="viewCount" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="staging_Id" ColumnName="staging_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkItem_Entity_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.WorkItem_Entity_Rel">
+        <MappingFragment StoreEntitySet="WorkItem_Entity_Rel">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ages">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Age">
+        <MappingFragment StoreEntitySet="Age">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Age1" ColumnName="Age" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alerts">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Alert">
+        <MappingFragment StoreEntitySet="Alerts">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Alerts" ColumnName="Alerts" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthorsTemps">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.AuthorsTemp">
+        <MappingFragment StoreEntitySet="AuthorsTemp">
+          <ScalarProperty Name="AuthorScore" ColumnName="AuthorScore" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="following" ColumnName="following" />
+          <ScalarProperty Name="followers" ColumnName="followers" />
+          <ScalarProperty Name="utc_offset" ColumnName="utc_offset" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="ImageUri" ColumnName="ImageUri" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="Document_Time" ColumnName="Document_Time" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand_SearchTerm_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Brand_SearchTerm_Rel">
+        <MappingFragment StoreEntitySet="Brand_SearchTerm_Rel">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="searchTerm_Id" ColumnName="searchTerm_Id" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities1">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.city1">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="city_table">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.city_table">
+        <MappingFragment StoreEntitySet="city_table">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cityNames">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.cityName">
+        <MappingFragment StoreEntitySet="cityNames">
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="locale" ColumnName="locale" />
+          <ScalarProperty Name="tempId" ColumnName="tempId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSource_Organization_SearchTerm">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSource_Organization_SearchTerm">
+        <MappingFragment StoreEntitySet="Config_DocumentSource_Organization_SearchTerm">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="LastFetch_Time" ColumnName="LastFetch_Time" />
+          <ScalarProperty Name="LastFetch_Id2" ColumnName="LastFetch_Id2" />
+          <ScalarProperty Name="LastFetch_Id" ColumnName="LastFetch_Id" />
+          <ScalarProperty Name="Organization_SearchTerm_Id" ColumnName="Organization_SearchTerm_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSources">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSources">
+        <MappingFragment StoreEntitySet="Config_DocumentSources">
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSourceTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSourceTypes">
+        <MappingFragment StoreEntitySet="Config_DocumentSourceTypes">
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_DocumentSourceTypes_Indexing">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_DocumentSourceTypes_Indexing">
+        <MappingFragment StoreEntitySet="Config_DocumentSourceTypes_Indexing">
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="WhereCondition" ColumnName="WhereCondition" />
+          <ScalarProperty Name="TopCount" ColumnName="TopCount" />
+          <ScalarProperty Name="FindSearchTerms" ColumnName="FindSearchTerms" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="ViewName" ColumnName="ViewName" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_FacebookProfileTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_FacebookProfileTypes">
+        <MappingFragment StoreEntitySet="Config_FacebookProfileTypes">
+          <ScalarProperty Name="ProfileType" ColumnName="ProfileType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_Organization_SearchTerms">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_Organization_SearchTerms">
+        <MappingFragment StoreEntitySet="Config_Organization_SearchTerms">
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="C_SearchTerm_Type_Id" ColumnName=".SearchTerm_Type_Id" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_Organizations">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_Organizations">
+        <MappingFragment StoreEntitySet="Config_Organizations">
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Config_Reports_Settings">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Config_Reports_Settings">
+        <MappingFragment StoreEntitySet="Config_Reports_Settings">
+          <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+          <ScalarProperty Name="LastExecutionTime" ColumnName="LastExecutionTime" />
+          <ScalarProperty Name="ReportEndTime" ColumnName="ReportEndTime" />
+          <ScalarProperty Name="ReportStartTime" ColumnName="ReportStartTime" />
+          <ScalarProperty Name="Setting_Id" ColumnName="Setting_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries1">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.country1">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="regions" ColumnName="regions" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countryNames">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.countryName">
+        <MappingFragment StoreEntitySet="countryNames">
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="locale" ColumnName="locale" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DimTimes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.DimTime">
+        <MappingFragment StoreEntitySet="DimTime">
+          <ScalarProperty Name="FullTimeStamp" ColumnName="FullTimeStamp" />
+          <ScalarProperty Name="Second" ColumnName="Second" />
+          <ScalarProperty Name="Minute" ColumnName="Minute" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="TimeKey" ColumnName="TimeKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documentsTemps">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.documentsTemp">
+        <MappingFragment StoreEntitySet="documentsTemp">
+          <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+          <ScalarProperty Name="ViewsCount" ColumnName="ViewsCount" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+          <ScalarProperty Name="IsNestlePakistanPost" ColumnName="IsNestlePakistanPost" />
+          <ScalarProperty Name="IsImportant" ColumnName="IsImportant" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Parent_Staging_Id" ColumnName="Parent_Staging_Id" />
+          <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+          <ScalarProperty Name="Parent_WebSourceId" ColumnName="Parent_WebSourceId" />
+          <ScalarProperty Name="Parent_UniqueId" ColumnName="Parent_UniqueId" />
+          <ScalarProperty Name="UniqueCommentersCount" ColumnName="UniqueCommentersCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="TranslatedText" ColumnName="TranslatedText" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="SentimentProcessingState" ColumnName="SentimentProcessingState" />
+          <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+          <ScalarProperty Name="Followup" ColumnName="Followup" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="IndexTime" ColumnName="IndexTime" />
+          <ScalarProperty Name="IndexedTermsCount" ColumnName="IndexedTermsCount" />
+          <ScalarProperty Name="Unread" ColumnName="Unread" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="SentimentScore" ColumnName="SentimentScore" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="WebSourceId" ColumnName="WebSourceId" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Email_TimeIntervals">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Email_TimeIntervals">
+        <MappingFragment StoreEntitySet="Email_TimeIntervals">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="isSet" ColumnName="isSet" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacebookBrands">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.FacebookBrand">
+        <MappingFragment StoreEntitySet="FacebookBrands">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacebookPageFrequencies">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.FacebookPageFrequency">
+        <MappingFragment StoreEntitySet="FacebookPageFrequency">
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locales">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.locale">
+        <MappingFragment StoreEntitySet="locales">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="locale2" ColumnName="locale2" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="locale1" ColumnName="locale" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps_PostsData3">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Maps_PostsData3">
+        <MappingFragment StoreEntitySet="Maps_PostsData3">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Offset_hrs" ColumnName="Offset_hrs" />
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="isImportant" ColumnName="isImportant" />
+          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="Documentsourcetype_id" ColumnName="Documentsourcetype_id" />
+          <ScalarProperty Name="Sentiment_Category_Id" ColumnName="Sentiment_Category_Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MentionSentimentReports_New">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.MentionSentimentReports_New">
+        <MappingFragment StoreEntitySet="MentionSentimentReports_New">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="SearchTermId" ColumnName="SearchTermId" />
+          <ScalarProperty Name="SentimentId" ColumnName="SentimentId" />
+          <ScalarProperty Name="KPI_Id" ColumnName="KPI_Id" />
+          <ScalarProperty Name="Rss" ColumnName="Rss" />
+          <ScalarProperty Name="IsImportant" ColumnName="IsImportant" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="maxTime" ColumnName="maxTime" />
+          <ScalarProperty Name="ContentTime" ColumnName="ContentTime" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="CategoryCount" ColumnName="CategoryCount" />
+          <ScalarProperty Name="Neutral" ColumnName="Neutral" />
+          <ScalarProperty Name="Negative" ColumnName="Negative" />
+          <ScalarProperty Name="Positive" ColumnName="Positive" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+          <ScalarProperty Name="Feedly" ColumnName="Feedly" />
+          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+          <ScalarProperty Name="Web" ColumnName="Web" />
+          <ScalarProperty Name="Blogger" ColumnName="Blogger" />
+          <ScalarProperty Name="YouTube" ColumnName="YouTube" />
+          <ScalarProperty Name="FaceBook" ColumnName="FaceBook" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostsClassifiedLocations2">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.PostsClassifiedLocations2">
+        <MappingFragment StoreEntitySet="PostsClassifiedLocations2">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regionNames">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.regionName">
+        <MappingFragment StoreEntitySet="regionNames">
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="locale" ColumnName="locale" />
+          <ScalarProperty Name="tempId" ColumnName="tempId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReplaceWords">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.ReplaceWord">
+        <MappingFragment StoreEntitySet="ReplaceWords">
+          <ScalarProperty Name="RepaceWith" ColumnName="RepaceWith" />
+          <ScalarProperty Name="StopWord" ColumnName="StopWord" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Comment_Link_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Comment_Link_Rel">
+        <MappingFragment StoreEntitySet="Staging_blogger_Comment_Link_Rel">
+          <ScalarProperty Name="LinkId" ColumnName="LinkId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="Comment_Link_Rel_Id" ColumnName="Comment_Link_Rel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Comment_User_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Comment_User_Rel">
+        <MappingFragment StoreEntitySet="Staging_blogger_Comment_User_Rel">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="Comment_User_Rel_Id" ColumnName="Comment_User_Rel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Link">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Link">
+        <MappingFragment StoreEntitySet="Staging_blogger_Link">
+          <ScalarProperty Name="Staging_PostID" ColumnName="Staging_PostID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Rel" ColumnName="Rel" />
+          <ScalarProperty Name="AbsoluteURI" ColumnName="AbsoluteURI" />
+          <ScalarProperty Name="LinkId" ColumnName="LinkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Post">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Post">
+        <MappingFragment StoreEntitySet="Staging_blogger_Post">
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+          <ScalarProperty Name="Staging_userID" ColumnName="Staging_userID" />
+          <ScalarProperty Name="Staging_Refresh" ColumnName="Staging_Refresh" />
+          <ScalarProperty Name="DocumentSource_ID" ColumnName="DocumentSource_ID" />
+          <ScalarProperty Name="Staging_ProcessingState" ColumnName="Staging_ProcessingState" />
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="SelfURI" ColumnName="SelfURI" />
+          <ScalarProperty Name="Rights" ColumnName="Rights" />
+          <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+          <ScalarProperty Name="MediaURI" ColumnName="MediaURI" />
+          <ScalarProperty Name="LinkReadOnly" ColumnName="LinkReadOnly" />
+          <ScalarProperty Name="LinkCount" ColumnName="LinkCount" />
+          <ScalarProperty Name="IdURI" ColumnName="IdURI" />
+          <ScalarProperty Name="TotalResults" ColumnName="TotalResults" />
+          <ScalarProperty Name="StartIndex" ColumnName="StartIndex" />
+          <ScalarProperty Name="Self" ColumnName="Self" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Feed" ColumnName="Feed" />
+          <ScalarProperty Name="EditURI" ColumnName="EditURI" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Src" ColumnName="Src" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_ProcessState" ColumnName="Staging_ProcessState" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Post_Link_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Post_Link_Rel">
+        <MappingFragment StoreEntitySet="Staging_blogger_Post_Link_Rel">
+          <ScalarProperty Name="LinkId" ColumnName="LinkId" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="Post_Link_Rel_Id" ColumnName="Post_Link_Rel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_blogger_Post_User_Rel">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_blogger_Post_User_Rel">
+        <MappingFragment StoreEntitySet="Staging_blogger_Post_User_Rel">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="Post_User_Rel_Id" ColumnName="Post_User_Rel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Myspace_Person">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Myspace_Person">
+        <MappingFragment StoreEntitySet="Staging_Myspace_Person">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Generator" ColumnName="Generator" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Uri" ColumnName="Uri" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="Rights" ColumnName="Rights" />
+          <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Staging_InsertTime" ColumnName="Staging_InsertTime" />
+          <ScalarProperty Name="Staging_UpdateTime" ColumnName="Staging_UpdateTime" />
+          <ScalarProperty Name="Staging_OrgName" ColumnName="Staging_OrgName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_SkyTrax_Organization">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_SkyTrax_Organization">
+        <MappingFragment StoreEntitySet="Staging_SkyTrax_Organization">
+          <ScalarProperty Name="IsSkyTrax_Enabled" ColumnName="IsSkyTrax_Enabled" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staging_Twitter_KloutScores">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.Staging_Twitter_KloutScores">
+        <MappingFragment StoreEntitySet="Staging_Twitter_KloutScores">
+          <ScalarProperty Name="delta_5day" ColumnName="delta_5day" />
+          <ScalarProperty Name="delta_1day" ColumnName="delta_1day" />
+          <ScalarProperty Name="kclass_description" ColumnName="kclass_description" />
+          <ScalarProperty Name="kclass_id" ColumnName="kclass_id" />
+          <ScalarProperty Name="kclass" ColumnName="kclass" />
+          <ScalarProperty Name="true_reach" ColumnName="true_reach" />
+          <ScalarProperty Name="amplification_score" ColumnName="amplification_score" />
+          <ScalarProperty Name="network_score" ColumnName="network_score" />
+          <ScalarProperty Name="kscore_description" ColumnName="kscore_description" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="slope" ColumnName="slope" />
+          <ScalarProperty Name="kscore" ColumnName="kscore" />
+          <ScalarProperty Name="twitter_screen_name" ColumnName="twitter_screen_name" />
+          <ScalarProperty Name="twitter_id" ColumnName="twitter_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StopWords">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.StopWord">
+        <MappingFragment StoreEntitySet="StopWords">
+          <ScalarProperty Name="Word" ColumnName="Word" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temp_table">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.temp_table">
+        <MappingFragment StoreEntitySet="temp_table">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tempdocs">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.tempdoc">
+        <MappingFragment StoreEntitySet="tempdocs">
+          <ScalarProperty Name="TempIdentifier" ColumnName="TempIdentifier" />
+          <ScalarProperty Name="Parent_DocumentSource_Id" ColumnName="Parent_DocumentSource_Id" />
+          <ScalarProperty Name="Parent_Content_UniqueId" ColumnName="Parent_Content_UniqueId" />
+          <ScalarProperty Name="Parent_Content_Id" ColumnName="Parent_Content_Id" />
+          <ScalarProperty Name="Parent_Staging_Id" ColumnName="Parent_Staging_Id" />
+          <ScalarProperty Name="UniqueCommentersCount" ColumnName="UniqueCommentersCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Sentiment_Score" ColumnName="Sentiment_Score" />
+          <ScalarProperty Name="Author_Uri_Image" ColumnName="Author_Uri_Image" />
+          <ScalarProperty Name="Author_Uri" ColumnName="Author_Uri" />
+          <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="Author_UniqueId" ColumnName="Author_UniqueId" />
+          <ScalarProperty Name="Content_Time" ColumnName="Content_Time" />
+          <ScalarProperty Name="Followup" ColumnName="Followup" />
+          <ScalarProperty Name="Content_Text" ColumnName="Content_Text" />
+          <ScalarProperty Name="Content_Uri" ColumnName="Content_Uri" />
+          <ScalarProperty Name="Content_UniqueId" ColumnName="Content_UniqueId" />
+          <ScalarProperty Name="Content_Id" ColumnName="Content_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempDocumentsTableTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TempDocumentsTableType">
+        <MappingFragment StoreEntitySet="TempDocumentsTableType">
+          <ScalarProperty Name="Author_Location" ColumnName="Author_Location" />
+          <ScalarProperty Name="Author_Gender" ColumnName="Author_Gender" />
+          <ScalarProperty Name="Author_Age" ColumnName="Author_Age" />
+          <ScalarProperty Name="SharesCount" ColumnName="SharesCount" />
+          <ScalarProperty Name="ViewsCount" ColumnName="ViewsCount" />
+          <ScalarProperty Name="TempIdentifier" ColumnName="TempIdentifier" />
+          <ScalarProperty Name="Parent_DocumentSource_Id" ColumnName="Parent_DocumentSource_Id" />
+          <ScalarProperty Name="Parent_Content_UniqueId" ColumnName="Parent_Content_UniqueId" />
+          <ScalarProperty Name="Parent_Content_Id" ColumnName="Parent_Content_Id" />
+          <ScalarProperty Name="Parent_Staging_Id" ColumnName="Parent_Staging_Id" />
+          <ScalarProperty Name="UniqueCommentersCount" ColumnName="UniqueCommentersCount" />
+          <ScalarProperty Name="LikesCount" ColumnName="LikesCount" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Sentiment_Score" ColumnName="Sentiment_Score" />
+          <ScalarProperty Name="Author_Uri_Image" ColumnName="Author_Uri_Image" />
+          <ScalarProperty Name="Author_Uri" ColumnName="Author_Uri" />
+          <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="Author_UniqueId" ColumnName="Author_UniqueId" />
+          <ScalarProperty Name="Content_Time" ColumnName="Content_Time" />
+          <ScalarProperty Name="Followup" ColumnName="Followup" />
+          <ScalarProperty Name="Content_Text" ColumnName="Content_Text" />
+          <ScalarProperty Name="Content_Uri" ColumnName="Content_Uri" />
+          <ScalarProperty Name="Content_UniqueId" ColumnName="Content_UniqueId" />
+          <ScalarProperty Name="Content_Id" ColumnName="Content_Id" />
+          <ScalarProperty Name="Staging_Id" ColumnName="Staging_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempDocumentTermsTableTypes">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TempDocumentTermsTableType">
+        <MappingFragment StoreEntitySet="TempDocumentTermsTableType">
+          <ScalarProperty Name="TempIdentifier" ColumnName="TempIdentifier" />
+          <ScalarProperty Name="DocumentSourceType_Id" ColumnName="DocumentSourceType_Id" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="Document_TermCount" ColumnName="Document_TermCount" />
+          <ScalarProperty Name="Document_Time" ColumnName="Document_Time" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Document_Id" ColumnName="Document_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopUserByPosts">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TopUserByPost">
+        <MappingFragment StoreEntitySet="TopUserByPost">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DocumentSource_Id" ColumnName="DocumentSource_Id" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="IsImportant" ColumnName="IsImportant" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Neutral" ColumnName="Neutral" />
+          <ScalarProperty Name="Negative" ColumnName="Negative" />
+          <ScalarProperty Name="Positive" ColumnName="Positive" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="DateRange" ColumnName="DateRange" />
+          <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+          <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+          <ScalarProperty Name="DocumentSourceType" ColumnName="DocumentSourceType" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="twitter_retweetCount">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.twitter_retweetCount">
+        <MappingFragment StoreEntitySet="twitter_retweetCount">
+          <ScalarProperty Name="retweetCount" ColumnName="retweetCount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TwitterTimezones">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.TwitterTimezone">
+        <MappingFragment StoreEntitySet="TwitterTimezones">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="offset_hrs" ColumnName="offset_hrs" />
+          <ScalarProperty Name="offset_ms" ColumnName="offset_ms" />
+          <ScalarProperty Name="timezone" ColumnName="timezone" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSearchTermCount_New">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.UserSearchTermCount_New">
+        <MappingFragment StoreEntitySet="UserSearchTermCount_New">
+          <ScalarProperty Name="PortalId" ColumnName="PortalId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="TodayCount" ColumnName="TodayCount" />
+          <ScalarProperty Name="NegativeCount" ColumnName="NegativeCount" />
+          <ScalarProperty Name="searchTerm" ColumnName="searchTerm" />
+          <ScalarProperty Name="searchTermId" ColumnName="searchTermId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YouTube_Keywords">
+      <EntityTypeMapping TypeName="SocialCRMMinningModel.YouTube_Keywords">
+        <MappingFragment StoreEntitySet="YouTube_Keywords">
+          <ScalarProperty Name="dCreatedAt" ColumnName="dCreatedAt" />
+          <ScalarProperty Name="vAuthor" ColumnName="vAuthor" />
+          <ScalarProperty Name="vKeyWord" ColumnName="vKeyWord" />
+          <ScalarProperty Name="iStagingId" ColumnName="iStagingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Author_Category_Rel" TypeName="SocialCRMMinningModel.Author_Category_Rel" StoreEntitySet="Author_Category_Rel">
+      <EndProperty Name="Author_Categories">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+      <EndProperty Name="Author">
+        <ScalarProperty Name="Id" ColumnName="Author_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,448 @@
+﻿   <!-- Site wrapper -->
+<div class="wrapper">
+
+    <div ui-view="Header"></div>
+    <!-- =============================================== -->
+    <div ng-app="CRMApp" class="" id="InstagramController" ng-controller="InstagramController">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="min-height:650px !important;">
+            <!-- Content Header (Page header) -->
+            <!-- header starts here -->
+            <div class="container-fluid page_name">
+                <div class="col-sm-10"><i class="fa fa-building"></i> Instagram Report</div>
+            </div>
+            <!-- header ends here -->
+            <!-- misc & reviews content starts here -->
+            <!--<div class="container-fluid reviews_Section ">
+                <div class="col-sm-10 " style="padding:0 !important">
+                    <h1><span><i class="fa fa-building"></i></span> {{ BusinessName | uppercase}}</h1>
+                    <p>My Company</p>
+                </div>
+                <div class="col-sm-2" style="margin-top:6px;">
+                    <a href="#"><i class="fa fa-file-pdf-o"></i> Export to PDF</a> <br>
+                    <a href="#"><i class="fa fa-file-excel-o"></i> Export to CSV</a>
+                </div>
+            </div>-->
+            <!-- misc & reviews content starts here -->
+            <div class="container-fluid padding_set">
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="col-md-12">
+                                <!--<div class="col-md-9 zro_left">
+                                    <h3 class="box-title" style="margin-top:10px !important; margin-bottom:5px !important;"><i class="fa fa-line-chart"></i> WEBSITE VS. SOCIAL REPORT</h3>
+                                </div>-->
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <div class="col-md-3 zro">
+                                    <div>
+                                        <div class="btn-group" style=" margin-bottom:10px;">
+                                            <button type="button" class="btn btn-default" ng-click="dateFilter(1)">15</button>
+                                            <button type="button" class="btn btn-default" ng-click="dateFilter(2)">30</button>
+                                            <button type="button" class="btn btn-default " ng-click="dateFilter(3)">60</button>
+                                            <button type="button" class="btn btn-default " ng-click="dateFilter(4)">90</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 zro demo" style="margin-bottom:10px !important;">
+                                    <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="opts" ng-model="date" />
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                    <!--<input type="text"  id="ctrlanalyticdatepicker" class="form-control">-->
+
+                                </div>
+                                <div class="col-md-3 text-right zro">
+                                    <select ng-model="selectedProfile"
+                                            ng-options="opt as opt.Name for opt in ddlProfileList"
+                                            ng-change="selectedItemChanged()"
+                                            class="form-control input_border_min"></select>
+                                </div>
+                                <div ng-if="reportShow==true">
+                                    <div class="col-md-12 report_headings top_grp_marg">
+                                        <h1>Top Instagram Posts</h1>
+                                        <h2>{{TopPostGraph.length}} posts from your profile.</h2>
+                                        <div class="col-md-12">
+                                            <div class="col-md-4 text-center " ng-repeat="data in TopPostGraph">
+
+                                                <video ng-if="data.PostType=='video'" controls height="294" width="294" class="img-thumbnail img_margin">
+                                                    <!-- class="img-thumbnail img_margin" style="height:294px;width:294px;" -->
+                                                    <source ng-src="{{data.StandardResolutionImageUrl |trustUrl}}">
+                                                </video>
+                                                <img ng-if="data.PostType=='image'" src="{{data.StandardResolutionImageUrl}}" class="img-thumbnail img_margin">
+
+                                                <!-- <img src="/Content/images/insta_img_1.png" class="img-thumbnail img_margin"> -->
+                                                <br>
+                                                <span class="insta_name_heading">{{data.AccountName}}</span><br>
+                                                <span class="insta_name_heading2">{{data.Engagements}} Engagements</span>
+                                            </div>
+                                            <!--<div class="col-md-4 text-center">
+                                                <img src="/Content/images/insta_img_2.png" class="img-thumbnail img_margin"><br>
+                                                <span class="insta_name_heading">@ibex360insight</span><br>
+                                                <span class="insta_name_heading2">2 Engagements</span>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <img src="/Content/images/insta_img_3.png" class="img-thumbnail img_margin"><br>
+                                                <span class="insta_name_heading">@ibex360insight</span><br>
+                                                <span class="insta_name_heading2">1 Engagements</span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-md-12 report_headings top_grp_marg">
+                                        <h1>Audience Growth</h1>
+                                        <div class="text-center graph_sett"><img src="/Content/images/dummy_graph.jpg"></div>
+                                    </div>-->
+                                    <!-- Audience growth -->
+                                    <div class="col-md-12 report_headings top_grp_marg top_liner">
+                                        <h1>Audience Growth</h1>
+                                        <div class="text-center graph_sett">
+                                            <!--<img src="/content/images/dummy_graph.jpg">-->
+                                            <highchart id="chart1" config="audienceGrowthChartConfig" class="span10"></highchart>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                            <h1>Follower Metrics</h1>
+                                            <div class="col-md-4  text-center">
+                                                <strong>Total Followers</strong><br>
+                                                <div class="data_circle1">{{TotalFollowers}}</div>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <strong>Followers Gained</strong><br>
+                                                <div class="data_circle2">{{FollowersGained}}</div>
+                                            </div>
+                                            <div class="col-md-4  text-center">
+                                                <strong>People that you Followed</strong><br>
+                                                <div class="data_circle3">{{TotalFollows}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                            <h1 ng-if="IncreaseInFollowers">
+                                                Your new followers increased by
+                                            </h1>
+                                            <h1 ng-if="IncreaseInFollowers == false">
+                                                Your new followers decreased by
+                                            </h1>
+                                            <br>
+                                            <h2 class="h2_negative" ng-if="IncreaseInFollowers">
+                                                <strong><i class="fa fa-arrow-up"></i> {{IncreaseInFollowersVal}}</strong>
+                                            </h2>
+                                            <h2 class="h2_negative" ng-if="IncreaseInFollowers == false">
+                                                <strong><i class="fa fa-arrow-down"></i> {{IncreaseInFollowersVal}}</strong>
+                                            </h2>
+                                            <h3>since previous date range</h3>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 report_headings top_grp_marg top_liner" style="text-align: center;">
+                                        <h1>Publishing Behavior</h1>
+                                        <!--  <div class="text-center graph_sett"><img src="/Content//Content/images/dummy_graph.jpg"></div>-->
+                                        <img ng-if="PublisingBehaviourGraph.length <= 0" src="/Content/images/no-data-found.png" />
+                                        <div ng-if="PublisingBehaviourGraph.length > 0" class="text-center graph_sett">
+                                            <!--<img src="/content/images/dummy_graph.jpg">-->
+                                            <highchart id="chart1" config="publishingBehaviourChartConfig" class="span10"></highchart>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                            <h1>Publishing Metrics</h1>
+                                            <div class="col-md-4  text-center">
+                                                <strong>Total Media</strong><br>
+                                                <div class="data_circle1">{{TotalPosts}}</div>
+                                            </div>
+                                            <div class="col-md-4  text-center">
+                                                <strong>Photos</strong><br>
+                                                <div class="data_circle2">{{TotalPhotos}}</div>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <strong>Videos</strong><br>
+                                                <div class="data_circle3">{{TotalVideos}}</div>
+                                            </div>
+
+                                        </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                            <!--<h1>The number of media you sent decreased by</h1><br>
+                                            <h2 class="h2_negative"><strong><i class="fa fa-arrow-down"></i> 93%</strong></h2>-->
+
+                                            <h1 ng-if="IncreaseInMedia">
+                                                The number of media you sent increased by
+                                            </h1>
+                                            <h1 ng-if="IncreaseInMedia == false">
+                                                The number of media you sent decreased by
+                                            </h1>
+                                            <br>
+                                            <h2 class="h2_negative" ng-if="IncreaseInMedia">
+                                                <strong><i class="fa fa-arrow-up"></i> {{IncreaseInMediaVal}}</strong>
+                                            </h2>
+                                            <h2 class="h2_negative" ng-if="IncreaseInMedia == false">
+                                                <strong><i class="fa fa-arrow-down"></i> {{IncreaseInMediaVal}}</strong>
+                                            </h2>
+                                            <h3>since previous date range</h3>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 report_headings top_grp_marg top_liner">
+                                        <h1>Outbound Hashtag Performance</h1>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-6 social_traffic gridHeading">
+                                            <h1>Most Used Hashtags</h1>
+                                            <div class="" ng-if="MostUsedHashTag.length <= 0">
+                                                <img style="width: 100%;" src="/Content/images/no-data-found.png" />
+                                            </div>
+                                            <div ng-if="MostUsedHashTag.length > 0" class="progress-group gridHeading" ng-repeat="tag in MostUsedHashTag">
+                                                <span class="progress-text">#{{tag.Tag}}</span>
+                                                <span class="progress-number"><b>{{tag.Frequency}}</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar {{PerformanceLevel(tag.Frequency)}}" style="width:{{tag.Frequency}}%; max-width:100%;"></div>
+                                                </div>
+                                            </div>
+                                            <!--<div class="progress-group">
+                                                <span class="progress-text">#yayvo</span>
+                                                <span class="progress-number"><b>310</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-red" style="width: {{tag.Frequency}}%; max-width:100%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
+                                                <span class="progress-text">#yaywo</span>
+                                                <span class="progress-number"><b>280</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
+                                                <span class="progress-text">#tcs</span>
+                                                <span class="progress-number"><b>200</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-yellow" style="width: 30%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
+                                                <span class="progress-text">#onlineshopping</span>
+                                                <span class="progress-number"><b>280</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                                                </div>
+                                            </div>-->
+
+                                        </div>
+                                        <div class="col-md-6 social_traffic gridHeading">
+                                            <h1>Most Engaged Hashtags</h1>
+                                            <div class="" ng-if="MostEngagedHashTags.length <= 0">
+                                                <img style="width: 100%;" src="/Content/images/no-data-found.png" />
+                                            </div>
+                                            <div ng-if="MostEngagedHashTags.length > 0" class="progress-group" ng-repeat="tag in MostEngagedHashTags">
+                                                <span class="progress-text">#{{tag.Tag}}</span>
+                                                <span class="progress-number"><b>{{tag.Frequency}}</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar {{PerformanceLevel(tag.Frequency)}}" style="width:{{tag.Frequency}}%; max-width:100%;"></div>
+                                                </div>
+                                            </div><!-- /.progress-group -->
+                                            <!--<div class="progress-group">
+                                                <span class="progress-text">#yayvo</span>
+                                                <span class="progress-number"><b>310</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-red" style="width: 70%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
+                                                <span class="progress-text">#yaywo</span>
+                                                <span class="progress-number"><b>280</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
+                                                <span class="progress-text">#tcs</span>
+                                                <span class="progress-number"><b>200</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-yellow" style="width: 30%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
+                                                <span class="progress-text">#onlineshopping</span>
+                                                <span class="progress-number"><b>280</b></span>
+                                                <div class="progress sm">
+                                                    <div class="progress-bar progress-bar-green" style="width: 30%"></div>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 report_headings top_grp_marg top_liner" style="text-align: center;">
+                                        <h1>Audience Engagement</h1>
+                                        <img ng-if="AudienceEngagementGraph.length <= 0" src="/Content/images/no-data-found.png" />
+                                        <highchart ng-if="AudienceEngagementGraph.length > 0" id="chart1" config="audienceEngagementChartConfig" class="span10"></highchart>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                            <div>
+                                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                                    <tr class="report_table_header">
+                                                        <td width="85%" class="td_padding">Engagement Metrics</td>
+                                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                                    </tr>
+
+                                                    <tr class="report_table_td">
+                                                        <td class="td_padding">Likes Received</td>
+                                                        <td align="right" class="td_padding"><strong>{{TotalLikesReceived}}</strong></td>
+                                                    </tr>
+                                                    <tr class="report_table_td">
+                                                        <td class="td_padding">Comments Received</td>
+                                                        <td align="right" class="td_padding"><strong>{{TotalCommentReceived}}</strong></td>
+                                                    </tr>
+                                                    <tr class="report_table_td_total">
+                                                        <td class="td_padding">Total Engagements</td>
+                                                        <td align="right" class="td_padding"><strong>{{TotalEngagements}}</strong></td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
+
+
+
+                                        </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                            
+                                            <!--h1>The number of engagements increased by</h1><br>
+                                            <h2>----</h2>-->
+                                            <h1 ng-if="IncreaseInEngagement">
+                                                The number of engagements increased by
+                                            </h1>
+                                            <h1 ng-if="IncreaseInEngagement == false">
+                                                The number of engagements decreased by
+                                            </h1>
+                                            <br>
+                                            <h2 class="h2_negative" ng-if="IncreaseInEngagement">
+                                                <strong><i class="fa fa-arrow-up"></i> {{IncreaseInEngagementVal}}</strong>
+                                            </h2>
+                                            <h2 class="h2_negative" ng-if="IncreaseInEngagement == false">
+                                                <strong><i class="fa fa-arrow-down"></i> {{IncreaseInEngagementVal}}</strong>
+                                            </h2>
+                                            <h3>since previous date range</h3>
+
+                                        </div>
+                                        <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                            <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                                <tr class="report_table_td">
+                                                    <td class="td_padding">Engagements per Follower</td>
+                                                    <td align="right" class="td_padding"><strong>{{EngagementsPerFollower}}</strong></td>
+                                                </tr>
+                                                <tr class="report_table_td">
+                                                    <td class="td_padding">Engagements per Media</td>
+                                                    <td align="right" class="td_padding"><strong>{{EngagementsPerMedia}}</strong></td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                        <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                            <!--<h1>The number of engagements per media increased by</h1><br>
+                                            <h2>----</h2>-->
+                                            <h1 ng-if="IncreaseInEngagementPerMedia">
+                                                The number of engagements per media increased by
+                                            </h1>
+                                            <h1 ng-if="IncreaseInEngagementPerMedia == false">
+                                                The number of engagements per media decreased by
+                                            </h1>
+                                            <br>
+                                            <h2 class="h2_negative" ng-if="IncreaseInEngagementPerMedia">
+                                                <strong><i class="fa fa-arrow-up"></i> {{IncreaseInEngagementPerMediaVal}}</strong>
+                                            </h2>
+                                            <h2 class="h2_negative" ng-if="IncreaseInEngagementPerMedia == false">
+                                                <strong><i class="fa fa-arrow-down"></i> {{IncreaseInEngagementPerMediaVal}}</strong>
+                                            </h2>
+                                            <h3>since previous date range</h3>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 report_headings top_grp_marg top_liner">
+                                        <h1>Instagram Stats by Profile</h1><br>
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                            <thead>
+                                                <tr class="report_table_td">
+                                                    <th class="td_padding">Profile</th>
+                                                    <th class="td_padding">Total Followers</th>
+                                                    <th class="td_padding">Follower Increase</th>
+                                                    <th class="td_padding">Followers Gained</th>
+                                                    <th class="td_padding">Media Sent</th>
+                                                    <th class="td_padding">Comments Received</th>
+                                                    <th class="td_padding">Total Engagements</th>
+                                                    <th class="td_padding">Engagements per Media</th>
+                                                    <th class="td_padding">Engagements per Follower</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="report_table_td" ng-repeat="profile in InstagramProfilesStats">
+                                                    <td class="td_padding"><img src="{{profile.ProfilePic}}" title="{{profile.ProfileName}}" style="width: 40px;"></td>
+                                                    <td class="td_padding" align="center">{{profile.TotalFollowers}}</td>
+                                                    <td class="td_padding" align="center">{{profile.FollowersIncreased}}%</td>
+                                                    <td class="td_padding" align="center">{{profile.FollowersGained}}</td>
+                                                    <td class="td_padding" align="center">{{profile.MediaSent}}</td>
+                                                    <td class="td_padding" align="center">{{profile.CommentsSent}}</td>
+                                                    <td class="td_padding" align="center">{{profile.TotalEngagements}}</td>
+                                                    <td class="td_padding" align="center">{{profile.EngagementsPerMeida}}</td>
+                                                    <td class="td_padding" align="center">{{profile.EngagementsPerFollower}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center" ng-if="reportShow==false">
+                                    <img src="/Content/images/no-data-found.png" />
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script type="text/javascript">
+      $(document).ready(function () {
+          $('#ctrlanalyticdatepicker').daterangepicker();
+      });
+
+</script>-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var today = new Date();
+        var last90Days = new Date();
+        last90Days.setDate(today.getDate() - 90);
+        //$('#ctrlanalyticdatepicker').daterangepicker({ startDate: last90Days, minDate: true, maxDate: true });//startDate: last90Days, minDate: true, maxDate: true
+        $('#ctrlanalyticdatepicker').daterangepicker();
+        $('#btnApplyDateRange').bind('click', function ()
+        {
+            var startDate = $('input:text[name=daterangepicker_start]').val();
+            var endDate = $('input:text[name=daterangepicker_end]').val();
+            var startDateArray = startDate.split('/');
+            var endDateArray = endDate.split('/');
+
+            if (parseInt(startDateArray[0]) > parseInt(endDateArray[0]))
+            {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            else if (parseInt(startDateArray[0]) == parseInt(endDateArray[0]) && parseInt(startDateArray[1]) > parseInt(endDateArray[1]))
+            {
+                var tempDate = startDate;
+                startDate = endDate;
+                endDate = tempDate;
+            }
+            angular.element('#InstagramController').scope().SearchFromDate = startDate;
+            angular.element('#InstagramController').scope().SearchToDate = endDate;
+            angular.element('#InstagramController').scope().GetInstagramReport(5);
+            angular.element('#InstagramController').scope().$apply();
+        });
+    });
+
+</script>
+
+
+
+

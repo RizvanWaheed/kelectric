@@ -1,0 +1,121 @@
+﻿<div class="wrapper">
+    <style>
+        input[type=checkbox] {
+            visibility: visible;
+        }
+
+        .error{
+            color:#ff0000;
+        }
+
+        .save, .cancel {
+            display:none;
+        }
+
+        .green{
+            color:green;
+        }
+    </style>
+
+    <div ng-app="CRMApp" class="" ng-controller="EmailSettingsController">
+        <div class="content-wrapper" style="min-height:650px !important;">
+            <!-- Content Header (Page header) -->
+            <!-- header starts here -->
+            <div class="container-fluid page_name">
+                <div class="col-sm-10"><i class="fa fa-flag"></i> Email Settings</div>
+            </div>
+            <div class="container-fluid padding_set">
+                <div class="col-md-12">
+                    <div class="box box-default" style="margin-bottom:0px;">
+                        <div class="box-body">
+                            <form name="AddEmailForm">
+                                <div class="col-md-12">
+                                    <div class="col-md-2 zro_left">
+                                        <span>Name</span>
+                                    </div>
+                                    <div class="col-md-3 zro_left">
+                                        <input type="text" class="form-control" ng-model="userName" name="userName" placeholder="Enter User Name" required/>
+                                        <span class="error" ng-show="AddEmailForm.userName.$error.required">
+                                            Please provide username
+                                        </span>                                        
+                                    </div>
+                                    <div class="col-md-1">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-2 zro_left">
+                                        <span>Email Id</span>
+                                    </div>
+                                    <div class="col-md-4 zro_left">
+                                        <input type="email" class="form-control" ng-model="userEmail" name="userEmail" placeholder="Enter Email Address" required/>                                        
+                                        <span class="error" ng-show="AddEmailForm.userEmail.$error.email">
+                                            Please provide valid Email address
+                                        </span>
+                                        <span class="error" ng-show="AddEmailForm.userEmail.$error.required">
+                                            Please provide userEmail
+                                        </span> 
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top:10px;">
+                                    <div class="col-md-2 zro_left">
+                                        <span>Rights to receive email when following users contacting K-Electric</span>
+                                    </div>
+                                    <div class="col-md-3 zro_left">
+                                        <div class='sel_menu' ng-dropdown-multiselect="" options="UserTypesdata" selected-model="UserTypesmodel" checkboxes="true" translation-texts="example5customTexts"></div> <!--<pre>Selected Model: {{example14model}} | json</pre>-->
+                                    </div>
+                                    <div class="col-md-1">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-2 zro_left">
+                                        <span>Rights to receive the report</span>
+                                    </div>
+                                    <div class="col-md-2 zro_left">
+                                        <input type="checkbox" ng-model="rightsToReceiveReports.value" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top:10px; margin-bottom:10px;">
+                                    <a ng-click="AddEmail()" ng-disabled="AddEmailForm.userName.$error.required || AddEmailForm.userEmail.$error.email || AddEmailForm.userEmail.$error.required" class="btn btn-primary button_round"><i class="fa fa-plus"></i> <span id="AddUpdateEmail">Add Email</span></a>
+                                    <a ng-click="actionBtnClick('Cancel', null)" class="btn btn-primary button_round"><i class="fa fa-times"></i> Cancel</a>
+                                </div>
+                            </form>
+                            <div class="col-md-12 zro_left" style="padding-top:15px !important; border-top: 1px solid #ccc;">
+                                <table class="table-striped" style="width:100%;">
+                                    <tr>
+                                        <th style="padding:5px;">Name</th>
+                                        <th>Email Ids</th>
+                                        <th>+10K Followers</th>
+                                        <th>Political Figure</th>
+                                        <th>Verified Account</th>
+                                        <th>Top Influencers</th>
+                                        <th>Receive Reports</th>
+                                        <th>Action Items</th>
+                                    </tr>
+                                    <tr ng-repeat="updateReceiver in socialMediaUsersUpdateReceivers">
+                                        <td style="padding:10px;">{{updateReceiver.Name}}</td>
+                                        <td>{{updateReceiver.Email}}</td>
+                                        <!--<td><input id="Over10KFollowers-{{updateReceiver.ID}}" type="checkbox" ng-model="updateReceiver.Over10KFollowers" /></td>
+                                        <td><input id="PoliticalFigures-{{updateReceiver.ID}}" type="checkbox" ng-model="updateReceiver.PoliticalFigures" /></td>
+                                        <td><input id="VerifiedAccounts-{{updateReceiver.ID}}" type="checkbox" ng-model="updateReceiver.VerifiedAccounts" /></td>
+                                        <td><input id="TopInfluencers-{{updateReceiver.ID}}" type="checkbox" ng-model="updateReceiver.TopInfluencers" /></td>
+                                        <td><input id="ReceiveReport-{{updateReceiver.ID}}" type="checkbox" ng-model="updateReceiver.ReceiveReport" /></td>-->
+                                        <td style="text-align:center;"><i class="fa fa-check green" ng-show="updateReceiver.Over10KFollowers"></i></td>
+                                        <td style="text-align:center;"><i class="fa fa-check green" ng-show="updateReceiver.PoliticalFigures"></i></td>
+                                        <td style="text-align:center;"><i class="fa fa-check green" ng-show="updateReceiver.VerifiedAccounts"></i></td>
+                                        <td style="text-align:center;"><i class="fa fa-check green" ng-show="updateReceiver.TopInfluencers"></i></td>
+                                        <td style="text-align:center;"><i class="fa fa-check green" ng-show="updateReceiver.ReceiveReport"></i></td>
+                                        <td>
+                                            <a ng-click="actionBtnClick('Edit', updateReceiver)" id="Edit-{{updateReceiver.ID}}" title="Edit" class="edit btn"><i class="fa fa-edit"></i></a>
+                                            <a ng-click="actionBtnClick('Delete', updateReceiver)" id="Delete-{{updateReceiver.ID}}" title="Delete" class="delete btn"><i class="fa fa-trash"></i></a>                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main content -->
+            <!-- /.content -->
+        </div><!-- /.content-wrapper -->
+    </div>
+</div>
+<div ui-view="Footer"></div>

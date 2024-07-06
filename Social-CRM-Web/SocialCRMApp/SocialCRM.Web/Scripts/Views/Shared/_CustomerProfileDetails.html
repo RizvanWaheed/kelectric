@@ -1,0 +1,63 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-mail-reply"></i>Tasks</h4>
+    </div>
+    <div class="modal-body" style="height:550px; overflow:hidden;">
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-12">
+                <div id="pop_vhis" slimscroll="commentsLength">
+                    <a href="/#/CreateCase?ActivityId={{task.ActivityId}}&ActivityTable={{task.ActivityTable}}&Status={{task.Status}}" ng-repeat="task in taskList">
+                        <div class="col-sm-12 inbox_blk unread_msg">
+                            <div class="{{task.Profile == '1' && 'fb_social_icos' || (task.Profile=='4'&& 'twitter_social_icos' || (task.Profile=='3'&&'linkedin_social_icos'|| (task.Profile=='5'&&'fb_social_icos'|| '')))}}"></div>
+                            <div class="{{task.Status=='1' && 'open_tag' || (task.Status=='2' && 'closed_tag' || 'draft_tag')}}"></div>
+                            <div class="col-sm-2">
+                                <div class="inbox_blk_img">
+                                    <img src="{{replaceTilda(task.UserProfile)=='' && '/Content/img/user2.jpg'||replaceTilda(task.UserProfile)}}" style="height:65px;" alt="User Image">
+                                </div>
+                            </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                <div class="inbox_blk_msg">
+                                    <strong>{{task.CustomerProfileName}}</strong> 
+                                    >>
+                                    <!--<i class="fa {{task.Profile == '1' && 'fa-facebook' || (task.Profile=='4'&& 'fa-twitter' || (task.Profile=='3'&&'fa-linkedin '|| (task.Profile=='5'&&'fa-facebook'|| '')))}}"></i> {{task.ProfileName}}<br>-->
+                                    {{task.TaskMessage}}<br>
+
+                                </div>
+
+                                <div class="inbox_blk_cred">
+                                    <!--<strong>Assigned To:</strong> {{task.AssignedTo}}<br>
+                        <strong>Assigned By:</strong> {{task.AssignedBy}}<br>
+                        <strong>Priority: </strong>{{task.TaskPriority =='1'&&'High'||(task.TaskPriority =='2'&&'Medium' ||(task.TaskPriority =='3'&&'Low'||task.TaskPriority))}}<br>-->
+                                    <strong>Classification of Task:</strong> {{task.TaskClassification =='1'&&'Sales Lead'||(task.TaskClassification =='2'&&'After Sales'||(task.TaskClassification =='3'&&'Compliment'||(task.TaskClassification =='4'&&'Complaint'||(task.TaskClassification =='5'&&'General Inquiry'||(task.TaskClassification =='6'&&'Referral'||(task.TaskClassification =='7'&&'Review'||(task.TaskClassification)))))))}}<br>
+                                    <strong>Last Updated:</strong> {{task.LastUpdated}}<br>
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<div ui-view="Footer"></div>
+<script type="text/javascript">
+    $(function(){
+	    $('#grplists').slimscroll({
+		    height: '595px',
+            disableFadeOut: true
+        });	  	  	  	  	  		
+    });
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/styles.css' rel='stylesheet' />"));
+
+</script>

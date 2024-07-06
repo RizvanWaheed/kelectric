@@ -1,0 +1,20 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-tags"></i> Tags </h4>
+    </div>
+    <div class="modal-body">
+
+        <label ng-click="ExistingTags.indexOf(tag.BrandType) !== -1 ? ExistingTags.splice(ExistingTags.indexOf(tag.BrandType),1) : ExistingTags.push(tag.BrandType)"
+               ng-class="ExistingTags.indexOf(tag.BrandType) !== -1 ? 'inboxTag active fullOpacity' : 'inboxTag halfOpacity'" 
+               style="background-color:{{tag.BGColor}}; color:{{tag.FontColor}};" 
+               ng-repeat="tag in AllTags">
+            {{tag.BrandName}}
+        </label>
+        <div style="margin-top:20px">
+            <button type="button" class="btn btn-primary button_round  btn_height3" ng-click="UpdateTags()">SAVE</button>
+            <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()">CANCEL</button>
+        </div>
+    </div>
+
+</div>

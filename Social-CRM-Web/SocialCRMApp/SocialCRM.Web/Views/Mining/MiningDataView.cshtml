@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MiningDataView</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+    <button onclick="getFBPosts();">Facebook Posts</button>
+    <button onclick="getFBComments();">Facebook Comments</button>
+    <button onclick="getTWTweets();">Twitter Tweets</button>
+    <button onclick="getTWMsgs();">Twitter Messages</button>
+
+    <div id="fb_posts"></div>
+
+    <script type="text/javascript">
+        function getFBPosts() {
+            $("#fb_posts").html("<h4>Facebook Posts</h4>");
+            $.ajax({
+                url: document.location.origin + "/api/Mining/GetFBPosts",
+                method: 'GET'
+            }).done(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $.each(data[i], function (key, value) {
+                        $("#fb_posts").append(key + ":" + value + "<br />");
+                    });
+                    $("#fb_posts").append("<br />");
+                }
+                
+            }).error(function (err) {
+                alert("error" + err);
+            });
+        }
+
+        function getFBComments() {
+            $("#fb_posts").html("<h4>Facebook Comments</h4>");
+            $.ajax({
+                url: document.location.origin + "/api/Mining/GetFBComments",
+                method: 'GET'
+            }).done(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $.each(data[i], function (key, value) {
+                        $("#fb_posts").append(key + ":" + value + "<br />");
+                    });
+                    $("#fb_posts").append("<br />");
+                }
+
+            }).error(function (err) {
+                alert("error" + err);
+            });
+        }
+
+        function getTWTweets() {
+            $("#fb_posts").html("<h4>Twitter Tweets</h4>");
+            $.ajax({
+                url: document.location.origin + "/api/Mining/GetTwitterTweets",
+                method: 'GET'
+            }).done(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $.each(data[i], function (key, value) {
+                        $("#fb_posts").append(key + ":" + value + "<br />");
+                    });
+                    $("#fb_posts").append("<br />");
+                }
+
+            }).error(function (err) {
+                alert("error" + err);
+            });
+        }
+
+        function getTWMsgs() {
+            $("#fb_posts").html("<h4>Twitter Messages</h4>");
+            $.ajax({
+                url: document.location.origin + "/api/Mining/GetTwitterMsgs",
+                method: 'GET'
+            }).done(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $.each(data[i], function (key, value) {
+                        $("#fb_posts").append(key + ":" + value + "<br />");
+                    });
+                    $("#fb_posts").append("<br />");
+                }
+
+            }).error(function (err) {
+                alert("error" + err);
+            });
+        }
+    </script>
+</body>
+</html>

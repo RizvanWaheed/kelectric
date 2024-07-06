@@ -1,0 +1,91 @@
+﻿
+<link href="/Content/css/bootstrap-multiselect.css" rel="stylesheet" />
+<form name="myForm">
+    <!-- Modal for New Group content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-user"></i> INVITE TEAM MEMBER</h4>
+        </div>
+        <div class="modal-body">
+            <div class="col-sm-12">
+                <div class="col-sm-6 zro_left">
+                    <div class="input-group bott_marg_10 ">
+                        <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user icon_error" style="font-size:13px; width: 9px;"></i></span>
+                        <input name="firstname" ng-model="FirstName" required type="text" class="form-control input_border_min input_login_h " placeholder="First Name *" aria-describedby="sizing-addon2">
+
+                    </div>
+                    <p class="warnings_p f_warning" ng-show="myForm.firstname.$touched && myForm.firstname.$invalid">First Name cannot be empty.</p>
+                </div>
+
+                <div class="col-sm-6 zro_left">
+                    <div class="input-group bott_marg_10">
+                        <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user icon_normal" style="font-size:13px; width: 9px;"></i></span>
+                        <input name="lastname" ng-model="LastName" required type="text" class="form-control input_border_min input_login_h" placeholder="Last Name *" aria-describedby="sizing-addon2">
+                    </div>
+                    <p class="warnings_p f_warning" ng-show="myForm.lastname.$touched && myForm.lastname.$invalid">Last Name cannot be empty.</p>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-6 zro_left">
+                    <div class="input-group bott_marg_10">
+                        <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-envelope icon_normal" style="font-size:11px; width: 9px;"></i></span>
+                        <input type="email" name="Email" ng-model="Email" required class="form-control input_border_min input_login_h" placeholder="E-mail ID *" aria-describedby="sizing-addon2">
+                    </div>
+                    
+                        <p class="warnings_p f_warning" ng-show="myForm.Email.$error.email">Not a valid e-mail address</p>
+                    
+                        <p class="warnings_p f_warning" ng-show="myForm.Email.$touched && myForm.Email.$invalid && !myForm.Email.$error.email">Email cannot be empty</p></div>
+                    
+               
+            </div>
+
+            <div class="col-sm-12">
+                <div class="col-sm-6 zro_left" id="multisel">
+                    <i class="fa fa-check"></i> Assigned Rights&nbsp;<br>
+                    <div class='sel_menu' ng-dropdown-multiselect="" options="rightsdata" selected-model="rightsmodel" checkboxes="true" translation-texts="example5customTexts"></div> <!--<pre>Selected Model: {{example14model}} | json</pre>-->
+
+                </div>
+                <div class="col-sm-6 zro_left" id="multisel" style="margin-bottom:8px !important;">
+                    <i class="fa fa-line-chart"></i> Assigned Platforms&nbsp;<br>
+                    <div class='sel_menu' ng-dropdown-multiselect="" options="reportsdata" selected-model="reportsmodel" checkboxes="true" translation-texts="example5customTexts"></div> <!--<pre>Selected Model: {{example14model}} | json</pre>-->
+
+                </div>
+            </div>
+           
+             <div class="col-sm-12 " id="soclists" style="margin-top:20px;">
+                <div style="margin-bottom:10px !important;"><i class="fa fa-link"></i> PROFILE NAMES</div>
+
+                <div id="soclistspop" slimscroll="slim">
+                    <table class="table table-condensed">
+                        <tr ng-repeat="x in Connected_Profiles">
+                            <td>
+                                <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                    {{x.ProfileName}}<br>
+                                    <p>
+                                        <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileTypeId=='3'&&linkedinIcon|| (x.ProfileTypeId=='5'&&fbIcon|| (x.ProfileTypeId=='6'&& instaIcon||( x.ProfileType='google'&&googleIcon ||'')))))}}"
+                                             alt="{{x.ProfileTypeId == '1' && 'facebook-profile' || (x.ProfileTypeId=='4'&& 'twitter-profile' || (x.ProfileTypeId=='3'&&'twitter-profile'|| (x.ProfileTypeId=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||(x.ProfileTypeId=='6'&&'instagram-profile' ||'')))))}}">
+                                        {{ x.AccountName }}
+                                    </p>
+                                </span>
+                            </td>
+
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="{{x.CompositeId}}profile" name="check" ng-model="selected[x.CompositeId]" />
+                                    <label for="{{x.CompositeId}}profile"></label>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    </table>
+                </div>
+            </div>
+            <p class=" warnings_p f_warning" ng-show="ErrorShow">{{ErrorMessage}}</p>
+            <div><button type="button" class="btn btn-primary button_round  btn_height3" ng-disabled="myForm.$invalid" ng-click="CreateGroup()" style="margin-left:15px; margin-top:25px;">+ ADD USER</button></div>
+        </div>
+
+    </div>
+</form>  

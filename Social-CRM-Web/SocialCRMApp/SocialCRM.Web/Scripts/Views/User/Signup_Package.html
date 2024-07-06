@@ -1,0 +1,154 @@
+﻿<div ng-app="CRMApp" class="" ng-controller="SignupPackageController">
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container main_box">
+
+
+
+            <div class="code-module">
+                <h1><i class="fa fa-th-list"></i> MEMBERSHIP PLANS</h1>
+                <h3>Select a Social CRM Plan that best suits your needs.</h3>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-lg-offset-3 col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+
+                        <!-- PRICE ITEM -->
+                        <div class="panel price panel-blue">
+                            <div class="panel-heading arrow_box text-center">
+                                <h3>30 Days TRIAL</h3>
+                            </div>
+                            <div class="panel-body text-center">
+                                <p class="lead" style="font-size:2em"><strong>Free</strong></p>
+                            </div>
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item"><i class="fa fa-check"></i> Unified inbox</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Upto 5 Real time Brands Monitoring</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Scheduled Publishing</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> User association within a Single Company</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Add upto 3 Groups</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Add upto 5 Team Members</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> A single profile for each Social Media platform</li>
+                            </ul>
+                            <div class="panel-footer">
+                                <a class="btn btn-lg btn-block btn-primary" style="font-size:0.9em !important" ng-click="Trial()">SELECT</a>
+                            </div>
+                        </div>
+                        <!-- /PRICE ITEM -->
+
+
+                    </div>
+                    <!--
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                        <div class="panel price panel-blue">
+                            <div class="panel-heading arrow_box text-center">
+                                <h3>BASIC</h3>
+                            </div>
+                            <div class="panel-body text-center">
+                                <p class="lead" style="font-size:2em"><strong>$5 / month</strong></p>
+                            </div>
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item"><i class="fa fa-check"></i> Unified inbox</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Real time Brand Monitoring</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Scheduled Publishing</li>
+                                <li class="list-group-item"><i class="fa fa-times"></i> Multi-group accounts</li>
+                                <li class="list-group-item"><i class="fa fa-times"></i> Multi-user accounts</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Manage up to 15 profiles</li>
+                            </ul>
+                            <div class="panel-footer">
+                                <a class="btn btn-lg btn-block btn-primary" style="font-size:0.9em !important"  ng-click="Basic()">SELECT</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                        <div class="panel price panel-red">
+                            <div class="panel-heading  text-center">
+                                <h3>SILVER</h3>
+                            </div>
+                            <div class="panel-body text-center">
+                                <p class="lead" style="font-size:2em"><strong>$10 / month</strong></p>
+                            </div>
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item"><i class="fa fa-check"></i> Unified inbox</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Real time Brand Monitoring</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Scheduled Publishing</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Multi-group accounts</li>
+                                <li class="list-group-item"><i class="fa fa-times"></i> Multi-user accounts</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Manage up to 25 profiles</li>
+                            </ul>
+                            <div class="panel-footer">
+                                <a class="btn btn-lg btn-block btn-danger" style="font-size:0.9em !important" ng-click="Silver()">SELECT</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                        <div class="panel price panel-orange">
+                            <div class="panel-heading arrow_box text-center">
+                                <h3>GOLD</h3>
+                            </div>
+                            <div class="panel-body text-center">
+                                <p class="lead" style="font-size:2em"><strong>$15 / month</strong></p>
+                            </div>
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item"><i class="fa fa-check"></i> Unified inbox</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Real time Brand Monitoring</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Scheduled Publishing</li>
+                                <li class="list-group-item"><i class="fa fa-times"></i> Multi-group accounts</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Multi-user accounts</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Manage upto 25 profiles</li>
+                            </ul>
+                            <div class="panel-footer">
+                                <a class="btn btn-lg btn-block btn-warning" style="font-size:0.9em !important" ng-click="Gold()">SELECT</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                        <div class="panel price panel-grey">
+                            <div class="panel-heading arrow_box text-center">
+                                <h3 class="panel_heading_style">PLATINUM</h3>
+                            </div>
+                            <div class="panel-body text-center">
+                                <p class="lead" style="font-size:2em"><strong>$20 / month</strong></p>
+                            </div>
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item"><i class="fa fa-check"></i> Unified inbox</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Real time Brand Monitoring</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Scheduled Publishing</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Multi-group accounts</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Multi-user accounts</li>
+                                <li class="list-group-item"><i class="fa fa-check"></i> Unlimited network Connections</li>
+                            </ul>
+                            <div class="panel-footer">
+                                <a class="btn btn-lg btn-block btn-grey" style="font-size:0.9em !important" ng-click="Platinum()">SELECT</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                -->
+                </div>
+            </div>
+
+
+        </div>
+        <div class="container footer_box">© 2016, All Rights Reserved.</div>
+    </div>
+    </div>
+    <script type="text/javascript">
+
+        $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+    </script>

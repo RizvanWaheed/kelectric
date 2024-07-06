@@ -1,0 +1,44 @@
+﻿<div class="modal-content" style="padding-top:0px;">
+    <div class="modal-header" style="padding:7px; padding-left:30px;">
+        <div class="fb_social_icos" ng-if="ProfileType=='FB'"></div>
+        <div class="insta_social_icos" ng-if="ProfileType=='IC'"></div>
+        <div class="twitter_social_icos" ng-if="ProfileType=='TW'"></div>
+
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-mail-reply"></i> Details</h4>
+    </div>
+    <div class="modal-body" style="height:550px; overflow:hidden; padding-top:3px;">
+
+        <div id="scrollerDiv"> 
+            <!--Comment Area Start-->
+            <div id="pop_vhis" slimscroll="commentsLength" ng-show="ProfileType == 'FB'  || ProfileType=='TW' || ProfileType=='IC'">                
+                <div class="col-sm-12 inbox_blk unread_msg" ng-repeat="item in ThreadList" style="margin-bottom:0px !important; padding:12px; margin-top:13px; clear:both">
+                    <div class="col-sm-1">
+                        <div class="inbox_blk_img" style="width:35px; height:35px;">
+                            <a href="javascript:;"><img src="{{item.ProfilePicture}}" alt="User Image"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-11 text-left inbox_blk_msg_blk">
+                        <div class="inbox_blk_msg">
+                            <a href="javascript:;"><strong>{{item.ProfileName}}</strong></a> {{item.Text}}
+                            <div ng-if="item.ToUserProfile != null" class="inbox_blk_cred">
+                                Sent To: <strong><a target="_blank" href="{{item.ToUserProfile.ToProfileLink}}">{{item.ToUserProfile.ToProfileName}}</a></strong>
+                            </div>
+                            <div class="inbox_blk_cred">
+                                {{item.Date}}
+                            </div>
+                            <div class="inbox_blk_cred">
+                                <a target="_blank" href="{{item.PostLink}}">View Post</a>
+                            </div>
+                            <div ng-if="item.ResponseTime !== undefined" class="inbox_blk_cred">
+                                Response Time: <strong>{{item.ResponseTime}}</strong>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,415 @@
+﻿ <!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" class="" id="SocialFeedsRSSController" ng-controller="SocialFeedsRSSController">
+    <!-- Content Header (Page header) -->
+    <!-- header starts here -->
+    <div class="container-fluid page_name">
+        <div class="col-sm-10"><img src="/Content/images/rss_icon16.png" alt=""> RSS Feeds- {{PageType}}</div>
+        
+    </div>
+    <!-- header ends here -->
+
+
+    <div class="container-fluid padding_set">
+
+        <div class="col-md-9">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="box-body no-padding" id="grplists">
+                      
+                        
+                            <div ng-repeat="feeds in FeedsData" class="col-sm-12 inbox_blk unread_msg">
+                                <div class="col-sm-3">
+                                    <div class="rss_blk_img">
+                                        <a href=""><img ng-if="feeds.ImageCoverUrl != ''" src="{{feeds.ImageCoverUrl}}" style="height:150px;width:250px;object-fit:cover;" alt="User Image"></a>
+                                        <a href=""><img ng-if="feeds.ImageCoverUrl == ''" src="/Content/images/No-image-found.jpg" style="height:150px;width:250px;object-fit:cover;" alt="User Image Empty"></a>
+                                    </div>                                    
+                                </div><div class="col-sm-9 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg">
+                                        <a href=""><strong>{{feeds.MessageHeading}}</strong></a><br>
+                                        <div class="inbox_blk_cred"><a href="">{{feeds.HeadingURL}}</a> {{feeds.CrawledDate}}</div>
+
+                                        <d-expand-collapse>
+
+                                            <p class="answerSmall"> {{feeds.MessageShortBody}}</p>
+
+                                            <p class="answer" style="display:none;"> {{feeds.MessageBody==''&&''||feeds.MessageBody}}</p>
+
+                                            <!--<img style="display:none;" src={{feeds.ImageCoverUrl}} alt="" class="img-thumbnail photo_img answer">-->
+
+
+
+
+                                            <p class="expand faqPlus"><i class="fa fa-arrow-down"></i> Expand</p><!-- ng-click="Expand($event);"-->
+                                            <p class="contract hide btnss faqMinus"><i class="fa fa-arrow-up"></i> Collapse </p>
+                                        </d-expand-collapse>
+                                        <!--<a href="" style="float:left; margin-top:0; margin-left:15px;" data-toggle="modal" data-target="#newSchedule" ng-click="FeedsScheduler(feeds);"><i class="fa fa-share-alt"></i></a>-->
+
+                                    </div>
+
+
+
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <!--<div class="col-sm-12 inbox_blk unread_msg">
+            <div class="col-sm-3">
+                <div class="rss_blk_img">
+                    <a href=""><img src="/Content/images/tech_img.jpg" alt="User Image"></a>
+                </div>
+            </div><div class="col-sm-9 text-left inbox_blk_msg_blk">
+                <div class="inbox_blk_msg">
+                    <a href=""><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></a><br>
+                    <div class="inbox_blk_cred"><a href="">Tribune</a> Mar 08, 2016 @ 12:35PM</div>
+
+                    <blockquote class="bigtext">
+                        <p>I am honored to be with you today at your commencement from one of the finest universities in the world. I never graduated from college. Truth be told, this is the closest I've ever gotten to a college graduation. Today I want to tell you three stories from my life. That's it. No big deal. Just three stories.</p>
+
+
+                        <p>During the next five years, I started a company named NeXT, another company named Pixar, and fell in love with an amazing woman who would become my wife. Pixar went on to create the worlds first computer animated feature film, Toy Story, and is now the most successful animation studio in the world. In a remarkable turn of events, Apple bought NeXT, I returned to Apple, and the technology we developed at NeXT is at the heart of Apple's current renaissance. And Laurene and I have a wonderful family together.</p>
+
+                        <img src="/Content/images/article_large.jpg" alt="" class="img-thumbnail photo_img">
+                        <p>My third story is about death.</p>
+
+
+
+
+
+
+
+                        <p>I lived with that diagnosis all day. Later that evening I had a biopsy, where they stuck an endoscope down my throat, through my stomach and into my intestines, put a needle into my pancreas and got a few cells from the tumor. I was sedated, but my wife, who was there, told me that when they viewed the cells under a microscope the doctors started crying because it turned out to be a very rare form of pancreatic cancer that is curable with surgery. I had the surgery and I'm fine now.</p>
+
+
+
+
+
+
+
+
+
+
+
+                        <p>Stay Hungry. Stay Foolish.</p>
+
+                        <p>Thank you all very much.</p>
+
+                    </blockquote>
+                    <p class="expand"><i class="fa fa-arrow-down"></i> Expand</p>
+                    <p class="contract hide"><i class="fa fa-arrow-up"></i> Collapse </p>
+                    <a href="" style="float:left; margin-top:0; margin-left:15px;"><i class="fa fa-share-alt"></i></a>
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>-->
+                         
+
+
+
+
+
+                        </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+
+        <div class="col-md-3">
+            <div ng-hide="true" class="col-md-12  box-default box  input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#newSearch" ><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <div ng-hide="true" class="col-md-12 box box-default filter_box">
+                <div style="padding-right:10px;" id="tw_profile">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                        <tr class="filter_header">
+                            <th colspan="2"><strong>RSS READER</strong></th>
+                        </tr>
+                        <tr>
+                            <td height="30"><i class="fa fa-rss "></i> <strong><a href="" title="All Articles" data-toggle="expand" data-target="#editCreateList">All Articles (191)</a></strong></td>
+                            <td width="9%"></td>
+                        </tr>
+                        <tr>
+                            <td height="30">
+                                <i class="fa fa-rss "></i> <strong><a href="" title="All Articles" data-toggle="collapse" data-target="#medexp">Medical (12)</a></strong>
+                                <div id="medexp" class="collapse sub_msgsett">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Health</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma5l9" name="check" />
+                                                    <label for="squaredSma5l9"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Heart</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma529" name="check" />
+                                                    <label for="squaredSma529"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Liver</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma539" name="check" />
+                                                    <label for="squaredSma539"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </td>
+                            <td width="9%"></td>
+                        </tr>
+                        <tr>
+                            <td height="30">
+                                <i class="fa fa-rss "></i> <strong><a href="" title="All Articles" data-toggle="collapse" data-target="#transexp">Transport (18)</a></strong>
+                                <div id="transexp" class="collapse sub_msgsett">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Health</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma549" name="check" />
+                                                    <label for="squaredSma549"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Heart</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma559" name="check" />
+                                                    <label for="squaredSma559"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Liver</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma569" name="check" />
+                                                    <label for="squaredSma569"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </td>
+                            <td width="9%"></td>
+                        </tr>
+                        <tr>
+                            <td height="30">
+                                <i class="fa fa-rss "></i> <strong><a href="" title="All Articles" data-toggle="collapse" data-target="#travsexp">Travel (35)</a></strong>
+                                <div id="travsexp" class="collapse sub_msgsett">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Health</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma579" name="check" />
+                                                    <label for="squaredSma579"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Heart</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma589" name="check" />
+                                                    <label for="squaredSma589"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20">
+                                                <a href="" title="All Articles">&bull; Liver</a>
+                                            </td>
+                                            <td width="9%">
+                                                <div class="squaredSmall" style="margin-top:0px;">
+                                                    <input type="checkbox" value="None" id="squaredSma599" name="check" />
+                                                    <label for="squaredSma599"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </td>
+                            <td width="9%"></td>
+                        </tr>
+
+
+
+
+                    </table>
+                 
+                </div>
+
+            </div>
+            <div class="col-md-12 box box-default filter_box">
+                <div style="margin-right:10px;">
+                    <div id="f_msg" style="padding-right:10px;" slimscroll="slim">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th colspan="3"><strong>{{PageType|uppercase}} ({{KeywordData.length}})</strong></th>
+                            </tr>
+                            <tr ng-repeat="item in KeywordData" id="KeywordRow-{{item.Id}}">
+                                <td width="75%" height="20" style="word-break: break-word;">&nbsp; <a>{{item.SearchKeyword}}</a></td>
+                                <td width="16%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" id="keywordCheck-{{item.Id}}" name="check" ng-checked='{{item.ischecked}}' ng-click ="CheckProfile(item.Id);" />
+                                        <label for="keywordCheck-{{item.Id}}"></label>
+                                    </div>
+                                </td>
+                                <td width="9%">
+                                    <a style="cursor:pointer;" confirmed-click="RemoveKeyword({{item.Id}})" ng-confirm-click="Would you like to remove profile from group?"><i class="fa fa-trash" style="margin-top:0px;"></i></a>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+                    <div style="height:20px;"></div>
+                    <a href="" ng-click="CollapseAddKeyword()" style="margin-top:20px;"> <strong>+</strong>  Add {{PageType1}}</a>
+                    <div ng-show="AddKeywordShow">
+                        <form name="myForm">
+                            <input type="text" class="form-control input_border_min " ng-model="AddedKeyword" name="AddedKeyword" required placeholder="Enter {{PageType1}} *" aria-describedby="sizing-addon2" style="margin-top:10px;">
+                            <p class="warnings_p warnings_p2_320 " ng-show=" myForm.AddedKeyword.$touched && myForm.AddedKeyword.$invalid">Please enter {{PageType1}}!</p>
+                            <button type="button" ng-disabled="myForm.$invalid" class="btn btn-primary button_round  btn_height3" ng-click="SaveKeyword()" style="margin-top:15px;">
+                                SAVE {{PageType1|uppercase}}
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#grplists').slimscroll({
+            height: '1200px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#SocialFeedsRSSController').scope().profileLoadMoreFeeds();
+                angular.element('#SocialFeedsRSSController').scope().$apply();
+            }
+        });
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+        $('#f_msg').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+    });
+   
+</script>
+<!--<script type="text/javascript">
+    $(function () {
+        var animspeed = 950; // animation speed in milliseconds
+
+        var $blockquote = $('.bigtext');
+        var height = $blockquote.height();
+        var mini = $('.bigtext p').eq(0).height();
+
+        $blockquote.attr('data-fullheight', height + 'px');
+        $blockquote.attr('data-miniheight', mini + 'px');
+        $blockquote.css('height', mini + 'px');
+
+
+        $('.expand').on('click', function (e) {
+            alert(1);
+            $text = $(this).prev();
+
+            $text.animate({
+                'height': $text.attr('data-fullheight')
+            }, animspeed);
+            $(this).next('.contract').removeClass('hide');
+            $(this).addClass('hide');
+        });
+
+        $('.contract').on('click', function (e) {
+            $text = $(this).prev().prev();
+
+            $text.animate({
+                'height': $text.attr('data-miniheight')
+            }, animspeed);
+            $(this).prev('.expand').removeClass('hide');
+            $(this).addClass('hide');
+        });
+    });
+</script>-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#timepicker4').timepicker({
+            minuteStep: 1,
+            secondStep: 5,
+            showInputs: false,
+            template: 'modal',
+            modalBackdrop: true,
+            showSeconds: true,
+            showMeridian: false
+        });
+        $('#ctrlanalyticdatepicker').daterangepicker();
+    });
+
+</script>

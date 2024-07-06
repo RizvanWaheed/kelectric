@@ -1,0 +1,61 @@
+﻿
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-mail-reply"></i> {{FormText}}</h4>
+    </div>
+    <div class="modal-body">
+
+        <div style="margin-bottom:10px " id="pop_sprof" slimscroll="slim">
+            <table class="table table-condensed">
+                <tr ng-repeat="profile in attachedProfiles">
+                    <td>
+                        <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                            {{profile.Name}}<br>
+
+                                                                                                                  
+                            <p><img ng-src="{{MessageType == 'FP' && '/Content/images/fb_ico16.png' ||( MessageType=='FC'&& '/Content/images/fb_ico16.png' ||'/Content/images/t_ico16.png')}}" alt="linkedin-profile"> @{{profile.UserName}}</p>
+                        </span>
+                    </td>
+                    <td align="center" valign="middle">
+                        <div class="squaredSmall" style="margin-top:13px;">
+                            <input type="checkbox" value="None" id="profile-{{profile.Id}}" name="check" ng-click="CheckProfile(profile.Id,profile.UserName);" ng-checked="{{profile.ischecked}}" />
+                            <label for="profile-{{profile.Id}}"></label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-bottom:10px; margin-top:20px; "><em></em>from <strong>@{{replyedTo}}</strong> <em>to</em> <strong>@{{ofUser}}</strong></div>
+        <div >
+            <textarea ng-show="IsEnable" ng-model="replyedMsgModel" name="" cols="" rows="3" class="form-control input_border_min input_login_h" style="margin-bottom:8px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea>
+            <!--<a href="/#/CreateTask"><i class="fa fa-camera"></i></a>--> <div ng-show="IsEnable" style="float:right"><strong><em>{{totalConversation}}</em></strong></div>
+            <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;" ng-click="PostTweet()">SEND</button></div>
+        </div>
+
+        <div ng-show="IsEnable" style="margin-bottom:10px; margin-top:10px; "><strong>Viewing Direct Messages</strong> with <strong>@{{ofUser}}</strong></div>
+        <div id="pop_vhis" slimscroll="slim">
+            <div class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in inboxHistoryItemDetails">
+                <div class="col-sm-2">
+                    <div class="inbox_blk_img">
+                        <div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>
+                        <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                    </div>
+                </div><div class="col-sm-10 text-left inbox_blk_msg_blk">
+                    <div class="inbox_blk_msg">
+                        <!--<a href="javascript:;">{{msg.HandleName}}</a>-->
+                        {{msg.UserTwit}}
+                    </div>
+                    <div class="inbox_blk_cred"><a href="javascript:;" ng-click="redirectTo(fromUser,msg.ReplyedBy);">{{msg.ReplyedBy}}</a> {{msg.ActivityType}} <a href="javascript:;" ng-click="redirectTo(fromUser,msg.ToUser);">{{msg.ToUser}}</a>{{msg.ReplyedDate}}</div>
+                </div>
+            </div>
+
+          
+        </div>
+
+
+    </div>
+
+</div>

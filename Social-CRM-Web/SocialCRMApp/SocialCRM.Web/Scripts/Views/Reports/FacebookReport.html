@@ -1,0 +1,726 @@
+﻿<style>
+.animate-show {
+    opacity: 1;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+    transition: all linear 0.3s;
+}
+
+.animate-show.ng-hide {
+    opacity: 0;
+}
+
+.myBig{
+    display:block;
+    cursor:pointer;
+    opacity:1.0;     
+}
+
+.hli {       
+    opacity:1.0;
+}
+</style>
+<!--<script>
+    $('.myBig').click(function () {        
+        $('.hli').toggleClass('hli');
+        $(this).toggleClass('hli');
+    });
+</script>-->
+
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="FacebookReportController as ctrl" id="FacebookReportController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-building"></i> Facebook Report</div>
+
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            <div class="col-md-4 zro" style="line-height:35px; height:35px; margin-bottom:10px;">
+                                <!--<strong>From:</strong> 01/01/2015 <strong>To:</strong> 01/31/2015-->
+                                <button type="button" ng-click="showProfiles = !showProfiles" class="btn btn-primary button_round  btn_height3" style="float:left;">Select Profiles</button>
+                            </div>
+
+                            <div class="col-md-3 zro">
+                                <div>
+                                    <div class="btn-group " style=" margin-bottom:10px;">
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_1 == true" ng-click="dateFilter(1)">15</button>
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_2 == true" ng-click="dateFilter(2)">30</button>
+                                        <!--<button type="button" class="btn btn-default" ng-click="dateFilter(45)">45</button>-->
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_3 == true" ng-click="dateFilter(3)">60</button>
+                                        <button type="button" class="btn btn-default" ng-class="active: filter_4 == true" ng-click="dateFilter(4)">90</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 zro demo" style="margin-bottom:10px !important;">
+                                <input id="ctrlanalyticdatepicker" date-range-picker class="form-control date-picker" type="text" options="opts" ng-model="date" />
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            </div>
+                            <!--<div class="col-md-2 text-right ">
+                                <button type="button" ng-click="generateReport()" class="btn btn-primary button_round  btn_height3" style="float:left;">Generate Report</button>
+                            </div>-->
+                        </div>
+
+                        <div ng-show="showProfiles" class="col-md-12 animate-show">
+                            <!--<div class="col-md-12">
+                                <a href="" ng-click="checkAllPages()">Select/Deselect All</a>
+                            </div>-->
+                            <div id="soclistsProfilereport" class="col-md-12 zro" style="margin-top: 10px !important;">
+                                <div class="col-md-3"  ng-repeat="x in attachedProfiles" ng-class-odd="table_alt_col" style="padding-bottom:10px; padding-top:2px; border: 1px solid #ccc;">
+                                    <label for="squaredSmal99-{{x.CompositeId}}" class="myBig">
+                                        <div class="col-md-10 zro">
+                                            <img src="{{x.ProfilePicURL}}" alt="img" border="0" class="img_con img_con_height">
+                                            <span class="soc_name">
+                                                <p class="usernames">{{x.ProfileName}}</p>
+                                                <p>
+                                                    <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}" />{{x.AccountName}}
+                                                </p>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="" style="margin-top: 13px;">
+                                                <input type="radio" value="None" id="squaredSmal99-{{x.CompositeId}}" name="profileRadio" ng-checked="$index==0" ng-click="assignProfile(x)" />
+                                                <!--<label for="squaredSmal99-{{x.CompositeId}}"></label>-->
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <!--<button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top: 15px;">GENERATE REPORT</button>-->
+                        </div>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal for New Group content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><i class="fa fa-folder-open"></i> CREATE GROUP</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            GROUP NAME *<input type="text" class="form-control input_border_min input_login_h" style="max-width:430px; margin-bottom:20px " placeholder="adeelgill@ibex" aria-describedby="sizing-addon2">
+                                            <a href="#" class="textlink">+ Add a New Profile</a>
+                                        </div>
+
+                                        <div style="margin-top:20px">
+                                            <i class="fa fa-folder-open icon_col"></i></span> <span class="heading_main">Link the group to existing profile</span>
+                                        </div>
+
+                                        <div id="soclists" style="margin-top:10px;">
+                                            <table class="table table-condensed">
+                                                <tr>
+                                                    <th class="td_styler"><i class="fa fa-link"></i> PROFILE ACCESS</th>
+                                                    <th style="width: 100px; text-align:center" class="td_styler"></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                                            <label for="squaredSmall7"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table_alt_col">
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                                            <label for="squaredSmall8"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                            <label for="squaredSmall9"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                            <label for="squaredSmall9"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                                            Adeel Gill<br>
+                                                            <p><i class="fa fa-twitter"></i>@adeelgill5</p>
+                                                        </span>
+                                                    </td>
+
+                                                    <td align="center" valign="middle">
+                                                        <div class="squaredSmall" style="margin-top:13px;">
+                                                            <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                                            <label for="squaredSmall9"></label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div><button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:15px;">+ CREATE GROUP</button></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div><!-- /.box-header -->
+                    <div class="box-body" style="border-top:1px solid #ccc;">
+
+                        <div class="col-md-12 report_headings">
+                            <h1>Posts Activity Overview</h1>
+                            <div class="col-md-12" style="margin-top:40px;">
+                                <div class="col-md-4 text-center ">
+                                    <div class="data_circle_twitter3" style="background-color:#aeb6b8"><i style="margin:50px auto;" class="fa fa-thumbs-up data_circle_twitter_i1"></i></div><div class="data_circle_twitter_txt">
+                                        <h1 ng-if="reportData!=''">{{reportData.TotalPostLikes}}</h1>
+                                        <h1 ng-if="reportData==''">-</h1>
+                                        LIKES
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="data_circle_twitter" style="background-color:#3b5998"><i style="margin:50px auto;" class="fa fa-comment data_circle_twitter_i1"></i></div>
+                                    <div class="data_circle_twitter_txt">
+                                        <h1 ng-if="reportData!=''">{{reportData.TotalPostComments}}</h1>
+                                        <h1 ng-if="reportData==''">-</h1>
+                                        COMMENTS
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="data_circle_twitter3" style="background-color:#3b4446"><i style="margin:50px auto;" class="fa fa-reply data_circle_twitter_i1"></i></div>
+                                    <div class="data_circle_twitter_txt">
+                                        <h1 ng-if="reportData!=''">{{reportData.TotalPostShares}}</h1>
+                                        <h1 ng-if="reportData==''">-</h1>
+                                        SHARES
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Audience Growth</h1>
+                            <div class="text-center graph_sett">
+                                <!--<img src="Content/images/dummy_graph.jpg">-->
+                                <div id="audienceGrowthGraph" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_header">
+                                        <td width="85%" class="td_padding">Audience Growth Metrics</td>
+                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                    </tr>
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Page Likes</td>
+                                        <td align="right" class="td_padding"><strong>{{PageLikeTotal}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Page Unlikes</td>
+                                        <td align="right" class="td_padding"><strong>{{PageUnlikeTotal}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td_total">
+                                        <td class="td_padding">Net Difference</td>
+                                        <td align="right" class="td_padding"><strong>{{(PageLikeTotal-PageUnlikeTotal)}}</strong></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>
+                                    The number of page likes<br>
+                                    <span ng-if="PageLikeTotal >= reportData.LastTotalPageLikes"> increased by</span>
+                                    <span ng-if="PageLikeTotal < reportData.LastTotalPageLikes"> decreased by</span>
+                                </h1>
+                                <h2 class="h2_postive" ng-if="PageLikeTotal >= reportData.LastTotalPageLikes">
+                                    <strong>
+                                        <i class="fa fa-arrow-up"></i>
+                                        {{findPerIncDec(PageLikeTotal,reportData.LastTotalPageLikes) * 100 | number : 2}}%
+                                    </strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="PageLikeTotal < reportData.LastTotalPageLikes">
+                                    <strong>
+                                        <i class="fa fa-arrow-down"></i>
+                                        {{findPerIncDec(PageLikeTotal,reportData.LastTotalPageLikes) * 100 | number : 2}}%
+                                    </strong>
+                                </h2>
+                                <h3>
+                                    <!--since last month-->
+                                    {{ReferenceTimePeriod}}
+                                </h3>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Publishing Behavior</h1>
+                            <!--<div class="text-center graph_sett"><img src="Content/images/dummy_graph.jpg"></div>-->
+                            <div id="PublishingBehavior" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_header">
+                                        <td width="85%" class="td_padding">Publishing Metrics</td>
+                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                    </tr>
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Page Posts</td>
+                                        <td align="right" class="td_padding"><strong>{{PagePostsTotal}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Users Posts</td>
+                                        <td align="right" class="td_padding"><strong>{{UsersPostsTotal}}</strong></td>
+                                    </tr>
+                                    <!--<tr class="report_table_td">
+                                        <td class="td_padding">Posts</td>
+                                        <td align="right" class="td_padding"><strong>50</strong></td>
+                                    </tr>-->
+                                    <tr class="report_table_td_total">
+                                        <td class="td_padding">Total Posts</td>
+                                        <td align="right" class="td_padding"><strong>{{PagePostsTotal+UsersPostsTotal}}</strong></td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                            <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>
+                                    The number of posts published<br>
+                                    <span ng-if="PagePostsTotal >= reportData.LastTotalPublishedPagePosts">increased by</span>
+                                    <span ng-if="PagePostsTotal < reportData.LastTotalPublishedPagePosts">decreased by</span>
+                                </h1>
+                                <h2 class="h2_postive" ng-if="PagePostsTotal >= reportData.LastTotalPublishedPagePosts">
+                                    <strong>
+                                        <i class="fa fa-arrow-up"></i>
+                                        {{findPerIncDec(PagePostsTotal , reportData.LastTotalPublishedPagePosts) * 100 | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="PagePostsTotal < reportData.LastTotalPublishedPagePosts">
+                                    <strong>
+                                        <i class="fa fa-arrow-down"></i>
+                                        {{findPerIncDec(PagePostsTotal , reportData.LastTotalPublishedPagePosts) * 100 | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h3>
+                                    <!--since last month-->
+                                    {{ReferenceTimePeriod}}
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Audience Engagement</h1>
+                            <!--<div class="text-center graph_sett"><img src="Content/images/dummy_graph.jpg"></div>-->
+                            <div id="AudienceEngagement" style="min-width: 310px; height: 400px; max-width: 900px; margin: 0 auto"></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-8 zro gridHeading" style="margin-top:60px !important;">
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_header">
+                                        <td width="85%" class="td_padding">Action Metrics</td>
+                                        <td width="15%" align="right" class="td_padding">Totals</td>
+                                    </tr>
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Likes</td>
+                                        <td align="right" class="td_padding"><strong>{{PostLikeTotal}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Comments</td>
+                                        <td align="right" class="td_padding"><strong>{{PostCommentTotal}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Shares</td>
+                                        <td align="right" class="td_padding"><strong>{{PostShareTotal}}</strong></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Total Engagement</td>
+                                        <td align="right" class="td_padding"><strong>{{PostLikeTotal+PostCommentTotal+PostShareTotal}}</strong></td>
+                                    </tr>
+                                </table>
+
+
+
+
+
+                            </div> <div class="col-md-4 zro text-center gridHeading right_cornered" style="margin-top:60px !important;">
+                                <h1>
+                                    The number of engagements<br>
+                                    <span ng-if="(PostLikeTotal+PostCommentTotal+PostShareTotal) >= (reportData.LastTotalPostComments + reportData.LastTotalPostLikes + reportData.LastTotalPostShares)">increased by</span>
+                                    <span ng-if="(PostLikeTotal+PostCommentTotal+PostShareTotal) < (reportData.LastTotalPostComments + reportData.LastTotalPostLikes + reportData.LastTotalPostShares)">decreased by</span>
+                                </h1>
+                                <h2 class="h2_postive" ng-if="(PostLikeTotal+PostCommentTotal+PostShareTotal) >= (reportData.LastTotalPostComments + reportData.LastTotalPostLikes + reportData.LastTotalPostShares)">
+                                    <strong>
+                                        <i class="fa fa-arrow-up"></i>
+                                        {{findPerIncDec((PostLikeTotal+PostCommentTotal+PostShareTotal) , (reportData.LastTotalPostComments + reportData.LastTotalPostLikes + reportData.LastTotalPostShares)) * 100 | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h2 class="h2_negative" ng-if="(PostLikeTotal+PostCommentTotal+PostShareTotal) < (reportData.LastTotalPostComments + reportData.LastTotalPostLikes + reportData.LastTotalPostShares)">
+                                    <strong>
+                                        <i class="fa fa-arrow-down"></i>
+                                        {{findPerIncDec((PostLikeTotal+PostCommentTotal+PostShareTotal) , (reportData.LastTotalPostComments + reportData.LastTotalPostLikes + reportData.LastTotalPostShares)) * 100 | number:2}}%
+                                    </strong>
+                                </h2>
+                                <h3>
+                                    <!--since last month-->
+                                    {{ReferenceTimePeriod}}
+                                </h3>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Total People Who Viewed</h1>                            
+                            <div id="TotalPeopleWhoViewed" style="min-width: 310px; height: 250px; max-width: 900px; margin: 0 auto"></div>
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Reactions Graph</h1>
+                            <div id="ReactionsGraph" style="min-width: 310px; height: 300px; max-width: 900px; margin: 0 auto"></div>
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Page Reachability</h1>
+                            <div id="PageReachability" style="min-width: 310px; height: 250px; max-width: 900px; margin: 0 auto"></div>
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Audience Demographics</h1>
+                        </div>
+                        <h5 ng-show="reportData.PageFansGenderAge.length == 0" style="text-align:center;">No Data Found</h5>
+                        <div class="col-md-12" ng-show="reportData.PageFansGenderAge.length > 0">
+                            <div class="col-md-8 gridHeading">
+                                <h1>Followers by Age</h1>
+
+                                <div class="progress-group">
+                                    <div class="progress-group" ng-repeat="item in reportData.PageFansGenderAge">
+                                        <span class="progress-text">{{item.AgeRange}}</span>
+                                        <span class="progress-number"><b>{{item.MaleCount+item.FemaleCount}}</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: {{Math.round((item.MaleCount+item.FemaleCount)/(MaleCount+FemaleCount)*100)}}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4 gridHeading">
+                                <h1>Followers by Gender</h1>
+
+                                <!--<div class="text-center col-md-6">
+                                    <div class="c100 p75 ">
+                                        <span>M - {{Math.round((MaleCount)/(MaleCount+FemaleCount)*100)}}%</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="text-center col-md-6">
+                                    <div class="c100 p25 pink">
+                                        <span>F - {{Math.round((FemaleCount)/(MaleCount+FemaleCount)*100)}}%</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                                <div ng-if="reportData.PageFansGenderAge.length>0" class="col-md-12 text-center" style="margin-bottom:20px;">
+                                    <i class="fa fa-male male_ico" style="font-size:60px !important;"></i>
+                                    <span style="font-size:70px; margin-left:20px;">{{Math.round((MaleCount)/(MaleCount+FemaleCount)*100)}}%</span>                                    
+                                </div>
+                                <div ng-if="reportData.PageFansGenderAge.length>0" class="col-md-12 text-center" style="margin-bottom:20px;">
+                                    <i class="fa fa-female female_ico" style="font-size:60px !important;"></i>
+                                    <span style="font-size:70px; margin-left:20px;">{{Math.round((FemaleCount)/(MaleCount+FemaleCount)*100)}}%</span>                                    
+                                </div>                                
+
+                                <!--End Chart -->
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Facebook Stats by Page</h1><br>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                <thead>
+                                    <tr class="report_table_td">
+                                        <th class="td_padding">Facebook Page</th>
+                                        <th class="td_padding">Total Fans</th>
+                                        <th class="td_padding" ng-if="PageLikeTotal >= reportData.LastTotalPageLikes">Fans Increased</th>
+                                        <th class="td_padding" ng-if="PageLikeTotal < reportData.LastTotalPageLikes">Fans Decreased</th>
+                                        <th class="td_padding">Posts Sent</th>
+                                        <th class="td_padding">Engagements</th>
+                                        <th class="td_padding">Engagements per Follower</th>
+                                        <th class="td_padding">Link Clicks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">
+                                            <img src="{{currentProfile.ProfilePicURL}}" class="img_con img_con_height">
+                                            <strong>{{currentProfile.ProfileName}}</strong>
+                                        </td>
+                                        <td class="td_padding" align="center">{{reportData.TotalPageLikes}}</td>
+                                        <td class="td_padding" align="center">{{findPerIncDec(PageLikeTotal,reportData.LastTotalPageLikes) * 100 | number : 2}}%</td>
+                                        <td class="td_padding" align="center">{{PagePostsTotal}}</td>
+                                        <td class="td_padding" align="center">{{PostLikeTotal+PostCommentTotal+PostShareTotal}}</td>
+                                        <td class="td_padding" align="center">{{Math.round(PostLikeTotal+PostCommentTotal+PostShareTotal/reportData.TotalPageLikes)}}</td>
+                                        <td class="td_padding" align="center">{{reportData.TotalLinkClicks}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <!--Recent posts-->
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Recent Posts</h1>
+                            <div id="recentPostsTable">                                
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive table-striped">
+                                    <thead>
+                                        <tr class="report_table_td">
+                                            <th class="td_padding" width="10%">Created Date</th>
+                                            <th class="td_padding" colspan="2" width="40%">Post</th>
+                                            <th class="td_padding">Type</th>
+                                            <th class="td_padding">Reach</th>
+                                            <th class="td_padding">Post Clicks</th>
+                                            <th class="td_padding">Reactions</th>
+                                            <th class="td_padding">Comments</th>
+                                            <th class="td_padding">Shares</th>
+                                            <th class="td_padding">Engagment Rate</th>
+                                            <th class="td_padding">Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="report_table_td" ng-repeat="post in reportData.lstRecentPosts track by $index">
+                                            <td class="td_padding" style="width:10%;">{{post.strCreatedDate}}<br /><span style="font-size:8px;">{{post.strCreatedTime}}</span></td>
+                                            <td class="td_padding" width="6%">
+                                                <img ng-if="post.pictureURL != null" src="{{post.pictureURL}}" alt="Image" style="width:50px; height:50px; object-fit:cover;" />
+                                                <img ng-if="post.pictureURL == null" src="../../../Content/images/No-image-found.jpg" alt="Image" style="width:50px; height:50px; object-fit:cover;" />
+                                            </td>
+                                            <td class="td_padding" width="34%">{{post.messageText}}</td>
+                                            <td class="td_padding" align="center">
+                                                <span ng-if="post.type == 'photo'"><i class="fa fa-photo"></i></span>
+                                                <span ng-if="post.type == 'video'"><i class="fa fa-video-camera"></i></span>
+                                                <span ng-if="post.type != 'photo' || post.type == 'video'"><i class="fa fa-pencil"></i></span>
+                                            </td>
+                                            <td class="td_padding" align="center">{{post.postReach}}</td>
+                                            <td class="td_padding" align="center">{{post.postClicks}}</td>
+                                            <td class="td_padding" align="center">{{post.postReactions}}</td>
+                                            <td class="td_padding" align="center">{{post.postComments}}</td>
+                                            <td class="td_padding" align="center">{{post.postShares}}</td>
+                                            <td class="td_padding" align="center">{{post.engagementRate}}%</td>
+                                            <td class="td_padding" align="center">{{post.postGrade != null ? post.postGrade : 'NA'}}</td>
+                                        </tr>
+                                        <!--<tr>
+                                            <td colspan="12">
+                                                <a ng-click="loadMoreRecentPosts(reportData.lastPostId)">Load More Posts</a>
+                                            </td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!--Top 5 Customers-->
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Top 5 Customers</h1>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive table-striped">
+                                <thead>
+                                    <tr class="report_table_td">
+                                        <th class="td_padding" width="10%">Sr.</th>
+                                        <th class="td_padding" width="20%">Customer Pic</th>
+                                        <th class="td_padding" width="40%">Customer Name</th>
+                                        <th class="td_padding" width="10%">Customer Posts</th>
+                                        <th class="td_padding" width="10%">Customer Comments</th>
+                                        <th class="td_padding" width="10%">Customer Messages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="report_table_td" ng-repeat="cust in reportData.TopFiveCustomers track by $index">
+                                        <td class="td_padding" style="width:10%;">{{$index + 1}}</td>
+                                        <td class="td_padding" width="20%">
+                                            <img ng-if="cust.ProfilePic != null" src="{{cust.ProfilePic}}" onError="this.onerror = null; this.src = '../../../Content/img/user2.jpg';" alt="Image" style="width:50px; height:50px; object-fit:cover;" />                                            
+                                            <img ng-if="cust.ProfilePic == null" src="../../../Content/img/user2.jpg" alt="Image" style="width:50px; height:50px; object-fit:cover;" />
+                                        </td>
+                                        <td class="td_padding" style="width:40%;"><a target="_blank" href="{{'http://www.facebook.com/' + cust.CustomerId}}">{{cust.Name}}</a></td>
+                                        <td class="td_padding" style="width:10%;">{{cust.PostCount}}</td>
+                                        <td class="td_padding" style="width:10%;">{{cust.CommentCount}}</td>
+                                        <td class="td_padding" style="width:10%;">{{cust.MsgCount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <!--External Links-->
+                        <div class="col-md-12 report_headings top_grp_marg top_liner">
+                            <h1>Top 10 External Sources</h1>
+                            <h5 ng-show="reportData.lstExternalReferrals.length<=0" style="text-align:center;">No Data Found</h5>                            
+                            <div id="ExternalLinks" class="span10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#lstFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {       
+        $('#tasker').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#socialer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+        $('#publi').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#disco').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#reporter').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+
+        $('#helper').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#userlists').slimscroll({
+            height: '499px',
+            disableFadeOut: true
+        });
+
+        $('#soclists').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+
+        $('#emailupdate').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+
+        $('#notifupdate').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var currentDate = new Date();
+        $('#ctrlanalyticdatepicker').daterangepicker({
+            "endDate": currentDate.getDate(),
+            "startDate": new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000),
+            "dateLimit": { "days": 93 }, //facebook api limitation            
+            "minDate": new Date(currentDate.getTime() - 730 * 24 * 60 * 60 * 1000),
+            "maxDate": new Date(currentDate.getTime() - 1 * 24 * 60 * 60 * 1000),
+        });
+    });    
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<!--<script type="text/javascript">
+        var pdf = new jsPDF();
+        pdf.text(30, 30, 'Hello world!');
+        pdf.save('hello_world.pdf');
+</script>-->
+<script>
+    $(function () {
+        $('#recentPostsTable').slimscroll({
+            height: '300px',
+            disableFadeOut: false
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#FacebookReportController').scope().loadMoreRecentPosts();
+                angular.element('#FacebookReportController').scope().$apply();
+            }
+        });
+    });
+</script>

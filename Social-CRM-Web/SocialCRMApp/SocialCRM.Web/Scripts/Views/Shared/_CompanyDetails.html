@@ -1,0 +1,115 @@
+﻿<div class="modal-content" style="padding-top:0px;">
+    <div class="modal-header" style="padding:7px; padding-left:10px;">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-briefcase"></i> {{FormText}}</h4>
+    </div>
+    <div class="modal-body" style="height:550px; overflow:hidden; padding-top:3px;">
+        <div class="col-md-12" style="margin-top:10px;">
+            <div class="col-md-6 zro_left">
+                <p><b>Date Created:</b> {{CompanyData.CreatedDate}}</p>
+                <p><b>Company Status:</b> {{CompanyData.CompanyStatus}}</p>
+                <p><b>Membership Status:</b> {{CompanyData.MembershipStatus}}</p>
+                <p><b>Membership Days Remaining:</b> {{CompanyData.MembershipDaysRemaining}}</p>
+            </div>
+            <div class="col-md-6" ng-if="CompanyData.MembershipDaysRemaining >0">
+                <input ng-if="CompanyData.CompanyStatus == 'Active' && CompanyData.MembershipStatus != 'Expired'" type="button" class="btn btn-primary" ng-click="changeCompanyStatus(CompanyData.CompanyId, 0)" value="Deactivate" style="float:right"/>
+                <input ng-if="CompanyData.CompanyStatus == 'Disabled' && CompanyData.MembershipStatus != 'Expired'" type="button" class="btn btn-primary" ng-click="changeCompanyStatus(CompanyData.CompanyId, 1)" value="Activate" style="float:right" />
+            </div>
+        </div>
+        <div>
+
+        </div>
+        <div class="col-md-6">
+            <h4><b>Groups</b> ({{GroupsCount}})</h4>
+            <div style="max-height:170px;  min-height:170px; overflow-y:auto" class="box box-default filter_box ng-scope">
+                <table class="table table-striped">
+                    <tr>
+                        <td width="10%">&nbsp;</td>
+                        <td width="80%">Select All</td>
+                        <td width="10%">
+                            <div class="squaredSmall" style="margin-top:0px;">
+                                <input type="checkbox" value="None" id="Group-{{Group.GroupId}}" name="check" ng-model="select" ng-change="checkAll()"/>
+                                <label for="Group-{{Group.GroupId}}"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="Group in CompanyData.GroupList track by $index">
+                        <td width="10%">{{$index + 1}}</td>
+                        <td width="80%">{{Group.GroupName}}</td>
+                        <td width="10%">
+                            <div class="squaredSmall" style="margin-top:0px;">
+                                <input type="checkbox" value="None" id="Group-{{Group.GroupId}}" name="check" ng-model="selected[Group.GroupId]" ng-change="groupSelectedChanged()" />
+                                <label for="Group-{{Group.GroupId}}"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4><b>Team Members</b> ({{TeamMembersCount}})</h4>
+            <div style="max-height:170px; min-height:170px; overflow-y:auto" class="box box-default filter_box ng-scope">
+                <table class="table table-striped">
+                    <tr ng-repeat="Team in selectedTeamList track by $index">
+                        <td width="25">{{$index + 1}}</td>
+                        <td>{{Team.TeamName}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
+            
+            <div class="col-md-12">
+                <div class="col-md-4 zro_left">
+                    <h4><b>Profiles</b> ({{ProfilesCount}})</h4>
+                </div>
+                <div class="col-md-2" style="padding-top: 18px;">
+                    <div class="squaredSmall" style="margin-top:0px; float:left">
+                        <input type="checkbox" value="None" id="SelectAllProfiles" name="SelectAllProfiles" ng-change="checkAllProfileTypes()" ng-model="selectAllProfile" />
+                        <label for="SelectAllProfiles"></label>
+                    </div>
+                    &nbsp;All
+                </div>
+                <div class="col-md-2" style="padding-top: 18px;">
+                    <div class="squaredSmall" style="margin-top:0px; float:left">
+                        <input type="checkbox" value="None" id="SelectFbProfiles" name="SelectFbProfiles" ng-click="changeProfileTypes()" ng-model="SelectFbProfiles" />
+                        <label for="SelectFbProfiles"></label>
+                    </div>
+                    &nbsp;<img ng-src="{{fbIcon}}" />
+                </div>
+                <div class="col-md-2" style="padding-top: 18px;">
+                    <div class="squaredSmall" style="margin-top:0px; float:left">
+                        <input type="checkbox" value="None" id="SelectTwProfiles" name="SelectTwProfiles" ng-click="changeProfileTypes()" ng-model="SelectTwProfiles" />
+                        <label for="SelectTwProfiles"></label>
+                    </div>
+                    &nbsp;<img ng-src="{{twitterIcon}}" />
+                </div>
+                <div class="col-md-2" style="padding-top: 18px;">
+                    <div class="squaredSmall" style="margin-top:0px; float:left">
+                        <input type="checkbox" value="None" id="SelectInstaProfiles" name="SelectInstaProfiles" ng-click="changeProfileTypes()" ng-model="SelectInstaProfiles" />
+                        <label for="SelectInstaProfiles"></label>
+                    </div>
+                    &nbsp;<img ng-src="{{instaIcon}}" />
+                </div>
+
+            </div>
+            <div style="max-height:170px; min-height:170px; overflow-y:auto;" class="box box-default filter_box ng-scope">
+                <div ng-repeat="x in selectedProfileList" ng-class-odd="table_alt_col" class="col-md-4 zro_left" style="padding-bottom:10px; padding-top:2px;">
+                    <div class="col-md-12 zro">
+                        <img src="{{x.ProfilePic}}" alt="img" border="0" class="img_con img_con_height"><span class="soc_name">
+                            {{x.ProfileName}}
+                            <div>
+                                <img ng-if="x.ProfileType == 'Twitter'" ng-src="{{twitterIcon}}" />
+                                <img ng-if="x.ProfileType == 'Facebook'" ng-src="{{fbIcon}}" />
+                                <img ng-if="x.ProfileType == 'Google'" ng-src="{{googleIcon}}" />
+                                <img ng-if="x.ProfileType == 'Linkedin'" ng-src="{{linkedinIcon}}" /> 
+                                <img ng-if="x.ProfileType == 'Instagram'" ng-src="{{instaIcon}}" />                                                                
+                                <span style="font-size:8px;">@{{x.ProfileUserName}}</span>
+                            </div>
+                    <!--<div style="max-width:50px; overflow:hidden; float:left"></div>-->
+                       </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90E69B45-F469-4C6D-8AD7-8C2188C9171B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRM.Entities</RootNamespace>
+    <AssemblyName>CRM.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessLevel.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgentPerformanceReport.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticCompanyGroup.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticToken.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchivedInboxOfSelectedProfilesProcedure_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchivedUnifiedInbox.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandKeyword.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandKeywordCategory.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentsFB.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GoogleAuthContext.cs" />
+    <Compile Include="CrisisReportData.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerProfileType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSocialProfile.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerWarnBanReason.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtractSocialProfilesCustomers_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedlyKeyword.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedlyMinnedData.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedsMediaAttachment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedsSentiment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAnalyticAccountByGroupAndUserId_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCustomerAreaReport_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCustomerProfiles_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCustomerRegionDrillDownReport_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCustomerRegionReport_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetDemographicData_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetDraftTasks_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFeedsById_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetGroupPerformance_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetInOutboundReportDrillDown_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetInOutboundReport_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetInstagramReportByAccountId_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetMinnedFeedByGroup_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetNotificationById_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskCommentsByActivityId_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskForSearchBak_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskForSearch_Bak28June_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskForSearch_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTeamMembersByGroupId_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTopInfluencers_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetUserNotifications_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetUserNotification_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetUserTaskTemp_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetUserTask_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramComment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramMinnedData.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramUserFollowHistory.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KEArea.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KECustomer.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KERegion.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogCode.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipAccessLevel.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipPermission.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipRestriction.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipRestrictionType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessagePostingTime.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesTwitter.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PageChatsFB.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsFB.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsTwitter.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostUserStatusFB.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostUserStatusInstagram.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostUserStatusTwitter.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Premission.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileComapnyGroup.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileFeedsTag.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePage.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileQueueTime.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilesHistory.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileStatus.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileToCustSocialProfile.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublisherUploadedFile.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QueuedMessageProfile.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QueuePostingTime.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QueueWaitingMessage.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UserDao.cs" />
+    <Compile Include="Repository\CommonRepository.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="SampleReply.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledMessage.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledMessageProfile.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchWordPattern.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sentiment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialActivity.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialActivityType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialCRM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialCRM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialCRM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialCRM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialCRM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SocialMediaUpdate.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialMediaUsersUpdateReceiver.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialMediaUserType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialProfileContactComment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialProfileContactInfo.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriberType.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskAssignee.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskComment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskCompleted.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskLog.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManager.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Team.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedContactConversation_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedContactHistory_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedDeckColumnSetting.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesAllResponded_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesAllUnresponded_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesFbChat_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesFbComment_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesFbPost_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesProcedure_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesProcedure_Result1.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesTwMessages_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedInboxOfSelectedProfilesTwPost_Result.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UserAccessLevel.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccessToken.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAnalyticAccount.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCompany.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserNotification.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserNotificationSetting.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarnBanCustomer.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarnBanCustomerFeed.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarnBanCustomersAttachment.cs">
+      <DependentUpon>SocialCRM.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="SocialCRM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SocialCRM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SocialCRM.edmx.diagram">
+      <DependentUpon>SocialCRM.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SocialCRM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SocialCRM.edmx</DependentUpon>
+      <LastGenOutput>SocialCRM.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SocialCRM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SocialCRM.edmx</DependentUpon>
+      <LastGenOutput>SocialCRM.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

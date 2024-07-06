@@ -1,0 +1,179 @@
+﻿<div class="wrapper">
+
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .thumb {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+
+    <form name="myForm">
+        <div ng-app="CRMApp" class="" ng-controller="PersonalProfileController">
+            <div class="content-wrapper" style="min-height:650px !important;">
+                <!-- Content Header (Page header) -->
+                <!-- header starts here -->
+                <div class="container-fluid page_name">
+                    <div class="col-sm-10"><i class="fa fa-user"></i> Personal Profile</div>
+
+                </div>
+                <!-- header ends here -->
+                <!-- misc & reviews content starts here -->
+                <!--<div class="container-fluid reviews_Section ">
+                    <div class="col-sm-12 " style="padding:0 !important">
+                        <h1><span><i class="fa fa-building"></i></span>{{BusinessName|uppercase}} </h1>
+                        <p>My Company</p>
+                    </div>
+
+                </div>-->
+                <!-- misc & reviews content starts here -->
+
+
+                <div class="container-fluid padding_set">
+                    <div class="col-md-12">
+                        <div class="box box-default">
+                            <!--<div class="box-header with-border">
+                                <div class="col-sm-12"><h3 class="box-title"><i class="fa fa-user"></i> PERSONAL PROFILE</h3></div>
+
+
+
+
+                            </div>--><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="col-sm-12  zero_pad" style="margin-top:15px;">
+                                    <div class="col-md-3 text-center bott_marg_20">
+                                        <div class="image">
+                                            <img ng-src="{{picModel==null && '/Content/img/user_pic.jpg' || picModel}}" class="img-circle img_border thumb" alt="User Image"><br>
+
+                                            <label class="custom-upload" style="margin-left: 0px; margin-right: 0px; float:none;"><input type="file" id="User_image" name="upload_file" ng-model-instant fileread="Changed_UserPic" onchange="angular.element(this).scope().imageUpload(this)" /><i class="fa fa-upload"></i> Change Image</label><br><br>
+                                            <p class="warnings_p f_warning">{{errorMsg}}</p>
+
+                                            <a href="" ng-click="ChangePassword()"><i class="fa fa-lock" ng-click="ChangePassword()"></i> Change Password</a><br><br>
+
+                                            <!--<a href="" ng-click="openProfileConnect()"><i class="fa fa-link"></i> Connect a personal profile</a><br><br>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 ">
+                                        <div class="input-group bott_marg_10 input_width">
+                                            <div class="input-group bott_marg_10">
+                                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user icon_normal" style="font-size:11px; width: 9px;"></i></span>
+                                                <input type="text" class="form-control input_border_min input_login_h" ng-model="Changed_UserName" name="Changed_UserName" aria-describedby="sizing-addon2">
+                                            </div>
+                                            <p class="warnings_p f_warning" ng-show="myForm.Changed_UserName.$touched && myForm.Changed_UserName.$invalid">This field cannot be empty</p>
+
+                                            <div class="input-group bott_marg_10">
+                                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-envelope icon_normal" style="font-size:11px; width: 9px;"></i></span>
+                                                <input type="email" class="form-control input_border_min input_login_h" ng-model="Changed_UserEmail" name="Changed_UserEmail" ng-disabled="true" aria-describedby="sizing-addon2">
+                                            </div>
+                                            <p class="warnings_p f_warning" ng-show="myForm.Changed_UserEmail.$error.email">Not a valid e-mail address</p>
+                                            <p class="warnings_p f_warning" ng-show="myForm.Changed_UserEmail.$touched && myForm.Changed_UserEmail.$invalid && !myForm.Changed_UserEmail.$error.email">Email cannot be empty</p>
+
+                                            <!--<div class="marg_placer">
+                                                <i class="fa fa-envelope"></i> Email updates <label class="switch switch-green pull-right">
+                                                    <input type="checkbox" class="switch-input" ng-model="emailUpdate" checked ng-click="toggleEmail(emailUpdate)">
+                                                    <span class="switch-label" data-on="On" data-off="Off"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
+
+
+                                            <div class="signup_r_h signup_r_h-border marg_placer2">
+                                                <h1><i class="fa fa-link"></i> CONNECTED PROFILES</h1>
+                                                <div id="soclistsProfile">
+                                                    <table class="table table-condensed">
+
+                                                        <tr ng-repeat="x in Connected_Profiles">
+                                                            <td width="82%">
+                                                                <img src="{{x.ProfileUrl==null && '/Content/images/soc_ico.jpg' || x.ProfileUrl}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                                    {{ x.ProfileName }} <br>
+                                                                    <p>
+                                                                        <img ng-src="{{x.ProfileType == '8' && outlookIcon || (x.ProfileType == '1' && fbIcon || (x.ProfileType=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileTypeId=='6'&& instaIcon||( x.ProfileType='google'&&googleIcon ||''))))))}}"
+                                                                             alt="{{x.ProfileType == '8' && 'outlook-profile' || (x.ProfileType == '1' && 'facebook-profile' || (x.ProfileType=='4'&& 'twitter-profile' || (x.ProfileType=='3'&&'twitter-profile'|| (x.ProfileType=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||(x.ProfileTypeId=='6'&&'instagram-profile' ||''))))))}}">
+
+                                                                        {{ x.ProfileName }}
+                                                                    </p>
+                                                                </span>
+                                                            </td>
+
+                                                            <td width="9%">
+                                                                <div class="squaredSmall" style="margin-top:13px;">
+                                                                    <input type="checkbox" value="None" id="{{x.ProfileId}}" name="check" ng-model="x.IsEmailEnabled" ng-disabled="!emailUpdate" />
+                                                                    <label for="{{x.ProfileId}}"></label>
+                                                                </div>
+                                                            </td>
+
+                                                            <td width="8%">
+                                                                <a href="">
+                                                                    <i class="fa fa-trash" style="margin-top:13px;" confirmed-click="DeleteProfile(x.ProfileId)"
+                                                                       ng-confirm-click="Would you like to remove profile?"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+
+
+
+                                                    </table>
+                                                </div>
+                                            </div>-->
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4" ng-hide="IsPersonal == 'true'">
+                                        <div class="signup_r_h signup_r_h-border">
+                                            <h1><i class="fa fa-check"></i>Assigned Rights</h1>
+                                            <!--<h3>You got the following rights:</h3>-->
+                                        </div>
+
+                                        <div class="signup_r_c">
+                                            <p ng-repeat="x in User_Rights"><i class="fa fa-check tick "></i> {{x.Name}}<br></p>
+                                        </div>
+
+                                        <div class="signup_r_h signup_r_h-border">
+                                            <h1><i class="fa fa-line-chart"></i>Assigned Platforms</h1>
+                                        </div>
+
+                                        <div class="signup_r_c">
+                                            <p ng-repeat="x in Report_Rights">
+                                                <i class="fa fa-check tick "></i> {{x.Name}}<br>
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn btn-primary button_round  btn_height3" ng-disabled="myForm.$invalid  || errorMsg != ''" ng-click="Save()" style="margin-left:15px;">
+                            SAVE CHANGES
+                        </button>
+                        <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="Cancel()"><i class="fa fa-remove"></i> CANCEL</button>
+                    </div>
+                </div>
+
+                <!-- Main content -->
+                <!-- /.content -->
+            </div><!-- /.content-wrapper -->
+        </div>
+    </form>
+</div>
+<div ui-view="Footer"></div>

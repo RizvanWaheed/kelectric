@@ -1,0 +1,88 @@
+﻿<div id="AdminHeaderController" ng-controller="AdminHeaderController">
+
+
+    <script src="/Content/js/appSideScroll.js"></script>
+    <header class="main-header">
+        <!-- Logo -->
+        <span class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><img src="/Content/images/logo_sa2.png"></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg" style="margin-left:-15px;"><img src="/Content/images/main_logo2a.png"></span>
+        </span>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="margin-top:6px;">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <!-- Tasks: style can be found in dropdown.less -->
+                </ul>
+            </div>
+
+        </nav>
+
+        <style>
+            .unread_notif{
+                background-color:#e7f5f6;
+            }
+        </style>
+    </header>
+    <!-- =============================================== -->
+
+    <aside class="main-sidebar">
+
+        <section class="sidebar">
+            <div class="sidebar_height" style="border-bottom:solid 1px #4a6071;"></div>
+            <!-- search form -->
+            <!--<form action="" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>-->
+            <!-- /.search form -->
+            <!-- Sidebar user panel -->
+            <div class="user-panel" style="background-color:#384955;">
+                <div class="pull-left image"> <img ng-src="{{UserImage!=''&&UserImage||'/Content/img/user2-160x160.jpg'}}" style="height:50px" class="img-circle" alt="User Image"> </div>
+                <div class="pull-left info">
+                    <p><a href="/#/PersonalProfile"><i class="fa fa-circle text-success"></i> {{UserName}}</a></p>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li ng-hide="x.hide" ng-repeat="x in navLinks" class="treeview">
+                    <a href="">
+                        <i class="fa {{x.icon}}"></i> <span>
+                            {{x.mainLink |uppercase}}<br>
+                            <p>{{x.description}}</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <!--<div id="inboxer" class="left_nav_subs">-->
+                            <!--Used to put scroll in menu-->
+                            <div class="left_nav_subs">
+                                <li ng-hide="y.hide" ng-repeat="y in x.subLink" class="left_nav_subs_inactive" ng-class="navClass('{{y.url}}')" id="{{y.url}}">
+                                    <a href="/#/{{y.url}}{{y.parameter}}" class="pad_left">{{y.Title}}</a>
+                                </li>
+                            </div>
+                    </ul>
+                </li>
+
+                <li class="treeview" style="background-color:#078b8d !important;">
+                    <a href="" confirmed-click="logout()"
+                       ng-confirm-click="Would you like to logout?"><i class="fa fa-sign-out"></i><span>LOGOUT</span></a>
+                </li>
+            </ul>
+
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+</div>

@@ -1,0 +1,110 @@
+﻿<style>
+    .modal-dialog{
+        width: 800px !important;
+        margin: 30px auto;
+    }
+</style>
+<form name="myForm">
+    <!-- Modal for retweet-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="Cancel()">&times;</button>
+            <h4 class="modal-title" ng-if="Type == 'Add'"><i class="fa fa-pencil" style="margin-right: 10px;"></i> ADD USER</h4>
+            <h4 class="modal-title" ng-if="Type == 'Edit'"><i class="fa fa-pencil" style="margin-right: 10px;"></i> EDIT USER</h4>
+            <h4 class="modal-title" ng-if="Type == 'Ban'"><i class="fa fa-pencil" style="margin-right: 10px;"></i> BAN USER</h4>
+            <h4 class="modal-title" ng-if="Type == 'Warn'"><i class="fa fa-pencil" style="margin-right: 10px;"></i> WARN USER</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+
+                <div class="col-md-12 zro_left">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <div class="col-sm-12 zro"><i class="fa fa-bullhorn"></i> USER DETAILS</div>
+                        </div>
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <span style="color:red;margin-left: 15px;" ng-show="errorMsg.length > 0">{{errorMsg}}</span>
+                                <div class="col-md-12">
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Select Reason">
+                                        <div id="multisel" style="">
+                                            Platform<br>
+                                            <div class='sel_menu' ng-dropdown-multiselect1="" ng-dropdown-multiselect-disabled="Id > 0 || Type == 'Warn'" options="PlatformList" events="platformEventListeners" selected-model="PlatformModel"
+                                                 translation-texts="example5customTexts" extra-settings="selectSettings"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Enter Username">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            Username<br>
+                                            <input type="text" class="form-control" ng-disabled="Id > 0 || Type == 'Warn'" placeholder="Username" ng-model="Username" ng-blur="PopulateUrl()">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2 " title="Enter Profile URL">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            Profile URL<br>
+                                            <input type="text" class="form-control" ng-disabled="Id > 0 || Type == 'Warn'" placeholder="Profile URL" ng-model="ProfileUrl">
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Banned By">
+                                        <div id="multisel">
+                                            Banned By<br>
+                                            <input type="text" class="form-control" disabled placeholder="Username" ng-model="BannedBy">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Select Reason">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            Reason<br>
+                                            <div class='sel_menu' ng-dropdown-multiselect1="" options="ReasonList" selected-model="ReasonModel"
+                                                 translation-texts="example5customTexts" extra-settings="selectSettings"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Select Reason">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            Profile<br>
+                                            <div class='sel_menu' ng-dropdown-multiselect1="" ng-dropdown-multiselect-disabled="Id > 0 || Type == 'Warn'" options="ProfileList" selected-model="ProfileModel"
+                                                    translation-texts="example5customTexts" extra-settings="selectSettings"></div>
+                                        </div>
+                                    </div>                                     
+                                    
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Select Status">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            Status<br>
+                                            <div class='sel_menu' ng-dropdown-multiselect1="" ng-dropdown-multiselect-disabled="Id > 0 || Type == 'Warn'" options="StatusList" selected-model="StatusModel"
+                                                    translation-texts="example5customTexts" extra-settings="selectSettings"></div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-4 col-xs-12 zro_left2" title="Attachment">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            <div class="zro_left">
+                                                Attach Image<br>
+                                            </div>
+                                            <div class="col-md-6 zro_left" style="margin-bottom:10px !important;">
+                                                <br>
+                                                <label class="custom-upload2">
+                                                    <input type="file" name="upload_file" ng-model="ClippingUpload" />
+                                                    Browse
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 col-xs-12 zro_left2" title="Details">
+                                        <div id="multisel" style="margin-bottom:10px !important;">
+                                            Details<br>
+                                            <textarea class="form-control" rows="5" id="Details" ng-model="Details"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+                <div style="margin-left:15px">
+                    <button type="button" ng-click="SubmitUser()" class="btn btn-primary button_round  btn_height3">SUBMIT</button>
+                    <button type="button" ng-click="Cancel()" class="btn btn-cancel button_round  btn_height3">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

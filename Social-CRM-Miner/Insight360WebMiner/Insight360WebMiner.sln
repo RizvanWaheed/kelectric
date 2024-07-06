@@ -1,0 +1,129 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Mining", "1- Mining", "{0F7CB527-9CF6-4D8D-941F-C144600E907A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2- Processing", "2- Processing", "{341655C2-CABD-4732-92D0-3FB24DBA5F96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- DAL", "3- DAL", "{BD2C8FF4-7EAF-4F7E-8A78-1217226585E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4- Common", "4- Common", "{98E400CF-F59A-4DE0-9561-5D5275DFEC51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.DataProcessor", "Processing\Insight360.DataProcessor\Insight360.DataProcessor.csproj", "{C463B518-E09C-429F-8AD5-4DC2B2E2C06D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.Common", "Common\Insight360.Common\Insight360.Common.csproj", "{F61D0DE3-6646-4396-9E7C-95E369C0C783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.DAL", "DAL\Insight360.DAL\Insight360.DAL.csproj", "{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.InfluenceCalculator.Klout", "Common\Insight360.InfluenceCalculator.Klout\Insight360.InfluenceCalculator.Klout.csproj", "{F5532893-04A6-458A-A3D1-844B360A7B6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.Twitter", "Mining\Insight360.Twitter\Insight360.Twitter.csproj", "{9AD7547B-FC37-46EE-A8E2-2CB17C47D70D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.Facebook", "Mining\Insight360.Facebook\Insight360.Facebook.csproj", "{AF115B9E-0C87-4D09-9EDF-D3936A0D6B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.Instagram", "Insight360.Instagram\Insight360.Instagram.csproj", "{E917F81E-CD02-4D79-BF99-8D7AEEE2067D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.Feedly", "Insight360.Feedly\Insight360.Feedly.csproj", "{38B71013-C248-4BA1-A41B-611DD6B9369D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insight360.Scheduler", "Insight360.Scheduler\Insight360.Scheduler.csproj", "{401C8352-2388-49DF-A529-0B6664189E87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C463B518-E09C-429F-8AD5-4DC2B2E2C06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C463B518-E09C-429F-8AD5-4DC2B2E2C06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C463B518-E09C-429F-8AD5-4DC2B2E2C06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C463B518-E09C-429F-8AD5-4DC2B2E2C06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F61D0DE3-6646-4396-9E7C-95E369C0C783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F61D0DE3-6646-4396-9E7C-95E369C0C783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F61D0DE3-6646-4396-9E7C-95E369C0C783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F61D0DE3-6646-4396-9E7C-95E369C0C783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5532893-04A6-458A-A3D1-844B360A7B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5532893-04A6-458A-A3D1-844B360A7B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5532893-04A6-458A-A3D1-844B360A7B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5532893-04A6-458A-A3D1-844B360A7B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD7547B-FC37-46EE-A8E2-2CB17C47D70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD7547B-FC37-46EE-A8E2-2CB17C47D70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD7547B-FC37-46EE-A8E2-2CB17C47D70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD7547B-FC37-46EE-A8E2-2CB17C47D70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF115B9E-0C87-4D09-9EDF-D3936A0D6B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF115B9E-0C87-4D09-9EDF-D3936A0D6B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF115B9E-0C87-4D09-9EDF-D3936A0D6B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF115B9E-0C87-4D09-9EDF-D3936A0D6B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E917F81E-CD02-4D79-BF99-8D7AEEE2067D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E917F81E-CD02-4D79-BF99-8D7AEEE2067D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E917F81E-CD02-4D79-BF99-8D7AEEE2067D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E917F81E-CD02-4D79-BF99-8D7AEEE2067D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B71013-C248-4BA1-A41B-611DD6B9369D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B71013-C248-4BA1-A41B-611DD6B9369D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B71013-C248-4BA1-A41B-611DD6B9369D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B71013-C248-4BA1-A41B-611DD6B9369D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401C8352-2388-49DF-A529-0B6664189E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401C8352-2388-49DF-A529-0B6664189E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401C8352-2388-49DF-A529-0B6664189E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401C8352-2388-49DF-A529-0B6664189E87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C463B518-E09C-429F-8AD5-4DC2B2E2C06D} = {341655C2-CABD-4732-92D0-3FB24DBA5F96}
+		{F61D0DE3-6646-4396-9E7C-95E369C0C783} = {98E400CF-F59A-4DE0-9561-5D5275DFEC51}
+		{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6} = {BD2C8FF4-7EAF-4F7E-8A78-1217226585E0}
+		{F5532893-04A6-458A-A3D1-844B360A7B6F} = {98E400CF-F59A-4DE0-9561-5D5275DFEC51}
+		{9AD7547B-FC37-46EE-A8E2-2CB17C47D70D} = {0F7CB527-9CF6-4D8D-941F-C144600E907A}
+		{AF115B9E-0C87-4D09-9EDF-D3936A0D6B38} = {0F7CB527-9CF6-4D8D-941F-C144600E907A}
+		{E917F81E-CD02-4D79-BF99-8D7AEEE2067D} = {0F7CB527-9CF6-4D8D-941F-C144600E907A}
+		{38B71013-C248-4BA1-A41B-611DD6B9369D} = {0F7CB527-9CF6-4D8D-941F-C144600E907A}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.4.73:9080/tfs/vw-project
+		SccProjectUniqueName0 = Common\\Insight360.Common\\Insight360.Common.csproj
+		SccProjectTopLevelParentUniqueName0 = Insight360WebMiner.sln
+		SccProjectName0 = Common/Insight360.Common
+		SccLocalPath0 = Common\\Insight360.Common
+		SccProjectUniqueName1 = DAL\\Insight360.DAL\\Insight360.DAL.csproj
+		SccProjectTopLevelParentUniqueName1 = Insight360WebMiner.sln
+		SccProjectName1 = DAL/Insight360.DAL
+		SccLocalPath1 = DAL\\Insight360.DAL
+		SccProjectUniqueName2 = Mining\\Insight360.Twitter\\Insight360.Twitter.csproj
+		SccProjectTopLevelParentUniqueName2 = Insight360WebMiner.sln
+		SccProjectName2 = Mining/Insight360.Twitter
+		SccLocalPath2 = Mining\\Insight360.Twitter
+		SccProjectUniqueName3 = Mining\\Insight360.Facebook\\Insight360.Facebook.csproj
+		SccProjectTopLevelParentUniqueName3 = Insight360WebMiner.sln
+		SccProjectName3 = Mining/Insight360.Facebook
+		SccLocalPath3 = Mining\\Insight360.Facebook
+		SccProjectUniqueName4 = Processing\\Insight360.DataProcessor\\Insight360.DataProcessor.csproj
+		SccProjectTopLevelParentUniqueName4 = Insight360WebMiner.sln
+		SccProjectName4 = Processing/Insight360.DataProcessor
+		SccLocalPath4 = Processing\\Insight360.DataProcessor
+		SccProjectUniqueName5 = Common\\Insight360.InfluenceCalculator.Klout\\Insight360.InfluenceCalculator.Klout.csproj
+		SccProjectTopLevelParentUniqueName5 = Insight360WebMiner.sln
+		SccProjectName5 = Common/Insight360.InfluenceCalculator.Klout
+		SccLocalPath5 = Common\\Insight360.InfluenceCalculator.Klout
+		SccProjectUniqueName6 = Insight360.Instagram\\Insight360.Instagram.csproj
+		SccProjectTopLevelParentUniqueName6 = Insight360WebMiner.sln
+		SccProjectName6 = Insight360.Instagram
+		SccLocalPath6 = Insight360.Instagram
+		SccProjectUniqueName7 = Insight360.Feedly\\Insight360.Feedly.csproj
+		SccProjectTopLevelParentUniqueName7 = Insight360WebMiner.sln
+		SccProjectName7 = Insight360.Feedly
+		SccLocalPath7 = Insight360.Feedly
+		SccLocalPath8 = .
+		SccProjectUniqueName9 = Insight360.Scheduler\\Insight360.Scheduler.csproj
+		SccProjectName9 = Insight360.Scheduler
+		SccLocalPath9 = Insight360.Scheduler
+	EndGlobalSection
+EndGlobal

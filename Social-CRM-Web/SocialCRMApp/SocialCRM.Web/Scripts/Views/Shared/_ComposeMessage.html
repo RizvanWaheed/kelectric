@@ -1,0 +1,145 @@
+﻿<style>
+    .image-upload > input
+    {
+        display: none;
+    }
+
+    .image-upload img
+    {
+        cursor: pointer;
+        margin-top:-8px;
+    }
+    
+    .pac-container {
+        background-color: #fff;
+        position: absolute!important;
+        z-index: 9999;
+        border-radius: 2px;
+        border-top: 1px solid #d9d9d9;
+        font-family: Arial,sans-serif;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+</style>
+<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
+<!--<script src="../../Angular Resources/angular-file-upload.min.js"></script>-->
+
+<div class="modal-content"> <!--style="height:550px;"-->
+     
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-mail-reply"></i> Compose Message</h4>
+    </div>
+    <div class="modal-body" style="min-height:570px">
+        <div>
+            <div class="col-sm-12">
+                <div class="col-sm-6 col-sm-push-6">
+                    <div style="margin-bottom:10px;" id="pop_schprof" slimscroll="slim" class="box box-default filter_box ng-scope">
+
+                        <table class="table table-condensed">
+                            <tr ng-repeat="x in attachedProfiles">
+                                <td>
+                                    <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                        {{x.ProfileName }}<br>
+
+
+                                        <p>
+                                            <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| ( x.ProfileTypeId=='6'&& instaIcon||( x.ProfileType='google'&&googleIcon ||'')))))}}"
+                                                 alt="{{x.ProfileTypeId == '1' && 'facebook-profile' || (x.ProfileTypeId=='4'&& 'twitter-profile' || (x.ProfileType=='3'&&'twitter-profile'|| (x.ProfileType=='5'&&'facebook-profile'|| (x.ProfileType='google'&&'analytics-profile' ||(x.ProfileTypeId=='6'&&'instagram-profile' ||'')))))}}">
+
+                                            {{  x.AccountName }}
+                                        </p>
+                                    </span>
+                                </td>
+                                <td align="center" valign="middle">
+                                    <div class="squaredSmall" style="margin-top:13px;">
+                                        <input type="checkbox" value="None" id="profile-{{x.ProfileId}}" name="check" ng-model="selected[x.ProfileId]" ng-change="selectedProfilesChanged()" />
+                                        <label for="profile-{{x.ProfileId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-sm-pull-6 zro_left">
+                    <span style="color:red" ng-show="errorMsg.length > 0">{{errorMsg}}</span>
+                    <textarea maxlength="{{messageBodyAreaAllowedLength}}" ng-maxlength="{{messageBodyAreaAllowedLength}}" name="" ng-change="ValidateFiles()" ng-model="StatusText" cols="10" rows="10" class="form-control input_border_min input_login_h1" style="max-width:580px; margin-bottom:8px; margin-top:10px; " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea>
+                    <div class="col-md-9 zro ">
+                        <div class="col-md-8 zro" style="margin:7px 0 7px 0 !important;">
+                            <!--<a href="#" title="Location">
+                                <i class="fa fa-map-marker icon_sizes"></i>
+                            </a> &nbsp;&nbsp;-->
+                            <a href="javascript:" title="Attachment" class="image-upload">
+                                <label for="file-input">
+                                    <img src="../../../Content/img/paperclip_ico.png" />
+                                </label>
+                                <input id="file-input" type="file" nv-file-select="" uploader="uploader" multiple />
+                            </a> &nbsp;&nbsp;
+                            <a href="javascript:void(0)" ng-click="locationOnClick()" title="Shorten URL"><i class="fa fa-map-marker icon_sizes"></i></a> <!--&nbsp;&nbsp;
+                            <a href="#" title="Target Audience"><i class="fa fa-star icon_sizes"></i></a>-->
+                            <!--<a href="#" title="Tag"><i class="fa fa-tag icon_sizes"></i></a>-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <strong>{{messageBodyAreaAllowedLength - StatusText.length}}<em>/ {{messageBodyAreaAllowedLength}}</em></strong>
+                    </div>
+                    <div class="col-md-12 zro " ng-show="sendMessageWithLocation">
+                        <span class="txt_fix"> Location for twitter:</span>
+                        <input ng-keypress="googleMapTextChanged()" places-auto-complete size=80 class="form-control custom_txt_field" name="googleMapPathTxt" ng-model="googleMapAddress" on-place-changed="googlePlaceChanged()" placeholder="Twitter Location" />
+                        
+                        <span class="txt_fix"> Location for Facebook:</span> 
+                        <!--<input class="form-control custom_txt_field" angucomplete name="facebookLocation" placeholder="Facebook Location" minlength="1" pause="400" selectedobject="testObj" url="getFacebookLocationUrl()" results="facebolo" titlefield="firstName,surname" inputclass="form-control form-control-small" />-->
+                        <div angucomplete name="facebookLocation" placeholder="Facebook Location" minlength="1" pause="4000" selectedobject="facebookLocation" url-method="getFacebookLocationUrl" results="facebookLocations" titlefield="name" inputclass="form-control form-control-small"></div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-sm-pull-6 zro_left">
+                </div>
+
+                <div class="col-sm-6 col-sm-pull-6 zro_left" style="max-width:420px;" >
+                    <h4 class="modal-title">
+                        Uploaded Media Files  (Total: {{ uploader.queue.length }})                        
+                    </h4> 
+                    <div id="uploaded-files" slimscroll="commentsLength">
+                        <table class="table table-condensed" style="max-width:420px;">
+                            <thead>
+                                <tr style="max-width:420px;">
+                                    <th>Name</th>
+                                    <th ng-show="uploader.isHTML5">Size</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in uploader.queue" style="max-width:420px;">
+                                    <td style="max-width:220px;"><span style="font-weight:bold;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 220px;display: block;">{{ item.file.name }}</span></td>
+                                    <td style="max-width:100px;" ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                    <td style="max-width:100px;" nowrap>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                            <span class="glyphicon glyphicon-trash"></span> Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </div>
+                <div class="col-md-12 zro">
+                    <button id="btnSetDate" type="button" ng-disabled="notValidated" data-toggle="collapse" data-target="#msgSchedule" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;" ng-click="SendMessage()"> SEND</button>
+                    <button type="button" id="btnSetQueue" data-toggle="collapse" data-target="#msgQueue" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;" ng-click="cancel();"> CANCEL</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<script type="text/javascript">
+    $('#uploaded-files').slimscroll({
+        height: '300px',
+        disableFadeOut: true
+    });
+</script>-->

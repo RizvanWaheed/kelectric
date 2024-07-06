@@ -1,0 +1,163 @@
+﻿<!-- Modal for Schedule Message-->
+<div class="modal-dialog">
+    <style>
+        table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .thumb {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+    <!-- Modal for New Group content-->
+    <form name="myForm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-user"></i> SCHEDULE A MESSAGE</h4>
+            </div>
+            <div class="modal-body ">
+                <div style="margin-bottom:10px "  slimscroll="pop_schprof">
+                    <table class="table table-condensed">
+                        <tr>
+                            <td>
+                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                    Adeel Gill<br>
+                                    <p><img src="/Content/images/in_ico16.png" alt="linkedin-profile"> @adeelgill5</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="squaredSmall7" name="check" />
+                                    <label for="squaredSmall7"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table_alt_col">
+                            <td>
+                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                    Adeel Gill<br>
+                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="squaredSmall8" name="check" />
+                                    <label for="squaredSmall8"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                    Adeel Gill<br>
+                                    <p><img src="/Content/images/fb_ico16.png" alt="facebook-profile"> @adeelgill5</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                    <label for="squaredSmall9"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table_alt_col">
+                            <td>
+                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                    Adeel Gill<br>
+                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                    <label for="squaredSmall9"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/Content/images/soc_ico.jpg" alt="" border="0" class="img_con"><span class="soc_name">
+                                    Adeel Gill<br>
+                                    <p><img src="/Content/images/t_ico16.png" alt="twitter-profile"> @adeelgill5</p>
+                                </span>
+                            </td>
+                            <td align="center" valign="middle">
+                                <div class="squaredSmall" style="margin-top:13px;">
+                                    <input type="checkbox" value="None" id="squaredSmall9" name="check" />
+                                    <label for="squaredSmall9"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-12 zro">
+                    <textarea name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:580px; margin-bottom:8px; margin-top:10px; " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea>
+                </div>
+                <div class="col-md-12 zro ">
+                    <div class="col-md-8 zro"> <a href="" title="Location"><i class="fa fa-map-marker"></i></a> &nbsp;&nbsp;<a href="" title="Attachment"><i class="fa fa-paperclip"></i></a> &nbsp;&nbsp;<a href="" title="Shorten URL"><i class="fa fa-scissors"></i></a> &nbsp;&nbsp;<a href="" title="Target Audience"><i class="fa fa-star"></i></a></div>
+                    <div class="col-md-4 zro">
+                        <div style="float:right; margin-top:8px; margin-left:10px;"><strong><em>127</em></strong></div>
+                        <div class="input-group bootstrap-timepicker timepicker">
+                            <input id="timepicker4" type="text" value="10:35 AM" class="form-control input-small">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div>
+                    <button type="button" data-toggle="collapse" data-target="#msgSchedule" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;"><i class="fa fa-calendar"></i></button>
+                    <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;"><i class="fa fa-clock-o"></i></button>
+                    <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;"><i class="fa fa-floppy-o"></i></button>
+                    <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;">SCHEDULE</button>
+
+
+                    <div id="msgSchedule" class="collapse">
+                        <div class="tabs_blk" style="margin-top:10px;">
+                            <div id="parentHorizontalTab" style="margin-top:50px !important;">
+                                <ul class="resp-tabs-list resp-tabs-marg hor_1">
+                                    <li>Select Date & Time</li>
+                                    <li>Select Date & Time Range</li>
+                                </ul>
+                                <div class="resp-tabs-container hor_1" style="border-top:solid 1px #333;">
+                                    <div>
+                                        <p>
+
+                                            <div class="content_txt">
+                                                <div class="demo" style="margin-bottom:10px !important;">
+                                                    <input type="text" id="ctrlanalyticdatepicker" class="form-control">
+                                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                </div>
+
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <div class="content_txt">
+                                                <strong>Select Date & Time Range</strong>
+                                            </div>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+ </div>
+    </form>
+
+</div>
+
+
+<!-- Modal for existing profile content-->

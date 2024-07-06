@@ -1,0 +1,113 @@
+﻿<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="NotificationsController" ng-controller="NotificationsController">
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-bell"></i> Notifications</div>
+
+        </div>
+
+        <div class="col-md-6">
+            <!--<p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>-->
+        </div>
+
+        <div class="container-fluid padding_set">
+
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-body">
+
+                        <div class="box-body no-padding" id="grplistsnotif">
+                            <div class="col-md-12 zro_left">
+                                <div class="col-md-3 zro_left">
+                                    <select name="" class="form-control input_border_min " style="margin-bottom:20px;" 
+                                            ng-model="NotifTypeSelected" ng-change="selectedNotification(NotifTypeSelected)"
+                                            data-ng-options="item.Id as item.Name for item in NotificationTypeModel">
+                                    </select>
+                                </div>
+                            </div>
+                            <div ng-repeat="value in notificationList">
+                                <div class="col-md-12 inbox_blk unread_msg alert">
+                                    <div class="inbox_blk_msg ">
+                                        <!--<a href="" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none !important;">&times;</a>-->
+                                        <strong>{{value.MessageDate | date:'dd MMM yyyy hh:mm:ss'}}  - {{ value.EmptyMessage}}</strong> 
+                                        {{value.Message}}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-12 inbox_blk read_msg alert">
+
+                                <div class="inbox_blk_msg ">
+                                    <a href="" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none !important;">&times;</a>
+                                    <strong>Evaluation Deadline - 2 day ago</strong> :
+                                    Marketing 101, Video Assignment Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+                            <div class="col-md-12 inbox_blk read_msg alert">
+
+                                <div class="inbox_blk_msg ">
+                                    <a href="" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none !important;">&times;</a>
+                                    <strong>Evaluation Deadline - 3 day ago</strong> :
+                                    Marketing 101, Video Assignment Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 inbox_blk unread_msg alert">
+
+                                <div class="inbox_blk_msg ">
+                                    <a href="" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none !important;">&times;</a>
+                                    <strong>Evaluation Deadline - 4 day ago</strong> :
+                                    Marketing 101, Video Assignment Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 inbox_blk read_msg alert">
+
+                                <div class="inbox_blk_msg ">
+                                    <a href="" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none !important;">&times;</a>
+                                    <strong>Evaluation Deadline - 5 day ago</strong> :
+                                    Marketing 101, Video Assignment Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+
+                                </div>
+
+                            </div>-->
+
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+
+
+
+
+        </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#grplistsnotif').slimscroll({
+            height: '600px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#NotificationsController').scope().loadMoreNotifications();
+                angular.element('#NotificationsController').scope().$apply();
+            }
+        });
+    });
+</script>

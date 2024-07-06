@@ -1,0 +1,6 @@
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Common\Insight360.InfluenceCalculator.Klout\bin\Debug\Insight360.InfluenceCalculator.Klout.dll.config
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Common\Insight360.InfluenceCalculator.Klout\bin\Debug\Insight360.InfluenceCalculator.Klout.dll
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Common\Insight360.InfluenceCalculator.Klout\bin\Debug\Insight360.InfluenceCalculator.Klout.pdb
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Common\Insight360.InfluenceCalculator.Klout\obj\Debug\Insight360.InfluenceCalculator.Klout.csprojResolveAssemblyReference.cache
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Common\Insight360.InfluenceCalculator.Klout\obj\Debug\Insight360.InfluenceCalculator.Klout.dll
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Common\Insight360.InfluenceCalculator.Klout\obj\Debug\Insight360.InfluenceCalculator.Klout.pdb

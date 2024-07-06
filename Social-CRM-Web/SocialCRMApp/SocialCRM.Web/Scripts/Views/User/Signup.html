@@ -1,0 +1,130 @@
+﻿
+<div ng-app="CRMApp" class="" ng-controller="SignupController">
+
+
+   
+
+
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="container main_box">
+            <div class="page_heading"><i class="fa fa-plus"></i> ADD NEW ACCOUNT</div>
+            <div class="col-sm-12  zero_pad">
+               
+                <form name="myForm">
+                    <div class="col-md-8 ">
+                        <div class="input-group bott_marg_10 input_width">
+
+                            <div class="input-group bott_marg_10 ">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user" style="font-size:13px; width: 9px; color:#546470;"></i></span>
+                                <input type="text" class="form-control input_border_min input_login_h " ng-model="FirstName" name="FirstName" placeholder="First Name *" aria-describedby="sizing-addon2" required>
+
+                            </div>
+                            <p class="warnings_p f_warning" ng-show="myForm.FirstName.$touched && myForm.FirstName.$invalid">First Name cannot be empty</p>
+
+                            <div class="input-group bott_marg_10">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-user" style="font-size:13px; width: 9px; color:#546470;"></i></span>
+                                <input type="text" class="form-control input_border_min input_login_h" ng-model="LastName" name="LastName" placeholder="Last Name *" aria-describedby="sizing-addon2" required>
+                            </div>
+                            <p class="warnings_p f_warning" ng-show="myForm.LastName.$touched && myForm.LastName.$invalid">Last Name cannot be empty</p>
+
+                            <div class="input-group bott_marg_10">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-envelope" style="font-size:11px; width: 9px; color:#546470;"></i></span>
+                                <input type="email" class="form-control input_border_min input_login_h" ng-model="Email" name="Email" placeholder="E-mail ID *" aria-describedby="sizing-addon2" required>
+                            </div>
+                            <p class="warnings_p f_warning" ng-show="myForm.Email.$error.email">Not a valid e-mail address</p>
+                            <p class="warnings_p f_warning" ng-show="myForm.Email.$touched && myForm.Email.$invalid && !myForm.Email.$error.email">Email cannot be empty</p>
+
+                            <div class="input-group bott_marg_10">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-lock" style="font-size:13px; width: 9px; color:#546470;"></i></span>
+                                <input type="password" ng-pattern="regexPassword" class="form-control input_border_min input_login_h" ng-change="checkPass1()" ng-model="Password" name="Password" placeholder="Password *" aria-describedby="sizing-addon2" required>
+                            </div>
+                            <p class="warnings_p f_warning" ng-show="myForm.Password.$touched && myForm.Password.$invalid">Password cannot be empty</p>
+                            <p class="warnings_p f_warning" ng-show="myForm.Password.$error.pattern">Password should contain atleast 6 characters having atleast 1 small letter, 1 capital letter, 1 number and 1 special character (@#$%^&+=)</p>
+
+                            <div class="input-group bott_marg_10">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-lock" style="font-size:13px; width: 9px; color:#546470;"></i></span>
+                                <input type="password" class="form-control input_border_min input_login_h" ng-change="checkPass2()" ng-model="CPassword" name="CPassword"  placeholder="Confirm Password *" aria-describedby="sizing-addon2" required>
+                            </div>
+                            <p class="warnings_p f_warning" ng-show="myForm.CPassword.$touched && myForm.CPassword.$invalid">Confirm Password cannot be empty</p>
+                            <!--<span class="bg-warning warnings_p" ng-show="myForm.CPassword.$touched && myForm.CPassword!=myForm.Password">Passwords do not match</span>-->
+                            <p class="warnings_p f_warning" ng-style="{'display': passError}">Entered password did not match!</p>
+                            
+                            <div><button type="button" class="btn btn-default input_border_min input_login_h " ng-disabled="
+                        myForm.$invalid  ||
+                                         NotPassMatch" ng-click="SignUp()" style="width:100%;">
+    CREATE ACCOUNT
+</button></div>
+                            <div class="info_txt">By clicking <span>“Create Account”</span> you agree to the <a href="#">Privacy Policy</a></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-md-4">
+                    <div class="signup_r_h signup_r_h-border">
+                        <h1>{{ Account }} ACCOUNT</h1>
+                        <h3>In {{ Account }} Account you will be geting:</h3>
+                    </div>
+
+                    <div id="BasicProp" class="signup_r_c signup_r_h-border" ng-style="{'display': trialHidden}">
+                        <i class="fa fa-check tick "></i> Unified inbox basic<br>
+                        <i class="fa fa-check tick "></i> Real time Brand Monitoring<br>
+                        <i class="fa fa-check tick "></i> Scheduled Publishing<br>
+                        <i class="fa fa-check tick "></i> User association with 1 Company<br>
+                        <i class="fa fa-check tick "></i> Add upto 3 Groups<br>
+                        <i class="fa fa-check tick "></i> Add upto 5 Users<br>
+                        <i class="fa fa-check tick "></i> Manage 1 profile for each social media platform<br>
+                    </div>
+                    <div id="BasicProp" class="signup_r_c signup_r_h-border" ng-style="{'display': basicHidden}">
+                        <i class="fa fa-check tick "></i> Unified inbox basic<br>
+                        <i class="fa fa-check tick "></i> Real time Brand Monitoring<br>
+                        <i class="fa fa-check tick "></i> Scheduled Publishing<br>
+                        <i class="fa fa-check tick "></i> Manage up to 15 profiles<br>
+                    </div>
+                    <div id="SilverProp" class="signup_r_c signup_r_h-border" ng-style="{'display': silverHidden}">
+                        <i class="fa fa-check tick "></i> Unified inbox silver<br>
+                        <i class="fa fa-check tick "></i> Real time Brand Monitoring<br>
+                        <i class="fa fa-check tick "></i> Scheduled Publishing<br>
+                        <i class="fa fa-check tick "></i> Manage up to 15 profiles<br>
+                    </div>
+                    <div id="GoldProp" class="signup_r_c signup_r_h-border" ng-style="{'display': goldHidden}">
+                        <i class="fa fa-check tick "></i> Unified inbox gold<br>
+                        <i class="fa fa-check tick "></i> Real time Brand Monitoring<br>
+                        <i class="fa fa-check tick "></i> Scheduled Publishing<br>
+                        <i class="fa fa-check tick "></i> Manage up to 15 profiles<br>
+                    </div>
+                    <div id="PlatinumProp" class="signup_r_c signup_r_h-border" ng-style="{'display': platinumHidden}">
+                        <i class="fa fa-check tick "></i> Unified inbox platinum<br>
+                        <i class="fa fa-check tick "></i> Real time Brand Monitoring<br>
+                        <i class="fa fa-check tick "></i> Scheduled Publishing<br>
+                        <i class="fa fa-check tick "></i> Manage up to 15 profiles<br>
+                    </div>
+
+                    <div class="signup_r_c">
+                        <input type="radio" ng-model="value" value="Trial"> Trial <span>Free</span>
+                        <!--<h2>Choose different account type:</h2>
+                        <input type="radio" ng-model="value" value="Basic"> Basic <span>($5)</span> <br>
+                        <input type="radio" ng-model="value" value="Silver"> Silver <span>($10)</span> <br>
+                        <input type="radio" ng-model="value" value="Gold"> Gold <span>($15)</span><br>
+                        <input type="radio" ng-model="value" value="Platinum"> Platinum <span>($20)</span><br>
+                        <button type="button" class="btn btn-default button_round btn_height2" ng-click="Update()"><i class="fa fa-refresh"></i> Update</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer_box">© 2016, All Rights Reserved.</div>
+    </div>
+
+
+
+
+</div>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

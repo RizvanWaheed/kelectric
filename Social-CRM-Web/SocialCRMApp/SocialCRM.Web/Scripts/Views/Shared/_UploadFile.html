@@ -1,0 +1,82 @@
+﻿<style>
+    .imageClass{       
+    }
+
+    .imageClass:hover a{
+        display:block;
+    }
+
+    .imageClass a{
+        display:none;
+    }
+</style>
+<div class="modal-content" style="height:450px !important">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-upload"></i> {{ModalHeading}}</h4>
+    </div>
+    <div class="modal-body" style="height:550px; overflow:hidden; padding-top:3px;">        
+        <div>
+            Choose Files to upload<br />
+            <a href="javascript:" title="Attachment" class="image-upload">
+                <label for="file-input">
+                    <div class="btn btn-primary">Choose a File</div>
+                </label>
+                <input id="file-input" type="file" nv-file-select="" uploader="uploader" multiple style="display:none;" />
+            </a> &nbsp;&nbsp;
+        </div>
+
+        <!-- Media View-->
+        <div class="col-md-12 zro">
+            <h5 class="modal-title">
+                <strong>Uploaded Files</strong>  (Total: {{ uploader.queue.length }})
+            </h5>
+            <br /><span style="color:red" ng-show="errorMsg.length > 0">{{errorMsg}}</span>
+            <div id="uploaded-files">
+                <!--ng-if="isAlreadyMessage == true"-->
+                <div class="col-md-12 zro" style="border-bottom:solid 1px #ccc;">
+                    <!--Already Message preload-->
+                    <div ng-repeat="item in previouslyUploadedData track by $index">
+                        <div class="imageClass" style="position:relative; width:40px; height:40px; float:left; margin-left:15px; margin-bottom:4px;">
+                            <img ng-if="item.ContentType == 'image/png'" src="data:image/png;base64,{{item.Base64String}}" class="img-thumbnail img_margin" style="object-fit:cover; width:40px; height:40px;" title="{{ item.FileName }}" />
+                            <img ng-if="item.ContentType == 'image/jpeg'" src="data:image/jpeg;base64,{{item.Base64String}}" class="img-thumbnail img_margin" style="object-fit:cover; width:40px; height:40px;" title="{{ item.FileName }}" />
+                            <a ng-click="removeImage($index)"><i class="fa fa-close" style="position: absolute; top: 12px; left:15px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table table-condensed">
+                    <div class="col-sm-12 zro">
+                        <div>
+                            <div class="col-md-8"><h5 style="font-weight: bold;">Name</h5></div>
+                            <div class="col-md-2" ng-show="uploader.isHTML5"><h5 style="font-weight: bold;">Size</h5></div>
+                            <div class="col-md-2"><h5 style="font-weight: bold;">Actions</h5></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 zro" slimscroll="uploadLength">
+                        <div ng-repeat="item in uploader.queue" style="margin-bottom:30px !important; border-bottom:solid 1px #ccc;">
+                            <div class="col-md-8" style="margin-top:5px;"><span style="font-weight:bold;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 370px;display: block;">{{ item.file.name }}</span></div>
+                            <div class="col-md-2" style="margin-top:5px;" ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</div>
+                            <div class="col-md-2" style="margin-top:5px;" nowrap>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>                   
+
+                </div>
+            </div>
+            <div class="col-md-12 zro">
+                <div class="col-md-4 zro_left">
+                    <button ng-click="UploadFiles()" type="button" class="btn btn-primary button_round  btn_height3" ng-disabled="notValidated">Upload Selected Files</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="scrollerDiv">      
+        </div>
+    </div>
+
+</div>

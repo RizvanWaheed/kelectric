@@ -1,0 +1,121 @@
+﻿    <!-- Modal for New Profile content-->
+
+<div class="modal-dialog">
+    <link rel="stylesheet" href="/Content/css/signup_styles.css">
+
+
+
+    <!-- Modal for New Group content before-->
+    <div class="modal-content profile_head before_click_fb">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="text-center"><i class="fa fa-link"></i> ATTACH A PROFILE</h4>
+            <h3>
+                By adding the profile and clicking allow, you permit the application to access and publish content on your
+                Social Network Account, on your behalf.
+            </h3>
+        </div>
+        <div class="modal-body" id="profile-add">
+            <!--<div class="col-sm-12">-->
+                <!--<div class="col-sm-6" style="margin:0 auto !important; text-align:center;">-->
+            <div 
+                <div class="col-sm-12">
+                    <div class="col-sm-4 zro" style="margin:0 auto !important; text-align:center;">
+                        <div style="display:inline-block; padding:20px; outline:hidden;">
+                            <a href="" ng-click="ConnectFacebookProfile()" class="hvr-bounce-in">
+                                <img src="/Content/img/fb_c2.png" style="width:109px; height:109px;">
+                                <br>FACEBOOK
+                            </a><br><br>
+                            <div class="dropdown">
+                                <button type="button" data-toggle="dropdown" class="btn btn-primary button_round dropdown-toggle "><i class="fa fa-link"></i> Connect <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="" ng-click="ConnectFacebookPage()"><img src="/Content/images/fb_page_ico.jpg" class="img_circle img_mar" alt="">Attach a Facebook Page</a></li>
+                                    <li><a href="" ng-click="ConnectFacebookProfile()"><img src="/Content/images/fb_profile_ico.jpg" class="img_circle img_mar" alt="">Attach a Facebook Profile</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                    </div>
+                    <!--<div class="col-sm-6" style="margin:0 auto !important; text-align:center;">-->
+                    <div class="col-sm-4 zro" style="margin:0 auto !important; text-align:center;">
+                        <div style="display:inline-block; padding:20px;">
+                            <a href="" ng-click="ConnectTwitter()" class="hvr-bounce-in">
+                                <img src="/Content/img/twit_c.png" style="width:109px; height:109px;"><br>
+                                TWITTER
+                            </a><br><br>
+                            <button type="button" ng-click="ConnectTwitter()" class="btn btn-primary button_round "><i class="fa fa-link"></i> Connect</button>
+                        </div>
+                        <!--</div>-->
+                    </div>
+                    <!--<div class="col-sm-6" style="margin:0 auto !important; text-align:center;">-->
+                    <div class="col-sm-4 zro" style="margin:0 auto !important; text-align:center;">
+                        <div style="display:inline-block; padding:20px;">
+                            <a href="" ng-click="ConnectInstagram()" class="hvr-bounce-in">
+                                <img src="/Content/images/instagram_c.png" style="width:109px; height:109px;"><br>
+                                INSTAGRAM
+                            </a><br><br>
+                            <button type="button" ng-click="ConnectInstagram()" class="btn btn-primary button_round "><i class="fa fa-link"></i> Connect</button>
+                        </div>
+                        <!--</div>-->
+                    </div>
+                </div>
+                <div class="col-sm-12 col-sm-offset-2" style="display:none;">
+                    <!--<div class="col-sm-6" style="margin:0 auto !important; text-align:center;display:none!important;">-->
+                    <div class="col-sm-4 zro" style="margin:0 auto !important; text-align:center;">
+                        <div style="display:inline-block; padding:20px;">
+                            <a href="" ng-click="ConnectLinkedinProfile()" class="hvr-bounce-in">
+                                <img src="/Content/img/Instagram_c.png" style="width:109px; height:109px;"><br>
+                                LINKEDIN
+                            </a><br><br>
+                            <div class="dropdown">
+                                <button type="button" data-toggle="dropdown" class="btn btn-primary button_round dropdown-toggle "><i class="fa fa-link"></i> Connect <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href=""><img src="/Content/images/in_page_ico.png" class="img_circle img_mar" alt=""> Attach a Company Page</a></li>
+                                    <li><a href="" ng-click="ConnectLinkedinProfile()"><img src="/Content/images/fb_profile_ico.jpg" class="img_circle img_mar" alt=""> Attach a Personal Profile</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                    <!--<div class="col-sm-6" style="margin:0 auto !important; text-align:center;">-->
+                    <div class="col-sm-4 zro" style="margin:0 auto !important; text-align:center;">
+                        <div style="display:inline-block; padding:20px;">
+                            <a href="" ng-click="ConnectGoogle()" class="hvr-bounce-in">
+                                <img src="/Content/img/ana_c.png" style="width:109px; height:109px;"><br>
+                                ANALYTICS
+                            </a><br><br>
+                            <button type="button" ng-click="ConnectGoogle()" class="btn btn-primary button_round "><i class="fa fa-link"></i> Connect</button>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                    <!--<div class="col-sm-6" style="margin:0 auto !important; text-align:center;">-->
+                    <div class="col-sm-4 zro" style="margin:0 auto !important; text-align:center;">
+                        <div style="display:inline-block; padding:20px;">
+                            <a href="" ng-click="ConnectOutlook()" class="hvr-bounce-in">
+                                <img src="/Content/images/outlook_c.png" style="width:109px; height:109px;"><br>
+                                OUTLOOK
+                            </a><br><br>
+                            <button type="button" ng-click="ConnectOutlook()" class="btn btn-primary button_round "><i class="fa fa-link"></i> Connect</button>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div style="margin-left:15px; margin-top:25px;">&nbsp;</div>
+            <!--</div>-->
+
+        </div>
+        <!-- Modal for New Group content before-->
+        <!-- Modal for Facebook New Group content after-->
+        <!-- Modal for Facebook New Group content after-->
+
+
+    </div>
+
+    <!--<script type="text/javascript">
+
+        $(function () {
+            $('#profile-add').slimscroll({
+                height: '480px'
+            });
+        });
+    </script>-->

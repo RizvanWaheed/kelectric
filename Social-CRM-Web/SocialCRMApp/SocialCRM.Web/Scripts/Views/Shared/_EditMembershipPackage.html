@@ -1,0 +1,87 @@
+﻿
+    <div class="modal-content" style="padding-top:0px;">
+        <div class="modal-header" style="padding:7px; padding-left:10px;">
+            <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-briefcase"></i> {{packageName}} Package</h4>
+        </div>
+        <form name="myForm">
+            <div class="modal-body" style="height:550px; overflow:hidden; padding-top:3px;">
+
+                <div class="col-md-6">
+                    <h4><b>Access Rights</b></h4>
+                    <div style="max-height:170px;  min-height:170px; overflow-y:scroll" class="box box-default filter_box ng-scope">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <!--<tr class="filter_header">
+                            <th><strong>Access Rights</strong></th>
+                            <th width="9%">
+                                <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                    <input type="checkbox" value="None" id="checkAllRights" name="selectRight" ng-model="selectRight" ng-change="checkAllRights()" />
+                                    <label for="checkAllRights"></label>
+                                </div>
+                            </th>
+                        </tr>-->
+                            <tr ng-repeat="msg in packageData.Permissions">
+                                <td width="91%" height="30">
+                                    {{msg.PermissionName}}
+                                </td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="right-{{msg.PermissionId}}" name="selectRight" ng-model="msg.Enabled" />
+                                        <label for="right-{{msg.PermissionId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h4><b>Access Reports</b></h4>
+                    <div style="max-height:170px;  min-height:170px; overflow-y:scroll" class="box box-default filter_box ng-scope">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <!--<tr class="filter_header">
+                            <th><strong>Access Reports</strong></th>
+                            <th width="9%">
+                                <div class="squaredSmall" style="margin-top:5px;" title="Select All /Deselect All">
+                                    <input type="checkbox" value="None" id="checkAllReports" name="selectReport" ng-model="selectReport" ng-change="checkAllReports()" />
+                                    <label for="checkAllReports"></label>
+                                </div>
+                            </th>
+                        </tr>-->
+                            <tr ng-repeat="msg in packageData.AccessLevels" class="box box-default filter_box ng-scope">
+                                <td width="91%" height="30">
+                                    {{msg.AccessLevelName}}
+                                </td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="report-{{msg.AccessLevelId}}" name="selectReport" ng-model="msg.Enabled" />
+                                        <label for="report-{{msg.AccessLevelId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <h4><b>Restrictions</b></h4>
+                    <div style="max-height:170px;  min-height:170px; overflow-y:scroll" class="box box-default filter_box ng-scope">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr ng-repeat="msg in packageData.Restrictions" class="box box-default filter_box ng-scope">
+                                <td width="50%" height="30">
+                                    {{msg.RestrictionTypeName}}
+                                </td>
+                                <td width="50%">
+                                    <p class="warnings_p f_warning" id="warning-{{msg.RestrictionTypeId}}" style="display:none;float: left;">Min value 1</p>
+                                    <input type="number" id="restrict-{{msg.RestrictionTypeId}}" style="float: right; margin-right: 20px;" min="1" required name="selectRestriction" ng-model="msg.Count" ng-blur="validateCount(this,msg.RestrictionTypeId)" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div style="margin-left:15px;">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary button_round  btn_height3" style="margin-top:25px;" ng-disabled="myForm.$invalid" ng-click="updatePackage();">Update Package</button>
+                </div>
+            </div>
+        </form>
+</div>

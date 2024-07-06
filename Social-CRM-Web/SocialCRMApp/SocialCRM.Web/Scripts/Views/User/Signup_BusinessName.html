@@ -1,0 +1,25 @@
+﻿<div ng-app="CRMApp" class="" ng-controller="SignupBusinessNameController">
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container main_box">
+            <form name="myForm">
+                <div class="code-module effects" id="effects">
+                    <h1><i class="fa fa-building"></i> &nbsp;BUSINESS NAME</h1>
+                    <h3>Kindly enter your business name.</h3><br>
+                    <input type="text" class="form-control input_border_min input_login_h" ng-model="BName" name="BName" required style="max-width:430px; margin:0 auto; " placeholder="Enter your business name" aria-describedby="sizing-addon2"><br>
+                    <p class="bg-warning warnings_p" ng-show="myForm.BName.$touched && myForm.BName.$invalid">This Field cannot be empty</p>
+                    <!--<p class="bg-warning warnings_p">Entered Code is not correct. Please Re-enter !</p>-->
+                    <button type="button" class="btn btn-default button_round " ng-disabled="myForm.$invalid" ng-click="Submit()"><i class="fa fa-arrow-right"></i> Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="container footer_box">© 2016, All Rights Reserved.</div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

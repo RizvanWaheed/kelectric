@@ -1,0 +1,301 @@
+﻿<style>
+    .animate-show {
+    opacity: 1;
+    }
+
+    .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+    transition: all linear 0.3s;
+    }
+
+    .animate-show.ng-hide {
+    opacity: 0;
+    }
+
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="GroupManagementReportController as ctrl">
+    <!-- Content Header (Page header) -->
+    <!-- header starts here -->
+    <div class="container-fluid page_name">
+        <div class="col-sm-10"><i class="fa fa-building"></i> Group Report</div>
+
+    </div>
+    <!-- header ends here -->
+
+    <div class="container-fluid padding_set">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <div class="col-md-12">
+                        <div class="col-md-3 zro" style="line-height:35px; height:35px; margin-bottom:10px;"><strong>From:</strong> 01/01/2015 <strong>To:</strong> 01/31/2015</div>
+                        <div class="col-md-3 zro">
+                            <div>
+                                <div class="btn-group " style=" margin-bottom:10px;">
+
+                                    <button type="button" class="btn btn-default active">15</button>
+                                    <button type="button" class="btn btn-default">30</button>
+                                    <button type="button" class="btn btn-default ">45</button>
+                                    <button type="button" class="btn btn-default ">60</button>
+                                    <button type="button" class="btn btn-default ">90</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 zro demo" style="margin-bottom:10px !important;">
+                            <input type="text" id="ctrlanalyticdatepicker" class="form-control">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                        </div>
+                        <div class="col-md-3 text-right ">
+                            <select name="" class="form-control input_border_min ">
+                                <option>Choose Account</option>
+                                <option>Read Notifications</option>
+                                <option>Unread Notifications</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <div>
+                            <div class="col-md-12 zro">
+                                <div class="col-md-2">
+                                    <input name="ReportType" type="radio" value="1" ng-click="isCustomizedReport = false" checked> All Account
+                                </div>
+                                <div class="col-md-2">
+                                    <input name="ReportType" type="radio" value="2" ng-click="isCustomizedReport = true"> Customize Report
+                                </div>
+                                <div class="col-md-3">                                    
+                                    <div ng-show="isCustomizedReport">
+                                        <!--<input type="checkbox" value="None" id="squaredSmal1" name="check">-->
+                                        <label for="squaredSmal1"><strong><a>Select All / Deselect</a></strong></label>
+                                    </div>
+                                </div>                                                                                            
+                            </div>
+                            <!--<div class="squaredSmall" style="margin-top: 0px;">
+                                <strong>Select All / Deselect</strong>
+                                <input type="checkbox" value="None" id="squaredSmal99" name="check" />
+                                <label for="squaredSmal99"></label>
+                            </div>-->
+                            <div ng-show="isCustomizedReport" class="animate-show">                                
+                                <div id="soclistsProfilereport" class="col-md-12 zro" style="margin-top: 10px !important;">
+                                        <div ng-repeat="x in attachedProfiles" ng-class-odd="table_alt_col" class="col-md-3" style="padding-bottom:10px; padding-top:2px; border-bottom:1px solid #ccc;">
+                                            <div class="col-md-10 zro">
+                                                <img src="{{x.ProfilePicURL}}" alt="img" border="0" class="img_con img_con_height"><span class="soc_name">
+                                                    {{x.ProfileName}}<br>
+                                                    <p><img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}" /> @{{x.AccountName}}</p>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="squaredSmall" style="margin-top: 13px;">
+                                                    <input type="checkbox" value="None" id="squaredSmal99" name="check" />
+                                                    <label for="squaredSmal99"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <button type="button" class="btn btn-primary button_round  btn_height3" style="margin-top: 15px;">GENERATE REPORT</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 report_headings">
+                        <h1>Group Stats</h1>
+                        <h2>General stats across your group.</h2>
+                        <div class="col-md-12 zro" style="margin-top:40px;">
+                            <div class="col-md-6 zro">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+
+
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Incoming Messages</td>
+                                        <td align="right" class="td_padding"><strong>01</strong></td>
+                                        <td align="right" class="td_padding"><img src="Content/images/demo_s_graph.png"></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">Sent Messages</td>
+                                        <td align="right" class="td_padding"><strong>15</strong></td>
+                                        <td align="right" class="td_padding"><img src="Content/images/demo_s_graph.png"></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">New Twitter Followers</td>
+                                        <td align="right" class="td_padding"><strong>01</strong></td>
+                                        <td align="right" class="td_padding"><img src="Content/images/demo_s_graph.png"></td>
+                                    </tr>
+                                    <tr class="report_table_td">
+                                        <td class="td_padding">New Facebook Fans</td>
+                                        <td align="right" class="td_padding"><strong>01</strong></td>
+                                        <td align="right" class="td_padding"><img src="Content/images/demo_s_graph.png"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-6 zro">
+                                <div class="col-md-12" style="margin-bottom:15px;">
+                                    <div class="col-md-4 text-right"><img src="Content/images/demo_s2_graph.png"></div><div class="col-md-8 group_r_txt text-left zro"><span>9</span> INTERACTIONS</div>
+                                </div>
+                                <div class="col-md-12" style="margin-bottom:15px;">
+                                    <div class="col-md-4 text-right"><img src="Content/images/demo_s2_graph.png"></div><div class="col-md-8 group_r_txt text-left zro">BUY <span>1</span> UNIQUE USERS</div>
+                                </div>
+                                <div class="col-md-12" style="margin-bottom:15px;">
+                                    <div class="col-md-4 text-right"><img src="Content/images/demo_s2_graph.png"></div><div class="col-md-8 group_r_txt text-left zro"><span>17.5k</span> POTENTIAL REACH</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 report_headings top_grp_marg top_liner">
+                        <h1>Twitter Stats</h1>
+                        <h2>Stats for 1 Twitter accounts</h2>
+                        <div class="col-md-12">
+                            <div class="col-md-8 social_traffic">
+                                <div class="progress-group gridHeading">
+                                    <h1>Follower Demographics</h1>
+                                    <div style="margin-bottom: 20px;"><i class="fa fa-male male_ico"></i> --- Male Followers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-female female_ico"></i> --- Female Followers</div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">18-20</span>
+                                        <span class="progress-number"><b>310</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 70%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">21-24</span>
+                                        <span class="progress-number"><b>310</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 70%"></div>
+                                        </div>
+                                    </div><!-- /.progress-group -->
+                                    <div class="progress-group">
+                                        <span class="progress-text">25-34</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                    </div><!-- /.progress-group -->
+                                    <div class="progress-group">
+                                        <span class="progress-text">35-44</span>
+                                        <span class="progress-number"><b>200</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">45-54</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">55-64</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-group">
+                                        <span class="progress-text">65+</span>
+                                        <span class="progress-number"><b>280</b></span>
+                                        <div class="progress sm">
+                                            <div class="progress-bar progress-bar-primary" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 social_traffic">
+                                <div class="gridHeading">
+                                    <h1>Twitter Stats</h1>
+                                    <div class="col-md-12">
+                                        <img src="Content/images/add_user_ico.png" class="icos_marg" alt=""> <span style="font-size: 50px; "><strong>1</strong></span><br>
+                                        New follower in this time period
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="Content/images/click_ico.png" class="icos_marg" alt=""> <span style="font-size: 50px; "><strong>0</strong></span><br>
+                                        Line Clicks
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="Content/images/at_ico.png" class="icos_marg" alt=""> <span style="font-size: 50px; "><strong>2</strong></span><br>
+                                        Mentions
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="Content/images/retweet_ico.png" class="icos_marg" alt=""> <span style="font-size: 50px; "><strong>8</strong></span><br>
+                                        Retweets
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="col-md-8 social_traffic">
+                            <div class="progress-group gridHeading">
+                                <h1>Daily Management</h1>
+
+                                <div id="AudienceEngagement" class="text-center graph_sett" style="min-width: 310px; height: 300px; max-width: 900px;">
+                                    <!--<img src="Content/images/dummy_graph.jpg" class="img-responsive">-->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 social_traffic">
+                            <div class="gridHeading">
+                                <h1>Outbound Tweet Content</h1>
+
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" class="table-responsive">
+                                    <tr class="report_table_td3">
+                                        <td width="85%" class="td_padding"><i class="fa fa-align-left "></i> <span>14</span> Text</td>
+                                    </tr>
+
+                                    <tr class="report_table_td3">
+                                        <td class="td_padding"><i class="fa fa-link "></i> <span>1</span> Links to Pages</td>
+                                    </tr>
+                                    <tr class="report_table_td3">
+                                        <td class="td_padding"><i class="fa fa-camera"></i> <span>5</span> Photo Links</td>
+                                    </tr>
+
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 report_headings top_grp_marg top_liner">
+                        <h1>Facebook Stats</h1>
+                        <!--<h2>You do not have any Facebook Pages currently associated with this account.</h2>
+                        <div class="col-md-9 round_liner">Whoops, it doesn't look like you have a Facebook Page attached. If you're interested in spreading the word about your business, organization or brand via Facebook you can use the button to the right to connect your Facebook Page.</div>
+                        <div class="col-md-3"><a href="#"><img src="images/fb_btn.png" alt="" style="margin-top: 15px;"></a></div>-->
+                        <div class="col-md-12">
+                            <div id="audienceGrowthGraphFacebook" style="min-width: 310px; height: 300px; margin: 0 auto">
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="AudienceEngagementFacebook" style="min-width: 310px; height: 300px; margin: 0 auto">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-md-12 report_headings top_grp_marg top_liner">
+                        <h1>Google Analytics </h1>
+                        <h2>You do not have Google Analytics attached.</h2>
+                        <div class="col-md-9 round_liner">Google Analytics is a web analytics solution that provides rich insight into your website traffic and marketing effectiveness. Powerful, flexible and easy-to-use features now let you see and analyze your traffic data in an entirely new way.</div>
+                        <div class="col-md-3"><a href="#"><img src="images/ga_btn.png" alt="" style="margin-top: 15px;"></a></div>
+                    </div>-->
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ctrlanalyticdatepicker').daterangepicker();
+    });
+
+</script>

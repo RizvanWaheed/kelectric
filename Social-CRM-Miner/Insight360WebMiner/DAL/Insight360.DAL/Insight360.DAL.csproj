@@ -1,0 +1,1081 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D8A0F9E-B839-4DFD-AC21-FFBC2D2CC1F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Insight360.DAL</RootNamespace>
+    <AssemblyName>Insight360.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert, Version=6.0.2.8, Culture=neutral, PublicKeyToken=630a17433349cb76, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.BulkInsert-ef6.6.0.2.8\lib\Net45\EntityFramework.BulkInsert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessLevel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Age.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AirLine_Classes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Alert.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticCompanyGroup.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticToken.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchivedUnifiedInbox.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditActivitiesType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditTrail.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Author.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorsTemp.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Authors_MediaUrl.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Author_Categories.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BloggerDbOperation.cs" />
+    <Compile Include="Brand.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandKeyword.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand_Kpi.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand_KPI_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand_SearchTerm_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand_Term.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="calender.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_CloseReason_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_Customer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_Documents.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_Entity_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_History.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_OpenReason_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_StaticItems.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case_WorkItem.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cities_new.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="city1.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cityName.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="city_table.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentsFB.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommonDAL.cs" />
+    <Compile Include="CommonDBOperations.cs" />
+    <Compile Include="Company.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigDAL.cs" />
+    <Compile Include="Config_DocumentSource.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSources.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSourceType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSourceTypes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSourceTypes_Indexing.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSourceType_Indexing.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSource_Organization.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSource_Organization_SearchTerm.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_DocumentSource_SearchTerm.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_ExcludedDocumentSource.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_FacebookExcludeURL.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_FacebookProfileTypes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_GoogleProximity.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_GoogleProximity_ExactTerm_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_GoogleProximity_ExcludeTerm_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_GoogleProximity_ExcludeUrl_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_KeyTerm.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_Labels.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_MediaUrl.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_Organization.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_Organizations.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_Organization_SearchTerm.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_Organization_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_Reports_Settings.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_SearchTerm.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_SearchTermType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_SearchTerm_KeyTerm_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_SearchTerm_Location.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_WebExactTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_WebExcludeTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config_WebExcludeURL.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Conf_TimeZone.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountriesAlternateName.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="country1.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="countryName.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerProfileType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSocialProfile.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerWarnBanReason.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daywise_PostEngagement.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUtil.cs" />
+    <Compile Include="Dealer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DesiName.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DimTime.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Document.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="documentsTemp.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Documents_MediaUrl.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAlert.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAlerts_Configuration.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Email_TimeIntervals.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity_EntityRelation.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtractSocialProfilesCustomers_Result.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacebookBrand.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacebookDBOperations.cs" />
+    <Compile Include="FacebookPageFrequency.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacebookPageHistory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBPost.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FB_Pagefrequency.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedlyDBOperations.cs" />
+    <Compile Include="FeedlyKeyword.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedlyMinnedData.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedsMediaAttachment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedsSentiment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ForwardIndex.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gender.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Geonames_NameVariations.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFeedsById_Result.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Google_CountryCodes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Google_CountryValues.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs_Cache.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs_Exclusion.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="honda_dealer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hyundai_dealer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hyundai_dealers1.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IndexDAL.cs" />
+    <Compile Include="Index_Term.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramComment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramDBOperations.cs" />
+    <Compile Include="InstagramMinnedData.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramUserFollowHistory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Internal_FK_Definition_Storage.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IsImportant.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KEArea.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KECustomer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KERegion.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KnownLocation.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kpi_Keyword.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language1.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Languages2.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="locale.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogCode.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogEntry.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogMiner.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maps_CitiesOfWorld.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maps_CountryCodes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maps_PostsData.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maps_PostsData2.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maps_PostsData3.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterSetting.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaxInfluencer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipAccessLevel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipPermission.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipRestriction.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipRestrictionType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MentionSentimentReports_New.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessagePostingTime.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesTwitter.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Morphology.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Network.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PageChatsFB.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PakistanCity.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pakistan_Data.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personality.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostCounts_by_Province.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsClassifiedLocation.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsClassifiedLocations2.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsClassifiedLocationsTest.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsFB.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsTwitter.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostUserStatusFB.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostUserStatusInstagram.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostUserStatusTwitter.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Premission.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileComapnyGroup.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileFeedsTag.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePage.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileQueueTime.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilesHistory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileStatus.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileToCustSocialProfile.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PublisherUploadedFile.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QueuedMessageProfile.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QueuePostingTime.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QueueWaitingMessage.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="region.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="regionName.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReplaceWord.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RssSource.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SampleReply.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledMessage.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledMessageProfile.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchWordPattern.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Search_Type.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_AccessLevels.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Actions.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Applications.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Groups.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_GroupTypes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_PermissionAccessDetails.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_PermissionCategories.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Permissions.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Permission_MenuPage_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_RolePermissions_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Roles.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_SessionDetails.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Sessions.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_UserFacebook.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_UserInstagram.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_UserPermissions_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_UserRoles_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sec_userSocialTokens.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sec_UserTwitter.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sentiment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SentimentCategory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SentimentDAL.cs" />
+    <Compile Include="SocialActivity.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialActivityType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialCRMMinning.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialCRMMinning.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialCRMMinning.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialCRMMinning.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SocialCRMMinning.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SocialMediaUpdate.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialMediaUsersUpdateReceiver.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialMediaUserType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialProfileContactComment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SocialProfileContactInfo.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialWord.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialWords2.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StagingDAL.cs" />
+    <Compile Include="Staging_blogger_Comment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Comment_Link_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Comment_User_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Link.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Post.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Post_Link_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Post_User_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_blogger_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Facebook_Posts.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Facebook_Posts_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Facebook_Post_Comments.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Facebook_Post_Comment_Likes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Facebook_Post_Likes.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Facebook_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Feedly_Feeds.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Feedly_Items.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Feedly_Items_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Feedly_Links.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Instagram_Comments.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Instagram_Posts.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Instagram_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Instagram_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Myspace_FeedEntry.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Myspace_Links.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Myspace_LinkType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Myspace_Person.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_RSS_Categories.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_RSS_Items.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_RSS_Items_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_RSS_Links.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_RSS_Persons.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_SkyTrax_Organization.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_SkyTrax_Reviews.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_SkyTrax_Review_Organization.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_SkyTrax_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_SkyTrax_Web.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_SocialMedia_Feed_Comments_Labels.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Twitter_KloutScores.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Twitter_Statuses.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Twitter_Statuses_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Twitter_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Web_Comments.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Web_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_Youtube_SearchTerms.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_YouTube_Users.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_YouTube_Videos.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staging_YouTube_Video_Comments.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaticItem.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StopWord.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriberType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskAssignee.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskComment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskCompleted.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskLog.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskManager.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Team.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tempdoc.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempDocumentsTableType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempDocumentTermsTableType.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates_Standard_Responses.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempPostsDataForMap.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="temp_table.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Term.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test2.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TopInf_data.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TopUserByPost.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tweet.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TwitterDBOperations.cs" />
+    <Compile Include="TwitterMentionCountbyAuthor.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TwitterTimezone.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="twitter_retweetCount.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeCategory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnifiedDeckColumnSetting.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccessLevel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccessToken.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAnalyticAccount.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCompany.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserNotification.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserNotificationSetting.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSearchTermCount_New.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_SearchCategory.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_SearchTerm.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_SearchTerm_Detail.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_SearchTerm_New.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Video.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarnBanCustomer.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarnBanCustomerFeed.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarnBanCustomersAttachment.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkItem_Entity_Rel.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YoutubeDbOperations.cs" />
+    <Compile Include="YouTube_Keywords.cs">
+      <DependentUpon>SocialCRMMinning.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="SocialCRMMinning.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SocialCRMMinning.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SocialCRMMinning.edmx.diagram">
+      <DependentUpon>SocialCRMMinning.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Insight360.Common\Insight360.Common.csproj">
+      <Project>{f61d0de3-6646-4396-9e7c-95e369c0c783}</Project>
+      <Name>Insight360.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SocialCRMMinning.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SocialCRMMinning.edmx</DependentUpon>
+      <LastGenOutput>SocialCRMMinning.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SocialCRMMinning.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SocialCRMMinning.edmx</DependentUpon>
+      <LastGenOutput>SocialCRMMinning.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

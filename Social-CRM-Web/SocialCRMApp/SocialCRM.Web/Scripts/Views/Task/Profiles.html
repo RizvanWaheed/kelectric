@@ -1,0 +1,126 @@
+﻿<link href="../../../Content/css/profile-tile.css" rel="stylesheet" />
+<div class="wrapper">    
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="TaskListController">        
+        <!-- header ends here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-user"></i> Profiles</div>
+        </div>
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body" style="min-height: 500px;">
+                        <div id="profile-{{profiles.CustomerSocialProfileId}}" ng-click="openProfileDetails(profiles.CustomerSocialProfileId)" style="margin-bottom: 20px;height:160px;" class="col-sm-4" ng-repeat="profiles in consumerProfiles">
+                            <div class="twitter_social_icos" style="left: 15px;top: 0px;" ng-if="profiles.ProfileType == 'TP' || profiles.ProfileType == 'TM'"></div>
+                            <div class="fb_social_icos" style="left: 15px;top: 0px;" ng-if="profiles.ProfileType == 'FP' || profiles.ProfileType == 'FC' || profiles.ProfileType == 'FCP'"></div>
+                            <div class="tile blue" style="height:100%;border-radius: 4px;">
+                                <h3 style="margin-top: 30px;" class="title truncate">{{profiles.ProfileName}}</h3>
+                                <p style="margin-top: 15px;font-size: 15px;"><b>No. of complaints:</b>&nbsp;&nbsp;{{profiles.ComplaintCount}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>                        
+                </div>
+                    <div class="col-md-3">
+                        <div class="col-md-12 box box-default filter_box">
+                            <div style="padding-right:10px;" id="f_profile">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                                    <tr class="filter_header">
+                                        <th><strong>PROFILES</strong></th>
+                                        <th width="9%">
+                                            <div class="squaredSmall" style="margin-top:0px;" title="Select All /Deselect All">
+                                                <input type="checkbox" value="None" id="squaredSmal68" name="check" ng-model="select" ng-change="checkAll()" />
+                                                <label for="squaredSmal68"></label>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="profileInfo in Profiles">
+                                        <td width="91%" height="30">
+                                            &nbsp; <a href="">
+                                                <img ng-src="{{profileInfo.ProfileTypeId == '1' && fbIcon || (profileInfo.ProfileTypeId=='4'&& twitterIcon || (profileInfo.ProfileType=='3'&& linkedinIcon || (profileInfo.ProfileType=='6' && instaIcon || (profileInfo.ProfileType='google'&&googleIcon ||''))))}}"
+                                                     alt="{{profileInfo.ProfileTypeId == '1' && 'facebook-profile' || (profileInfo.ProfileTypeId=='4'&& 'twitter-profile' || (profileInfo.ProfileType=='3'&&'twitter-profile'|| (profileInfo.ProfileType=='6' && 'instagram-profile'|| (profileInfo.ProfileType='google'&&'analytics-profile' ||''))))}}">&nbsp;{{profileInfo.ProfileName}}
+                                            </a>
+                                        </td>
+                                        <td width="9%">
+                                            <div class="squaredSmall" style="margin-top:0px;">
+                                                <input type="checkbox" value="None" id="Profile1234-{{profileInfo.ProfileId}}" name="check" ng-model="selected[profileInfo.ProfileId]" ng-change="profileSelectedChanged()" />
+                                                <label for="Profile1234-{{profileInfo.ProfileId}}"></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-md-12 box box-default filter_box">
+                            <div style="padding-right:10px;" id="f_profile">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                                    <tr class="filter_header">
+                                        <th><strong>Search</strong></th>
+                                    </tr>
+                                    <tr>
+                                        <td width="">
+                                            <div style="margin-top:0px;height: 40px;">
+                                                <input type="text" style="margin-top: 7px;height: 30px;width: 210px;text-align: center;" value="" id="search-profile" name="search-profile" ng-model="searchProfile" placeholder="Search Profile by Name" ng-keyup="filterProfiles()" />                                        
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+</div>
+<div ui-view="Footer"></div>
+
+<script type="text/javascript">
+
+
+    $(function () {
+        $('#grplists').slimscroll({
+            height: '1130px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#UnifiedinboxController').scope().profileLoadMoreFeeds();
+                angular.element('#UnifiedinboxController').scope().$apply();
+            }
+        });
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+        $('#f_msg').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+        setTimeout(function () {
+            $('#f_tag').slimscroll({
+                height: '220px',
+                disableFadeOut: true
+            });
+            $('#f_keyword').slimscroll({
+                height: '220px',
+                disableFadeOut: true
+            });
+        }
+        , 2000);
+    });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $('#colorpalette2').colorPalette()
+      .on('selectColor', function (e) {
+          $('#selected-color2 i').css('color', e.color);
+
+      });
+    $('#colorpalette3').colorPalette()
+      .on('selectColor', function (e) {
+          $('#selected-color2 i').css('background-color', e.color);
+    });
+</script>

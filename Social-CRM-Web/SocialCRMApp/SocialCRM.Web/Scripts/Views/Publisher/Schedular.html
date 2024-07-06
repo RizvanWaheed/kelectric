@@ -1,0 +1,722 @@
+﻿<style>
+    .panel-default > .panel-heading {
+        color: #478fca;
+        font-weight: 400;
+        height: 70px;
+        overflow: hidden;
+        background-color: #F9F9F9;
+    }
+
+    .timeline_round2 {
+        width: 25px;
+        height: 25px;
+        margin-right: 2px;
+        background-color: #ccc; /*#384955*/ /*Prior:#078b8d*/
+    }
+
+    .round_assigned {
+        background-color: #078b8d;
+    }
+
+    .animate-show {
+        opacity: 1;
+    }
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+            transition: all linear 0.5s;
+        }
+
+        .animate-show.ng-hide {
+            opacity: 0;
+        }
+
+    .time_tag {
+        background-color: #435664;
+        border: solid 1px #435664;
+        border-radius: 3px;
+        padding: 2px 5px 2px 5px;
+        font-size: 9px;
+        color: #fff !important;
+        width: 60px;
+        display: block;
+        float: left;
+        margin-right: 2px;
+    }
+
+    .image-upload > input {
+        display: none;
+    }
+
+    .image-upload img {
+        cursor: pointer;
+        margin-top: -8px;
+    }
+
+
+</style>
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" ng-controller="SchedularController as ctrl">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10">
+                <i class="fa fa-envelope"></i> Schedule a Message
+                &nbsp;<a ng-show="VisibleNewMessage" type="button" title="Scheduled New Message" class="btn btn-warning button_round btn_height2" ng-click="MoveToNewMessageScreen()" style="height: 20px !important; padding: 3px !important; line-height: 12px !important; margin-top:0px;"><i class="fa fa-plus"></i></a>
+            </div>
+
+            <div class="draft_tag" ng-if="scheduledMessageType == '0'"></div>
+            <div class="scheduled_tag" ng-if="scheduledMessageType == '1'"></div>
+            <div class="approved_tag" ng-if="scheduledMessageType == '2'"></div>
+            <div class="rejected_tag" ng-if="scheduledMessageType == '3'"></div>
+            <div class="sent_tag" ng-if="scheduledMessageType == '4'"></div>
+        </div>
+        <!-- header ends here -->
+
+
+        <div class="container-fluid padding_set">
+
+            <div class="col-md-12">
+                <!--<button type="button" id="btnNewMessage" class="btn btn-primary button_round  btn_height3" ng-click="MoveToNewMessageScreen()"><i class="fa fa-pencil"></i> New Message</button>-->
+
+                <div class="box box-default" style="margin-bottom:0px;">
+                    <!--<div class="box-header with-border">
+                        <div class="col-sm-12 zro"><a href="#"><i class="fa fa-times"></i> Go Back</a></div>
+                    </div>-->
+
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <div class="col-sm-12">
+                                <div class="col-md-12 zro">
+                                    <!--show = true &&-->
+                                    <div id="parentHorizontalTab" style="margin-top:0px !important;">
+                                        <ul class="resp-tabs-list resp-tabs-marg hor_1">
+                                            <li id="btnSetDateAndTime" style="margin-top:0px;" ng-if="$parent.PostSchedule" ng-click="TempSetting('DateAndTime')"><i class="fa fa-calendar"></i> Schedule Message</li>
+                                            <li id="btnSetDateAndTimeRange" style="margin-top:0px;" ng-if="$parent.PostSchedule" ng-click="TempSetting('DateAndTimeRange')"><i class="fa fa-list"></i> Schedule Date Range Message</li>
+                                            <li id="btnSetQueue" style="margin-top:0px;" ng-if="$parent.PostQueue" ng-click="ResetButtons('Queue', 1)"><i class="fa fa-clock-o"></i> Queue Message</li>
+                                            <li id="btnSetQueue" style="margin-top:0px;" ng-if="$parent.PostQueue" ng-click="ResetButtons('Queue', 2)"><i class="fa fa-wrench"></i> Configure Queue</li>
+
+                                        </ul>
+                                        <div id="UpperArea" class="col-sm-12" ng-show="show == true">
+                                        <div class="col-sm-4 col-sm-push-8">
+                                            <div style="margin-bottom:10px " id="pop_schprof" class="box box-default filter_box ng-scope" ng-show="show == true">
+                                                <strong style="position:relative; top:-5px; left:10px;" ng-show="show == true">PROFILES</strong>
+                                                <table class="table table-condensed">
+                                                    <tr ng-repeat="x in attachedProfiles" ng-class-odd="'table_alt_col'" ng-if="x.ProfileType == '1' || x.ProfileType == '4'">
+                                                        <td>
+                                                            <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height">
+                                                            <span class="soc_name">
+                                                                {{x.ProfileName }}<br>
+                                                                <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}" />
+                                                                {{ x.AccountName }}
+                                                            </span>
+                                                        </td>
+                                                        <td align="center" valign="middle">
+                                                            <div class="squaredSmall" style="margin-top:13px;">
+                                                                <input type="checkbox" value="None" id="profile-{{x.CompositeId}}" name="check" ng-model="selected[x.CompositeId]" ng-click="scheduledProfilesChanged()" ng-checked="x.select" />
+                                                                <label for="profile-{{x.CompositeId}}"></label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 col-sm-pull-4 zro_left">
+                                            <textarea id="txtAreaMessage" ng-model="messageBodyArea" ng-trim="false" name="" cols="" rows="" class="form-control input_border_min input_login_h1" ng-trim="true" maxlength="{{messageBodyAreaAllowedLength}}" ng-maxlength="{{messageBodyAreaAllowedLength}}" style="max-width:585px; margin-bottom:8px; margin-top:10px; " aria-describedby="sizing-addon2" placeholder="Enter Message Here"></textarea>
+                                            <div class="col-md-12 zro ">
+                                                <div class="col-md-6 zro" style="margin:7px 0 7px 0 !important;">
+                                                    <!--<a href="#" title="Location"><i class="fa fa-map-marker icon_sizes"></i></a> &nbsp;&nbsp;-->
+
+                                                    <a title="Attachment" ng-click="OpenFileUploadModal()" ng-hide="checkFileCount()"><i class="fa fa-paperclip icon_sizes"></i></a>
+                                                    <a title="Attachment" ng-click="OpenFileUploadModal()" ng-show="checkFileCount()"><i class="fa fa-paperclip icon_sizes badge1" data-badge="{{UploadedFilesCount}}"></i></a> &nbsp;&nbsp;
+
+                                                    <a href="#" title="Shorten URL"><i class="fa fa-scissors icon_sizes"></i></a> &nbsp;&nbsp;
+                                                    <a href="#" title="Target Audience"><i class="fa fa-star icon_sizes"></i></a> &nbsp;&nbsp;
+                                                    <!--<a href="#" title="Tag" data-toggle="modal" data-target="#newTag"><i class="fa fa-tag icon_sizes"></i></a>-->
+                                                </div>
+                                                <div class="col-md-6 zro"></div>
+                                                <div class="col-md-4 zro">
+                                                    <div style="float:right; margin-top:8px; margin-left:10px; font-size:9px;"><strong>{{messageBodyAreaAllowedLength - messageBodyArea.length}}<em>/ {{messageBodyAreaAllowedLength}}</em></strong></div>
+                                                    <div class='input-group date' id='datetimepicker3'>
+                                                        <input type='text' class="form-control" value="{{CurrentPublishTime}}" readonly />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-time"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="resp-tabs-container hor_1 " style="border-top:solid 1px #333;">
+                                            <!--Select date/time-->
+                                            <div ng-if="$parent.PostSchedule">
+                                                <div style="min-height:250px; max-height:250px;">
+                                                    <div class="col-md-12 zro">
+                                                        <div class="col-md-2 zro_left">
+                                                            <div class="demo" style="margin-bottom:10px !important;">
+                                                                <!--<input type="text" id="ctrlanalyticdatepicker" class="form-control " placeholder="Select Date" uib-datepicker-popup="{{format}}" ng-model="ScheduleDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">-->
+                                                                <input id="schedulardatepicker" type="text" class="form-control" placeholder="Select Date" ng-model="ScheduleDate">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 zro_left">
+                                                            <div class="demo" style="margin-bottom:10px !important;">
+                                                                <!--<input type="time" id="ScheduleFromTime" class="form-control " placeholder="Starting Time" ng-model="ScheduleFromTime" />-->
+                                                                <div class="form-group">
+
+                                                                    <!--Time Picker-->
+                                                                    <div class="input-group date">
+                                                                        <input type="text" class="form-control" ng-focus="ctrl.openCalendar($event, 'picker2')" datetime-picker="HH:mm" ng-model="ctrl.picker2.date" is-open="ctrl.picker2.open" enable-date="false" timepicker-options="ctrl.picker2.timepickerOptions" close-on-selection="true" />
+                                                                        <!--<span class="input-group-addon">
+                                                                            <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'picker2')" style="height: 34px;"><i class="fa fa-clock-o"></i></button>
+                                                                        </span>-->
+                                                                        <span class="input-group-addon" ng-click="ctrl.openCalendar($event, 'picker2')">
+                                                                            <span class="glyphicon glyphicon-time"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 zro_left" style="margin-bottom:10px;">
+                                                            <!--<button type="button" class="btn btn-primary button_round  btn_height3" ng-click='AddScheduledMessage(messageBodyArea, ScheduleDate, ctrl.picker2.date)'><span class="glyphicon glyphicon-plus"></span> Add Schedule Message</button>-->
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12 zro">
+                                                        <div class="col-md-8 zro">
+                                                            <div class="col-sm-12 inbox_blk unread_msg" style="margin-bottom:2px !important;" ng-repeat="obj in ScheduledMessage">
+                                                                <div class="col-sm-2">
+                                                                    <div class="inbox_blk_img">
+                                                                        <a href="#"><img src="{{obj.FirstProfileImage}}" alt="User Image"></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                                                    <div class="inbox_blk_msg">
+                                                                        <p>
+                                                                            <span ng-repeat="Profiles in obj.Profiles">
+                                                                                <span ng-if="$last && !$first">&nbsp;&&nbsp;</span>
+                                                                                <strong>{{Profiles.ProfileName}}</strong>
+                                                                            </span>
+                                                                        </p>
+                                                                        <h4>{{obj.Message}}</h4>
+                                                                        <p>
+                                                                            Scheduled at {{obj.Date}} {{obj.Time}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Buttons Pannel-->
+                                                <div style="position:absolute; bottom:0;" ng-hide="HideTheButtons">
+                                                    <button type="button" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'Save')" class="btn btn-primary button_round  btn_height3" ng-disabled="disableDraft || scheduleMode!='DateAndTime'">SAVE AS DRAFT</button>
+                                                    <button type="button" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'ScheduleOnly')" class="btn btn-primary button_round  btn_height3" ng-disabled="disableSchedule">SCHEDULE</button>
+                                                    <button type="button" ng-if="$parent.PostApproval" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'Approve')" class="btn btn-primary button_round  btn_height3" ng-disabled="disableApprove"><i class="fa fa-calendar"></i> APPROVE</button>
+                                                    <button type="button" ng-if="$parent.PostApproval" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'Reject')" class="btn btn-default button_round  btn_height3" ng-disabled="disableReject"><i class="fa fa-ban"></i> REJECT</button>
+                                                    <!--<button type="button" class="btn btn-cancel button_round  btn_height3">CANCEL</button>-->
+                                                </div>
+                                            </div>
+
+                                            <!--Select date/time range-->
+                                            <div ng-if="$parent.PostSchedule">
+                                                <div style="min-height:250px; max-height:250px;">
+                                                    <div class="col-md-12 zro">
+                                                        <div class="col-md-5 zro_left">
+                                                            <div class="demo" style="margin-bottom:10px !important;">
+                                                                <input type="text" id="SchedularDateRange" class="form-control" ng-model="SchedularDateRange">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 zro_left">
+                                                            <div style="margin-bottom:7px;"><em>Number of times the post should get published.</em></div>
+                                                        </div>
+                                                        <div class="col-md-1 zro_left">
+                                                            <div style="margin-bottom:10px !important;">
+                                                                <input type="number" name="post" id="post"
+                                                                       min="1" max="120" step="1" value="1" class="form-control" ng-model="NumberOfTimesScheduling">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 zro_left">
+                                                            <!--<strong>- OR -</strong>  &nbsp;&nbsp;&nbsp;<input name="" type="radio" value=""> Select Queue Time-->
+                                                            <button type="button" class="btn btn-primary button_round  btn_height3" ng-click="addDateRangeScheduledMessage(messageBodyArea, SchedularDateRange, NumberOfTimesScheduling)">Select</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 zro">
+                                                        <div class="col-md-7 zro" id="postTimesSlimscroll">
+                                                            <table class="table table-condensed table-bordered" style="border-color:#435664; width:100%">
+                                                                <tr style="background-color: #435664; color: white;">
+                                                                    <th colspan="2"><i class="fa fa-clock-o"></i> POST TIMES</th>
+                                                                </tr>
+                                                                <tr ng-repeat="x in PostTimes">
+                                                                    <td height="25"><strong>Date:</strong> {{x.Date}} <strong>Time:</strong> {{x.Time}}</td>
+                                                                    <td align="center"><a ng-click="removePostingTime(x.Index)"><i class="fa fa-trash"></i></a></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Buttons Pannel-->
+                                                <div style="position:absolute; bottom:0;" ng-hide="HideTheButtons">
+                                                    <button type="button" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'Save')" class="btn btn-primary button_round  btn_height3" ng-disabled="disableDraft || scheduleMode!='DateAndTime'">SAVE AS DRAFT</button>
+                                                    <button type="button" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'ScheduleOnly')" class="btn btn-primary button_round  btn_height3" ng-disabled="disableSchedule">SCHEDULE</button>
+                                                    <button type="button" ng-if="$parent.PostApproval" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'Approve')" class="btn btn-primary button_round  btn_height3" ng-disabled="disableApprove"><i class="fa fa-calendar"></i> APPROVE</button>
+                                                    <button type="button" ng-if="$parent.PostApproval" ng-click="ScheduleMessages(messageBodyArea, ScheduleDate, ctrl.picker2.date, 'Reject')" class="btn btn-default button_round  btn_height3" ng-disabled="disableReject"><i class="fa fa-ban"></i> REJECT</button>
+                                                    <!--<button type="button" class="btn btn-cancel button_round  btn_height3">CANCEL</button>-->
+                                                </div>
+                                            </div>
+
+                                            <!--Preconfigured Queue-->
+                                            <div ng-if="$parent.PostQueue">
+                                                <div class="col-md-12 zro">
+                                                    <div class="col-md-12 zro">
+                                                        <div class="content_txt" style="padding:10px" ng-init="queueOption = 'queueLast'">
+                                                            <input name="queueOptions" ng-model="queueOption" type="radio" value="queueNext"> Queue at the beginning<br>
+                                                            <input name="queueOptions" ng-model="queueOption" type="radio" value="queueLast"> Queue at the end
+                                                        </div>
+                                                        <div class="content_txt col-md-6 zro_left" style="margin-bottom:10px;">
+                                                            <button type="button" ng-click="scheduleQueueMessage()" class="btn btn-primary button_round  btn_height3" style="margin-top:5px;">QUEUE MESSAGE</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--Setting Queue-->
+                                            <div ng-if="$parent.PostQueue">
+                                                <!--<div class="col-md-12 zro_left" style="margin-bottom:10px;">
+                                                    <div class="col-md-2">
+                                                        <strong>PROFILES</strong>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <strong>POST TIMES</strong>
+                                                    </div>
+                                                </div>-->
+                                                <div class="col-md-12">
+                                                    <div ng-if="attachedProfiles.length==0">
+                                                        <p><strong>This group doesn't contain any profile. Please Add profiles to this group.</strong></p>
+                                                    </div>
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group is-disabled="Prevent" is-open="scope.isCustomHeaderOpen" ng-repeat="x in attachedProfiles" ng-click="LoadUserQueueData(x.ProfileCompnayGroupId)" ng-if="x.ProfileTypeId == '1' || x.ProfileTypeId == '4'">
+                                                            <uib-accordion-heading>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-3 zro_left">
+                                                                        <img src="{{x.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height">
+                                                                        <span class="soc_name">
+                                                                            {{x.ProfileName }}<br>
+
+                                                                            <img ng-src="{{x.ProfileTypeId == '1' && fbIcon || (x.ProfileTypeId=='4'&& twitterIcon || (x.ProfileType=='3'&&linkedinIcon|| (x.ProfileType=='5'&&fbIcon|| (x.ProfileType='google'&&googleIcon ||''))))}}" />
+
+                                                                            {{x.AccountName}}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-md-9 zro_left">
+                                                                        <p style="margin-bottom: 6px; font-size: small; color:#000000;">Post Times for today. Click for settings</p>
+                                                                        <div class="timeline_round2 showico" id="User_{{x.ProfileCompnayGroupId}}_Time_{{Time.Hour}}" ng-repeat="Time in x.TodaysQueue.Times" ng-class="{round_assigned: Time.Status=='Active'}"><div style="position:relative; top:-6px">{{Time.Hour}}</div></div>
+                                                                    </div>
+                                                                </div>
+                                                            </uib-accordion-heading>
+                                                            <div class="col-md-12" style="display:none">
+                                                                <div class="col-md-offset-2 col-md-10">
+                                                                    <strong class="col-md-2">
+                                                                        Summary
+                                                                    </strong>
+                                                                    <span class="col-md-3">
+                                                                        Summary Data
+                                                                    </span>
+                                                                    <span class="col-md-3">
+                                                                        <!--<a href="" ng-click="populateUserQueue(x.ProfileCompnayGroupId)"><span class="glyphicon glyphicon-pencil"></span> Edit Times</a>-->
+                                                                    </span>
+                                                                </div>
+                                                                <div class="col-md-offset-2 col-md-10">
+                                                                    <strong class="col-md-2">
+                                                                        Observation
+                                                                    </strong>
+                                                                    <span class="col-md-10">
+                                                                        Your 1 queued message will run through Saturday, July 23, 2016
+                                                                    </span>
+                                                                </div>
+                                                                <div class="col-md-offset-2 col-md-10">
+                                                                    <strong class="col-md-2">
+                                                                        Status
+                                                                    </strong>
+                                                                    <span class="col-md-10">
+                                                                        <a href="">Active</a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <!--<div class="col-md-12 animate-show" ng-show="EditQueueTimes">-->
+
+                                                            <div class="col-md-12 animate-show">
+                                                                <div class="col-md-12 zro_left">
+                                                                    <div class="col-md-5 zro_left">
+                                                                        <!--<h5><strong>Configure Queue Settings</strong></h5>-->
+                                                                    </div>
+                                                                    <div class="col-md-7">
+                                                                        <button style="float:right; margin-left:5px;" type="button" ng-click="DeleteAllSlots(SelectedQueueProfileId)" class="btn btn-primary button_round  btn_height3">
+                                                                            <span class="glyphicon glyphicon-trash"></span> Delete All
+                                                                        </button>
+                                                                        <button ng-show="isQueueChanged" style="float:right; margin-left:5px;" type="button" ng-click="CancelChanges(SelectedQueueProfileId)" class="btn btn-primary button_round  btn_height3">
+                                                                            <span class="glyphicon glyphicon-time"></span> Cancel
+                                                                        </button>
+                                                                        <button ng-show="isQueueChanged" style="float:right; margin-left:5px;" type="button" ng-click="SaveChanges(SelectedQueueProfileId)" class="btn btn-primary button_round  btn_height3">
+                                                                            <span class="glyphicon glyphicon-save"></span> Save Changes
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 zro_left" style="margin-top: 10px;" ng-repeat="uq in UserQueue">
+                                                                    <div class="col-md-2 zro_left">
+                                                                        <strong ng-if="uq.DayId == '1'">Monday</strong>
+                                                                        <strong ng-if="uq.DayId == '2'">Tuesday</strong>
+                                                                        <strong ng-if="uq.DayId == '3'">Wednesday</strong>
+                                                                        <strong ng-if="uq.DayId == '4'">Thursday</strong>
+                                                                        <strong ng-if="uq.DayId == '5'">Friday</strong>
+                                                                        <strong ng-if="uq.DayId == '6'">Saturday</strong>
+                                                                        <strong ng-if="uq.DayId == '7'">Sunday</strong>
+                                                                    </div>
+
+                                                                    <div class="col-md-9 zro_left">
+                                                                        <div class="timeline_round2 showico" id="User_{{x.ProfileCompnayGroupId}}_Day_{{uq.DayId}}_Time_{{Time.Hour}}" ng-repeat="Time in uq.Times" ng-class="{round_assigned: Time.Status=='Active'}"><div style="position:relative; top:-6px">{{Time.Hour}}</div></div>
+                                                                    </div>
+                                                                    <div class="col-md-1 zro_left">
+                                                                        <button type="button" ng-if="uq.DayId == '1'" ng-click="ShowClockFor('Monday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                        <button type="button" ng-if="uq.DayId == '2'" ng-click="ShowClockFor('Tuesday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                        <button type="button" ng-if="uq.DayId == '3'" ng-click="ShowClockFor('Wednesday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                        <button type="button" ng-if="uq.DayId == '4'" ng-click="ShowClockFor('Thursday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                        <button type="button" ng-if="uq.DayId == '5'" ng-click="ShowClockFor('Friday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                        <button type="button" ng-if="uq.DayId == '6'" ng-click="ShowClockFor('Saturday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                        <button type="button" ng-if="uq.DayId == '7'" ng-click="ShowClockFor('Sunday')" class="btn btn-primary button_round  btn_height2" style="font-size:10px;">Add Time</button>
+                                                                    </div>
+
+                                                                    <div class="col-md-offset-2 col-lg-10 zro_left">
+                                                                        <div ng-repeat="t in QueueCreation track by $index">
+                                                                            <button type="button" class="time_tag" ng-show="t.Day == uq.DayId" ng-click="RemoveFromQueue($index, t.Day, t.Time, t.ProfileCompanyGroupId)">
+                                                                                {{t.Time}} <i class="fa fa-times"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12 zro_left  animate-show" style="margin-top:10px;" ng-show="DayCalledName != ''">
+                                                                    <h4><strong>Add New Queue Time for {{DayCalledName}}</strong></h4>
+
+                                                                    <div class="col-md-12 zro_left">
+                                                                        <div class="col-md-2 zro_left">
+                                                                            <h5>Select Time</h5>
+                                                                        </div>
+                                                                        <div class="col-md-3 zro_left">
+                                                                            <div class='input-group date'>
+                                                                                <input type="text" class="form-control" ng-focus="ctrl.openCalendar($event, 'picker3')" datetime-picker="HH:mm" ng-model="ctrl.picker3.date" is-open="ctrl.picker3.open" enable-date="false" timepicker-options="ctrl.picker3.timepickerOptions" close-on-selection="true" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-7 zro_left">
+                                                                            <button style="float:left;" type="button" ng-click="AddToQueue(ctrl.picker3.date, DayCalledName, SelectedQueueProfileId)" class="btn btn-primary button_round  btn_height3">
+                                                                                <span class="glyphicon glyphicon-time"></span> Add Time
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+</div><!-- /.box-body -->
+</div>
+<div ui-view="Footer"></div>
+<!--Plug-in Initialisation--><!--Plug-in Initialisation-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Horizontal Tab
+        $('#parentHorizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function (event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+
+        $('#parentHorizontalTabQueue').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function (event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+
+        $('#parentHorizontalTabQueue2').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function (event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+
+        // Child Tab
+        $('#ChildVerticalTab_1').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+            tabidentify: 'ver_1', // The tab groups identifier
+            activetab_bg: '#fff', // background color for active tabs in this group
+            inactive_bg: '#3ba1c2', // background color for inactive tabs in this group
+            active_border_color: '#fff', // border color for active tabs heads in this group
+            active_content_border_color: '#fff' // border color for active tabs contect in this group so that it matches the tab head border
+        });
+
+        //Vertical Tab
+        $('#parentVerticalTab').easyResponsiveTabs({
+            type: 'vertical', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            tabidentify: 'hor_1', // The tab groups identifier
+            activate: function (event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#nested-tabInfo2');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#QueueDays').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#2stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+
+        $('#3stFruits').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: '100%',
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#inboxer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#tasker').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#socialer').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+        $('#publi').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#disco').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#reporter').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+
+        $('#helper').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#userlists').slimscroll({
+            height: '499px',
+            disableFadeOut: true
+        });
+
+        $('#grplists').slimscroll({
+            height: '485px',
+            disableFadeOut: true
+        });
+
+        $('#rsslists').slimscroll({
+            height: '585px',
+            disableFadeOut: true
+        });
+
+
+        $('#soclists').slimscroll({
+            height: '188px',
+            disableFadeOut: true
+        });
+        $('#soclistspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#grpspop').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#soclists2').slimscroll({
+            height: '168px',
+            disableFadeOut: true
+        });
+
+        $('#ulists').slimscroll({
+            height: '130px',
+            disableFadeOut: true
+        });
+
+        $('#soclistspop2').slimscroll({
+            height: '280px',
+            disableFadeOut: true
+        });
+
+        $('#f_profile').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#tw_profile').slimscroll({
+            height: '200px',
+            disableFadeOut: true
+        });
+
+        $('#f_msg').slimscroll({
+            height: '90px',
+            disableFadeOut: true
+        });
+
+        $('#pop_schprof').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#schList2').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        $('#profilemulSelect').slimscroll({
+            height: '180px',
+            disableFadeOut: true
+        });
+        $('#tableGridSelect').slimscroll({
+            height: '250px',
+            disableFadeOut: true
+        });
+        $('#postTimesSlimscroll').slimscroll({
+            height: '180px',
+            width: '75%',
+            disableFadeOut: true
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+    $(function () {
+        var animspeed = 950; // animation speed in milliseconds
+
+        var $blockquote = $('.bigtext');
+        var height = $blockquote.height();
+        var mini = $('.bigtext p').eq(0).height();
+
+        $blockquote.attr('data-fullheight', height + 'px');
+        $blockquote.attr('data-miniheight', mini + 'px');
+        $blockquote.css('height', mini + 'px');
+
+
+        $('.expand').on('click', function (e) {
+            $text = $(this).prev();
+
+            $text.animate({
+                'height': $text.attr('data-fullheight')
+            }, animspeed);
+            $(this).next('.contract').removeClass('hide');
+            $(this).addClass('hide');
+        });
+
+        $('.contract').on('click', function (e) {
+            $text = $(this).prev().prev();
+
+            $text.animate({
+                'height': $text.attr('data-miniheight')
+            }, animspeed);
+            $(this).prev('.expand').removeClass('hide');
+            $(this).addClass('hide');
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        currentDate = new Date();
+        $('#schedulardatepicker').daterangepicker({ minDate: currentDate, singleDatePicker: true, timePicker: false });
+
+        $('#SchedularDateRange').daterangepicker({
+            "drops": "up", singleDatePicker: false, timePicker: true, minDate: currentDate, locale: { format: 'MM/DD/YYYY h:mm A' }, "dateLimit": { "days": 7 }, "startDate": currentDate
+        });
+    });
+</script>
+<script type="text/javascript">
+    // set content on click
+    setTimeout(function () {
+        $('#parentHorizontalTab').easyResponsiveTabs({ tabidentify: 'hor_1', closed: false });
+    }, 2000);
+
+    $('.button').click(function (e) {
+        e.preventDefault();
+        setContent($(this));
+    });
+
+    // set content on load
+    $('.button.active').length && setContent($('.button.active'));
+
+    function setContent($el) {
+        $('.container').hide();
+
+        $($el.data('rel')).show();
+    }
+</script>

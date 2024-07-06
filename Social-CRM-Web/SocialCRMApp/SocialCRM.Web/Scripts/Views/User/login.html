@@ -1,0 +1,116 @@
+﻿<div style="background-color:#fff !important;" ng-controller="LoginController">
+
+    <!--<div class="login-module">
+        <div class="login-module_logo"><img src="/Content/images/login_logo.png" alt="360-InsightCRM" border="0"></div>
+        <div class="login-module_toggle_btn">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#menu1"><i class="fa fa-user"></i> I HAVE AN ACCOUNT</a></li>
+            </ul>
+            <form name="myForm" ng-submit="Login()">
+                <div class="tab-content">
+
+                    <div id="menu1" class="tab-pane active for_tab_content ">
+                        <div class="input-group bott_marg_10">
+                            <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-envelope" style="font-size:13px; color:#546470;"></i></span>
+                            <input type="email" class="form-control input_border_min input_login_h"   ng-model="Email" name="Email" required placeholder="E-mail" aria-describedby="sizing-addon2">
+                        </div>
+                        <p class="warnings_p warnings_p2_320" ng-show="myForm.Email.$error.email">Not a valid e-mail address</p>
+                        <p class="warnings_p warnings_p2_320 " ng-show=" myForm.Email.$touched && myForm.Email.$invalid && !myForm.Email.$error.email">Login Email is required</p>
+                        <div class="input-group bott_marg_10">
+                            <span class="input-group-addon input_border_min" id="sizing-addon2"><i class="fa fa-lock" style="font-size:20px; color:#546470;"></i></span>
+                            <input type="password" class="form-control input_border_min input_login_h"  ng-model="Password" name="loginPassword" required placeholder="Password" aria-describedby="sizing-addon2">
+                        </div>
+                        <p class="warnings_p warnings_p2_320 "  ng-show=" myForm.loginPassword.$touched && myForm.loginPassword.$invalid">Login Password is required</p>
+                        <div class="login-module_rem">
+                            <div class="squaredSmall" style="float:left !important; margin-top:13px; margin-right:5px;">
+                                <input type="checkbox" ng-model="Remember"  value="" id="squaredSmall7" name="check" checked="checked"/>
+                                <label for="squaredSmall7"></label>
+                            </div> Remember me | <a href="#/ResetPassword" class="forgot">forgot password?</a>
+                        </div>
+                        <div class="input-group bott_marg_10">
+
+                            <p class="bg-warning warnings_p " ng-style="{'display': credCheck}">The user Id or password you entered is incorrect, kindly check caps lock and (or) enter correct user Id/password and try again.</p>
+                        </div>
+                        <div><button ng-disabled="
+                        myForm.$invalid" type="submit" class="btn btn-default input_border_min input_login_h "  style="width:100%;">
+    SIGN IN
+</button></div>
+                        <div class="new_acc_blk"><a ng-click="newAccount()" href="">+ CREATE NEW ACCOUNT</a></div>
+                    </div>
+
+
+
+                </div>
+            </form>
+        </div>
+        <div class="login-module_copyright"> © 2016, All Rights Reserved.</div>
+    </div>-->
+
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container ">
+            <div class="col-sm-12" style=" margin-top:20px;">
+
+                <div class="col-md-5 zero_pad login_headings ">
+                    <div class="">
+                        <h1><span>Sign In</span> or <span>Create</span> 360 Insight CRM Account</h1>
+                        <h2>I HAVE AN ACCOUNT:</h2>
+                    </div>
+                    <h3>What is your email?</h3>
+                    <form name="myForm" ng-submit="Login()">
+                        <div class="input-group bott_marg_10 input_width">
+                            <div class="input-group bott_marg_10 ">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-envelope icon_normal" style="font-size:13px; width: 9px;"></i></span>
+                                <input type="email" class="form-control input_border_min input_login_h " ng-model="Email" name="Email" required placeholder="Email" aria-describedby="sizing-addon2">
+                            </div>
+                            <p class="warnings_p warnings_p2_320" ng-show="myForm.Email.$error.email">Not a valid e-mail address</p>
+                            <p class="warnings_p warnings_p2_320 " ng-show=" myForm.Email.$touched && myForm.Email.$invalid && !myForm.Email.$error.email">Login Email is required</p>
+                            <h3>What is your password?</h3>
+                            <div class="input-group bott_marg_10">
+                                <span class="input-group-addon input_border_min" id="sizing-addon1"><i class="fa fa-lock icon_normal" style="font-size:13px; width: 9px;"></i></span>
+                                <input type="password" class="form-control input_border_min input_login_h" ng-model="Password" name="loginPassword" required placeholder="Password" aria-describedby="sizing-addon2">
+                            </div>
+                            <p class="warnings_p warnings_p2_320 " ng-show=" myForm.loginPassword.$touched && myForm.loginPassword.$invalid">Login Password is required</p>
+                            <div class="login-module_rem">
+                                <div class="squaredSmall" style="float:left !important; margin-top:3px; margin-right:5px;">
+                                    <input type="checkbox" ng-model="Remember" value="" id="squaredSmall7" name="check" checked="checked" />
+                                    <label for="squaredSmall7"></label>
+                                </div> Remember my credentials  <a href="#/ResetPassword" class="forgot" style="float:right;">Forgot your password?</a>
+                            </div>
+
+                            <!--<div class="input-group bott_marg_10">
+
+                                <p class="bg-warning warnings_p " ng-style="{'display': credCheck}">The user Id or password you entered is incorrect, kindly check caps lock and (or) enter correct user Id/password and try again.</p>
+                            </div>-->
+
+                            <div>
+                                <button ng-disabled="myForm.$invalid" type="submit" class="btn btn-default input_border_min input_login_h " style="width:100%;">SIGN IN</button>
+                            </div>
+                            <div class="info_txt">
+                                <h4>Do not have an account?</h4>
+                                <h5><span><a ng-click="newAccount()" href="">+ CREATE NEW ACCOUNT</a></span> , Its Easy !</h5>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-7 ">
+                    <img src="/Content/images/login_img.png" class="img-responsive pull-right">
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="container footer_box f_border_top footer_heads">
+            <h1>About 360 Insight CRM</h1>
+            <h2>360 Insight CRM will partner you to bridge the gap between you and your customers. Be it a single brand, or a plethora of brands under the umbrella of your company, 360 Insight enables you to maintain smooth social media management and customer interaction.</h2>
+            <h3>© {{currentDate | date:'yyyy'}}, All Rights Reserved.</h3>
+        </div>
+    </div>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/styles.css' rel='stylesheet' />")); 
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

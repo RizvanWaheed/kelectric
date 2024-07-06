@@ -1,0 +1,194 @@
+﻿<style>
+    .newMessage {
+        background-color: #D1EEFC;
+    }
+</style>
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="PublisherScheduledMessagesController" ng-controller="PublisherScheduledMessagesController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><i class="fa fa-clock-o"></i> Scheduled Messages</div>
+
+        </div>
+        <!-- header ends here -->
+
+        <div class="container-fluid padding_set" ng-hide="PageEmpty">
+
+            <div class="col-md-9">
+                <div class="box box-default">
+                    <div class="box-body" id="lstScheduledMessages">
+
+                        <div class="col-sm-12 inbox_blk unread_msg" style="margin-bottom:2px !important;" ng-class="{'newMessage': obj.isNew==true}" ng-repeat="obj in scheduledMessages">
+                            <div class="twitter_social_icos" ng-if="obj.ProfileTypeId == '4'"></div>
+                            <div class="fb_social_icos" ng-if="obj.ProfileTypeId == '1'"></div>
+                            <div class="insta_social_icos" ng-if="obj.ProfileTypeId == '6'"></div>
+                            <div class="linkedin_social_icos" ng-if="obj.ProfileTypeId == '3'"></div>
+
+                            <div class="new_tag" ng-if="obj.isNew == true"></div>
+                            <div class="draft_tag" ng-if="obj.MessageStatus == '0'"></div>
+                            <div class="scheduled_tag" ng-if="obj.MessageStatus == '1'"></div>
+                            <div class="approved_tag" ng-if="obj.MessageStatus == '2'"></div>
+                            <div class="rejected_tag" ng-if="obj.MessageStatus == '3'"></div>
+                            <div class="sent_tag" ng-if="obj.MessageStatus == '4'"></div>
+
+                            <div class="col-sm-2">
+                                <div class="inbox_blk_img">
+                                    <img src="{{obj.ProfileURL}}" alt="User Image" title="{{obj.Username}}" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                <div class="inbox_blk_msg">
+                                    <!--<p>
+                                        <span>
+                                            <strong>{{obj.Username}}</strong>
+                                        </span>
+                                    </p>-->
+                                    <p style="margin-bottom:4px;">{{obj.MessageText}}</p>
+                                    <p class="inbox_blk_cred ng-binding" style="margin-bottom:10px;">
+                                        Scheduled on {{obj.PostingDay}}, {{obj.PostingDate}} at {{obj.PostingTime}} by <span class="ng-binding ng-scope">{{obj.AuthorName}}</span>
+                                    </p>
+                                    <p style="margin-bottom: 4px;">
+                                        <a href="javascript:" ng-click="openPreviouslySavedorScheduledMessage(obj.MessageStatus, obj.Id)">View Message</a>&nbsp;&nbsp;
+                                        <a href="javascript:" ng-click="openSlider(obj.mediaInfo)" ng-if="obj.mediaInfo.length > 1">View More Images</a>
+                                    </p>
+                                    <div ng-if="obj.mediaInfo.length > 0">
+                                        <img ng-if="obj.mediaInfo[0].ContentType == 'image/png'" src="data:image/png;base64,{{obj.mediaInfo[0].Base64String}}" class="img-thumbnail img_margin" style="object-fit:cover; border-radius:0; width:294px; height:294px;"/>
+                                        <img ng-if="obj.mediaInfo[0].ContentType == 'image/jpeg'" src="data:image/jpeg;base64,{{obj.mediaInfo[0].Base64String}}" class="img-thumbnail img_margin" style="object-fit:cover; border-radius:0; width:294px; height:294px;"/>                                        
+                                        <img ng-if="obj.mediaInfo[0].ContentType == 'image/gif'" src="data:image/gif;base64,{{obj.mediaInfo[0].Base64String}}" class="img-thumbnail img_margin" style="object-fit:cover; border-radius:0; width:294px; height:294px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box" style="padding-left:0px !important;">
+                    <div class="col-md-12">
+                        <div class="col-md-6 social_stat">
+                            <img src="/Content/img/fb_c.png" alt="" style="width:35px; height:35px;"><br>
+                            <strong class="fb_txt">{{FbCount}}</strong>
+                        </div>
+                        <!--<div class="col-md-4 social_stat">
+                            <div>
+                                <img src="/Content/images/instagram_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="in_txt">{{InCount}}</strong>
+                            </div>
+                        </div>-->
+                        <div class="col-md-6 social_stat">
+                            <div>
+                                <img src="/Content/img/twit_c.png" alt="" style="width:35px; height:35px;"><br>
+                                <strong class="twit_txt">{{TwitCount}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="f_profile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>PROFILES</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal68" name="check" ng-model="select" ng-change="checkAll()" />
+                                        <label for="squaredSmal68"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="profileInfo in Profiles" ng-if="profileInfo.ProfileTypeId == '1' || profileInfo.ProfileTypeId == '4'">
+                                <td width="91%" height="30">
+                                    &nbsp; <a href="">
+                                        <img ng-src="{{profileInfo.ProfileTypeId == '1' && fbIcon || (profileInfo.ProfileTypeId=='4'&& twitterIcon || (profileInfo.ProfileType=='3'&& linkedinIcon || (profileInfo.ProfileType=='6' && instaIcon || (profileInfo.ProfileType='google'&&googleIcon ||''))))}}"
+                                             alt="{{profileInfo.ProfileTypeId == '1' && 'facebook-profile' || (profileInfo.ProfileTypeId=='4'&& 'twitter-profile' || (profileInfo.ProfileType=='3'&&'twitter-profile'|| (profileInfo.ProfileType=='6' && 'instagram-profile'|| (profileInfo.ProfileType='google'&&'analytics-profile' ||''))))}}">&nbsp;{{profileInfo.ProfileName}}
+                                    </a>
+                                </td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" value="None" id="Profile1234-{{profileInfo.ProfileId}}" name="check" ng-model="selected[profileInfo.ProfileId]" ng-change="profileSelectedChanged()" />
+                                        <label for="Profile1234-{{profileInfo.ProfileId}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="91%" height="30">&nbsp; <a href="" ng-click="openProfileConnect()"> <strong>+</strong> Connect a profile</a></td>
+                                <td width="9%"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="f_profile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="filter_table">
+                            <tr class="filter_header">
+                                <th><strong>Message Status</strong></th>
+                                <th width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;" title="Select All /Deselect All">
+                                        <input type="checkbox" value="None" id="squaredSmal36" name="check" ng-model="selectApprovalType" ng-change="checkAllMessageTypes()" />
+                                        <label for="squaredSmal36"></label>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="MessageTypeFilter in MessageTypeFilters">
+                                <td width="91%" height="30">
+                                    &nbsp; {{MessageTypeFilter.FilterName}}
+                                </td>
+                                <td width="9%">
+                                    <div class="squaredSmall" style="margin-top:0px;">
+                                        <input type="checkbox" id="MessageTypeFilter-{{MessageTypeFilter.Id}}" name="check" ng-model="selectedApprovalType[MessageTypeFilter.Id]" ng-change="selectedApprovalTypeChanged()" />
+                                        <label for="MessageTypeFilter-{{MessageTypeFilter.Id}}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid padding_set" ng-show="PageEmpty">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <img src="/Content/images/schedule_img.jpg" alt="" class="img-responsive" style="margin:0 auto !important'"><br>
+                            </div>
+
+                            <div class="col-md-6">
+                                <span class="error_heading">Getting Started</span><br>
+                                <span class="error_heading2">Planning your messages is the first step to successfully engage your existing customers and potential clients. Click on Schedule Messages and start interacting!</span><br><br>
+                                <br>
+                                <a href="/#/Schedular"><i class="fa fa-envelope"></i> Schedule Messages</a><br>
+                            </div>
+
+
+                        </div>
+                    </div><!-- /.box-header -->
+
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+
+    </div><!-- /.box-body -->
+</div>
+<div ui-view="Footer"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#lstScheduledMessages').slimscroll({
+            height: '550px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#PublisherScheduledMessagesController').scope().profileLoadMoreMessages();
+                angular.element('#PublisherScheduledMessagesController').scope().$apply();
+            }
+        });
+    });
+</script>

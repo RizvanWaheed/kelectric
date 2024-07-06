@@ -1,0 +1,31 @@
+﻿<div ng-app="CRMApp" class="" ng-controller="SignupCodeController">
+    <div class="container-fluid top_header">
+        <div class="container"><img src="/Content/images/main_logo2.png" alt="CRM-logo" border="0"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="container main_box">
+            <form name="myForm">
+                <div class="code-module effects" id="effects">
+                    <img src="{{Picture}}" class="img-circle img_border" alt="User Image"><br>
+                    
+                    <h2>{{ Name | uppercase }}</h2><br>
+                    <h3>Kindly enter the code that was sent to your email address.</h3><br>
+                    <input type="text" class="form-control input_border_min input_login_h" ng-model="Code" name="Code" style="max-width:430px; margin:0 auto; " placeholder="Enter Code Here" aria-describedby="sizing-addon2" required><br>
+                    <p class="bg-warning warnings_p" ng-style="{'display': wrongCode}">Entered Code is not correct. Please Re-enter !</p>
+                    <p class="bg-warning warnings_p" ng-show="myForm.Code.$touched && myForm.Code.$invalid">This Field cannot be empty</p>
+
+                    <button ng-disabled="
+                        myForm.$invalid" type="button" ng-click="SubmitCode()" class="btn btn-default button_round ">
+                        <i class="fa fa-arrow-right"></i> Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="container footer_box">© 2016, All Rights Reserved.</div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("head").append($("<link href='/Content/css/signup_styles.css' rel='stylesheet' />"));
+
+</script>

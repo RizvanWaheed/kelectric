@@ -1,0 +1,3 @@
+﻿CRMApp.controller('FooterController', ['$rootScope', '$scope', '$window', '$location', '$compile', 'AuthService', 'GroupService', '$uibModal', '$cookies', 'AuthService', 'CompanyService', 'GlobalService', 'notify', 'NotificationService', function ($rootScope, $scope, $window, $location, $compile, AuthService, GroupService, $uibModal, $cookies, AuthService, CompanyService, GlobalService, notify, NotificationService) {
+    $scope.currentDate = new Date();
+}]);

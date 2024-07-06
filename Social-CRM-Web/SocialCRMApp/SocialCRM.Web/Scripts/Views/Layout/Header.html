@@ -1,0 +1,466 @@
+﻿<div id="HeaderController" ng-controller="HeaderController">
+
+    <script src="/Content/js/appSideScroll.js"></script>
+    <header class="main-header">
+        <!-- Logo -->
+        <span class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><img src="/Content/images/logo_sa2.png"></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg" style="margin-left:-15px;"><img src="/Content/images/main_logo2a.png"></span>
+        </span>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="margin-top:6px;">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <!-- Tasks: style can be found in dropdown.less -->
+                    <li class="icon_setts hidden-xs ">
+                        <div class="icon_round dropdown" style="padding:5px 0 0 0 !important;">
+                            <a href="" title="Notifications-{{NotificationCount}}" id="dLabel" role="button" data-toggle="dropdown" data-target="#" style="background-color: #384955 !important;"><i class="fa fa-bell bell_active badge1" data-badge="{{NotificationCount}}"></i></a>
+                            <ul class="dropdown-menu notifications notif_shadow " role="menu" aria-labelledby="dLabel">
+                                <div class="notification-heading ">
+                                    <a href="#/Notifications">
+                                        <h4 class="menu-title">Notifications ({{NotificationCount}})</h4>
+                                        <h4 class="menu-title pull-right">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
+                                    </a>
+                                </div>
+                                <li class="divider"></li>
+                                <div class="notifications-wrapper" id="notifiScroll">
+                                    <a class="content" href="" style="min-height:40px !important; padding:0 !important;" ng-repeat="value in notificationList">
+                                        <div class="notification-item" ng-class="{unread_msg:value.IsRead == 1, unread_notif:value.IsRead == 0}" ng-click="MarkReadNotificationById(value)">
+                                            <h4 class="item-title">{{value.MessageDate  | date:'dd MMM yyyy hh:mm:ss' }} - {{ value.EmptyMessage}}</h4>
+                                            <p class="item-info" style="line-height: 1;">{{value.Message}}</p>
+                                        </div>
+                                    </a>
+                                    <!--<a class="content" href="#" style="min-height:40px !important; padding:0 !important;">
+                                        <div class="notification-item">
+                                            <h4 class="item-title">Evaluation Deadline - 1  day ago</h4>
+                                            <p class="item-info">Marketing 101, Video Assignment</p>
+                                        </div>
+                                    </a> <a class="content" href="#" style="min-height:40px !important; padding:0 !important;">
+                                        <div class="notification-item">
+                                            <h4 class="item-title">Evaluation Deadline - 1  day ago</h4>
+                                            <p class="item-info">Marketing 101, Video Assignment</p>
+                                        </div>
+                                    </a> <a class="content" href="#" style="min-height:40px !important; padding:0 !important;">
+                                        <div class="notification-item">
+                                            <h4 class="item-title">Evaluation Deadline - 1  day ago</h4>
+                                            <p class="item-info">Marketing 101, Video Assignment</p>
+                                        </div>
+                                    </a>-->
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="icon_round" ng-show="$parent.PostRespond"><a class="tops" href="" data-toggle="tooltip" data-placement="top" title="Compose" ng-click="openCompose()"><i class="fa fa-pencil "></i></a></div>
+                        <div class="icon_round" ng-show="$parent.IsAdmin"><a class="tops" href="" data-toggle="tooltip" data-placement="top" title="Connect" ng-click="openProfileConnect()"><i class="fa fa-link "></i></a></div>
+                        <div class="icon_round" ng-show="$parent.IsAdmin"><a class="tops" href="#/GroupAndTeam/GroupsUserAdd?companyid={{CompanyId}}" data-toggle="tooltip" data-placement="top" title="Add User"><i class="fa fa-user-plus"></i></a></div>
+                        <div class="icon_round" ng-show="$parent.IsAdmin"><a class="tops" href="" data-toggle="tooltip" data-placement="top" title="Add Group" ng-click="openGroup()"><i class="fa fa-folder-open"></i></a></div>
+                        <div class="icon_round" ng-show="$parent.IsAdmin"><a class="tops" href="#/GroupAndTeam" data-toggle="tooltip" data-placement="top" title="Groups & Teams"><i class="fa fa-cog"></i></a></div>
+                    </li>
+                    <li>
+
+                        <!--<select name="" class="top_select" id="ddlGroups" ng-change='selectedTemplate(t.GroupId)'>
+
+                        </select>-->
+
+                        <select id="GroupSelector" class="top_select" ng-model="GroupSelected" ng-change="selectedTemplate(GroupSelected, false)" id="ddlgroup"
+                                data-ng-options="group as group.GroupName group by group.CompanyName for group in grouplist track by group.GroupId"></select>
+                        <!--<select name="" class="top_select">
+                            <optgroup label="Company Ibex">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                            </optgroup>
+                            <optgroup label="Company Demo">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                            </optgroup>
+                        </select>-->
+                    </li>
+
+                    <li ng-show="CompanyShow" class="hidden-xs hidden-sm top_summary">
+                        Team Members: <span><!--<a href="">-->{{TotalMembers}}<!--</a>--></span> &nbsp;&nbsp;&nbsp;
+                        Total Groups: <span><!--<a href="">-->{{TotalGroups}}<!--</a>--></span> &nbsp;&nbsp;&nbsp;All Profiles: <span><!--<a href="">-->{{TotalProfiles}}<!--</a>--></span>
+                    </li>
+
+                </ul>
+            </div>
+
+        </nav>
+
+        <style>
+            .unread_notif{
+                background-color:#e7f5f6;
+            }
+        </style>
+    </header>
+    <!-- =============================================== -->
+
+    <aside class="main-sidebar">
+
+        <section class="sidebar">
+            <div class="sidebar_height" style="border-bottom:solid 1px #4a6071;"></div>
+            <!-- search form -->
+            <!--<form action="" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>-->
+            <!-- /.search form -->
+            <!-- Sidebar user panel -->
+            <div class="user-panel" style="background-color:#384955;">
+                <div class="pull-left image"> <img ng-src="{{UserImage!=''&&UserImage||'/Content/img/user2-160x160.jpg'}}" class="img-circle" alt="User Image"> </div>
+                <div class="pull-left info">
+                    <p>{{CompanyName}}</p>
+                    <p><a href="/#/PersonalProfile"><i class="fa fa-circle text-success"></i> {{UserName}}</a></p>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li ng-hide="x.hide" ng-repeat="x in navLinks" class="treeview">
+                    <a href="">
+                        <i class="fa {{x.icon}}"></i> <span>
+                            {{x.mainLink |uppercase}}<br>
+                            <p>{{x.description}}</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <!--<div id="inboxer" class="left_nav_subs">-->
+                            <!--Used to put scroll in menu-->
+                            <div class="left_nav_subs">
+                                <li ng-hide="y.hide" ng-repeat="y in x.subLink" class="left_nav_subs_inactive" ng-class="navClass('{{y.url}}')" id="{{y.url}}">
+                                    <a href="/#/{{y.url}}{{y.parameter}}" class="pad_left">{{y.Title}}</a>
+                                </li>
+                            </div>
+                    </ul>
+                </li>
+
+                <li class="treeview" style="background-color:#078b8d !important;">
+                    <a href="" confirmed-click="logout()"
+                       ng-confirm-click="Would you like to logout?"><i class="fa fa-sign-out"></i><span>LOGOUT</span></a>
+                </li>
+            </ul>
+
+
+
+
+
+
+
+            <!--<div class="user-panel" style="background-color:#384955;">
+                <div class="pull-left image">
+                    <img src="/Content/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>IBEX GLOBAL</p>
+                    <p><a href=""><i class="fa fa-circle text-success"></i> Adeel Gill</a></p>
+                </div>
+            </div>-->
+            <!--<ul class="sidebar-menu">
+
+
+
+                <li class="treeview">
+                    <a href="/#/UnifiedInbox">
+                        <i class="fa fa-envelope"></i> <span>
+                            INBOX MANAGER<br>
+                            <p>messages & social feeds</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="inboxer" class="left_nav_subs">
+                            <li><a href="">&bull; facebook</a></li>
+                            <li><a href="">&bull; twitter</a></li>
+                            <li><a href="">&bull; linkedin</a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-flag"></i> <span>
+                            TASK MANAGER<br>
+                            <p>complete & incomplete</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="tasker" class="left_nav_subs">
+                            <li><a href="">&bull; facebook</a></li>
+                            <li><a href="">&bull; twitter</a></li>
+                            <li><a href="">&bull; linkedin</a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-th"></i> <span>
+                            SOCIAL FEEDS<br>
+                            <p>social feeds & feeds</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="socialer" class="left_nav_subs">
+                            <li><a href="">&bull; facebook</a></li>
+                            <li><a href="">&bull; twitter</a></li>
+                            <li><a href="">&bull; linkedin</a></li>
+
+                        </div>
+                    </ul>
+
+                </li>
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-globe"></i> <span>
+                            PUBLISHER<br>
+                            <p>posts & new compose</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="publi" class="left_nav_subs">
+                            <li><a href="">&bull; facebook</a></li>
+                            <li><a href="">&bull; twitter</a></li>
+                            <li><a href="">&bull; linkedin</a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-compass"></i> <span>
+                            DISCOVERY<br>
+                            <p>discover new posts</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="disco" class="left_nav_subs">
+                            <li><a href="">&bull; facebook</a></li>
+                            <li><a href="">&bull; twitter</a></li>
+                            <li><a href="">&bull; linkedin</a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-line-chart"></i> <span>
+                            REPORTS<br>
+                            <p>analytics & reports</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="reporter" class="left_nav_subs">
+                            <li><a href="#/AnalyticReport?accountId=36&dateFilterId=2">&bull; Analytics</a></li>
+                            <li><a href="">&bull; twitter</a></li>
+                            <li><a href="">&bull; linkedin</a></li>
+                            <li><a href="">&bull; facebook</a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-life-ring"></i> <span>
+                            HELP & RESOURCES<br>
+                            <p>help & maintenance</p>
+                        </span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <div id="helper" class="left_nav_subs">
+                            <li><a href="#/BusinessProfile">&bull; Business Profile</a></li>
+                            <li><a href="#/PersonalProfile">&bull; Personal Profile</a></li>
+                            <li><a href="#/UserNSocialProfile">&bull; User & Social Profile</a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li class="treeview" style="background-color:#25343f !important;">
+                    <a href="">
+                        <i class="fa fa-cog"></i> <span>SETTINGS</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu left_nav_sub">
+                        <li><a href="#/GroupAndTeam">&bull; Group Settings</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview" style="background-color:#078b8d !important;" >
+                    <a href=""  confirmed-click="logout()"
+                        ng-confirm-click="Would you like to logout?">
+                        <i class="fa fa-sign-out"></i> <span>LOGOUT</span>
+                    </a>
+
+                </li>
+
+            </ul>-->
+
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+</div>
+<script>
+
+    $(document).ready(function () {
+        //console.log(window.location.href)
+        $('#notifiScroll').slimscroll({
+            height: '150px',
+            disableFadeOut: true
+        });
+
+        //console.log($("li.left_nav_subs_active").html()); //parent().parent().parent().show();
+        // $("#" + page).parent().parent().parent().parent().addClass('active');
+        //$('.nav li a').click(function(e) {
+
+        //    $('.nav li').removeClass('active');
+
+        //    var $parent = $(this).parent();
+        //    if (!$parent.hasClass('active')) {
+        //        $parent.addClass('active');
+        //    }
+        //    e.preventDefault();
+        //});
+
+
+    });
+
+    angular.element(document).ready(function () {
+
+        window.setInterval(function () {
+            //debugger;
+            notifications.client.updateInbox();
+        }, 60000);
+
+        //Signal R Notification Implementation
+        // Declare a proxy to reference the hub.
+        var notifications = $.connection.notificationHub;
+
+        //debugger;
+        // Create a function that the hub can call to broadcast messages.
+        notifications.client.updateMessages = function () {
+
+            //setTimeout(function () {
+            getAllMessages();
+            //}, 2000);
+
+        };
+
+        notifications.client.emailUpdates = function () {
+
+            //setTimeout(function () {
+            sendEmailUpdates();
+            //}, 2000);
+
+        };
+
+        notifications.client.updateTaskCompletedItems = function (FeedId, FeedType) {
+            if (angular.element('#UnifiedDeckController').scope() !== undefined) {
+                angular.element('#UnifiedDeckController').scope().UpdateTaskCompletedItems(FeedId, FeedType);
+                angular.element('#UnifiedDeckController').scope().$apply();
+            }
+        }
+
+        notifications.client.markAllUnrespondedItemsCompleted = function (GroupId) {
+            if (angular.element('#UnifiedDeckController').scope() !== undefined) {
+                angular.element('#UnifiedDeckController').scope().markAllUnrespondedItemsCompleted(GroupId);
+                angular.element('#UnifiedDeckController').scope().$apply();
+            }
+        }
+
+        notifications.client.updateInbox = function () {
+
+            //Schedular Messages Updation
+            if (angular.element('#PublisherScheduledMessagesController').scope() !== undefined) {
+                angular.element('#PublisherScheduledMessagesController').scope().fetchLatestScheduledMessages();
+                angular.element('#PublisherScheduledMessagesController').scope().$apply();
+            }
+
+            //Queued Messages Updation
+            if (angular.element('#QueuedMessageController').scope() !== undefined) {
+                angular.element('#QueuedMessageController').scope().fetchLatestQueuedMessages();
+                angular.element('#QueuedMessageController').scope().$apply();
+            }
+
+            if (angular.element('#UnifiedinboxController').scope() !== undefined) {
+                angular.element('#UnifiedinboxController').scope().fetchLatestUnifiedInboxData();
+                angular.element('#UnifiedinboxController').scope().$apply();
+            }
+
+            if (angular.element('#SocialFeedsFacebookController').scope() !== undefined) {
+                angular.element('#SocialFeedsFacebookController').scope().fetchLatestUnifiedInboxData();
+                angular.element('#SocialFeedsFacebookController').scope().$apply();
+            }
+
+            if (angular.element('#SocialFeedsInstagramController').scope() !== undefined) {
+                angular.element('#SocialFeedsInstagramController').scope().fetchLatestUnifiedInboxData();
+                angular.element('#SocialFeedsInstagramController').scope().$apply();
+            }
+
+            if (angular.element('#TaskListController').scope() !== undefined) {
+                angular.element('#TaskListController').scope().getLatestFilteredTasks();
+                angular.element('#TaskListController').scope().$apply();
+            }
+
+            if (angular.element('#DraftTaskController').scope() !== undefined) {
+                angular.element('#DraftTaskController').scope().getLatestDraftTasks();
+                angular.element('#DraftTaskController').scope().$apply();
+            }
+
+            if (angular.element('#SocialFeedsRSSController').scope() !== undefined) {
+                angular.element('#SocialFeedsRSSController').scope().fetchLatestRSSFeedsData();
+                angular.element('#SocialFeedsRSSController').scope().$apply();
+            }
+
+            if (angular.element('#OutlookController').scope() !== undefined) {
+                angular.element('#OutlookController').scope().getLatestInboxEmails();
+                angular.element('#OutlookController').scope().$apply();
+            }
+
+            if (angular.element('#OutlookController').scope() !== undefined) {
+                angular.element('#OutlookController').scope().getLatestSentEmails();
+                angular.element('#OutlookController').scope().$apply();
+            }
+
+            if (angular.element('#UnifiedDeckController').scope() !== undefined) {
+                angular.element('#UnifiedDeckController').scope().GetLatestUnifiedDeckDataForAllColumns();              
+                angular.element('#UnifiedDeckController').scope().$apply();
+            }
+
+            if (angular.element('#UnifiedDeckController').scope() !== undefined) {
+                angular.element('#UnifiedDeckController').scope().CollectNewUnrespondedItemsForUnrespondedColumn();
+                angular.element('#UnifiedDeckController').scope().$apply();
+            }            
+
+        };
+        // Start the connection.
+        $.connection.hub.start().done(function () {
+            //alert("connection started")
+            setTimeout(function () {
+                if (angular.element('#HeaderController').scope() != undefined) {
+                    getAllMessages();
+                    sendEmailUpdates();
+                }
+            }, 2000);
+
+        }).fail(function (e) {
+            alert(e);
+        });
+    });
+
+    function sendEmailUpdates() {
+        angular.element('#HeaderController').scope().SendNotificationEmailUpdates();
+        angular.element('#HeaderController').scope().$apply();
+    }
+    function getAllMessages() {
+        angular.element('#HeaderController').scope().fetchNotification();
+        angular.element('#HeaderController').scope().$apply();
+    }
+
+</script>

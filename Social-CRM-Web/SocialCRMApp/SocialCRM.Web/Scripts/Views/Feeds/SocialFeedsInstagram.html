@@ -1,0 +1,116 @@
+﻿<link href="../../../Content/css/profile-tile.css" rel="stylesheet" />
+<div class="wrapper">
+    <div ui-view="Header"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height:650px !important;" ng-app="CRMApp" id="SocialFeedsInstagramController" ng-controller="SocialFeedsInstagramController">
+        <!-- Content Header (Page header) -->
+        <!-- header starts here -->
+        <div class="container-fluid page_name">
+            <div class="col-sm-10"><img src="/Content/images/insta_ico16.png" alt=""> Social Feeds- Instagram</div>
+        </div>
+        <!-- header ends here -->
+        <div class="container-fluid padding_set">
+            <div class="col-md-9">
+                <!--<div class="box box-default" style="text-align: center;" ng-show="latestInboxitemDetails.length > 0">
+                    <a id="new-posts" href="javascript:" ng-click="loadLatestInboxItems()">({{latestInboxitemDetails.length}}) New Post(s)</a>
+                </div>-->
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="box-body no-padding" id="grplists">
+                            <div id="inbox-{{msg.Id}}" class="col-sm-12 inbox_blk {{msg.ClassName}}" ng-repeat="msg in inboxitemDetails">
+                                <div class="twitter_search_social_icos" ng-if="msg.MessageType == 'STP'"></div>
+                                <div class="twitter_social_icos" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'TM'"></div>
+                                <div class="fb_social_icos" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP'"></div>
+                                <div class="insta_social_icos" ng-if="msg.MessageType == 'IM' || msg.MessageType == 'IC'"></div>
+                                <div class="col-sm-2">
+                                    <div class="inbox_blk_img">
+                                        <div class="verified_icon" ng-if="msg.IsVerified == true && (msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM')"><img src="/Content/images/twit_verified.png" alt="" title="Verified"></div>
+                                        <div class="verified_icon" ng-if="msg.IsVerified == true && (msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP')"><img src="/Content/images/facebook-verified.png" alt="" title="Verified"></div>
+                                        <!--<div class="inbox_blk_img_ico"><img src='/Content/images/{{msg.AccountTypeImg}}.png' alt=""></div>-->
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ReplyedBy}}" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'"><img src="{{msg.TwtImg}}" alt="User Image"></a>
+                                        <img src="{{msg.TwtImg}}" alt="User Image" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP' || msg.MessageType == 'IM' || msg.MessageType == 'IC'">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 text-left inbox_blk_msg_blk">
+                                    <div class="inbox_blk_msg" id="{{msg.Id}}-{{msg.MessageType}}-converted_url">
+                                        <!--<a href="">{{msg.HandleName}}</a>-->
+                                        {{TextToURLConvert(msg.UserTwit,msg.Id,msg.MessageType,msg.Tags,msg.Attachments)}}
+                                        <!--{{msg.UserTwit}}-->
+
+                                    </div>
+                                    <div class="inbox_blk_cred">
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ReplyedBy}}" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'">{{msg.ReplyedBy}}</a>
+                                        <a href="" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP' || msg.MessageType == 'IM' || msg.MessageType == 'IC'">{{msg.ReplyedBy}}</a>
+                                        {{msg.ActivityType}}
+                                        <a href="/#/UnifiedContact?fromUser={{msg.User}}&ofUser={{msg.ToUser}}" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'">{{msg.ToUser}}</a>
+                                        <a href="" ng-if="msg.MessageType == 'FP' || msg.MessageType == 'FC' || msg.MessageType == 'FCP' || msg.MessageType == 'IM' || msg.MessageType == 'IC'">{{msg.ToUser}}</a>
+                                        {{msg.ReplyedDate}}
+                                    </div>
+                                    <div class="inboxTag_marg">
+                                        <a ng-repeat="tag in msg.Tags" href="javascript:;" class="inboxTag" title="{{tag}}" ng-style="getTagStyle(tag)">&bull; {{tag}}</a>
+                                    </div>
+                                    <div class="inbox_blk_actions">
+                                        <!--<a href=""><i class="fa fa-user-plus" title="Follow/Unfollow"></i></a>-->
+                                        <a ng-hide="msg.IsTaskCompleted" href="" ng-click="MarkAsCompleted(msg,$index)"><i class="fa fa-check-circle-o" title="Mark as Complete"></i></a>
+                                        <a ng-show="msg.IsTaskCompleted" href="" ng-click="MarkAsInComplete(msg,$index)"><i class="fa fa-check-circle" title="Mark as InComplete"></i></a>
+                                        <a href="" ng-click="CreateTask(msg)"><i class="fa fa-flag" title="Create Task"></i></a>
+                                        <a href="javascript:" ng-show="msg.MessageType != 'FCP' && msg.MessageType != 'TM'"><i class="fa fa-mail-reply" title="Reply" ng-click="openReplyAdd(msg)"></i></a>
+                                        <a href="" data-toggle="collapse" data-target="#msgSetting-{{msg.MessageType}}{{msg.Id}}"><i class="fa fa-wrench" title="More Options"></i></a>
+                                        <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'"><i class="fa fa-comments" title="Conversation" ng-click="openConversation(msg.StatusId,msg.ReplyedBy,msg.MessageType)"></i></a>
+                                        <div id="msgSetting-{{msg.MessageType}}{{msg.Id}}" class="collapse sub_msgsett">
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP'" ng-click="openRetweet(msg)">Retweet |</a>
+                                            <a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP'" ng-click="openRetweetWithComment(msg)">Retweet with Comment |</a>
+                                            <!--<a href="" ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP'" ng-click="deleteTweet(msg)">Delete Tweet |</a>-->
+                                            <a href="" ng-if="msg.MessageType != 'TM' && msg.MessageType != 'IC'" ng-click="likeTweet(msg)">Like</a> | <a href="" ng-click="openEmailTweets(msg)">Email Message |</a>
+                                            <a href="" ng-if="msg.IsArchived == false" ng-click="addToArchiveList(msg)">Archive Message |</a>
+                                            <a href="" ng-if="msg.IsArchived == true" ng-click="removeFromArchiveList(msg)">UnArchive Message |</a>
+                                            <a ng-if="msg.MessageType == 'TP' || msg.MessageType == 'STP' || msg.MessageType == 'TM'" href="" ng-click="openReportAsSpam(msg.StatusId,msg.ReplyedBy,msg.MessageType)">Report as Spam</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+            <div class="col-md-3">
+                <div class="col-md-12 box box-default filter_box">
+                    <div style="padding-right:10px;" id="tw_profile">
+                        <div style="height:25px;"><strong>Instagram Profiles</strong></div>
+                        <table class="table table-condensed">
+                            <tr ng-repeat="profile in Profiles">
+                                <td>
+                                    <img src="{{profile.ProfilePicURL}}" alt="" border="0" class="img_con img_con_height"><span class="soc_name">
+                                        {{profile.Name}}<br>
+                                        <p><img src="/Content/images/insta_ico16.png" alt="instagram-profile"> {{profile.UserName}}</p>
+                                    </span>
+                                </td>
+                                <td align="center" valign="middle"><input type="radio" ng-model="$parent.profileSelect" ng-change="selectedProfileChanged();" ng-value="{{$index}}" name="test" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<!-- /.content -->
+</div><!-- /.content-wrapper -->
+    </div><!-- ./wrapper -->
+<div ui-view="Footer"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#grplists').slimscroll({
+            height: '1200px',
+            disableFadeOut: true
+        }).bind('slimscroll', function (e, pos) {
+            if (pos == "bottom") {
+                angular.element('#SocialFeedsInstagramController').scope().profileLoadMoreFeeds();
+                angular.element('#SocialFeedsInstagramController').scope().$apply();
+            }
+        });
+    });
+</script>

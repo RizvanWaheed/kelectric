@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c4ae989752e49c9952e4df17b42231a" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="SocialCRMMinningModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AccessLevel" Width="1.5" PointX="0.75" PointY="23.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AnalyticCompanyGroup" Width="1.5" PointX="7.5" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AnalyticToken" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ArchivedUnifiedInbox" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AspNetRole" Width="1.5" PointX="3.75" PointY="16.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AspNetUserClaim" Width="1.5" PointX="8.25" PointY="17.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AspNetUserLogin" Width="1.5" PointX="8.25" PointY="14.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AspNetUser" Width="1.5" PointX="6" PointY="14.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.BrandKeyword" Width="1.5" PointX="7.5" PointY="50.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Company" Width="1.5" PointX="3" PointY="31.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.CompanyType" Width="1.5" PointX="6" PointY="32.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.CustomerProfileType" Width="1.5" PointX="18" PointY="54.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.CustomerSocialProfile" Width="1.5" PointX="13.5" PointY="51.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.CustomerWarnBanReason" Width="1.5" PointX="15.75" PointY="57.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FeedlyKeyword" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FeedlyMinnedData" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FeedsMediaAttachment" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FeedsSentiment" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Group" Width="1.5" PointX="5.25" PointY="41.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.InstagramComment" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.InstagramMinnedData" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.InstagramUserFollowHistory" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.KEArea" Width="1.5" PointX="18.5" PointY="62.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.KECustomer" Width="1.5" PointX="20.75" PointY="51.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.KERegion" Width="1.5" PointX="16.25" PointY="63" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.LogCode" Width="1.5" PointX="15.75" PointY="33" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Log" Width="1.5" PointX="18" PointY="39.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MembershipAccessLevel" Width="1.5" PointX="3" PointY="23.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MembershipPermission" Width="1.5" PointX="3" PointY="26.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MembershipRestriction" Width="1.5" PointX="6" PointY="24.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MembershipRestrictionType" Width="1.5" PointX="3.75" PointY="20.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MessagePostingTime" Width="1.5" PointX="17.25" PointY="35.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MessagesTwitter" Width="1.5" PointX="10.5" PointY="62.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PageChatsFB" Width="1.5" PointX="10.5" PointY="41.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostsFB" Width="1.5" PointX="18.5" PointY="49.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostsTwitter" Width="1.5" PointX="10.5" PointY="68.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostUserStatusFB" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostUserStatusInstagram" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostUserStatusTwitter" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Premission" Width="1.5" PointX="0.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Profile" Width="1.5" PointX="8.25" PointY="54.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfileComapnyGroup" Width="1.5" PointX="10.5" PointY="36.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfileFeedsTag" Width="1.5" PointX="9.75" PointY="50.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfilePage" Width="1.5" PointX="8.25" PointY="27.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfileQueueTime" Width="1.5" PointX="15" PointY="38.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfilesHistory" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfileStatus" Width="1.5" PointX="15.75" PointY="55" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfileToCustSocialProfile" Width="1.5" PointX="15.75" PointY="51.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ProfileType" Width="1.5" PointX="6" PointY="56.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PublisherUploadedFile" Width="1.5" PointX="15" PointY="29.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.QueuedMessageProfile" Width="1.5" PointX="12.75" PointY="37" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.QueuePostingTime" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.QueueWaitingMessage" Width="1.5" PointX="15" PointY="35.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SampleReply" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ScheduledMessage" Width="1.5" PointX="12.75" PointY="46.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ScheduledMessageProfile" Width="1.5" PointX="15" PointY="41.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SearchWordPattern" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sentiment" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialActivity" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialActivityType" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialMediaUpdate" Width="1.5" PointX="5.25" PointY="27.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialMediaUsersUpdateReceiver" Width="1.5" PointX="5.25" PointY="34.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialMediaUserType" Width="1.5" PointX="15.75" PointY="60" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialProfileContactComment" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SocialProfileContactInfo" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SubscriberType" Width="1.5" PointX="0.75" PointY="26.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TaskAssignee" Width="1.5" PointX="15" PointY="47.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TaskComment" Width="1.5" PointX="15" PointY="69.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TaskCompleted" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TaskLog" Width="1.5" PointX="15" PointY="66" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TaskManager" Width="1.5" PointX="12.75" PointY="55.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Team" Width="1.5" PointX="12.75" PointY="40.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UnifiedDeckColumnSetting" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserAccessLevel" Width="1.5" PointX="15" PointY="45.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserAccessToken" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserAnalyticAccount" Width="1.5" PointX="5.25" PointY="46.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserCompany" Width="1.5" PointX="8.25" PointY="31.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserNotification" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserNotificationSetting" Width="1.5" PointX="7.5" PointY="40.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.WarnBanCustomerFeed" Width="1.5" PointX="20.25" PointY="43.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.WarnBanCustomer" Width="1.5" PointX="18" PointY="43.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.WarnBanCustomersAttachment" Width="1.5" PointX="20.25" PointY="46.375" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MembershipAccessLevels_AccessLevel" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserAccessLevel_AccessLevel" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_AnalyticCompanyGroup_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_AnalyticCompanyGroup_Group" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_AnalyticCompanyGroup_UserAnalyticAccount" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Team_AspNetUsers" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserCompany_AspNetUsers" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_BrandKeyword_Group" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileFeedsTags_BrandKeyword" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Company_SubscriberType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Group_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileComapnyGroup_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_SocialMediaUpdates_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_SocialMediaUsersUpdateReceivers_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Team_Company1" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserCompany_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserNotificationSetting_Company" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserCompany_CompanyType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_CustomerProfileType_ProfileToCustSocialProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_CustomerProfileType_SocialMediaUserTypes" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileToCustSocialProfile_CustomerSocialProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomers_CustomerWarnBanReasons" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_FeedsSentiment_Sentiment" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileComapnyGroup_Group" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserNotificationSetting_Group" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_KEArea_KERegion" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_KECustomer_KEArea" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Logs_LogCodes" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Logs_ProfileComapnyGroup" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Logs_Team" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MembershipAccessLevels_SubscriberType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MembershipPermissions_Premissions" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MembershipPermissions_SubscriberType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MembershipRestrictions_MembershipRestrictionType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MembershipRestrictions_SubscriberType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MessagePostingTime_ScheduledMessageProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_MessagesTwitter_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_PageChatsFB_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_PageChatsFB_ProfilePage" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_PostsFB_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_PostsFB_ProfilePage" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_PostsTwitter_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Profile_ProfileType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileComapnyGroup_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileCustomerProfiles_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfilePage_Profile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileComapnyGroup_ProfilePage" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_QueuedMessageProfile_ProfileComapnyGroup" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ScheduledMessageProfile_ProfileComapnyGroup" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ProfileQueueTime_QueuedMessageProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomers_ProfileStatus" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomers_ProfileToCustSocialProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomers_ProfileType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_PublisherUploadedFiles_ScheduledMessage" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_QueueWaitingMessages_QueuedMessageProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ScheduledMessageProfile_ScheduledMessage" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ScheduledMessageProfile_Team" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_SocialProfileContactComments_SocialProfileContactInfo" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_TaskAssignee_TaskManager" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_TaskAssignee_Team" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_TaskComment_TaskManager" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_TaskLog_TaskManager" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_UserAccessLevel_Team" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomers_Team" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomerFeed_WarnBanCustomers" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_WarnBanCustomersAttachment_WarnBanCustomers" />
+        <AssociationConnector Association="SocialCRMMinningModel.AnalyticManagement" />
+        <AssociationConnector Association="SocialCRMMinningModel.AspNetUserRoles" />
+        <AssociationConnector Association="SocialCRMMinningModel.CustToCustSocialProfile" />
+        <AssociationConnector Association="SocialCRMMinningModel.ProfileManagment" />
+        <AssociationConnector Association="SocialCRMMinningModel.TeamGroup" />
+        <AssociationConnector Association="SocialCRMMinningModel.UserPermission" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.CommentsFB" Width="1.5" PointX="13.375" PointY="14.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AirLine_Classes" Width="1.5" PointX="15.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AuditActivitiesType" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AuditTrail" Width="1.5" PointX="15.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Author_Categories" Width="1.5" PointX="32" PointY="23.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Author" Width="1.5" PointX="29.75" PointY="15.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Authors_MediaUrl" Width="1.5" PointX="31.75" PointY="1.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Brand_Kpi" Width="1.5" PointX="17.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Brand_KPI_Rel" Width="1.5" PointX="17.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Brand_Term" Width="1.5" PointX="17.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Brand" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.calender" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_CloseReason_Rel" Width="1.5" PointX="6.75" PointY="20.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_Customer" Width="1.5" PointX="17.75" PointY="21.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_Documents" Width="1.5" PointX="15.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_Entity_Rel" Width="1.5" PointX="19.75" PointY="21.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_History" Width="1.5" PointX="17.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_OpenReason_Rel" Width="1.5" PointX="24.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_StaticItems" Width="1.5" PointX="26.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case_WorkItem" Width="1.5" PointX="10.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Case" Width="1.5" PointX="28.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Category" Width="1.5" PointX="26.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.cities_new" Width="1.5" PointX="26.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.City" Width="1.5" PointX="28.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Conf_TimeZone" Width="1.5" PointX="18.75" PointY="30.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSource" Width="1.5" PointX="29" PointY="34.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSource_Organization" Width="1.5" PointX="31.25" PointY="35.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSource_SearchTerm" Width="1.5" PointX="31.25" PointY="48.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSourceType" Width="1.5" PointX="26.75" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSourceType_Indexing" Width="1.5" PointX="29" PointY="39" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_ExcludedDocumentSource" Width="1.5" PointX="10.75" PointY="32.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_FacebookExcludeURL" Width="1.5" PointX="24.75" PointY="32.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_GoogleProximity" Width="1.5" PointX="33.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_GoogleProximity_ExactTerm_Rel" Width="1.5" PointX="34.75" PointY="20.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_GoogleProximity_ExcludeTerm_Rel" Width="1.5" PointX="0.75" PointY="35.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_GoogleProximity_ExcludeUrl_Rel" Width="1.5" PointX="2.75" PointY="35.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_KeyTerm" Width="1.5" PointX="34.75" PointY="23.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_Labels" Width="1.5" PointX="35.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_MediaUrl" Width="1.5" PointX="31.75" PointY="6.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_Organization" Width="1.5" PointX="29" PointY="31.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_Organization_SearchTerm" Width="1.5" PointX="36.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_SearchTerm" Width="1.5" PointX="32" PointY="26.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_SearchTerm_KeyTerm_Rel" Width="1.5" PointX="36.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_SearchTerm_Location" Width="1.5" PointX="36.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_SearchTermType" Width="1.5" PointX="29.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_WebExactTerms" Width="1.5" PointX="19.75" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_WebExcludeTerms" Width="1.5" PointX="21.75" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_WebExcludeURL" Width="1.5" PointX="36.75" PointY="23.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.CountriesAlternateName" Width="1.5" PointX="23.75" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Country" Width="1.5" PointX="36.75" PointY="26.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Daywise_PostEngagement" Width="1.5" PointX="36.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Dealer" Width="1.5" PointX="24.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.DesiName" Width="1.5" PointX="36.75" PointY="33.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Document" Width="1.5" PointX="32" PointY="12.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Documents_MediaUrl" Width="1.5" PointX="34" PointY="1" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.EmailAlert" Width="1.5" PointX="36.75" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.EmailAlerts_Configuration" Width="1.5" PointX="37.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Entity" Width="1.5" PointX="37.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Entity_EntityRelation" Width="1.5" PointX="37.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FacebookPageHistory" Width="1.5" PointX="38.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FB_Pagefrequency" Width="1.5" PointX="0.75" PointY="38.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FBPost" Width="1.5" PointX="2.75" PointY="38.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ForwardIndex" Width="1.5" PointX="37.25" PointY="16.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Gender" Width="1.5" PointX="38.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Geonames_NameVariations" Width="1.5" PointX="4.75" PointY="38.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Google_CountryCodes" Width="1.5" PointX="38.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Google_CountryValues" Width="1.5" PointX="38.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Graphs_Cache" Width="1.5" PointX="38.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Graphs_Exclusion" Width="1.5" PointX="38.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.honda_dealer" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.hyundai_dealer" Width="1.5" PointX="15.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.hyundai_dealers1" Width="1.5" PointX="12.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Index_Term" Width="1.5" PointX="34.25" PointY="15.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Internal_FK_Definition_Storage" Width="1.5" PointX="38.75" PointY="32.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.IsImportant" Width="1.5" PointX="38.75" PointY="35.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.KnownLocation" Width="1.5" PointX="38.75" PointY="38.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Kpi_Keyword" Width="1.5" PointX="39.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Language" Width="1.5" PointX="39.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Language1" Width="1.5" PointX="39.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Languages2" Width="1.5" PointX="39.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.LogEntry" Width="1.5" PointX="20.75" PointY="39.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.LogMiner" Width="1.5" PointX="22.75" PointY="39.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Maps_CitiesOfWorld" Width="1.5" PointX="40.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Maps_CountryCodes" Width="1.5" PointX="40.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Maps_PostsData" Width="1.5" PointX="40.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Maps_PostsData2" Width="1.5" PointX="40.75" PointY="24.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MasterSetting" Width="1.5" PointX="24.75" PointY="40.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MaxInfluencer" Width="1.5" PointX="40.75" PointY="30.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Morphology" Width="1.5" PointX="40.75" PointY="34.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Network" Width="1.5" PointX="40.75" PointY="37.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Notification" Width="1.5" PointX="40.75" PointY="40.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Pakistan_Data" Width="1.5" PointX="0.75" PointY="41.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PakistanCity" Width="1.5" PointX="2.75" PointY="41.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Personality" Width="1.5" PointX="41.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostCounts_by_Province" Width="1.5" PointX="41.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostsClassifiedLocation" Width="1.5" PointX="41.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostsClassifiedLocationsTest" Width="1.5" PointX="41.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostType" Width="1.5" PointX="36.75" PointY="41.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Province" Width="1.5" PointX="42.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.region" Width="1.5" PointX="42.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.RssSource" Width="1.5" PointX="42.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Search_Type" Width="1.5" PointX="42.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_AccessLevels" Width="1.5" PointX="22" PointY="14.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Actions" Width="1.5" PointX="22" PointY="32.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Applications" Width="1.5" PointX="19.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Groups" Width="1.5" PointX="24.25" PointY="16.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_GroupTypes" Width="1.5" PointX="22" PointY="24.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Permission_MenuPage_Rel" Width="1.5" PointX="26.5" PointY="23.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_PermissionAccessDetails" Width="1.5" PointX="24.25" PointY="22.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_PermissionCategories" Width="1.5" PointX="19.75" PointY="2.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Permissions" Width="1.5" PointX="22" PointY="2.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_RolePermissions_Rel" Width="1.5" PointX="24.25" PointY="28.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Roles" Width="1.5" PointX="22" PointY="28.5" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_SessionDetails" Width="1.5" PointX="42.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Sessions" Width="1.5" PointX="26.75" PointY="42.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_UserFacebook" Width="1.5" PointX="28.75" PointY="42.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_UserInstagram" Width="1.5" PointX="42.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_UserPermissions_Rel" Width="1.5" PointX="24.25" PointY="9.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_UserRoles_Rel" Width="1.5" PointX="27.25" PointY="18.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_Users" Width="1.5" PointX="22" PointY="8" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.sec_userSocialTokens" Width="1.5" PointX="30.75" PointY="42.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Sec_UserTwitter" Width="1.5" PointX="32.75" PointY="42.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SentimentCategory" Width="1.5" PointX="42.75" PointY="34.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SpecialWord" Width="1.5" PointX="42.75" PointY="37.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.SpecialWords2" Width="1.5" PointX="42.75" PointY="40.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Comment" Width="1.5" PointX="43.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Users" Width="1.5" PointX="43.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Facebook_Post_Comment_Likes" Width="1.5" PointX="42.75" PointY="43.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Facebook_Post_Comments" Width="1.5" PointX="44.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Facebook_Post_Likes" Width="1.5" PointX="0.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Facebook_Posts" Width="1.5" PointX="34.25" PointY="31.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Facebook_Posts_SearchTerms" Width="1.5" PointX="2.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Facebook_Users" Width="1.5" PointX="44.75" PointY="17.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Feedly_Feeds" Width="1.5" PointX="10.75" PointY="20.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Feedly_Items" Width="1.5" PointX="13" PointY="20.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Feedly_Items_SearchTerms" Width="1.5" PointX="7.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Feedly_Links" Width="1.5" PointX="15.25" PointY="21.875" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Instagram_Comments" Width="1.5" PointX="22.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Instagram_Posts" Width="1.5" PointX="44.75" PointY="23.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Instagram_SearchTerms" Width="1.5" PointX="44.75" PointY="31.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Instagram_Users" Width="1.5" PointX="44.75" PointY="34.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Myspace_FeedEntry" Width="1.5" PointX="34.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Myspace_Links" Width="1.5" PointX="36.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Myspace_LinkType" Width="1.5" PointX="38.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_RSS_Categories" Width="1.5" PointX="29" PointY="4.375" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_RSS_Items" Width="1.5" PointX="26.75" PointY="3" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_RSS_Items_SearchTerms" Width="1.5" PointX="44.75" PointY="39.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_RSS_Links" Width="1.5" PointX="29" PointY="7.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_RSS_Persons" Width="1.5" PointX="29" PointY="1.25" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_SkyTrax_Review_Organization" Width="1.5" PointX="44.75" PointY="42.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_SkyTrax_Reviews" Width="1.5" PointX="45.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_SkyTrax_Users" Width="1.5" PointX="45.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_SkyTrax_Web" Width="1.5" PointX="34.25" PointY="26.125" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_SocialMedia_Feed_Comments_Labels" Width="1.5" PointX="45.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Twitter_Statuses" Width="1.5" PointX="44.75" PointY="45.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Twitter_Statuses_SearchTerms" Width="1.5" PointX="46.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Twitter_Users" Width="1.5" PointX="46.75" PointY="17.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Web_Comments" Width="1.5" PointX="24.75" PointY="46.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Web_SearchTerms" Width="1.5" PointX="9.75" PointY="46.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Youtube_SearchTerms" Width="1.5" PointX="46.75" PointY="26.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_YouTube_Users" Width="1.5" PointX="46.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_YouTube_Video_Comments" Width="1.5" PointX="46.75" PointY="36.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_YouTube_Videos" Width="1.5" PointX="40.75" PointY="46.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.StaticItem" Width="1.5" PointX="46.75" PointY="41.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Templates_Standard_Responses" Width="1.5" PointX="46.75" PointY="44.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TempPostsDataForMap" Width="1.5" PointX="0.75" PointY="47.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Term" Width="1.5" PointX="35" PointY="12.625" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.test" Width="1.5" PointX="2.75" PointY="47.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.test2" Width="1.5" PointX="47.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TopInf_data" Width="1.5" PointX="47.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Tweet" Width="1.5" PointX="47.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TwitterMentionCountbyAuthor" Width="1.5" PointX="36.75" PointY="47.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TypeCategory" Width="1.5" PointX="46.75" PointY="47.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.User_SearchCategory" Width="1.5" PointX="48.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.User_SearchTerm" Width="1.5" PointX="48.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.User_SearchTerm_Detail" Width="1.5" PointX="48.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.User_SearchTerm_New" Width="1.5" PointX="48.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Video" Width="1.5" PointX="48.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.WorkItem_Entity_Rel" Width="1.5" PointX="26.75" PointY="48.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Age" Width="1.5" PointX="48.75" PointY="28.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Alert" Width="1.5" PointX="48.75" PointY="31.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.AuthorsTemp" Width="1.5" PointX="48.75" PointY="34.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Brand_SearchTerm_Rel" Width="1.5" PointX="48.75" PointY="40.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.city1" Width="1.5" PointX="48.75" PointY="43.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.city_table" Width="1.5" PointX="48.75" PointY="47.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.cityName" Width="1.5" PointX="49.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSource_Organization_SearchTerm" Width="1.5" PointX="49.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSources" Width="1.5" PointX="49.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSourceTypes" Width="1.5" PointX="49.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_DocumentSourceTypes_Indexing" Width="1.5" PointX="4.75" PointY="50.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_FacebookProfileTypes" Width="1.5" PointX="50.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_Organization_SearchTerms" Width="1.5" PointX="50.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_Organizations" Width="1.5" PointX="50.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Config_Reports_Settings" Width="1.5" PointX="50.75" PointY="21.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.country1" Width="1.5" PointX="23.75" PointY="50.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.countryName" Width="1.5" PointX="50.75" PointY="24.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.DimTime" Width="1.5" PointX="50.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.documentsTemp" Width="1.5" PointX="50.75" PointY="30.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Email_TimeIntervals" Width="1.5" PointX="33.75" PointY="50.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FacebookBrand" Width="1.5" PointX="50.75" PointY="39.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.FacebookPageFrequency" Width="1.5" PointX="50.75" PointY="42.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.locale" Width="1.5" PointX="50.75" PointY="45.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Maps_PostsData3" Width="1.5" PointX="46.75" PointY="50.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.MentionSentimentReports_New" Width="1.5" PointX="50.75" PointY="48.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.PostsClassifiedLocations2" Width="1.5" PointX="51.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.regionName" Width="1.5" PointX="51.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.ReplaceWord" Width="1.5" PointX="51.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Comment_Link_Rel" Width="1.5" PointX="51.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Comment_User_Rel" Width="1.5" PointX="25.75" PointY="51.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Link" Width="1.5" PointX="27.75" PointY="51.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Post" Width="1.5" PointX="29.75" PointY="51.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Post_Link_Rel" Width="1.5" PointX="52.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_blogger_Post_User_Rel" Width="1.5" PointX="0.75" PointY="52.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Myspace_Person" Width="1.5" PointX="52.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_SkyTrax_Organization" Width="1.5" PointX="52.75" PointY="20.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.Staging_Twitter_KloutScores" Width="1.5" PointX="52.75" PointY="23.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.StopWord" Width="1.5" PointX="52.75" PointY="28.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.temp_table" Width="1.5" PointX="52.75" PointY="31.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.tempdoc" Width="1.5" PointX="52.75" PointY="34.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TempDocumentsTableType" Width="1.5" PointX="35.75" PointY="52.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TempDocumentTermsTableType" Width="1.5" PointX="37.75" PointY="52.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TopUserByPost" Width="1.5" PointX="52.75" PointY="41.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.twitter_retweetCount" Width="1.5" PointX="52.75" PointY="47.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.TwitterTimezone" Width="1.5" PointX="52.75" PointY="50.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.UserSearchTermCount_New" Width="1.5" PointX="53.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SocialCRMMinningModel.YouTube_Keywords" Width="1.5" PointX="53.75" PointY="7.75" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Documents_Authors" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Documents_MediaUrl_Authors_MediaUrl" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Config_DocumentSource_SearchTerm_Config_DocumentSource" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Config_DocumentSources_Config_DocumentSourceTypes" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Config_Organization_DocumentSource_Config_DocumentSources" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_Facebook_Posts_Config_DocumentSources" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Config_DocumentSource_Organization_Config_Organization" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Config_DocumentSourceTypes_Indexing_Config_DocumentSourceTypes" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Documents_MediaUrl_Config_MediaUrl" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Config_SearchTerm_Config_SearchTermType" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_Facebook_Posts_Config_Organization_SearchTerms" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_SkyTrax_Web_Staging_SkyTrax_Web" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ForwardIndex_Documents1" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Index_Documents" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_ForwardIndex_Terms1" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Index_Term_Terms" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_AccessLevels_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_PermissionAccessDetails_Sec_AccessLevels" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Actions_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_PermissionAccessDetails_Sec_Actions" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Groups_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_GroupTypes_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Roles_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_UserRoles_Rel_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Users_Sec_Applications" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Groups_Sec_Groups" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Groups_Sec_GroupTypes" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Permission_MenuPage_Rel_Sec_Groups" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_PermissionAccessDetails_Sec_Groups" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Permission_MenuPage_Rel_Sec_PermissionAccessDetails" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_PermissionAccessDetails_Sec_Permissions" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_PermissionCategories_Sec_PermissionCategories" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_Permissions_Sec_PermissionCategories" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_RolePermissions_Rel_Sec_Permissions" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_UserPermissions_Rel_Sec_Permissions" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_RolePermissions_Rel_Sec_Roles" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_UserRoles_Rel_Sec_Roles" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_UserPermissions_Rel_Sec_Users" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Sec_UserRoles_Rel_Sec_Users" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_Feedly_Item_Staging_Feedly_Feed" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_Feedly_Links_Staging_Feedly_Item" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_RSS_Category_Staging_RSS_Item" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_RSS_Links_Staging_RSS_Item" />
+        <AssociationConnector Association="SocialCRMMinningModel.FK_Staging_RSS_Person_Staging_RSS_Item" />
+        <AssociationConnector Association="SocialCRMMinningModel.Author_Category_Rel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

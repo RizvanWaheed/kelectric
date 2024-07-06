@@ -1,0 +1,22 @@
+﻿
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-retweet"></i> {{FormText}}</h4>
+    </div>
+    <div class="modal-body">
+        <div style="margin-bottom:8px;">{{FormDescription}}</div>
+
+        <div ng-show="IsEnable">
+            <textarea name="" cols="" rows="" class="form-control input_border_min input_login_h" style="max-width:580px; margin-bottom:8px " aria-describedby="sizing-addon2" placeholder="Enter Description Here"> </textarea>
+            <a href="#" title="Attach a Picture"><i class="fa fa-camera"></i></a> &nbsp;&nbsp;<a href="#" title="Shorten URL"><i class="fa fa-scissors"></i></a> <div style="float:right"><strong><em>127</em></strong></div>
+        </div>
+
+        <div style="margin-top:20px">
+            <button type="button" class="btn btn-primary button_round  btn_height3">YES</button>
+            <button type="button" class="btn btn-cancel button_round  btn_height3">CANCEL</button>
+        </div>
+    </div>
+
+</div>

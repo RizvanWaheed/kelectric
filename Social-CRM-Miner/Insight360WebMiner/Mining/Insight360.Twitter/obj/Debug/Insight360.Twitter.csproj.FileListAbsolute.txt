@@ -1,0 +1,3 @@
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Mining\Insight360.Twitter\obj\Debug\Insight360.Twitter.csprojResolveAssemblyReference.cache
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Mining\Insight360.Twitter\obj\Debug\Insight360.Twitter.Properties.Resources.resources
+D:\KE-projects\Social-CRM-Miner\Insight360WebMiner\Mining\Insight360.Twitter\obj\Debug\Insight360.Twitter.csproj.GenerateResource.Cache

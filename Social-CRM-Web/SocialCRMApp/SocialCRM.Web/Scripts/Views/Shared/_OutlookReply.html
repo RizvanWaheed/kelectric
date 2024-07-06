@@ -1,0 +1,41 @@
+﻿
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title" ng-show="type == 'ReplyTo'"><i class="fa fa-reply"></i>  Reply</h4>
+        <h4 class="modal-title" ng-show="type == 'ReplyToAll'"><i class="fa fa-reply-all"></i>  Reply All</h4>
+        <h4 class="modal-title" ng-show="type == 'Fwd'"><i class="fa fa-share"></i>  Forward</h4>
+        <h5> (multiple email address must be separated by ;)</h5>
+    </div>
+    <div class="modal-body">
+        <div style="margin-bottom:8px;">From: {{From}}</div>
+        <div style="margin-bottom:8px;" contenteditable="true">
+            <textarea name="" rows="2" class="form-control input_border_min input_login_h" style="max-width:100%;" ng-model="To"
+                      aria-describedby="sizing-addon2" placeholder="To: Recepients"></textarea>
+        </div>
+        <div style="margin-bottom:8px;" contenteditable="true">
+            <textarea name="" rows="2" class="form-control input_border_min input_login_h" style="max-width:100%;" ng-model="CC"
+                      aria-describedby="sizing-addon2" placeholder="CC: Recepients"></textarea>
+        </div>
+        <div style="margin-bottom:8px;">
+            <input name="" type="text" class="form-control input_border_min input_login_h" placeholder="Subject" ng-model="Subject">
+        </div>
+        <div style="margin-bottom:8px;" ng-show="type == 'Fwd'">
+            <div id="ReplyArea" slimscroll="slim" ng-bind-html="trustedHtml(Body)" contenteditable="true"
+                 class="form-control input_border_min input_login_h" style="height:200px; max-width:100%;"></div>
+        </div>
+        <div style="margin-bottom:8px;" ng-hide="type == 'Fwd'">
+            <textarea name="" class="form-control input_border_min input_login_h" style="height:200px; max-width:100%;" aria-describedby="sizing-addon2" 
+                      ng-model="Body" placeholder="Write reply here..."></textarea>
+        </div>
+        <!--<div class="inbox_blk_cred" style="margin-top:5px">Sent from Insight 360 CRM</div>-->
+        <div style="margin-top:10px">
+            <button type="button" class="btn btn-primary button_round  btn_height3" ng-click="sendEmailReply()">SEND</button>
+            <button type="button" class="btn btn-cancel button_round  btn_height3" ng-click="cancel()">CANCEL</button>
+        </div>
+    </div>
+</div>
+
+
+
+
